@@ -1,0 +1,3579 @@
+/* =========================================================
+   HIGH REACH — QUART WEB FONTS
+   ========================================================= */
+
+
+/* Quart Regular */
+@font-face {
+    font-family: "Quart";
+    src:
+        url("../../Web%20Fonts/Quart-Regular.woff2") format("woff2"),
+        url("../../Web%20Fonts/Quart-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* Quart Outline */
+@font-face {
+    font-family: "Quart Outline";
+    src:
+        url("../../Web%20Fonts/Quart-Outline.woff2") format("woff2"),
+        url("../../Web%20Fonts/Quart-Outline.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+/* =========================================================
+   HIGH REACH — BRAND DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+
+    /* =========================
+       BRAND COLOURS
+       ========================= */
+
+    --hr-blue: #0062F3;
+    --hr-teal: #36C2B0;
+    --hr-green: #A6EC6A;
+    --hr-yellow: #FFD60A;
+
+    --hr-white: #FFFFFF;
+    --hr-black: #000000;
+
+
+    /* =========================
+       RGB COLOURS
+       ========================= */
+
+    --hr-blue-rgb: 0, 98, 243;
+    --hr-teal-rgb: 54, 194, 176;
+    --hr-green-rgb: 166, 236, 106;
+    --hr-yellow-rgb: 255, 214, 10;
+
+    --hr-white-rgb: 255, 255, 255;
+    --hr-black-rgb: 0, 0, 0;
+
+
+    /* =========================
+       HIGH REACH TYPOGRAPHY
+       ========================= */
+
+    --hr-font-regular: "Quart", Arial, sans-serif;
+    --hr-font-outline: "Quart Outline", "Quart", Arial, sans-serif;
+
+
+    /* =========================
+       AMOXI THEME OVERRIDES
+       ========================= */
+
+    --amoxi-font: var(--hr-font-regular);
+    --amoxi-heading-font: var(--hr-font-regular);
+
+    --amoxi-base: var(--hr-blue);
+    --amoxi-base-rgb: var(--hr-blue-rgb);
+
+    --amoxi-white: var(--hr-white);
+    --amoxi-white-rgb: var(--hr-white-rgb);
+
+    --amoxi-black: var(--hr-black);
+    --amoxi-black-rgb: var(--hr-black-rgb);
+}
+
+
+
+/* =========================================================
+   GLOBAL WEBSITE TYPOGRAPHY
+   ========================================================= */
+
+html,
+body {
+    font-family: var(--hr-font-regular) !important;
+}
+
+
+/* Body / navigation / UI text */
+body,
+p,
+a,
+li,
+button,
+input,
+textarea,
+select,
+label {
+    font-family: var(--hr-font-regular) !important;
+}
+
+
+/* All headings use Quart Regular by default */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--hr-font-regular) !important;
+}
+
+
+/* Prevent browser fake bold / fake italic */
+body {
+    font-synthesis: none;
+}
+
+
+
+/* =========================================================
+   AMOXI COMPONENT FONT OVERRIDES
+   ========================================================= */
+
+.main-menu__list > li > a,
+.main-header__phone__number,
+
+.hero-one__title,
+.hero-one__title__box,
+.hero-one__text,
+
+.sec-title__title,
+.sec-title__tagline,
+
+.amoxi-btn,
+.amoxi-btn__text,
+
+.service-card__title,
+.portfolio-one__card__title,
+
+.team-card__name,
+.team-card__designation,
+
+.blog-card__title,
+
+.main-footer,
+.main-footer__bottom__title {
+    font-family: var(--hr-font-regular) !important;
+}
+
+
+
+/* =========================================================
+   QUART FONT UTILITY CLASSES
+   ========================================================= */
+
+
+/* Quart Regular */
+.quart-regular {
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+}
+
+
+/* Quart Outline */
+.quart-outline {
+    font-family: var(--hr-font-outline) !important;
+    font-weight: 400 !important;
+}
+
+
+
+/* =========================================================
+   HIGH REACH HERO TYPOGRAPHY
+   ========================================================= */
+
+.hero-one__title,
+.hero-one__title__box {
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+}
+
+
+/* Each hero line */
+.hr-hero-line {
+    display: block;
+    font-weight: 400 !important;
+}
+
+
+/* NOT JUST BUILDING */
+.hr-hero-not-just {
+    font-family: var(--hr-font-outline) !important;
+    font-weight: 400 !important;
+}
+
+
+/* BRANDS */
+.hr-hero-brands {
+    font-family: var(--hr-font-outline) !important;
+    font-weight: 400 !important;
+}
+
+
+/* WE MAKE THEM */
+.hr-hero-we-make {
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+}
+
+
+/* REACH HIGHER */
+.hr-hero-reach-higher {
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+}
+
+
+
+/* =========================================================
+   HIGH REACH PRIMARY COLOUR OVERRIDES
+   ========================================================= */
+
+
+/* Active navigation */
+.main-menu .main-menu__list > li.current > a,
+.main-menu .main-menu__list > li:hover > a {
+    color: var(--hr-blue);
+}
+
+
+/* Main button */
+.amoxi-btn__text {
+    background-color: var(--hr-blue);
+}
+
+
+/* Header menu button */
+.sidebar-btn__toggler {
+    background-color: var(--hr-blue);
+}
+
+
+/* Scroll indicator */
+.scroll-btn__dot {
+    background-color: var(--hr-blue);
+}
+/* =========================================================
+   HERO — ARROW + REACH HIGHER SPACING
+   ========================================================= */
+
+.hr-reach-row {
+    display: inline-flex;
+    align-items: center;
+
+    /* Space between arrow and text */
+    gap: 24px;
+
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+
+/* Moving arrow */
+.hr-reach-row .hero-one__title__shape-2 {
+    flex-shrink: 0;
+
+    margin: 0 !important;
+}
+
+
+/* REACH HIGHER text */
+.hr-reach-row .hr-reach-text {
+    display: inline-block;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    white-space: nowrap;
+
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+
+    line-height: 0.95;
+}
+
+/* =========================================================
+   HIGH REACH — SVG RADIAL GRADIENT TITLE
+   ========================================================= */
+
+.hr-high-reach-svg {
+    display: block;
+
+    width: 126%;
+    max-width: 620px;
+
+    height: auto;
+
+    overflow: visible;
+
+    margin: 0 0 24px 0;
+}
+
+
+/* Quart Outline Typeface */
+
+.hr-high-reach-svg text {
+    font-family: var(--hr-font-outline) !important;
+
+    font-size: 42px;
+
+    font-weight: 400;
+
+    letter-spacing: 0;
+}
+
+/* =========================================================
+   HEADER PHONE BUTTON
+   FIXED FULL-BUTTON RADIAL GRADIENT ANIMATION
+   ========================================================= */
+
+.main-header__phone {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background: #2b2b2d !important;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   HIGH REACH — HEADER PHONE BUTTON
+   SVG RADIAL GRADIENT HOVER
+   ========================================================= */
+
+.main-header__phone {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate;
+
+    background: #2B2B2D !important;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease !important;
+}
+
+
+/* Animated SVG background */
+
+.main-header__phone .hr-phone-gradient {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    z-index: 0;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.35s ease;
+}
+
+
+/* Reveal gradient on hover */
+
+.main-header__phone:hover .hr-phone-gradient {
+    opacity: 1;
+}
+
+
+/* Hover interaction */
+
+.main-header__phone:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 28px rgba(0, 108, 243, 0.22);
+}
+
+
+/* Keep phone content above SVG */
+
+.main-header__phone__icon,
+.main-header__phone__number {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Keep icon and number white */
+
+.main-header__phone:hover .main-header__phone__icon,
+.main-header__phone:hover .main-header__phone__icon i,
+.main-header__phone:hover .main-header__phone__number {
+    color: #FFFFFF !important;
+}
+/* =========================================================
+   HIGH REACH — ALWAYS VISIBLE HEADER
+   ========================================================= */
+
+.main-header {
+    position: fixed !important;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    z-index: 9999;
+
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* Prevent sticky-header hide animation */
+
+.sticky-header,
+.sticky-header--normal,
+.main-header.sticky-header {
+    transform: translateY(0) !important;
+    top: 0 !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* Keep header visible even when theme JS adds classes */
+
+.main-header.active,
+.main-header.fixed-header,
+.main-header.sticky-header--cloned,
+.main-header.sticky-header--active,
+.sticky-header--active,
+.sticky-header--cloned {
+    transform: translateY(0) !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   PAGE OFFSET
+   Prevent hero from going behind fixed header
+   ========================================================= */
+
+#smooth-wrapper {
+    padding-top: 130px;
+}
+/* =========================================================
+   HIGH REACH — HEADER LOGO ALIGNMENT
+   ========================================================= */
+
+.main-header__container {
+    max-width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+
+/* Keep header content vertically centred */
+.main-header__inner {
+    min-height: 130px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* Logo block */
+.main-header__logo {
+    display: flex;
+    align-items: center;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* High Reach logo */
+.main-header__logo .hr-header-logo {
+    display: block;
+
+    width: 250px !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE HEADER LOGO
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .main-header__container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .main-header__logo .hr-header-logo {
+        width: 220px !important;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .main-header__container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .main-header__logo .hr-header-logo {
+        width: 180px !important;
+    }
+}
+
+/* =========================================================
+   HIGH REACH — HERO WITHOUT IMAGE / VIDEO
+   ========================================================= */
+
+.hero-one {
+    min-height: auto !important;
+}
+
+.hero-one__row {
+    align-items: flex-start;
+}
+
+.hero-one__left,
+.hero-one__right {
+    padding-bottom: 60px;
+}
+/* =========================================================
+   HIGH REACH — HERO TOP SPACING FIX
+   ========================================================= */
+
+.hero-one {
+    padding-top: 70px !important;
+
+    min-height: calc(100vh - 130px) !important;
+}
+
+
+/* Keep hero content aligned toward the top */
+.hero-one__row {
+    align-items: flex-start !important;
+}
+
+
+/* Remove old theme spacing */
+.hero-one__left,
+.hero-one__right {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+/* Remove extra heading offset */
+.hero-one__title {
+    margin-top: 0 !important;
+}
+
+/* =========================================================
+   HIGH REACH — SEE / SHAPE / SEND / SCALE
+   ========================================================= */
+
+.hr-process-section .funfact-one__item__count {
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.hr-process-section .funfact-one__item__text {
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+    color: rgba(255,255,255,0.65);
+}
+
+
+/* SEE — BLUE */
+
+.hr-process-see::before {
+    background: #0062F3 !important;
+}
+
+
+/* SHAPE — TEAL */
+
+.hr-process-shape::before {
+    background: #36C2B0 !important;
+}
+
+
+/* SEND — GREEN */
+
+.hr-process-send::before {
+    background: #A6EC6A !important;
+}
+
+
+/* SCALE — YELLOW */
+
+.hr-process-scale::before {
+    background: #FFD60A !important;
+}
+
+
+/* BLUE hover */
+
+.hr-process-see:hover .funfact-one__item__count,
+.hr-process-see:hover .funfact-one__item__text {
+    color: #000000 !important;
+}
+
+.hr-process-see:hover .funfact-one__item__count::after {
+    background: #000000 !important;
+}
+
+
+/* TEAL hover */
+
+.hr-process-shape:hover .funfact-one__item__count,
+.hr-process-shape:hover .funfact-one__item__text {
+    color: #000000 !important;
+}
+
+.hr-process-shape:hover .funfact-one__item__count::after {
+    background: #000000 !important;
+}
+
+
+/* GREEN hover */
+
+.hr-process-send:hover .funfact-one__item__count,
+.hr-process-send:hover .funfact-one__item__text {
+    color: #000000 !important;
+}
+
+.hr-process-send:hover .funfact-one__item__count::after {
+    background: #000000 !important;
+}
+
+
+/* YELLOW hover */
+
+.hr-process-scale:hover .funfact-one__item__count,
+.hr-process-scale:hover .funfact-one__item__text {
+    color: #000000 !important;
+}
+
+.hr-process-scale:hover .funfact-one__item__count::after {
+    background: #000000 !important;
+}
+/* =========================================================
+   HIGH REACH — PURE PROCESS CARD COLOURS
+   Remove original theme opacity blending
+   ========================================================= */
+
+.hr-process-section .funfact-one__item::before {
+
+    /* Keep colour at full strength */
+    opacity: 1 !important;
+
+    /* No colour manipulation */
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    background-blend-mode: normal !important;
+
+    /* Keep original flip, but animate ONLY transform */
+    transform: rotateY(-90deg);
+
+    transition:
+        transform 0.5s ease !important;
+}
+
+
+/* Hover */
+.hr-process-section .funfact-one__item:hover::before {
+
+    opacity: 1 !important;
+
+    transform: rotateY(0deg);
+
+    transition:
+        transform 0.5s ease !important;
+}
+
+/* =========================================================
+   HIGH REACH PROCESS — UNDERLINE MATCH WORD WIDTH
+   ========================================================= */
+
+.hr-process-section .funfact-one__item__count {
+    display: inline-block !important;
+    width: fit-content !important;
+    max-width: max-content !important;
+
+    position: relative;
+}
+
+/* Override original Amoxi fixed 97px underline */
+.hr-process-section .funfact-one__item__count::after {
+    width: 100% !important;
+    left: 0 !important;
+    right: auto !important;
+}
+/* =========================================================
+   HIGH REACH PROCESS — MOBILE SCROLL ACTIVE STATE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    /* Prevent touch-hover from getting stuck */
+    .hr-process-section .hr-process-card:hover::before {
+        transform: rotateY(-90deg) !important;
+        opacity: 1 !important;
+    }
+
+
+    /* Scroll active card */
+    .hr-process-section .hr-process-card.is-active::before {
+        transform: rotateY(0deg) !important;
+        opacity: 1 !important;
+    }
+
+
+    /* =========================================
+       SEE — BLUE
+       ========================================= */
+
+    .hr-process-see.is-active .funfact-one__item__count,
+    .hr-process-see.is-active .funfact-one__item__text {
+        color: #FFFFFF !important;
+    }
+
+    .hr-process-see.is-active .funfact-one__item__count::after {
+        background-color: #FFFFFF !important;
+    }
+
+
+    /* =========================================
+       SHAPE — TEAL
+       ========================================= */
+
+    .hr-process-shape.is-active .funfact-one__item__count,
+    .hr-process-shape.is-active .funfact-one__item__text {
+        color: #000000 !important;
+    }
+
+    .hr-process-shape.is-active .funfact-one__item__count::after {
+        background-color: #000000 !important;
+    }
+
+
+    /* =========================================
+       SEND — GREEN
+       ========================================= */
+
+    .hr-process-send.is-active .funfact-one__item__count,
+    .hr-process-send.is-active .funfact-one__item__text {
+        color: #000000 !important;
+    }
+
+    .hr-process-send.is-active .funfact-one__item__count::after {
+        background-color: #000000 !important;
+    }
+
+
+    /* =========================================
+       SCALE — YELLOW
+       ========================================= */
+
+    .hr-process-scale.is-active .funfact-one__item__count,
+    .hr-process-scale.is-active .funfact-one__item__text {
+        color: #000000 !important;
+    }
+
+    .hr-process-scale.is-active .funfact-one__item__count::after {
+        background-color: #000000 !important;
+    }
+
+
+    /* Smooth text transition */
+    .hr-process-section .funfact-one__item__count,
+    .hr-process-section .funfact-one__item__text,
+    .hr-process-section .funfact-one__item__count::after {
+        transition:
+            color 0.35s ease,
+            background-color 0.35s ease !important;
+    }
+
+}
+/* =========================================================
+   HIGH REACH — HERO CENTERED LAYOUT
+   ========================================================= */
+
+
+/* Main hero spacing */
+.hero-one {
+    padding-top: 90px !important;
+    padding-bottom: 90px !important;
+    min-height: auto !important;
+}
+
+
+/* Stack left + right hero areas vertically */
+.hero-one__row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+
+    width: 100%;
+    margin: 0 !important;
+}
+
+
+/* Override Bootstrap 8/4 columns */
+.hero-one__row > .col-xl-8,
+.hero-one__row > .col-xl-4 {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+
+/* =========================================================
+   MAIN HERO CONTENT
+   ========================================================= */
+
+.hero-one__left {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+/* Main heading */
+.hero-one__title {
+    width: 100%;
+
+    text-align: center !important;
+
+    margin: 0 0 28px 0 !important;
+}
+
+
+/* Heading inner wrapper */
+.hero-one__title__box {
+    display: block !important;
+
+    width: 100%;
+
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   ARROW + REACH HIGHER
+   ========================================================= */
+
+.hr-reach-row {
+    display: flex !important;
+
+    justify-content: center !important;
+    align-items: center !important;
+
+    width: 100%;
+
+    gap: clamp(18px, 2vw, 30px);
+
+    margin-top: 12px;
+
+    white-space: nowrap;
+}
+
+
+/* Don't let text wrap */
+.hr-reach-text {
+    display: inline-block !important;
+
+    white-space: nowrap !important;
+
+    margin: 0 !important;
+}
+
+
+/* =========================================================
+   SMALL SUPPORTING COPY
+   ========================================================= */
+
+.hero-one__desc--1 {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    display: flex;
+    justify-content: center;
+
+    text-align: center !important;
+
+    margin: 20px auto 35px !important;
+}
+
+
+/* Supporting text */
+.hero-one__desc--1 .hero-one__text {
+    display: inline-block;
+
+    width: auto;
+
+    padding-left: 16px;
+
+    text-align: center;
+
+    white-space: normal;
+}
+
+
+/* High Reach blue vertical line */
+.hero-one__desc--1 .hero-one__text::before {
+    background-color: #0062F3 !important;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+   ========================================================= */
+
+/* Center button wrapper */
+.hero-one__left > div[data-aos] {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Keep CTA centred */
+.hero-one__left .amoxi-btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+/* =========================================================
+   SECOND HIGH REACH GRADIENT SECTION
+   ========================================================= */
+
+.hero-one__right {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center !important;
+
+    margin-top: 110px !important;
+
+    overflow: visible !important;
+}
+
+
+/* Gradient High Reach container */
+.hero-one__desc--2 {
+    width: 100% !important;
+    max-width: 500px !important;
+
+    margin: 0 auto !important;
+
+    padding-top: 28px;
+
+    text-align: center !important;
+}
+
+
+/* Animated High Reach SVG */
+.hero-one__desc--2 .hr-high-reach-svg {
+    display: block;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto 25px !important;
+}
+
+
+/* Supporting text beneath gradient heading */
+.hero-one__desc--2 .hero-one__text {
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .hero-one {
+        padding-top: 70px !important;
+        padding-bottom: 75px !important;
+    }
+
+    .hero-one__right {
+        margin-top: 80px !important;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .hero-one {
+        padding-top: 55px !important;
+        padding-bottom: 65px !important;
+    }
+
+    .hero-one__desc--1 {
+        margin-top: 15px !important;
+        margin-bottom: 28px !important;
+    }
+
+    .hero-one__right {
+        margin-top: 65px !important;
+    }
+
+    .hero-one__desc--2 {
+        max-width: 90% !important;
+    }
+
+}
+
+
+/* =========================================================
+   HIGH REACH HERO — REMOVE OLD AMOXI DECORATIVE SHAPES
+   ========================================================= */
+
+/* Vertical scroll pill */
+.hero-one .scroll-btn {
+    display: none !important;
+}
+
+
+/* Small decorative star beside description */
+.hero-one__desc__shape {
+    display: none !important;
+}
+
+
+/* Large rotating orange shape */
+.hero-one__shape {
+    display: none !important;
+}
+/* =========================================================
+   HIGH REACH — VISION STATEMENT ROW
+   COPY LEFT / GRADIENT TITLE RIGHT
+   ========================================================= */
+
+.hero-one__desc--2.hr-vision-row {
+    width: min(1180px, 100%) !important;
+    max-width: 1180px !important;
+
+    margin: 0 auto !important;
+
+    padding-top: 35px !important;
+
+    display: grid !important;
+
+    /* copy left / title right */
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    align-items: center !important;
+
+    column-gap: clamp(60px, 8vw, 140px);
+
+    text-align: left !important;
+}
+/* =========================================================
+   HIGH REACH — VISION ROW FINAL ALIGNMENT
+   HIGH REACH LEFT / COPY RIGHT
+   ========================================================= */
+
+.hero-one__right {
+    width: 100% !important;
+
+    margin-top: 45px !important;
+    padding-top: 0 !important;
+    padding-bottom: 35px !important;
+}
+
+
+/* Main row */
+.hero-one__desc--2.hr-vision-row {
+    width: min(1180px, 88%) !important;
+    max-width: 1180px !important;
+
+    margin: 0 auto !important;
+
+    /* Reduce excessive vertical spacing */
+    padding: 28px 0 30px !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(430px, 560px)
+        minmax(0, 1fr);
+
+    align-items: center !important;
+
+    column-gap: clamp(60px, 7vw, 110px);
+
+    text-align: left !important;
+}
+
+
+/* =========================================================
+   LEFT — HIGH REACH
+   ========================================================= */
+
+.hero-one__desc--2 .hr-high-reach-svg {
+    grid-column: 1;
+
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 540px !important;
+
+    height: auto !important;
+
+    margin: 0 !important;
+
+    justify-self: start !important;
+}
+
+
+/* =========================================================
+   RIGHT — SENTENCE
+   ========================================================= */
+
+.hero-one__desc--2 .hr-vision-copy {
+    grid-column: 2;
+
+    width: 100% !important;
+    max-width: 500px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-align: left !important;
+
+    line-height: 1.5 !important;
+}
+
+/* =========================================================
+   REDUCE GAP BETWEEN VISION ROW & PROCESS CARDS
+   ========================================================= */
+
+.hero-one {
+    padding-bottom: 60px !important;
+    min-height: auto !important;
+}
+
+.hr-process-section,
+.funfact-one.hr-process-section {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+@media (max-width: 991px) {
+
+    .hero-one__desc--2.hr-vision-row {
+        width: 88% !important;
+
+        grid-template-columns: 1fr !important;
+
+        row-gap: 28px;
+
+        padding: 25px 0 30px !important;
+    }
+
+    .hero-one__desc--2 .hr-high-reach-svg {
+        grid-column: 1;
+
+        width: min(500px, 100%) !important;
+
+        margin: 0 auto !important;
+
+        justify-self: center !important;
+    }
+
+    .hero-one__desc--2 .hr-vision-copy {
+        grid-column: 1;
+
+        max-width: 600px !important;
+
+        margin: 0 auto !important;
+
+        text-align: center !important;
+    }
+
+}
+/* =========================================================
+   HIDE HERO SERVICE TAGS
+   Branding / Technology / Design / Marketing / Production / Growth
+   ========================================================= */
+
+.hero-one__tags {
+    display: none !important;
+}/* =========================================================
+   HIGH REACH — EQUAL VERTICAL SPACING
+   Top line ↔ Vision content ↔ SEE/SHAPE section
+   ========================================================= */
+
+:root {
+    --hr-vision-space: 65px;
+}
+
+
+/* Remove extra spacing coming from parent containers */
+.hero-one__right {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+.hero-one {
+    padding-bottom: 0 !important;
+    min-height: auto !important;
+}
+
+
+/* Vision section */
+.hero-one__desc--2.hr-vision-row {
+    width: min(1180px, 88%) !important;
+    max-width: 1180px !important;
+
+    margin: 0 auto !important;
+
+    /*
+       SAME SPACE ABOVE AND BELOW
+    */
+    padding-top: var(--hr-vision-space) !important;
+    padding-bottom: var(--hr-vision-space) !important;
+
+    box-sizing: border-box;
+}
+
+
+/* Remove extra gap before SEE / SHAPE / SEND / SCALE */
+.funfact-one.hr-process-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+/* =========================================================
+   HIGH REACH — HERO EQUAL TOP / BOTTOM SPACING
+   ========================================================= */
+
+:root {
+    --hr-hero-edge-space: 110px;
+}
+
+
+/* Header → We Make Brands */
+.hero-one {
+    padding-top: var(--hr-hero-edge-space) !important;
+}
+
+
+/* CTA → horizontal line / next hero block */
+.hero-one__left {
+    padding-bottom: var(--hr-hero-edge-space) !important;
+}
+
+
+/* Remove old extra gap values that interfere */
+.hero-one__right {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+
+/* Keep vision row from adding another large top gap */
+.hero-one__desc--2.hr-vision-row {
+    padding-top: 0 !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — VISION SECTION EQUAL VERTICAL SPACING
+   ========================================================= */
+
+:root {
+    --hr-vision-equal-space: 55px;
+}
+
+
+/* Vision row */
+.hero-one__desc--2.hr-vision-row {
+    width: min(1180px, 88%) !important;
+    max-width: 1180px !important;
+
+    margin: 0 auto !important;
+
+    /* SAME SPACE ABOVE AND BELOW */
+    padding-top: var(--hr-vision-equal-space) !important;
+    padding-bottom: var(--hr-vision-equal-space) !important;
+
+    box-sizing: border-box;
+}
+
+/* Remove extra spacing from parent */
+.hero-one__right {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Remove extra hero bottom spacing */
+.hero-one {
+    padding-bottom: 0 !important;
+}
+
+/* SEE / SHAPE section should start immediately after
+   the equal bottom spacing */
+.funfact-one.hr-process-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* =========================================================
+   HIGH REACH — ▜ SHAPED SECTION ICON
+   ========================================================= */
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+)::before {
+
+    content: "" !important;
+
+    display: inline-block !important;
+    flex: 0 90 auto;
+
+    width: 18px !important;
+    height: 18px !important;
+
+    background-color: #0062F3 !important;
+
+    /* exact ▜-style block shape */
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 65%,
+        65% 65%,
+        65% 100%,
+        0 100%
+    );
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    margin: 0 10px 0 0 !important;
+
+    transform: none !important;
+}
+
+/* =========================================================
+   HIGH REACH — FINAL SECTION TITLE SYMBOL
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   REMOVE ORIGINAL AMOXI SECTION-TITLE SHAPES
+   --------------------------------------------------------- */
+
+/* Original images used around section titles */
+img[alt*="section title shape" i],
+img[alt*="title shape" i],
+img[src*="section-title-shape" i],
+img[src*="section_title_shape" i],
+img[src*="section-title" i] {
+    display: none !important;
+}
+
+
+/* Original decorative shape elements */
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="shape"] {
+    display: none !important;
+}
+
+
+/* Remove old pseudo-decoration */
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+)::after {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   SECTION LABEL ALIGNMENT
+   --------------------------------------------------------- */
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) {
+    display: inline-flex !important;
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    position: relative !important;
+}
+
+
+/* ---------------------------------------------------------
+   HIGH REACH ▜ / CHEVRON SYMBOL
+   Geometry matched to your supplied reference
+   --------------------------------------------------------- */
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+)::before {
+
+    content: "" !important;
+
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+
+    width: 15px !important;
+    height: 20px !important;
+
+    background-color: #0062F3 !important;
+
+    /*
+       Exact proportion of the reference shape:
+              ╲
+               ╲
+                >
+               ╱
+              ╱
+    */
+
+    clip-path: polygon(
+        29.44% 0%,
+        0% 26.85%,
+        35.03% 49.81%,
+        5.08% 77.04%,
+        40.10% 100%,
+        100% 45.91%
+    ) !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: none !important;
+
+    opacity: 1 !important;
+}
+/* =========================================================
+   REMOVE ORIGINAL AMOXI TRIANGLE / DOTS
+   Keep only our new High Reach symbol
+   ========================================================= */
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="shape"],
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="dot"],
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="triangle"],
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="icon"],
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) img,
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) svg,
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) i {
+    display: none !important;
+}
+
+
+/* Remove pseudo-elements attached to those old decorative pieces */
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="shape"]::before,
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="shape"]::after,
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="dot"]::before,
+
+:is(
+    .sec-title__tagline,
+    .section-title__tagline,
+    .section-title__sub-title,
+    .section-title__subtitle,
+    .section-title__tagline-text
+) [class*="dot"]::after {
+    content: none !important;
+    display: none !important;
+}
+/* =========================================================
+   REMOVE ORIGINAL AMOXI SECTION TITLE SHAPES
+   Triangle + dots
+   ========================================================= */
+
+.sec-title__shape,
+.sec-title__shape__inner {
+    display: none !important;
+}
+/* =========================================================
+   HIGH REACH SECTION TITLE ALIGNMENT
+   ========================================================= */
+
+.sec-title__top {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0 !important;
+}
+
+.sec-title__tagline {
+    margin: 0 !important;
+}
+/* =========================================================
+   HIGH REACH SECTION TITLE SYMBOL
+   ========================================================= */
+
+.sec-title__tagline::before {
+    content: "" !important;
+
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+
+    width: 15px !important;
+    height: 20px !important;
+
+    background-color: #0062F3 !important;
+
+    clip-path: polygon(
+        29.44% 0%,
+        0% 26.85%,
+        35.03% 49.81%,
+        5.08% 77.04%,
+        40.10% 100%,
+        100% 45.91%
+    ) !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    margin-right: 10px !important;
+
+    vertical-align: middle !important;
+}
+
+/* =========================================================
+   HIGH REACH — ABOUT SECTION CLEAN LAYOUT
+   ========================================================= */
+
+
+/* Remove spacing that belonged to the deleted icon */
+.about-one__item {
+    display: block !important;
+    padding: 0 !important;
+}
+
+
+/* Paragraph now uses the full available width */
+.about-one__item__text {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-align: left !important;
+}
+
+
+/* Clean spacing underneath main About heading */
+.about-one__content .sec-title {
+    margin-bottom: 32px !important;
+}
+
+
+/* Space between description and 84% block */
+.about-one__item {
+    margin-bottom: 38px !important;
+}
+
+
+/* Keep 84% block cleanly aligned */
+.about-one__funfact {
+    width: 100% !important;
+
+    margin-top: 0 !important;
+}
+
+
+/* Remove any leftover experience positioning */
+.about-one__image {
+    padding-bottom: 0 !important;
+}
+
+
+/* About More button spacing */
+.about-one__content .amoxi-btn {
+    margin-top: 28px !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — ABOUT SECTION BRAND SHAPE
+   Smaller + right aligned
+   ========================================================= */
+
+.about-one {
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+
+/* Shape wrapper */
+.about-one__shape {
+    position: absolute !important;
+
+    /* Align to right side of About section */
+    right: 60px !important;
+    left: auto !important;
+
+    /* Vertically centre with About content */
+    top: calc(50% - 65px) !important;
+    bottom: auto !important;
+
+    /* Smaller controlled size */
+    width: 260px !important;
+    height: 260px !important;
+
+    z-index: 1 !important;
+
+    pointer-events: none !important;
+}
+
+
+/* Actual PNG */
+.about-one__shape img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+
+    max-width: none !important;
+}
+/* =========================================================
+   HIGH REACH — 360° CARD FINAL
+   Clean / Stable / Premium
+   ========================================================= */
+
+.about-one__funfact {
+    width: 100% !important;
+    min-height: 175px !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+
+    align-items: center !important;
+
+    /* Space around center divider */
+    column-gap: 72px !important;
+
+    padding: 34px 44px !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    position: relative !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 10px !important;
+
+    background: transparent !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   CENTER DIVIDER
+   ========================================================= */
+
+.about-one__funfact::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 50% !important;
+    top: 50% !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    width: 1px !important;
+    height: 88px !important;
+
+    background: rgba(255, 255, 255, 0.16) !important;
+
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    z-index: 1 !important;
+}
+
+
+/* Kill any old theme/card pseudo element */
+.about-one__funfact::after {
+    content: none !important;
+    display: none !important;
+}
+
+
+/* =========================================================
+   LEFT — 360°
+   ========================================================= */
+
+.about-one__funfact__count {
+    width: 100% !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    position: relative !important;
+    z-index: 2 !important;
+
+    border: 0 !important;
+
+    color: #FFFFFF !important;
+
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+
+    font-size: clamp(62px, 4.5vw, 78px) !important;
+
+    letter-spacing: -0.04em !important;
+
+    white-space: nowrap !important;
+
+    font-variant-numeric: tabular-nums !important;
+    font-feature-settings: "tnum" 1 !important;
+
+    overflow: visible !important;
+}
+
+
+/* Animated counter digits */
+.about-one__funfact__count .count-text {
+    display: inline-block !important;
+
+    position: static !important;
+
+    width: auto !important;
+    min-width: 3ch !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    color: #FFFFFF !important;
+
+    font: inherit !important;
+
+    text-align: right !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transform: none !important;
+
+    overflow: visible !important;
+
+    font-variant-numeric: tabular-nums !important;
+}
+
+
+/* =========================================================
+   RIGHT — DESCRIPTION
+   ========================================================= */
+
+.about-one__funfact__text {
+    width: 100% !important;
+    max-width: 270px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    justify-self: center !important;
+    align-self: center !important;
+
+    position: relative !important;
+    z-index: 2 !important;
+
+    text-align: left !important;
+
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+
+    line-height: 1.42 !important;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .about-one__funfact {
+        column-gap: 52px !important;
+
+        padding: 30px 34px !important;
+    }
+
+    .about-one__funfact::before {
+        height: 78px !important;
+    }
+
+    .about-one__funfact__count {
+        font-size: 64px !important;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   Stack cleanly
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .about-one__funfact {
+        grid-template-columns: 1fr !important;
+
+        row-gap: 24px !important;
+
+        padding: 30px 26px !important;
+
+        min-height: auto !important;
+    }
+
+
+    .about-one__funfact::before {
+        left: 50% !important;
+        top: 50% !important;
+
+        width: 90px !important;
+        height: 1px !important;
+
+        transform: translate(-50%, -50%) !important;
+    }
+
+
+    .about-one__funfact__count {
+        justify-content: center !important;
+
+        padding-bottom: 24px !important;
+
+        font-size: 58px !important;
+    }
+
+
+    .about-one__funfact__text {
+        max-width: 320px !important;
+
+        justify-self: center !important;
+
+        padding-top: 24px !important;
+
+        text-align: center !important;
+    }
+}
+/* =========================================================
+   HIGH REACH — ABOUT IMAGES
+   FINAL TRIANGLE VERSION
+   IMPORTANT: clip ONLY the images, not reveal wrappers
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   RESET THE REVEAL WRAPPERS
+   Do not interfere with Amoxi/BW reveal animation
+   --------------------------------------------------------- */
+
+.about-one .about-one__image_one .bw-reveal-left,
+.about-one .about-one__image_two .bw-reveal-right {
+    -webkit-clip-path: none !important;
+    clip-path: none !important;
+
+    border-radius: 0 !important;
+
+    width: auto !important;
+    height: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   RESET ORIGINAL ROUND IMAGE STYLING
+   --------------------------------------------------------- */
+
+.about-one .about-one__image_one,
+.about-one .about-one__image_two {
+    border-radius: 0 !important;
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE 01 — TOP / RIGHT IMAGE
+   Triangle points LEFT toward centre
+   --------------------------------------------------------- */
+
+.about-one .about-one__image_one .bw-reveal-left > img {
+    display: block !important;
+
+    width: 100% !important;
+    height: auto !important;
+
+    max-width: 100% !important;
+
+    object-fit: cover !important;
+
+    border-radius: 0 !important;
+
+    -webkit-clip-path: polygon(
+        100% 0%,
+        0% 50%,
+        100% 100%
+    ) !important;
+
+    clip-path: polygon(
+        100% 0%,
+        0% 50%,
+        100% 100%
+    ) !important;
+}
+
+
+/* ---------------------------------------------------------
+   IMAGE 02 — BOTTOM / LEFT IMAGE
+   Triangle points RIGHT toward centre
+   --------------------------------------------------------- */
+
+.about-one .about-one__image_two .bw-reveal-right > img {
+    display: block !important;
+
+    width: 100% !important;
+    height: auto !important;
+
+    max-width: 100% !important;
+
+    object-fit: cover !important;
+
+    border-radius: 0 !important;
+
+    -webkit-clip-path: polygon(
+        0% 0%,
+        100% 50%,
+        0% 100%
+    ) !important;
+
+    clip-path: polygon(
+        0% 0%,
+        100% 50%,
+        0% 100%
+    ) !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — SERVICES PORTFOLIO TEXT CASE
+   ========================================================= */
+
+.portfolio-two .sec-title__tagline,
+.portfolio-two .sec-title__title,
+.portfolio-two .amoxi-btn__text {
+    text-transform: none !important;
+}
+
+/* ==========================================
+   HIGH REACH — SERVICES SECTION BACKGROUND
+   ========================================== */
+
+.portfolio-two {
+    background: #000000 !important;
+    background-image: none !important;
+}
+
+.portfolio-two .section-bg {
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+}
+@media (min-width: 1200px) {
+
+    .portfolio-two {
+        zoom: 0.67;
+
+        width: 149.2537% !important;
+
+        margin-left: -24.62685% !important;
+
+        max-width: none !important;
+    }
+}
+/* =========================================================
+   HIGH REACH — SERVICES / PORTFOLIO CAROUSEL
+   Preserve original Home Two composition
+   Scale ONLY the visual carousel
+   ========================================================= */
+
+
+/* Reset any previous scaling */
+.portfolio-two {
+    zoom: 1 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    max-width: none !important;
+
+    background: #000000 !important;
+    background-image: none !important;
+}
+
+
+/* Remove original textured background */
+.portfolio-two .section-bg {
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+}
+
+
+/* Keep carousel wrapper free */
+.portfolio-two__container {
+    width: 100% !important;
+    max-width: none !important;
+
+    overflow: visible !important;
+}
+
+
+/* =========================================================
+   DESKTOP
+   Visually reproduce the zoomed-out composition
+   without breaking Swiper / AOS
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+    .portfolio-two__carousel {
+        width: 149.2537% !important;
+
+        margin-left: -24.62685% !important;
+
+        transform: scale(0.67) !important;
+        transform-origin: top center !important;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+    .portfolio-two__carousel {
+        width: 125% !important;
+
+        margin-left: -12.5% !important;
+
+        transform: scale(0.80) !important;
+        transform-origin: top center !important;
+    }
+
+}
+/* =========================================================
+   MOBILE
+   Let original Swiper responsive layout work
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .portfolio-two__carousel {
+        width: 100% !important;
+
+        margin-left: 0 !important;
+
+        transform: none !important;
+    }
+
+}
+/* Prevent page-level horizontal scrollbar */
+html,
+body {
+    overflow-x: hidden !important;
+}
+
+/* =========================================================
+   HIGH REACH — SERVICES HEADING
+   FIX DESCENDERS / TEXT MASK CLIPPING
+   ========================================================= */
+
+.portfolio-two .sec-title__title {
+    line-height: 1.12 !important;
+
+    overflow: visible !important;
+
+    padding-top: 0.04em !important;
+    padding-bottom: 0.14em !important;
+
+    height: auto !important;
+}
+
+
+/* BW split-text creates nested spans.
+   Do not allow them to crop g / y / p / j letters. */
+
+.portfolio-two .sec-title__title.bw-split-text,
+.portfolio-two .sec-title__title.bw-split-text span,
+.portfolio-two .sec-title__title.bw-split-text .word,
+.portfolio-two .sec-title__title.bw-split-text .char {
+    overflow: visible !important;
+}
+
+
+/* Keep each animated line tall enough */
+.portfolio-two .sec-title__title span {
+    line-height: inherit !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — GLOBAL HEADING DESCENDER FIX
+   Prevents g / y / p / j from being clipped
+   ========================================================= */
+
+
+/* Give headings enough vertical room */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sec-title__title {
+    line-height: 1.15 !important;
+
+    overflow: visible !important;
+
+    padding-bottom: 0.12em !important;
+
+    box-sizing: content-box !important;
+}
+
+
+/* ---------------------------------------------------------
+   BW split/reveal typography
+   --------------------------------------------------------- */
+
+.bw-split-text,
+.bw-title-anim {
+    line-height: 1.15 !important;
+
+    overflow: visible !important;
+}
+
+
+/* Generated animation wrappers */
+.bw-split-text > span,
+.bw-split-text > div,
+.bw-title-anim > span,
+.bw-title-anim > div,
+
+.bw-split-text .line,
+.bw-split-text .word,
+.bw-split-text .char,
+
+.bw-title-anim .line,
+.bw-title-anim .word,
+.bw-title-anim .char {
+    line-height: 1.15 !important;
+
+    padding-bottom: 0.14em !important;
+    margin-bottom: -0.14em !important;
+
+    box-sizing: content-box !important;
+}
+
+
+/* Parent title containers must not crop the font */
+.sec-title,
+.sec-title__top,
+.sec-title__title,
+.about-one__content,
+.hero-one__title,
+.hero-one__title__box {
+    overflow: visible !important;
+}
+
+/* =========================================================
+   HIGH REACH — SERVICES CTA FINAL
+   Original Home Two shape + animation
+   High Reach brand colours
+   ========================================================= */
+
+.portfolio-two .hr-services-cta {
+    background: #0062F3 !important;
+    background-color: #0062F3 !important;
+}
+
+/* Normal text */
+.portfolio-two .hr-services-cta .amoxi-btn__text {
+    color: #FFFFFF !important;
+}
+
+/* Normal arrow circle */
+.portfolio-two .hr-services-cta .amoxi-btn__icon {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Normal arrow */
+.portfolio-two .hr-services-cta .amoxi-btn__icon i {
+    color: #0062F3 !important;
+}
+
+/* Hover text */
+.portfolio-two .hr-services-cta:hover .amoxi-btn__text {
+    color: #000000 !important;
+}
+
+/* Hover arrow circle */
+.portfolio-two .hr-services-cta:hover .amoxi-btn__icon {
+    background: #0062F3 !important;
+    background-color: #0062F3 !important;
+}
+
+/* Hover arrow */
+.portfolio-two .hr-services-cta:hover .amoxi-btn__icon i {
+    color: #FFFFFF !important;
+}
+/* =========================================================
+   HIGH REACH — GLOBAL BUTTON BRAND SYSTEM
+   All Amoxi buttons use High Reach blue
+   ========================================================= */
+
+:root {
+    --amoxi-base: #0062F3;
+}
+
+
+/* =========================================================
+   STANDARD BUTTON
+   ========================================================= */
+
+.amoxi-btn .amoxi-btn__text {
+    background: #0062F3 !important;
+    background-image: none !important;
+    color: #FFFFFF !important;
+}
+
+
+/* Normal arrow circle */
+.amoxi-btn .amoxi-btn__icon-box {
+    background: #FFFFFF !important;
+}
+
+
+/* Normal arrow */
+.amoxi-btn .amoxi-btn__icon {
+    color: #0062F3 !important;
+}
+
+
+/* =========================================================
+   AMOXI BUTTON TWO
+   Remove original orange gradient everywhere
+   ========================================================= */
+
+.amoxi-btn--two .amoxi-btn__text {
+    background: #0062F3 !important;
+    background-image: none !important;
+}
+
+
+/* Animated layer inside icon circle */
+.amoxi-btn--two .amoxi-btn__icon-box::after {
+    background: #0062F3 !important;
+    background-image: none !important;
+}
+
+
+/* =========================================================
+   HOVER STATE
+   Same behaviour as More About Us / Let's Reach Higher
+   ========================================================= */
+
+.amoxi-btn:hover .amoxi-btn__text {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+
+
+/* Hover arrow circle */
+.amoxi-btn:hover .amoxi-btn__icon-box {
+    background: #0062F3 !important;
+}
+
+
+/* Hover arrow */
+.amoxi-btn:hover .amoxi-btn__icon {
+    color: #FFFFFF !important;
+}
+
+
+/* Keep variant-two animated layer High Reach blue */
+.amoxi-btn--two:hover .amoxi-btn__icon-box::after {
+    background: #0062F3 !important;
+    background-image: none !important;
+}
+/* =========================================================
+   HIGH REACH — SERVICES CAROUSEL BRAND COLOURS
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. SERVICE CARD BOTTOM PANEL
+   Orange → High Reach gradient
+   --------------------------------------------------------- */
+
+/* =========================================================
+   HIGH REACH — SERVICES CARD FROSTED GLASS
+   ========================================================= */
+
+.portfolio-two__card__content {
+    /* Frosted glass surface */
+    background: rgba(255, 255, 255, 0.58) !important;
+    background-image: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.72) 0%,
+        rgba(255, 255, 255, 0.48) 100%
+    ) !important;
+
+    /* Glass blur */
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
+
+    /* Premium glass edge */
+    border-top: 1px solid rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 12px 35px rgba(0, 0, 0, 0.12);
+
+    /* Keep existing rounded lower corners */
+    color: #000000 !important;
+}
+
+/* =========================================================
+   SERVICES CARD — BLACK TYPOGRAPHY
+   ========================================================= */
+
+.portfolio-two__card__content,
+.portfolio-two__card__content a,
+.portfolio-two__card__content p,
+.portfolio-two__card__content span,
+.portfolio-two__card__content h1,
+.portfolio-two__card__content h2,
+.portfolio-two__card__content h3,
+.portfolio-two__card__content h4,
+.portfolio-two__card__content h5,
+.portfolio-two__card__content h6 {
+    color: #000000 !important;
+}
+
+/* Keep content readable over the gradient */
+.portfolio-two .portfolio-two__content,
+.portfolio-two .portfolio-two__content a,
+.portfolio-two .portfolio-two__content p,
+.portfolio-two .portfolio-two__content span,
+.portfolio-two .portfolio-two__content h1,
+.portfolio-two .portfolio-two__content h2,
+.portfolio-two .portfolio-two__content h3,
+.portfolio-two .portfolio-two__content h4,
+.portfolio-two .portfolio-two__content h5 {
+    color: #FFFFFF !important;
+}
+
+.portfolio-two__card__year,
+.portfolio-two__card__number {
+    color: #000000 !important;
+    -webkit-text-stroke: 0 !important;
+}
+
+/* ---------------------------------------------------------
+   2. CAROUSEL PREVIOUS / NEXT BUTTONS
+   --------------------------------------------------------- */
+
+.portfolio-two__prev,
+.portfolio-two__next {
+    background: #0062F3 !important;
+    background-image: none !important;
+
+    border-color: #0062F3 !important;
+
+    color: #FFFFFF !important;
+
+    transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease !important;
+}
+
+
+/* Arrow / icon */
+.portfolio-two__prev i,
+.portfolio-two__next i,
+.portfolio-two__prev svg,
+.portfolio-two__next svg {
+    color: #FFFFFF !important;
+    fill: currentColor !important;
+}
+
+
+/* ---------------------------------------------------------
+   Navigation hover
+   Same High Reach button behaviour
+   --------------------------------------------------------- */
+
+.portfolio-two__prev:hover,
+.portfolio-two__next:hover {
+    background: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+
+    color: #0062F3 !important;
+
+    transform: translateY(-2px);
+}
+
+
+.portfolio-two__prev:hover i,
+.portfolio-two__next:hover i,
+.portfolio-two__prev:hover svg,
+.portfolio-two__next:hover svg {
+    color: #0062F3 !important;
+    fill: currentColor !important;
+}
+/* Remove remaining Amoxi orange layers */
+
+.portfolio-two .portfolio-two__content::before,
+.portfolio-two .portfolio-two__content::after {
+    background: linear-gradient(
+        90deg,
+        #FFD60A 0%,
+        #A6EC6A 33.33%,
+        #36C2B0 66.66%,
+        #0062F3 100%
+    ) !important;
+
+    background-image: linear-gradient(
+        90deg,
+        #FFD60A 0%,
+        #A6EC6A 33.33%,
+        #36C2B0 66.66%,
+        #0062F3 100%
+    ) !important;
+}
+
+/* =========================================================
+   HIGH REACH — GLOBAL AMOXI BUTTON TWO
+   Orange -> High Reach Blue
+   ========================================================= */
+
+.amoxi-btn--two .amoxi-btn__text {
+    background: #0062F3 !important;
+    background-image: none !important;
+    color: #FFFFFF !important;
+}
+
+.amoxi-btn--two .amoxi-btn__icon-box::after {
+    background: #0062F3 !important;
+    background-image: none !important;
+}
+
+.amoxi-btn--two .amoxi-btn__icon {
+    color: #0062F3 !important;
+}
+.amoxi-btn--two:hover .amoxi-btn__icon {
+    color: #FFFFFF !important;
+}
+/* =========================================================
+   HIGH REACH — PORTFOLIO / SERVICES CARD
+   Exact override of Home Two orange footer
+   ========================================================= */
+
+.portfolio-two__card__content {
+    background: linear-gradient(
+        90deg,
+        #FFD60A 0%,
+        #A6EC6A 30%,
+        #36C2B0 62%,
+        #0062F3 100%
+    ) !important;
+}
+/* =========================================================
+   HIGH REACH — PORTFOLIO CAROUSEL ARROWS
+   ========================================================= */
+
+.portfolio-two__prev,
+.portfolio-two__next {
+    background: #0062F3 !important;
+    background-image: none !important;
+    border-color: #0062F3 !important;
+    color: #FFFFFF !important;
+}
+
+.portfolio-two__prev i,
+.portfolio-two__next i {
+    color: #FFFFFF !important;
+}
+
+/* Hover */
+.portfolio-two__prev:hover,
+.portfolio-two__next:hover {
+    background: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    color: #0062F3 !important;
+}
+.portfolio-two__prev:hover i,
+.portfolio-two__next:hover i {
+    color: #0062F3 !important;
+}
+/* =========================================================
+   HIGH REACH — CAROUSEL NAV FINAL HOVER FIX
+   ========================================================= */
+
+/* Normal state */
+.portfolio-two .portfolio-two__prev,
+.portfolio-two .portfolio-two__next {
+    background: #0062F3 !important;
+    background-image: none !important;
+    border-color: #0062F3 !important;
+    color: #FFFFFF !important;
+}
+
+
+/* REMOVE ANY AMOXI ORANGE ANIMATION LAYERS */
+.portfolio-two .portfolio-two__prev::before,
+.portfolio-two .portfolio-two__prev::after,
+.portfolio-two .portfolio-two__next::before,
+.portfolio-two .portfolio-two__next::after {
+    background: #0062F3 !important;
+    background-image: none !important;
+}
+
+
+/* HOVER = WHITE */
+.portfolio-two .portfolio-two__prev:hover,
+.portfolio-two .portfolio-two__next:hover {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    border-color: #FFFFFF !important;
+    color: #0062F3 !important;
+}
+
+
+/* Any animated pseudo-element must also become white */
+.portfolio-two .portfolio-two__prev:hover::before,
+.portfolio-two .portfolio-two__prev:hover::after,
+.portfolio-two .portfolio-two__next:hover::before,
+.portfolio-two .portfolio-two__next:hover::after {
+    background: #FFFFFF !important;
+    background-image: none !important;
+}
+
+
+/* Arrow */
+.portfolio-two .portfolio-two__prev i,
+.portfolio-two .portfolio-two__next i {
+    color: #FFFFFF !important;
+}
+
+
+/* Hover arrow = blue */
+.portfolio-two .portfolio-two__prev:hover i,
+.portfolio-two .portfolio-two__next:hover i {
+    color: #0062F3 !important;
+}
+
+/* =========================================================
+   HIGH REACH — SERVICES CARD TRUE FROSTED GLASS
+   Image visible through the information panel
+   ========================================================= */
+
+.portfolio-two__card__content {
+    /* REMOVE ALL GRADIENTS */
+    background: rgba(255, 255, 255, 0.28) !important;
+    background-image: none !important;
+
+    /* TRUE GLASS EFFECT */
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+
+    /* Premium glass edge */
+    border-top: 1px solid rgba(255, 255, 255, 0.55);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.30),
+        0 -8px 30px rgba(0, 0, 0, 0.08);
+
+    color: #000000 !important;
+}
+
+/* Text inside frosted panel */
+
+.portfolio-two__card__content,
+.portfolio-two__card__content a,
+.portfolio-two__card__content p,
+.portfolio-two__card__content span,
+.portfolio-two__card__content h1,
+.portfolio-two__card__content h2,
+.portfolio-two__card__content h3,
+.portfolio-two__card__content h4,
+.portfolio-two__card__content h5,
+.portfolio-two__card__content h6 {
+    color: #000000 !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — SERVICES TO MARQUEE SPACING
+   ========================================================= */
+
+/* Reduce only the services carousel bottom space */
+.portfolio-two.section-space-b {
+    padding-bottom: clamp(30px, 3vw, 55px) !important;
+    margin-bottom: 0 !important;
+    min-height: auto !important;
+}
+
+/* Remove unnecessary internal bottom space */
+.portfolio-two__container,
+.portfolio-two__carousel {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+
+/* Carousel navigation spacing */
+.portfolio-two__nav,
+.portfolio-two__navigation {
+    margin-top: 25px !important;
+    margin-bottom: 0 !important;
+}
+/* =========================================================
+   HIGH REACH — SERVICES → SLIDE TEXT SPACING
+   ========================================================= */
+
+/* Reduce empty space below services carousel */
+.portfolio-two.section-space-b {
+    padding-bottom: 35px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Remove extra space before diagonal text section */
+.portfolio-two + .slide-text {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Make sure slide-text itself has no unnecessary vertical gap */
+.slide-text {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* =========================================================
+   HIGH REACH — TEAM HEADING
+   ========================================================= */
+
+.team-one .sec-title__title,
+.team-one .sec-title__title *,
+.team-two .sec-title__title,
+.team-two .sec-title__title * {
+    color: #FFFFFF;
+}
+
+.team-one .sec-title__tagline,
+.team-one .sec-title__tagline *,
+.team-two .sec-title__tagline,
+.team-two .sec-title__tagline * {
+    color: #0062F3;
+}.team-three .sec-title__title,
+.team-three .sec-title__title * {
+    color: #FFFFFF;
+}
+
+.team-three .sec-title__tagline,
+.team-three .sec-title__tagline * {
+    color: #0062F3;
+}
+
+/* =========================================
+   HIGH REACH — TEAM CLEANUP
+   ========================================= */
+
+/* Hide social icons completely */
+.team-one .social-links {
+    display: none !important;
+}
+
+
+/* Keep team member name in one line */
+.team-one .team-card__title,
+.team-one .team-card__title a {
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+}
+
+
+/* Give name enough width */
+.team-one .team-card__content {
+    width: 100% !important;
+}
+
+
+/* Prevent title from wrapping because of narrow layout */
+.team-one .team-card__title {
+    width: auto !important;
+    max-width: none !important;
+}
+/* =========================================================
+   HIGH REACH — TEAM NAME CLIPPING FIX
+   ========================================================= */
+
+.team-one .team-card__title {
+    line-height: 1.12 !important;
+    padding-bottom: 0.14em !important;
+
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+.team-one .team-card__title a {
+    display: inline-block !important;
+
+    line-height: 1.12 !important;
+    padding-bottom: 0.14em !important;
+
+    overflow: visible !important;
+    height: auto !important;
+
+    white-space: nowrap !important;
+}
+
+/* Allow descenders such as g, y, p, q to extend normally */
+.team-one .team-card__content {
+    overflow: visible !important;
+}
+
+.team-one .team-card {
+    overflow: visible !important;
+}
+
+
+/* =====================================================
+   HIGH REACH — TEAM MEMBER NAME
+   Fully independent from Amoxi title effects
+   ===================================================== */
+
+.team-one .hr-team-name {
+    margin: 0 !important;
+    padding: 0 0 0.16em 0 !important;
+
+    width: max-content !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+
+    position: relative !important;
+    z-index: 20 !important;
+
+    overflow: visible !important;
+
+    font-family: "Quart", sans-serif !important;
+    font-size: clamp(58px, 6vw, 110px) !important;
+    font-weight: 400 !important;
+    line-height: 1.18 !important;
+
+    white-space: nowrap !important;
+
+    color: #ffffff !important;
+
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+
+    mask: none !important;
+    -webkit-mask: none !important;
+}
+
+
+.team-one .hr-team-name a {
+    display: inline-block !important;
+
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-text-stroke: 0 !important;
+
+    line-height: 1.18 !important;
+
+    overflow: visible !important;
+
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+
+    mask: none !important;
+    -webkit-mask: none !important;
+
+    background: none !important;
+    background-image: none !important;
+
+    white-space: nowrap !important;
+    text-decoration: none !important;
+}
+/* =========================================================
+   HIGH REACH — SLIDE BARS → OUR PORTFOLIO GAP
+   ========================================================= */
+
+.portfolio-one {
+    padding-top: 260px !important;
+}
+/* =========================================================
+   HIGH REACH — HIDE TEAM / VIDEO / AWARDS
+   ========================================================= */
+
+.team-one,
+.video-one,
+.awards-one {
+    display: none !important;
+}
+
+/* =========================================================
+   HIGH REACH — HIDE CLIENT LOGOS
+   ========================================================= */
+
+.client-carousel {
+    display: none !important;
+}
+/* =========================================================
+   HIGH REACH — FOOTER TITLE
+   High Reach = Filled
+   .Media = Outline
+   ========================================================= */
+
+.main-footer__bottom__title {
+    color: #ffffff !important;
+}
+
+.main-footer__bottom__title .footer-outline-text {
+    color: transparent !important;
+    -webkit-text-stroke: 2px #ffffff;
+    white-space: nowrap !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — FOOTER GIANT TITLE
+   ========================================================= */
+
+.main-footer__bottom__title {
+    color: #ffffff !important;
+
+    /* KEEP EVERYTHING IN ONE LINE */
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+
+    /* FIX CUTTING OF LETTER "g" */
+    line-height: 1.08 !important;
+    overflow: visible !important;
+
+    /* GIVE DESCENDERS SPACE */
+    padding-bottom: 0.12em !important;
+
+    /* FIT THE FULL TITLE INSIDE THE SCREEN */
+    font-size: clamp(90px, 11.8vw, 220px) !important;
+
+    width: 100% !important;
+    max-width: none !important;
+}
+/* .MEDIA — OUTLINE ONLY */
+.main-footer__bottom__title .footer-outline-text {
+    color: transparent !important;
+    -webkit-text-stroke: 2px #ffffff;
+    white-space: nowrap !important;
+}
+.main-footer__bottom,
+.main-footer__bottom .container,
+.main-footer__bottom__inner {
+    overflow: visible !important;
+}
+
+/* =========================================================
+   HIGH REACH — HIDE UNUSED HOMEPAGE SECTIONS
+   ========================================================= */
+
+/* Hide Our Work Process */
+.work-process {
+    display: none !important;
+}
+
+/* Hide Our Blog & News */
+.blog-one {
+    display: none !important;
+}
+
+/* Hide all footer content ABOVE High Reach.Media */
+.main-footer__top {
+    display: none !important;
+}
+
+/* Hide footer copyright below High Reach.Media */
+.main-footer__bottom__inner {
+    display: none !important;
+}
+
+/* Optional: hide footer decorative shapes */
+.main-footer__shape-1,
+.main-footer__shape-2 {
+    display: none !important;
+}
+
+/* =========================================================
+   HIGH REACH — FOOTER SPACING & CENTERING
+   ========================================================= */
+
+.main-footer__bottom {
+    padding: 26px 260px 260px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.main-footer__bottom__title {
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+}
+/* =========================================================
+   HIGH REACH — FOOTER TITLE FIT FIX
+   ========================================================= */
+
+.main-footer__bottom {
+    padding: 26px 260px 260px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.main-footer__bottom__title {
+    margin: 0 auto !important;
+    text-align: center !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    white-space: nowrap !important;
+
+    /* THIS IS THE IMPORTANT FIX */
+    font-size: clamp(70px, 8.3vw, 26px) !important;
+
+    line-height: 1.08 !important;
+
+    overflow: visible !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — REMOVE SERVICE CARD HOVER OVERLAY + ARROW
+   ========================================================= */
+
+/* Remove dark/gray hover overlay */
+.portfolio-two__card__image::after {
+    display: none !important;
+}
+
+/* Remove hover arrow completely */
+.portfolio-two__card__link {
+    display: none !important;
+}
+
+/* Optional: stop image zoom/rotation on hover */
+.portfolio-two__carousel .center:hover .portfolio-two__card__image img {
+    transform: none !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — REMOVE PORTFOLIO HOVER OVERLAY
+   ========================================================= */
+
+.portfolio-one__card__content {
+    display: none !important;
+}
+
+
+
+/* =========================================================
+   HIGH REACH — HIDE ABOUT + SERVICES CTA BUTTONS
+   ========================================================= */
+
+.about-one__btn,
+.services-one__btn,
+.about-one .amoxi-btn,
+.services-one .amoxi-btn {
+    display: none !important;
+}
+/* Hide Explore All Services button */
+.portfolio-two__button {
+    display: none !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — GRAYSCALE IMAGE MASK INSIDE "BRANDS"
+   ========================================================= */
+
+.hero-one__title__highlight {
+    filter: grayscale(100%) !important;
+}
+
+/* =========================================================
+   HIGH REACH — HERO "BRANDS" ANIMATED GRADIENT
+   ========================================================= */
+
+.hero-one__title__highlight.hr-brand-gradient {
+    background: radial-gradient(
+        circle at 0% 50%,
+        #FFD60A 0%,
+        #A6EC6A 33%,
+        #36C2B0 66%,
+        #0062F3 100%
+    );
+
+    background-size: 220% 220%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+
+    animation: hrBrandGradientMove 5s ease-in-out infinite alternate;
+
+    filter: none !important;
+}
+
+@keyframes hrBrandGradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* =========================================================
+   HIGH REACH — MINIMAL HEADER FOR LAUNCH
+   Keep: Logo / Home / Contact / Phone
+   Hide: Services / Pages / Shop / Blog
+   ========================================================= */
+.main-menu .main-menu__list > li:nth-child(2),   
+.main-menu .main-menu__list > li:nth-child(3),
+.main-menu .main-menu__list > li:nth-child(4),
+.main-menu .main-menu__list > li:nth-child(5),
+.main-menu .main-menu__list > li:nth-child(2),
+.main-menu .main-menu__list > li:nth-child(3),
+.main-menu .main-menu__list > li:nth-child(4),
+.main-menu .main-menu__list > li:nth-child(5),
+.main-menu .main-menu__list > li:nth-child(6) {
+    display: none !important;
+}
+/* =========================================================
+   HIGH REACH — REMOVE HOME DROPDOWN
+   ========================================================= */
+
+/* Hide dropdown menu under Home */
+.main-menu .main-menu__list > li:first-child > ul {
+    display: none !important;
+}
+/* Hide Home dropdown arrow/icon */
+.main-menu .main-menu__list > li:first-child > a::after {
+    display: none !important;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* CONTACT PAGE — FORCE HIGH REACH BRAND BLUE */
+
+.main-header--inner-page .main-menu__list > li.current > a,
+.main-header--inner-page .main-menu__list > li:hover > a {
+    color: #0062F3 !important;
+}
+
+.main-header--inner-page .main-menu__list > li.current > a::before,
+.main-header--inner-page .main-menu__list > li.current > a::after {
+    background-color: #0062F3 !important;
+}
+
+.main-header__toggler {
+    background-color: #0062F3 !important;
+}
+
+/* =========================================================
+   HIGH REACH — HIDE RIGHT-SIDE MENU BUTTON
+   ========================================================= */
+.main-header__toggler,
+.mobile-nav__toggler,
+.main-header__hamburger,
+.main-header__menu-btn,
+.main-header__menu-icon,
+.main-menu__toggler,
+.navbar-toggler {
+    display: none !important;
+}
+
+/* =========================================================
+   HIGH REACH — CONTACT HERO CLEANUP
+   ========================================================= */
+
+/* Hide decorative left + right images */
+.page-header__shape-1,
+.page-header__shape-2,
+.page-header__shape-one,
+.page-header__shape-two {
+    display: none !important;
+}
+
+/* Reduce Contact Us hero height */
+.page-header {
+    padding-top: 110px !important;
+    padding-bottom: 90px !important;
+    min-height: auto !important;
+}
+/* Keep title area compact */
+.page-header__inner {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+/* Hide only the menu button that comes AFTER the phone */
+.main-header__phone + * {
+    display: none !important;
+}
+/* =========================================================
+   HIGH REACH — HIDE LARGE "CONTACT NOW" TEXT
+   ========================================================= */
+
+.contact-one__bottom {
+    display: none !important;
+}
+
+/* ==========================================
+   HIGH REACH - CLIENT LOGO SECTION
+========================================== */
+
+.hr-clients-section {
+  position: relative;
+  padding: 110px 0 100px;
+  background: #050608;
+  overflow: hidden;
+}
+
+.hr-clients-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle,
+      rgba(0, 98, 243, 0.15) 0%,
+      rgba(54, 194, 176, 0.10) 28%,
+      rgba(166, 236, 106, 0.10) 48%,
+      rgba(255, 214, 10, 0.08) 68%,
+      transparent 78%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hr-clients-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hr-clients-head {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.hr-clients-tag {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--hr-blue, #0062F3);
+  margin-bottom: 12px;
+}
+
+.hr-clients-title {
+  color: #ffffff;
+  font-size: 54px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.hr-clients-subtitle {
+  max-width: 720px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.hr-clients-row {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 26px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+.hr-clients-track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  animation: hrClientMarquee 35s linear infinite;
+}
+
+.hr-clients-row-reverse .hr-clients-track {
+  animation-direction: reverse;
+  animation-duration: 42s;
+}
+
+.hr-clients-row:hover .hr-clients-track {
+  animation-play-state: paused;
+}
+
+.hr-client-card {
+  position: relative;
+  min-width: 240px;
+  height: 130px;
+  padding: 24px 30px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.hr-client-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(0,98,243,0.15),
+    rgba(54,194,176,0.10),
+    rgba(166,236,106,0.10),
+    rgba(255,214,10,0.10));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.hr-client-card img {
+  max-width: 150px;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.15);
+  opacity: 0.85;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.hr-client-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 98, 243, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 98, 243, 0.16);
+}
+
+.hr-client-card:hover::before {
+  opacity: 1;
+}
+
+.hr-client-card:hover img {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes hrClientMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hr-clients-section {
+    padding: 90px 0 80px;
+  }
+
+  .hr-clients-title {
+    font-size: 42px;
+  }
+
+  .hr-client-card {
+    min-width: 210px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hr-clients-title {
+    font-size: 32px;
+  }
+
+  .hr-clients-subtitle {
+    font-size: 16px;
+  }
+
+  .hr-client-card {
+    min-width: 180px;
+    height: 100px;
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .hr-client-card img {
+    max-width: 120px;
+    max-height: 42px;
+  }
+
+  .hr-clients-track {
+    gap: 16px;
+    animation-duration: 24s;
+  }
+}
+/* =========================================================
+   HIGH REACH — CLIENT LOGO HOVER / MASK FIX
+   ========================================================= */
+
+.hr-clients-row {
+
+    overflow: hidden !important;
+    padding: 14px 0 20px !important;
+}
+
+.hr-client-card {
+    position: relative;
+    overflow: hidden !important;
+}
+
+.hr-client-card img {
+    position: relative;
+    z-index: 5 !important;
+}
+
+.hr-client-card::before {
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.hr-client-card:hover img {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+/* =========================================================
+   HIGH REACH — REMOVE CLIENT MARQUEE SIDE MASK
+   ========================================================= */
+
+.hr-clients-row {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    overflow: hidden !important;
+}
+/* =========================================================
+   HIGH REACH — SHOW FOOTER ONLY ON DESKTOP
+   ========================================================= */
+
+/* Desktop: footer visible */
+.main-footer {
+    display: block !important;
+}
+
+
+/* Tablet + Mobile: footer hidden */
+@media (max-width: 991px) {
+
+    .main-footer {
+        display: none !important;
+    }
+
+}
