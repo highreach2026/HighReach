@@ -1,4 +1,6 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/index.html",
@@ -9,12 +11,6 @@
       "source": "/contact.html",
       "destination": "/contact",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/contact",
-      "destination": "/contact.html"
     }
   ]
 }
