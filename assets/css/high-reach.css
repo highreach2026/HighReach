@@ -1,9 +1,6 @@
 /* =========================================================
    HIGH REACH — QUART WEB FONTS
    ========================================================= */
-
-
-/* Quart Regular */
 @font-face {
     font-family: "Quart";
     src:
@@ -14,8 +11,6 @@
     font-display: swap;
 }
 
-
-/* Quart Outline */
 @font-face {
     font-family: "Quart Outline";
     src:
@@ -26,6 +21,33 @@
     font-display: swap;
 }
 
+html,
+body,
+button,
+input,
+textarea,
+select {
+    font-family: "Quart", Arial, sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+li {
+    font-family: "Quart", Arial, sans-serif;
+}
+
+.footer-outline-text,
+.quart-outline,
+.outline-text {
+    font-family: "Quart Outline", "Quart", sans-serif !important;
+}
 
 
 /* =========================================================
