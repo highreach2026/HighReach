@@ -1,0 +1,994 @@
+/* =========================================================
+   HIGH REACH — WHATSAPP ADMIN INTERACTION SYSTEM
+   Direct Customer-to-Admin WhatsApp Integration
+   Admin Phone: +91 9972 772 416
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. FLOATING WIDGET CONTAINER
+   --------------------------------------------------------- */
+.hr-whatsapp-widget {
+    display: none !important;
+    /* Hidden across all viewports; preserved for easy re-enabling */
+    visibility: hidden !important;
+    position: fixed;
+    bottom: 140px !important;
+    right: 24px !important;
+    z-index: 9995;
+    font-family: "Quart", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    pointer-events: none !important;
+    line-height: 1.4;
+    opacity: 0 !important;
+}
+
+.hr-whatsapp-widget * {
+    box-sizing: border-box;
+}
+
+/* Back-to-top button: adjusted to device width without overflowing */
+.scroll-to-top {
+    z-index: 9996 !important;
+    right: -12px !important;
+    transform: rotate(-90deg) !important;
+    transform-origin: center center !important;
+}
+
+.scroll-to-top.show {
+    bottom: 50px !important;
+    right: -12px !important;
+}
+
+/* ---------------------------------------------------------
+   2. TRIGGER BUTTON & PULSE ANIMATIONS
+   --------------------------------------------------------- */
+.hr-wa-btn-wrap {
+    position: relative;
+    pointer-events: auto;
+    display: inline-block;
+}
+
+/* Pulsing concentric glow rings */
+.hr-wa-pulse-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(139, 92, 246, 0.45);
+    background: rgba(99, 102, 241, 0.12);
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.hr-wa-pulse-1 {
+    animation: hrWaRipple 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.hr-wa-pulse-2 {
+    animation: hrWaRipple 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite 1.4s;
+}
+
+@keyframes hrWaRipple {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+
+    60% {
+        transform: scale(1.45);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+/* Main round button */
+.hr-wa-trigger-btn {
+    position: relative;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: radial-gradient(circle at 35% 25%, rgba(139, 92, 246, 0.4), rgba(15, 23, 42, 0.95)) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #FFFFFF;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 12px 28px rgba(99, 102, 241, 0.45),
+        0 0 18px rgba(56, 189, 248, 0.35),
+        0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch & Hover: Reveal vibrant glow & lift */
+.hr-wa-trigger-btn:hover,
+.hr-wa-trigger-btn:active,
+.hr-wa-trigger-btn:focus {
+    transform: scale(1.08) translateY(-3px);
+    background: radial-gradient(circle at 35% 25%, rgba(167, 139, 250, 0.55), rgba(15, 23, 42, 0.95)) !important;
+    box-shadow:
+        0 18px 36px rgba(99, 102, 241, 0.65),
+        0 0 25px rgba(56, 189, 248, 0.5);
+    border-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Status beacon (Green live dot) */
+.hr-wa-status-beacon {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #00E676;
+    border: 2.5px solid #0B0E14;
+    box-shadow: 0 0 8px rgba(0, 230, 118, 0.8);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Notification badge ("1") */
+.hr-wa-badge {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    border-radius: 11px;
+    background: #FF3B30;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(255, 59, 48, 0.6);
+    border: 2px solid #0B0E14;
+    z-index: 4;
+    animation: hrWaBadgeBounce 2s ease infinite;
+}
+
+@keyframes hrWaBadgeBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+/* Icons */
+.hr-wa-icon-box {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hr-wa-icon {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 3D AI Bot Orb with Blinking Eyes */
+.hr-wa-icon--bot {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+
+.hr-bot-orb-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 6px 14px rgba(79, 70, 229, 0.45));
+    animation: hrBotHover 3.4s ease-in-out infinite;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes hrBotHover {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2.5px);
+    }
+}
+
+/* Eye Blinking Animation */
+.hr-bot-eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    -webkit-transform-origin: center;
+    animation: hrBotBlink 3.8s ease-in-out infinite;
+}
+
+.hr-bot-eye--left {
+    transform-origin: 43.25px 50px;
+}
+
+.hr-bot-eye--right {
+    transform-origin: 55.75px 50px;
+}
+
+@keyframes hrBotBlink {
+
+    0%,
+    88%,
+    93%,
+    97%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    90% {
+        transform: scaleY(0.08);
+    }
+
+    95% {
+        transform: scaleY(0.08);
+    }
+}
+
+/* Mini WhatsApp Badge */
+.hr-bot-wa-mini {
+    position: absolute;
+    bottom: -1px;
+    right: -2px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #FFFFFF;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.8px solid #0B0E14;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.hr-wa-trigger-btn:hover .hr-bot-wa-mini {
+    transform: scale(1.18);
+}
+
+.hr-wa-icon--close {
+    position: absolute;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+.hr-wa-trigger-btn.is-active .hr-wa-icon--default {
+    opacity: 0 !important;
+    transform: rotate(90deg) scale(0.5) !important;
+}
+
+.hr-wa-trigger-btn.is-active .hr-wa-icon--close {
+    opacity: 1 !important;
+    transform: rotate(0deg) scale(1) !important;
+}
+
+.hr-wa-trigger-btn.is-active {
+    background: linear-gradient(145deg, #1C2331 0%, #11151F 100%) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ---------------------------------------------------------
+   3. PROMPT PILL (Attached Floating Banner)
+   --------------------------------------------------------- */
+.hr-wa-prompt {
+    position: absolute;
+    right: 76px;
+    bottom: 8px;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 10px 12px;
+    border-radius: 100px;
+    background: rgba(14, 18, 27, 0.94);
+    border: 1px solid rgba(37, 211, 102, 0.4);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(37, 211, 102, 0.15);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(12px) scale(0.92);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 2;
+}
+
+.hr-wa-prompt.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+}
+
+.hr-wa-prompt__content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.hr-wa-prompt__wave {
+    font-size: 18px;
+    animation: hrWaWave 2s infinite ease-in-out;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
+
+@keyframes hrWaWave {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(14deg);
+    }
+
+    40% {
+        transform: rotate(-8deg);
+    }
+
+    60% {
+        transform: rotate(14deg);
+    }
+
+    80% {
+        transform: rotate(-4deg);
+    }
+}
+
+.hr-wa-prompt__text-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.hr-wa-prompt__title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.01em;
+}
+
+.hr-wa-prompt__sub {
+    font-size: 11px;
+    color: #25D366;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.hr-wa-prompt__close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 4px;
+    margin-left: 2px;
+    border-radius: 50%;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.hr-wa-prompt__close:hover {
+    color: #FFFFFF;
+    transform: scale(1.15);
+}
+
+/* ---------------------------------------------------------
+   4. INTERACTIVE ADMIN CHAT POPUP (Modal Window)
+   --------------------------------------------------------- */
+.hr-wa-popup {
+    position: absolute;
+    bottom: 82px;
+    right: 0;
+    width: 360px;
+    max-width: calc(100vw - 32px);
+    border-radius: 20px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(16px) scale(0.94);
+    transform-origin: bottom right;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(14, 18, 27, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+        0 24px 60px -8px rgba(0, 0, 0, 0.8),
+        0 0 35px rgba(37, 211, 102, 0.18);
+    z-index: 5;
+}
+
+.hr-wa-popup.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Header */
+.hr-wa-header {
+    background: linear-gradient(135deg, #075E54 0%, #128C7E 55%, #0062F3 100%);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #FFFFFF;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hr-wa-header__admin {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hr-wa-avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #0B0E14;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    overflow: visible;
+    flex-shrink: 0;
+}
+
+.hr-wa-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.hr-wa-avatar-beacon {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #00E676;
+    border: 2px solid #075E54;
+    box-shadow: 0 0 6px rgba(0, 230, 118, 0.9);
+}
+
+.hr-wa-header__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.hr-wa-header__name-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hr-wa-admin-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.01em;
+}
+
+.hr-wa-verified {
+    display: inline-flex;
+    align-items: center;
+    color: #0062F3;
+}
+
+.hr-wa-verified svg {
+    fill: #36C2B0;
+    width: 14px;
+    height: 14px;
+}
+
+.hr-wa-status-text {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.88);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 1px;
+}
+
+.hr-wa-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00E676;
+    display: inline-block;
+    box-shadow: 0 0 6px #00E676;
+}
+
+.hr-wa-close-btn {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    line-height: 1;
+}
+
+.hr-wa-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Chat Canvas / Body */
+.hr-wa-body {
+    padding: 16px;
+    max-height: 330px;
+    overflow-y: auto;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(54, 194, 176, 0.05) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(37, 211, 102, 0.06) 0%, transparent 60%),
+        #0C1017;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.hr-wa-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.hr-wa-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+}
+
+.hr-wa-date-divider {
+    text-align: center;
+    margin: 4px 0 14px;
+}
+
+.hr-wa-date-divider span {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Messages */
+.hr-wa-msg {
+    display: flex;
+    margin-bottom: 12px;
+    animation: hrWaMsgIn 0.3s ease-out;
+}
+
+@keyframes hrWaMsgIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hr-wa-msg--incoming .hr-wa-msg__bubble {
+    background: #171E29;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px 16px 16px 16px;
+    padding: 11px 13px;
+    max-width: 90%;
+    color: #E2E6EC;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.hr-wa-msg__text {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #E4E8EE;
+}
+
+.hr-wa-msg__text strong {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.hr-wa-msg__meta {
+    display: block;
+    text-align: right;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* Chips */
+.hr-wa-chips-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 14px 0 8px;
+}
+
+.hr-wa-chips-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.hr-wa-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+    padding: 7px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+    line-height: 1.2;
+}
+
+.hr-wa-chip:hover {
+    background: rgba(37, 211, 102, 0.18);
+    border-color: #25D366;
+    color: #25D366;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+}
+
+.hr-wa-chip:active {
+    transform: scale(0.97);
+}
+
+/* Footer & Form */
+.hr-wa-footer {
+    padding: 12px 14px 14px;
+    background: rgba(10, 13, 19, 0.98);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hr-wa-form {
+    margin: 0;
+}
+
+.hr-wa-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hr-wa-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100px;
+    padding: 10px 16px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.hr-wa-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.hr-wa-input:focus {
+    border-color: #25D366;
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 12px rgba(37, 211, 102, 0.25);
+}
+
+.hr-wa-send-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #FFFFFF;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.hr-wa-send-btn:hover {
+    background: #20BA5A;
+    transform: scale(1.08);
+}
+
+.hr-wa-send-btn:active {
+    transform: scale(0.95);
+}
+
+.hr-wa-direct-cta {
+    margin-top: 9px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: #FFFFFF;
+    padding: 11px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hr-wa-direct-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.5);
+    background: linear-gradient(135deg, #27E36E 0%, #159C8C 100%);
+}
+
+.hr-wa-direct-cta:active {
+    transform: scale(0.98);
+}
+
+.hr-wa-footer__sub {
+    margin-top: 7px;
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.42);
+    text-align: center;
+    letter-spacing: 0.01em;
+}
+
+/* ---------------------------------------------------------
+   5. HEADER WHATSAPP ACTION BUTTON
+   --------------------------------------------------------- */
+.main-header__whatsapp {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 12px 20px !important;
+    border-radius: 100px !important;
+
+    background: linear-gradient(180deg, rgba(37, 211, 102, 0.12), rgba(18, 140, 126, 0.08)) !important;
+    border: 1px solid rgba(37, 211, 102, 0.4) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+
+    text-decoration: none !important;
+    color: #FFFFFF !important;
+    transition: all 0.4s ease !important;
+}
+
+.main-header__whatsapp::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    background: linear-gradient(135deg, #FFD60A 0%, #A6EC6A 28%, #36C2B0 60%, #0062F3 100%) !important;
+    opacity: 0 !important;
+    transition: opacity 0.4s ease !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+.main-header__whatsapp__icon,
+.main-header__whatsapp__text {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.main-header__whatsapp__icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #25D366 !important;
+    font-size: 18px !important;
+    transition: all 0.3s ease !important;
+}
+
+.main-header__whatsapp__text {
+    color: #FFFFFF !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+}
+
+.main-header__whatsapp:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    border-color: #25D366 !important;
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35) !important;
+}
+
+.main-header__whatsapp:hover::before {
+    opacity: 1 !important;
+}
+
+.main-header__whatsapp:hover .main-header__whatsapp__icon {
+    color: #FFFFFF !important;
+    transform: scale(1.1);
+}
+
+/* ---------------------------------------------------------
+   6. CONTACT PAGE WHATSAPP CARD (.contact.html)
+   --------------------------------------------------------- */
+.hr-contact-whatsapp-card {
+    border-color: rgba(37, 211, 102, 0.25) !important;
+}
+
+.hr-contact-whatsapp-card:hover {
+    border-color: rgba(37, 211, 102, 0.6) !important;
+    box-shadow: 0 16px 36px rgba(37, 211, 102, 0.15) !important;
+}
+
+.hr-whatsapp-icon-bg {
+    background: rgba(37, 211, 102, 0.12) !important;
+    border: 1px solid rgba(37, 211, 102, 0.35) !important;
+    color: #25D366 !important;
+}
+
+.hr-whatsapp-link {
+    color: #FFFFFF !important;
+}
+
+.hr-whatsapp-link span {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-left: 4px;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   7. RESPONSIVE BREAKPOINTS (Mobile / Tablet)
+   --------------------------------------------------------- */
+@media (max-width: 991px) {
+    .hr-whatsapp-widget {
+        bottom: 20px;
+        right: 18px;
+    }
+
+    .hr-wa-trigger-btn {
+        width: 56px;
+        height: 56px;
+    }
+
+    .hr-wa-icon-box {
+        width: 26px;
+        height: 26px;
+    }
+
+    .hr-wa-popup {
+        width: 330px;
+        bottom: 74px;
+        right: 0;
+    }
+
+    .hr-wa-prompt {
+        right: 68px;
+        bottom: 6px;
+        padding: 8px 12px;
+    }
+
+    .main-header__whatsapp {
+        padding: 10px 14px !important;
+    }
+
+    .main-header__whatsapp__text {
+        display: none !important;
+    }
+}
+
+/* Mobile / Tablet: Floating button with authentic WhatsApp icon positioned above bottom bar */
+@media (max-width: 767px) {
+
+    /* Bot appears clearly upper with ample margin */
+    .hr-whatsapp-widget {
+        bottom: 175px !important;
+        right: 18px !important;
+    }
+
+    /* Back-to-top positioned with ample padding above mobile floating contact bar */
+    .scroll-to-top.show {
+        bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+        right: 14px !important;
+        transform: none !important;
+    }
+
+    .hr-wa-icon--bot {
+        display: flex !important;
+    }
+
+    .hr-sticky-icon-btn.hr-hero-icon-btn--wa .fa-whatsapp {
+        display: inline-block !important;
+    }
+
+    .hr-sticky-icon-btn.hr-hero-icon-btn--wa .hr-sticky-wa-chatbot-icon {
+        display: none !important;
+    }
+
+    .hr-wa-popup {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hr-whatsapp-widget {
+        bottom: 170px !important;
+        right: 14px !important;
+    }
+
+    .scroll-to-top.show {
+        bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+        right: 12px !important;
+        transform: none !important;
+    }
+
+    .hr-wa-prompt {
+        display: none !important;
+        /* Keep mobile screen tidy */
+    }
+
+    .hr-wa-popup {
+        width: calc(100vw - 28px);
+        right: -4px;
+        bottom: 70px;
+    }
+}

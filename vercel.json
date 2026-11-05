@@ -11,6 +11,11 @@
       "source": "/contact.html",
       "destination": "/contact",
       "permanent": true
+    },
+    {
+      "source": "/career.html",
+      "destination": "/career",
+      "permanent": true
     }
   ]
 }

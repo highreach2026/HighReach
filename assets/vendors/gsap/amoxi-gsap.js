@@ -10,6 +10,15 @@
     bw_reveal_text();
     bw_reveal_text2();
     bwTitleAnimation();
+    if (typeof ScrollTrigger !== "undefined") {
+      ScrollTrigger.refresh(true);
+    if (window.ResizeObserver) {
+      const _sc = document.getElementById("smooth-content");
+      if (_sc) {
+        new ResizeObserver(() => ScrollTrigger.refresh()).observe(_sc);
+      }
+    }
+    }
   });
 
   gsap.registerPlugin(
@@ -22,12 +31,18 @@
   // smooth scroll
   if ($("#smooth-wrapper").length && $("#smooth-content").length) {
     ScrollSmoother.create({
-      smooth: 2,
+      smooth: 1,
       effects: true,
-      smoothTouch: 0.1,
-      ignoreMobileResize: false
+      smoothTouch: false,
+      ignoreMobileResize: true
     });
     ScrollTrigger.refresh(true);
+    if (window.ResizeObserver) {
+      const _sc = document.getElementById("smooth-content");
+      if (_sc) {
+        new ResizeObserver(() => ScrollTrigger.refresh()).observe(_sc);
+      }
+    }
   }
 
   // text invert with scroll
@@ -41,7 +56,7 @@
       scrollTrigger: {
         trigger: target,
         scrub: 1,
-        start: "top 90%",
+        start: "top 100%",
         end: "bottom center"
       }
     });
@@ -276,7 +291,7 @@
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: splitTextLine,
-          start: "top 90%",
+          start: "top 100%",
           end: "bottom 60%",
           scrub: false,
           markers: false,
@@ -328,27 +343,27 @@
   });
 
   // button hover animation
-  $(".amoxi-circle-btn").on("mouseenter", function (e) {
+  $(".hr-circle-btn, .amoxi-circle-btn").on("mouseenter", function (e) {
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
 
-    $(this).find(".amoxi-circle-btn__dot").css({
+    $(this).find(".hr-circle-btn__dot, .amoxi-circle-btn__dot").css({
       top: y,
       left: x
     });
   });
 
-  $(".amoxi-circle-btn").on("mouseout", function (e) {
+  $(".hr-circle-btn, .amoxi-circle-btn").on("mouseout", function (e) {
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
 
-    $(this).find(".amoxi-circle-btn__dot").css({
+    $(this).find(".hr-circle-btn__dot, .amoxi-circle-btn__dot").css({
       top: y,
       left: x
     });
   });
-  var hoverBtns = gsap.utils.toArray(".amoxi-circle-btn-wrapper");
-  const hoverBtnItem = gsap.utils.toArray(".amoxi-circle-btn");
+  var hoverBtns = gsap.utils.toArray(".hr-circle-btn-wrapper, .amoxi-circle-btn-wrapper");
+  const hoverBtnItem = gsap.utils.toArray(".hr-circle-btn, .amoxi-circle-btn");
   hoverBtns.forEach((btn, i) => {
     $(btn).mousemove(function (e) {
       callParallax(e);
@@ -396,7 +411,7 @@
           ease: "power4.out",
           scrollTrigger: {
             trigger: cta,
-            start: "top 85%",
+            start: "top 100%",
             once: true
           }
         }
@@ -555,8 +570,8 @@
       const topEl = container.querySelector(".marquee__top");
       const bottomEl = container.querySelector(".marquee__bottom");
 
-      topEl.innerHbwL += topEl.innerHbwL;
-      bottomEl.innerHbwL += bottomEl.innerHbwL;
+      topEl.innerHTML += topEl.innerHTML;
+      bottomEl.innerHTML += bottomEl.innerHTML;
 
       const tlTop = gsap.timeline().add(marquee(topEl, 30, "-=50%"), 0);
       const rTop = gsap.to(tlTop, {
@@ -599,7 +614,7 @@
 
     containers.forEach((container) => {
       const el = container.querySelector(".marquee__toright");
-      el.innerHbwL += el.innerHbwL;
+      el.innerHTML += el.innerHTML;
 
       const tl = gsap.timeline().add(marqueeRight(el, 30, "+=50%"), 0);
       const r = gsap.to(tl, { duration: 1.5, timeScale: 1, paused: true });
@@ -623,7 +638,7 @@
 
     containers.forEach((container) => {
       const el = container.querySelector(".marquee__toleft");
-      el.innerHbwL += el.innerHbwL;
+      el.innerHTML += el.innerHTML;
 
       const tl = gsap.timeline().add(marquee(el, 30, "-=50%"), 0);
       const r = gsap.to(tl, { duration: 1.5, timeScale: 1, paused: true });
@@ -662,7 +677,6 @@
       repeat: -1
     });
   };
-
   // rotate animation
   gsap.utils.toArray(".bw-animate-rotate").forEach((el, index) => {
     let arspin = gsap.timeline({
@@ -690,7 +704,7 @@
     let counterImgTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".right-to-left-anim",
-        start: "top 80%",
+        start: "top 100%",
         end: "bottom 10%",
         scrub: 2,
         markers: false
@@ -713,7 +727,7 @@
     let counterImgTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".left-to-right-anim",
-        start: "top 80%",
+        start: "top 100%",
         end: "bottom 10%",
         scrub: 2,
         markers: false
@@ -760,7 +774,7 @@
       scrollTrigger: {
         trigger: el,
         scrub: 1,
-        start: "top 80%",
+        start: "top 100%",
         end: "buttom 60%",
         toggleActions: "play none none reverse",
         markers: false

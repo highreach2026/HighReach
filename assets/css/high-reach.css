@@ -1,3 +1,5 @@
+@import url("whatsapp-widget.css");
+
 /* =========================================================
    HIGH REACH — QUART WEB FONTS
    ========================================================= */
@@ -28,6 +30,77 @@ input,
 textarea,
 select {
     font-family: "Quart", Arial, sans-serif !important;
+}
+
+/* =========================================================
+   HIGH REACH — UNIVERSAL BRAND BLUE SELECTION & MARKUP
+   Letters turn solid black (#000000)
+   Selection highlight bar is High Reach Cobalt Blue (#0062F3) everywhere
+   ========================================================= */
+
+::selection {
+    background-color: #0062F3 !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-shadow: none !important;
+    fill: #000000 !important;
+}
+
+::-moz-selection {
+    background-color: #0062F3 !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    fill: #000000 !important;
+}
+
+*::selection,
+input::selection,
+textarea::selection,
+select::selection,
+.stroke-text-title svg text::selection {
+    background-color: #0062F3 !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-shadow: none !important;
+    fill: #000000 !important;
+}
+
+*::-moz-selection,
+input::-moz-selection,
+textarea::-moz-selection,
+select::-moz-selection,
+.stroke-text-title svg text::-moz-selection {
+    background-color: #0062F3 !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    fill: #000000 !important;
+}
+
+.about-one ::-moz-selection,
+#about-us ::-moz-selection,
+.portfolio-one ::-moz-selection,
+.hr-footer .footer_cta-wrapper ::-moz-selection,
+.hr-footer .main-footer__bottom ::-moz-selection {
+    background-color: #0062F3 !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+}
+
+/* SVG Selection */
+svg ::selection,
+.stroke-text-title svg ::selection {
+    fill: #000000 !important;
+    stroke: transparent !important;
+}
+
+/* HTML <mark> and .hr-markup with full multi-color logo gradient */
+mark,
+.hr-markup {
+    background: linear-gradient(90deg, #FFD60A 0%, #A6EC6A 33.3%, #36C2B0 66.6%, #0062F3 100%) !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    padding: 0.1em 0.35em !important;
+    border-radius: 3px !important;
 }
 
 h1,
@@ -67,6 +140,9 @@ li {
 
     --hr-white: #FFFFFF;
     --hr-black: #000000;
+    --hr-black2: #000000;
+    --hr-black3: #000000;
+    --hr-black4: #050505;
 
 
     /* =========================
@@ -80,6 +156,9 @@ li {
 
     --hr-white-rgb: 255, 255, 255;
     --hr-black-rgb: 0, 0, 0;
+    --hr-black2-rgb: 0, 0, 0;
+    --hr-black3-rgb: 0, 0, 0;
+    --hr-black4-rgb: 5, 5, 5;
 
 
     /* =========================
@@ -91,20 +170,36 @@ li {
 
 
     /* =========================
-       AMOXI THEME OVERRIDES
+       HIGH REACH CORE DESIGN SYSTEM OVERRIDES
        ========================= */
 
+    --hr-font: var(--hr-font-regular);
+    --hr-heading-font: var(--hr-font-regular);
+
+    --hr-base: var(--hr-blue);
+    --hr-base-rgb: var(--hr-blue-rgb);
+
+    --hr-white: var(--hr-white);
+    --hr-white-rgb: var(--hr-white-rgb);
+
+    --hr-black: var(--hr-black);
+    --hr-black-rgb: var(--hr-black-rgb);
+    --hr-black2: var(--hr-black2);
+    --hr-black2-rgb: var(--hr-black2-rgb);
+    --hr-black3: var(--hr-black3);
+    --hr-black3-rgb: var(--hr-black3-rgb);
     --amoxi-font: var(--hr-font-regular);
     --amoxi-heading-font: var(--hr-font-regular);
-
     --amoxi-base: var(--hr-blue);
     --amoxi-base-rgb: var(--hr-blue-rgb);
-
     --amoxi-white: var(--hr-white);
     --amoxi-white-rgb: var(--hr-white-rgb);
-
     --amoxi-black: var(--hr-black);
     --amoxi-black-rgb: var(--hr-black-rgb);
+    --amoxi-black2: var(--hr-black2);
+    --amoxi-black2-rgb: var(--hr-black2-rgb);
+    --amoxi-black3: var(--hr-black3);
+    --amoxi-black3-rgb: var(--hr-black3-rgb);
 }
 
 
@@ -152,10 +247,10 @@ body {
 
 
 /* =========================================================
-   AMOXI COMPONENT FONT OVERRIDES
+   HIGH REACH BUTTON & TYPOGRAPHY STYLES
    ========================================================= */
 
-.main-menu__list > li > a,
+.main-menu__list>li>a,
 .main-header__phone__number,
 
 .hero-one__title,
@@ -165,7 +260,10 @@ body {
 .sec-title__title,
 .sec-title__tagline,
 
+.hr-btn,
+.hr-btn,
 .amoxi-btn,
+.hr-btn__text,
 .amoxi-btn__text,
 
 .service-card__title,
@@ -256,13 +354,14 @@ body {
 
 
 /* Active navigation */
-.main-menu .main-menu__list > li.current > a,
-.main-menu .main-menu__list > li:hover > a {
+.main-menu .main-menu__list>li.current>a,
+.main-menu .main-menu__list>li:hover>a {
     color: var(--hr-blue);
 }
 
 
 /* Main button */
+.hr-btn__text,
 .amoxi-btn__text {
     background-color: var(--hr-blue);
 }
@@ -278,6 +377,7 @@ body {
 .scroll-btn__dot {
     background-color: var(--hr-blue);
 }
+
 /* =========================================================
    HERO — ARROW + REACH HIGHER SPACING
    ========================================================= */
@@ -348,26 +448,8 @@ body {
 }
 
 /* =========================================================
-   HEADER PHONE BUTTON
-   FIXED FULL-BUTTON RADIAL GRADIENT ANIMATION
-   ========================================================= */
-
-.main-header__phone {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-
-    background: #2b2b2d !important;
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-
-/* =========================================================
    HIGH REACH — HEADER PHONE BUTTON
-   SVG RADIAL GRADIENT HOVER
+   SAME EFFECT AS SPECIFIED IN "OUR CLIENTS" SECTION (.hr-client-card)
    ========================================================= */
 
 .main-header__phone {
@@ -375,69 +457,96 @@ body {
     overflow: hidden !important;
     isolation: isolate;
 
-    background: #2B2B2D !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 15px 28px !important;
+    border-radius: 100px !important;
 
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease !important;
+    /* Same glassmorphic base as .hr-client-card */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+
+    text-decoration: none !important;
+    transition: all 0.4s ease !important;
 }
 
-
-/* Animated SVG background */
-
-.main-header__phone .hr-phone-gradient {
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    z-index: 0;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition: opacity 0.35s ease;
+/* Same subtle gradient overlay as .hr-client-card::before */
+.main-header__phone::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    background: linear-gradient(135deg,
+            rgba(0, 98, 243, 0.15),
+            rgba(54, 194, 176, 0.10),
+            rgba(166, 236, 106, 0.10),
+            rgba(255, 214, 10, 0.10)) !important;
+    opacity: 0 !important;
+    transition: opacity 0.4s ease !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
 }
 
-
-/* Reveal gradient on hover */
-
-.main-header__phone:hover .hr-phone-gradient {
-    opacity: 1;
-}
-
-
-/* Hover interaction */
-
-.main-header__phone:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 28px rgba(0, 108, 243, 0.22);
-}
-
-
-/* Keep phone content above SVG */
-
+/* Phone icon & number sit cleanly on top */
 .main-header__phone__icon,
 .main-header__phone__number {
-    position: relative;
-    z-index: 2;
+    position: relative !important;
+    z-index: 2 !important;
 }
 
+.main-header__phone__icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #FFFFFF !important;
+    flex-shrink: 0 !important;
+    transition: all 0.4s ease !important;
+}
 
-/* Keep icon and number white */
+.main-header__phone__icon svg {
+    width: 16px !important;
+    height: 16px !important;
+    display: block !important;
+    stroke: currentColor !important;
+}
 
-.main-header__phone:hover .main-header__phone__icon,
+.main-header__phone__icon i {
+    color: #FFFFFF !important;
+}
+
+.main-header__phone__number {
+    color: #FFFFFF !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    text-decoration: none !important;
+    transition: all 0.4s ease !important;
+}
+
+/* Same hover effect as .hr-client-card:hover */
+.main-header__phone:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    border-color: rgba(0, 98, 243, 0.35) !important;
+    box-shadow: 0 15px 35px rgba(0, 98, 243, 0.16) !important;
+}
+
+.main-header__phone:hover::before {
+    opacity: 1 !important;
+}
+
 .main-header__phone:hover .main-header__phone__icon i,
 .main-header__phone:hover .main-header__phone__number {
     color: #FFFFFF !important;
 }
+
+/* Hide SVG overlay */
+.main-header__phone .hr-phone-gradient {
+    display: none !important;
+}
+
 /* =========================================================
    HIGH REACH — ALWAYS VISIBLE HEADER
    ========================================================= */
@@ -495,6 +604,7 @@ body {
 #smooth-wrapper {
     padding-top: 130px;
 }
+
 /* =========================================================
    HIGH REACH — HEADER LOGO ALIGNMENT
    ========================================================= */
@@ -506,7 +616,7 @@ body {
 }
 
 
-/* Keep header content vertically centred */
+/* Keep header content vertically centred (original desktop alignment) */
 .main-header__inner {
     min-height: 130px;
 
@@ -515,7 +625,7 @@ body {
 }
 
 
-/* Logo block */
+/* Logo block (original desktop alignment) */
 .main-header__logo {
     display: flex;
     align-items: center;
@@ -525,7 +635,7 @@ body {
 }
 
 
-/* High Reach logo */
+/* High Reach logo (original desktop alignment) */
 .main-header__logo .hr-header-logo {
     display: block;
 
@@ -554,16 +664,77 @@ body {
 
 }
 
+/* =========================================================
+   MOBILE & TABLET VIEW: CENTRE HIGH REACH LOGO & TITLE
+   (Applies strictly on mobile <= 991px, desktop 100% untouched)
+   ========================================================= */
+
+@media (max-width: 991px) {
+    .main-header__inner {
+        min-height: 90px !important;
+        padding: 14px 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .main-header__logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+    }
+
+    .main-header__logo a {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+
+    .main-header__logo img,
+    .main-header__logo .hr-header-logo {
+        display: block !important;
+        margin: 0 auto !important;
+        width: 200px !important;
+        max-width: 75vw !important;
+        height: auto !important;
+    }
+
+    .main-header__right {
+        display: none !important;
+    }
+
+    #smooth-wrapper {
+        padding-top: 90px !important;
+    }
+}
 
 @media (max-width: 767px) {
-
     .main-header__container {
         padding-left: 16px !important;
         padding-right: 16px !important;
     }
 
+    .main-header__inner {
+        min-height: 80px !important;
+        padding: 12px 0 !important;
+    }
+
+    .main-header__logo img,
     .main-header__logo .hr-header-logo {
         width: 180px !important;
+        max-width: 72vw !important;
+    }
+
+    #smooth-wrapper {
+        padding-top: 80px !important;
     }
 }
 
@@ -583,6 +754,7 @@ body {
 .hero-one__right {
     padding-bottom: 60px;
 }
+
 /* =========================================================
    HIGH REACH — HERO TOP SPACING FIX
    ========================================================= */
@@ -606,6 +778,7 @@ body {
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
+
 /* Remove extra heading offset */
 .hero-one__title {
     margin-top: 0 !important;
@@ -625,7 +798,7 @@ body {
 .hr-process-section .funfact-one__item__text {
     font-family: var(--hr-font-regular) !important;
     font-weight: 400 !important;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255, 255, 255, 0.65);
 }
 
 
@@ -703,6 +876,7 @@ body {
 .hr-process-scale:hover .funfact-one__item__count::after {
     background: #000000 !important;
 }
+
 /* =========================================================
    HIGH REACH — PURE PROCESS CARD COLOURS
    Remove original theme opacity blending
@@ -749,12 +923,13 @@ body {
     position: relative;
 }
 
-/* Override original Amoxi fixed 97px underline */
+/* High Reach headline underline reset */
 .hr-process-section .funfact-one__item__count::after {
     width: 100% !important;
     left: 0 !important;
     right: auto !important;
 }
+
 /* =========================================================
    HIGH REACH PROCESS — MOBILE SCROLL ACTIVE STATE
    ========================================================= */
@@ -841,6 +1016,7 @@ body {
     }
 
 }
+
 /* =========================================================
    HIGH REACH — HERO CENTERED LAYOUT
    ========================================================= */
@@ -866,8 +1042,8 @@ body {
 
 
 /* Override Bootstrap 8/4 columns */
-.hero-one__row > .col-xl-8,
-.hero-one__row > .col-xl-4 {
+.hero-one__row>.col-xl-8,
+.hero-one__row>.col-xl-4 {
     flex: 0 0 100% !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -892,53 +1068,116 @@ body {
 }
 
 
-/* Main heading */
+/* Main heading - Fluid typography that fits all device widths */
 .hero-one__title {
-    width: 100%;
-
+    width: 100% !important;
+    max-width: 100% !important;
     text-align: center !important;
-
     margin: 0 0 28px 0 !important;
+    font-size: clamp(31px, 8.8vw, 75px) !important;
+    line-height: 1.15 !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    box-sizing: border-box !important;
 }
 
 
-/* Heading inner wrapper */
+/* Heading inner wrapper - Line 1: We Make Brands */
 .hero-one__title__box {
     display: block !important;
-
-    width: 100%;
-
+    width: 100% !important;
+    max-width: 100% !important;
     text-align: center !important;
+    white-space: nowrap !important;
+    line-height: 1.15 !important;
 }
 
 
 /* =========================================================
-   ARROW + REACH HIGHER
+   ARROW + REACH HIGHER - Line 2
    ========================================================= */
 
 .hr-reach-row {
-    display: flex !important;
-
+    display: inline-flex !important;
     justify-content: center !important;
     align-items: center !important;
+    white-space: nowrap !important;
+    width: auto !important;
+    max-width: 100% !important;
+    gap: clamp(10px, 2.2vw, 24px) !important;
+    margin-top: clamp(8px, 1.4vw, 16px) !important;
+    flex-wrap: nowrap !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+}
 
-    width: 100%;
-
-    gap: clamp(18px, 2vw, 30px);
-
-    margin-top: 12px;
-
-    white-space: nowrap;
+.hr-reach-row .hero-one__title__shape-2 {
+    display: inline-block !important;
+    width: clamp(26px, 6vw, 68px) !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
 }
 
 
-/* Don't let text wrap */
+/* Don't let text overflow; keep it fluidly scaled */
 .hr-reach-text {
     display: inline-block !important;
-
     white-space: nowrap !important;
-
     margin: 0 !important;
+    font-size: 1em !important;
+    line-height: 1 !important;
+    font-family: var(--hr-font-regular) !important;
+    font-weight: 400 !important;
+}
+
+@media (max-width: 767px) {
+    .hero-one {
+        padding-top: 70px !important;
+        padding-bottom: 50px !important;
+    }
+
+    .hero-one__title {
+        font-size: clamp(29px, 8.4vw, 42px) !important;
+        margin-bottom: 18px !important;
+    }
+
+    .hr-reach-row {
+        gap: clamp(8px, 2vw, 14px) !important;
+        margin-top: 6px !important;
+    }
+
+    .hr-reach-row .hero-one__title__shape-2 {
+        width: clamp(24px, 6.2vw, 36px) !important;
+    }
+
+    /* Supporting copy centered cleanly on mobile without off-center hanging line */
+    .hero-one__desc--1 {
+        margin: 16px auto 26px !important;
+        max-width: 92% !important;
+    }
+
+    .hero-one__desc--1 .hero-one__text {
+        font-size: clamp(14px, 4vw, 16px) !important;
+        line-height: 1.5 !important;
+        padding-left: 0 !important;
+        text-align: center !important;
+    }
+
+    .hero-one__desc--1 .hero-one__text::before {
+        display: none !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-one__title {
+        font-size: 27px !important;
+    }
+
+    .hr-reach-row .hero-one__title__shape-2 {
+        width: 22px !important;
+    }
 }
 
 
@@ -984,18 +1223,286 @@ body {
    ========================================================= */
 
 /* Center button wrapper */
-.hero-one__left > div[data-aos] {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
+.hero-one__left .hr-hero-cta-wrapper,
+.hero-one__left>div[data-aos] {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 10px auto 0 !important;
 }
 
+.hero-one__left .hr-btn {
+    margin: 0 !important;
+}
 
-/* Keep CTA centred */
-.hero-one__left .amoxi-btn {
-    margin-left: auto !important;
-    margin-right: auto !important;
+/* =========================================================
+   HIGH REACH — DYNAMIC MOVING CTA BUTTON
+   Continuous floating, shimmer sheen & arrow micro-movement.
+   ========================================================= */
+
+.hr-hero-cta-btn {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: transform, box-shadow;
+}
+
+/* Hover & Active States (Desktop & touch) */
+.hr-hero-cta-btn:hover,
+.hr-hero-cta-btn:active {
+    transform: translateY(-4px) scale(1.03) !important;
+}
+
+.hr-hero-cta-btn,
+.amoxi-btn,
+.hr-btn {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.hr-hero-cta-btn:hover .hr-btn__text,
+.hr-hero-cta-btn:hover .amoxi-btn__text,
+.hr-hero-cta-btn:active .hr-btn__text,
+.hr-hero-cta-btn:active .amoxi-btn__text {
+    box-shadow: none !important;
+}
+
+.hr-hero-cta-btn:hover .hr-btn__icon i,
+.hr-hero-cta-btn:hover .amoxi-btn__icon i,
+.hr-hero-cta-btn:active .hr-btn__icon i,
+.hr-hero-cta-btn:active .amoxi-btn__icon i {
+    transform: translateX(6px) !important;
+}
+
+/* =========================================================
+   HIGH REACH — ACTION BUTTONS (CALL & WHATSAPP)
+   Default: Original official icons.
+   Touch / Hover: Radiant gradient effect appears smoothly!
+   ========================================================= */
+
+.hr-hero-action-buttons {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.hr-hero-icon-btn {
+    position: relative !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4) !important;
+    -webkit-tap-highlight-color: transparent !important;
+    cursor: pointer !important;
+}
+
+/* Gradient layer (opacity 0 by default, reveals on touch / hover) */
+.hr-hero-icon-btn__gradient-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    opacity: 0 !important;
+    transition: opacity 0.4s ease, transform 0.4s ease !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.hr-hero-icon-btn__icon {
+    position: relative !important;
+    z-index: 2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #FFFFFF !important;
+    transition: transform 0.3s ease, color 0.3s ease !important;
+    line-height: 1 !important;
+}
+
+/* --- WHATSAPP BUTTON --- */
+/* Default: Original official WhatsApp look */
+.hr-hero-icon-btn--wa {
+    background-color: #25D366 !important;
+    /* Original official WhatsApp green */
+    border: 2px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow:
+        0 8px 22px rgba(37, 211, 102, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.25) !important;
+}
+
+.hr-hero-icon-btn--wa .hr-hero-icon-btn__icon i {
+    color: #FFFFFF !important;
+    font-size: 28px !important;
+}
+
+/* The gradient effect that shows upon touch/hover */
+.hr-hero-icon-btn--wa .hr-hero-icon-btn__gradient-bg {
+    background: linear-gradient(135deg,
+            #FFD60A 0%,
+            #A6EC6A 28%,
+            #36C2B0 60%,
+            #0062F3 100%) !important;
+    background-size: 200% 200% !important;
+    animation: hrGradientShift 4s ease infinite !important;
+}
+
+@keyframes hrGradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Touch / Hover State: Reveal Gradient Effect */
+.hr-hero-icon-btn--wa:hover,
+.hr-hero-icon-btn--wa:active,
+.hr-hero-icon-btn--wa:focus {
+    transform: translateY(-4px) scale(1.1) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow:
+        0 14px 30px rgba(54, 194, 176, 0.5),
+        0 0 25px rgba(255, 214, 10, 0.4) !important;
+}
+
+.hr-hero-icon-btn--wa:hover .hr-hero-icon-btn__gradient-bg,
+.hr-hero-icon-btn--wa:active .hr-hero-icon-btn__gradient-bg,
+.hr-hero-icon-btn--wa:focus .hr-hero-icon-btn__gradient-bg {
+    opacity: 1 !important;
+}
+
+.hr-hero-icon-btn--wa:hover .hr-hero-icon-btn__icon,
+.hr-hero-icon-btn--wa:active .hr-hero-icon-btn__icon,
+.hr-hero-icon-btn--wa:focus .hr-hero-icon-btn__icon {
+    transform: scale(1.14) rotate(6deg) !important;
+}
+
+/* --- CALL BUTTON --- */
+/* Default: Original High Reach blue */
+.hr-hero-icon-btn--call {
+    background-color: #0062F3 !important;
+    /* Original High Reach blue */
+    border: 2px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow:
+        0 8px 22px rgba(0, 98, 243, 0.4),
+        0 2px 6px rgba(0, 0, 0, 0.25) !important;
+}
+
+.hr-hero-icon-btn--call .hr-hero-icon-btn__icon svg {
+    display: block !important;
+    stroke: #FFFFFF !important;
+    width: 22px !important;
+    height: 22px !important;
+}
+
+/* The gradient effect that shows upon touch/hover */
+.hr-hero-icon-btn--call .hr-hero-icon-btn__gradient-bg {
+    background: linear-gradient(135deg,
+            #0062F3 0%,
+            #36C2B0 50%,
+            #A6EC6A 100%) !important;
+}
+
+/* Touch / Hover State: Reveal Gradient Effect */
+.hr-hero-icon-btn--call:hover,
+.hr-hero-icon-btn--call:active,
+.hr-hero-icon-btn--call:focus {
+    transform: translateY(-4px) scale(1.1) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow:
+        0 14px 30px rgba(0, 98, 243, 0.55),
+        0 0 20px rgba(54, 194, 176, 0.45) !important;
+}
+
+.hr-hero-icon-btn--call:hover .hr-hero-icon-btn__gradient-bg,
+.hr-hero-icon-btn--call:active .hr-hero-icon-btn__gradient-bg,
+.hr-hero-icon-btn--call:focus .hr-hero-icon-btn__gradient-bg {
+    opacity: 1 !important;
+}
+
+.hr-hero-icon-btn--call:hover .hr-hero-icon-btn__icon,
+.hr-hero-icon-btn--call:active .hr-hero-icon-btn__icon,
+.hr-hero-icon-btn--call:focus .hr-hero-icon-btn__icon {
+    transform: scale(1.14) rotate(-8deg) !important;
+}
+
+/* Responsive adjustment for Mobile screens */
+@media (max-width: 767px) {
+    .hero-one__left .hr-hero-cta-wrapper {
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+        margin-top: 14px !important;
+    }
+
+    /* Dynamic top-to-bottom movement ONLY for mobile CTA button; WhatsApp and Call buttons remain completely static */
+    .hr-hero-cta-btn {
+        animation: hrMobileTopBottom 2.6s ease-in-out infinite !important;
+        will-change: transform;
+    }
+
+    .hr-hero-action-buttons {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .hr-hero-icon-btn {
+        width: 52px !important;
+        height: 52px !important;
+    }
+
+    .hr-hero-icon-btn--wa .hr-hero-icon-btn__icon i {
+        font-size: 26px !important;
+    }
+
+    .hr-hero-icon-btn--call .hr-hero-icon-btn__icon svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+@keyframes hrMobileTopBottom {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(14px);
+    }
+}
+
+@media (max-width: 420px) {
+    .hr-hero-icon-btn {
+        width: 48px !important;
+        height: 48px !important;
+    }
+
+    .hr-hero-icon-btn--wa .hr-hero-icon-btn__icon i {
+        font-size: 24px !important;
+    }
+
+    .hr-hero-icon-btn--call .hr-hero-icon-btn__icon svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
 }
 
 
@@ -1092,7 +1599,7 @@ body {
 
 
 /* =========================================================
-   HIGH REACH HERO — REMOVE OLD AMOXI DECORATIVE SHAPES
+   HIGH REACH HERO — CLEAN MINIMAL DECORATIVE SHAPES
    ========================================================= */
 
 /* Vertical scroll pill */
@@ -1111,6 +1618,7 @@ body {
 .hero-one__shape {
     display: none !important;
 }
+
 /* =========================================================
    HIGH REACH — VISION STATEMENT ROW
    COPY LEFT / GRADIENT TITLE RIGHT
@@ -1135,6 +1643,7 @@ body {
 
     text-align: left !important;
 }
+
 /* =========================================================
    HIGH REACH — VISION ROW FINAL ALIGNMENT
    HIGH REACH LEFT / COPY RIGHT
@@ -1162,8 +1671,7 @@ body {
     display: grid !important;
 
     grid-template-columns:
-        minmax(430px, 560px)
-        minmax(0, 1fr);
+        minmax(430px, 560px) minmax(0, 1fr);
 
     align-items: center !important;
 
@@ -1225,6 +1733,7 @@ body {
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
+
 @media (max-width: 991px) {
 
     .hero-one__desc--2.hr-vision-row {
@@ -1258,6 +1767,7 @@ body {
     }
 
 }
+
 /* =========================================================
    HIDE HERO SERVICE TAGS
    Branding / Technology / Design / Marketing / Production / Growth
@@ -1265,7 +1775,9 @@ body {
 
 .hero-one__tags {
     display: none !important;
-}/* =========================================================
+}
+
+/* =========================================================
    HIGH REACH — EQUAL VERTICAL SPACING
    Top line ↔ Vision content ↔ SEE/SHAPE section
    ========================================================= */
@@ -1311,6 +1823,7 @@ body {
     margin-top: 0 !important;
     padding-top: 0 !important;
 }
+
 /* =========================================================
    HIGH REACH — HERO EQUAL TOP / BOTTOM SPACING
    ========================================================= */
@@ -1391,13 +1904,11 @@ body {
    HIGH REACH — ▜ SHAPED SECTION ICON
    ========================================================= */
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-)::before {
+    .section-title__tagline-text)::before {
 
     content: "" !important;
 
@@ -1410,14 +1921,12 @@ body {
     background-color: #0062F3 !important;
 
     /* exact ▜-style block shape */
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        100% 65%,
-        65% 65%,
-        65% 100%,
-        0 100%
-    );
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 65%,
+            65% 65%,
+            65% 100%,
+            0 100%);
 
     border: none !important;
     border-radius: 0 !important;
@@ -1433,7 +1942,7 @@ body {
 
 
 /* ---------------------------------------------------------
-   REMOVE ORIGINAL AMOXI SECTION-TITLE SHAPES
+   HIGH REACH SECTION TITLE SHAPES
    --------------------------------------------------------- */
 
 /* Original images used around section titles */
@@ -1447,25 +1956,21 @@ img[src*="section-title" i] {
 
 
 /* Original decorative shape elements */
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="shape"] {
+    .section-title__tagline-text) [class*="shape"] {
     display: none !important;
 }
 
 
 /* Remove old pseudo-decoration */
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-)::after {
+    .section-title__tagline-text)::after {
     content: none !important;
     display: none !important;
 }
@@ -1475,13 +1980,11 @@ img[src*="section-title" i] {
    SECTION LABEL ALIGNMENT
    --------------------------------------------------------- */
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) {
+    .section-title__tagline-text) {
     display: inline-flex !important;
     align-items: center !important;
 
@@ -1496,13 +1999,11 @@ img[src*="section-title" i] {
    Geometry matched to your supplied reference
    --------------------------------------------------------- */
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-)::before {
+    .section-title__tagline-text)::before {
 
     content: "" !important;
 
@@ -1523,14 +2024,12 @@ img[src*="section-title" i] {
               ╱
     */
 
-    clip-path: polygon(
-        29.44% 0%,
-        0% 26.85%,
-        35.03% 49.81%,
-        5.08% 77.04%,
-        40.10% 100%,
-        100% 45.91%
-    ) !important;
+    clip-path: polygon(29.44% 0%,
+            0% 26.85%,
+            35.03% 49.81%,
+            5.08% 77.04%,
+            40.10% 100%,
+            100% 45.91%) !important;
 
     border: none !important;
     border-radius: 0 !important;
@@ -1542,107 +2041,87 @@ img[src*="section-title" i] {
 
     opacity: 1 !important;
 }
+
 /* =========================================================
-   REMOVE ORIGINAL AMOXI TRIANGLE / DOTS
+   HIGH REACH MINIMAL ACCENTS
    Keep only our new High Reach symbol
    ========================================================= */
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="shape"],
+    .section-title__tagline-text) [class*="shape"],
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="dot"],
+    .section-title__tagline-text) [class*="dot"],
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="triangle"],
+    .section-title__tagline-text) [class*="triangle"],
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="icon"],
+    .section-title__tagline-text) [class*="icon"],
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) img,
+    .section-title__tagline-text) img,
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) svg,
+    .section-title__tagline-text) svg,
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) i {
+    .section-title__tagline-text) i {
     display: none !important;
 }
 
 
 /* Remove pseudo-elements attached to those old decorative pieces */
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="shape"]::before,
+    .section-title__tagline-text) [class*="shape"]::before,
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="shape"]::after,
+    .section-title__tagline-text) [class*="shape"]::after,
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="dot"]::before,
+    .section-title__tagline-text) [class*="dot"]::before,
 
-:is(
-    .sec-title__tagline,
+:is(.sec-title__tagline,
     .section-title__tagline,
     .section-title__sub-title,
     .section-title__subtitle,
-    .section-title__tagline-text
-) [class*="dot"]::after {
+    .section-title__tagline-text) [class*="dot"]::after {
     content: none !important;
     display: none !important;
 }
+
 /* =========================================================
-   REMOVE ORIGINAL AMOXI SECTION TITLE SHAPES
+   HIGH REACH SECTION TITLE ACCENTS
    Triangle + dots
    ========================================================= */
 
@@ -1650,6 +2129,7 @@ img[src*="section-title" i] {
 .sec-title__shape__inner {
     display: none !important;
 }
+
 /* =========================================================
    HIGH REACH SECTION TITLE ALIGNMENT
    ========================================================= */
@@ -1663,6 +2143,7 @@ img[src*="section-title" i] {
 .sec-title__tagline {
     margin: 0 !important;
 }
+
 /* =========================================================
    HIGH REACH SECTION TITLE SYMBOL
    ========================================================= */
@@ -1678,14 +2159,12 @@ img[src*="section-title" i] {
 
     background-color: #0062F3 !important;
 
-    clip-path: polygon(
-        29.44% 0%,
-        0% 26.85%,
-        35.03% 49.81%,
-        5.08% 77.04%,
-        40.10% 100%,
-        100% 45.91%
-    ) !important;
+    clip-path: polygon(29.44% 0%,
+            0% 26.85%,
+            35.03% 49.81%,
+            5.08% 77.04%,
+            40.10% 100%,
+            100% 45.91%) !important;
 
     border: none !important;
     border-radius: 0 !important;
@@ -1746,6 +2225,7 @@ img[src*="section-title" i] {
 
 
 /* About More button spacing */
+.about-one__content .hr-btn,
 .about-one__content .amoxi-btn {
     margin-top: 28px !important;
 }
@@ -1795,10 +2275,28 @@ img[src*="section-title" i] {
 
     max-width: none !important;
 }
+
 /* =========================================================
-   HIGH REACH — 360° CARD FINAL
-   Clean / Stable / Premium
+   HIGH REACH — 360° CARD FINAL (SEE / SHAPE FADING LINE STYLE)
+   Open Top & Bottom Fading Gradient Lines + Center Divider Only
    ========================================================= */
+
+.hr-process-section .funfact-one__item:not(:last-child)::after {
+    background: linear-gradient(0deg, rgba(217, 217, 217, 0) 0%, #a6a6a6 50%, rgba(115, 115, 115, 0) 100%) !important;
+}
+
+@media (max-width: 991px) {
+    .hr-process-section .funfact-one__item:nth-child(1)::after,
+    .hr-process-section .funfact-one__item:nth-child(2)::after {
+        background: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #a6a6a6 50%, rgba(115, 115, 115, 0) 100%) !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .hr-process-section .funfact-one__item:not(:last-child)::after {
+        background: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #a6a6a6 50%, rgba(115, 115, 115, 0) 100%) !important;
+    }
+}
 
 .about-one__funfact {
     width: 100% !important;
@@ -1820,10 +2318,16 @@ img[src*="section-title" i] {
 
     position: relative !important;
 
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    border-radius: 10px !important;
+    border: none !important;
+    border-radius: 0 !important;
 
-    background: transparent !important;
+    background-color: transparent !important;
+    background-image:
+        linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #a6a6a6 50%, rgba(115, 115, 115, 0) 100%),
+        linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #a6a6a6 50%, rgba(115, 115, 115, 0) 100%) !important;
+    background-size: 100% 1px, 100% 1px !important;
+    background-position: 0 0, 0 100% !important;
+    background-repeat: no-repeat !important;
 
     overflow: hidden !important;
 
@@ -1833,7 +2337,7 @@ img[src*="section-title" i] {
 
 
 /* =========================================================
-   CENTER DIVIDER
+   CENTER DIVIDER (Fading Gradient Line matching SEE / SHAPE)
    ========================================================= */
 
 .about-one__funfact::before {
@@ -1847,9 +2351,9 @@ img[src*="section-title" i] {
     transform: translate(-50%, -50%) !important;
 
     width: 1px !important;
-    height: 88px !important;
+    height: 100% !important;
 
-    background: rgba(255, 255, 255, 0.16) !important;
+    background: linear-gradient(0deg, rgba(217, 217, 217, 0) 0%, #a6a6a6 50%, rgba(115, 115, 115, 0) 100%) !important;
 
     display: block !important;
 
@@ -1976,7 +2480,7 @@ img[src*="section-title" i] {
     }
 
     .about-one__funfact::before {
-        height: 78px !important;
+        height: 100% !important;
     }
 
     .about-one__funfact__count {
@@ -2008,8 +2512,10 @@ img[src*="section-title" i] {
         left: 50% !important;
         top: 50% !important;
 
-        width: 90px !important;
+        width: 100% !important;
         height: 1px !important;
+
+        background: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, #a6a6a6 50%, rgba(115, 115, 115, 0) 100%) !important;
 
         transform: translate(-50%, -50%) !important;
     }
@@ -2034,6 +2540,7 @@ img[src*="section-title" i] {
         text-align: center !important;
     }
 }
+
 /* =========================================================
    HIGH REACH — ABOUT IMAGES
    FINAL TRIANGLE VERSION
@@ -2043,7 +2550,7 @@ img[src*="section-title" i] {
 
 /* ---------------------------------------------------------
    RESET THE REVEAL WRAPPERS
-   Do not interfere with Amoxi/BW reveal animation
+   Smooth GSAP reveal animation intact
    --------------------------------------------------------- */
 
 .about-one .about-one__image_one .bw-reveal-left,
@@ -2073,7 +2580,7 @@ img[src*="section-title" i] {
    Triangle points LEFT toward centre
    --------------------------------------------------------- */
 
-.about-one .about-one__image_one .bw-reveal-left > img {
+.about-one .about-one__image_one .bw-reveal-left>img {
     display: block !important;
 
     width: 100% !important;
@@ -2085,17 +2592,13 @@ img[src*="section-title" i] {
 
     border-radius: 0 !important;
 
-    -webkit-clip-path: polygon(
-        100% 0%,
-        0% 50%,
-        100% 100%
-    ) !important;
+    -webkit-clip-path: polygon(100% 0%,
+            0% 50%,
+            100% 100%) !important;
 
-    clip-path: polygon(
-        100% 0%,
-        0% 50%,
-        100% 100%
-    ) !important;
+    clip-path: polygon(100% 0%,
+            0% 50%,
+            100% 100%) !important;
 }
 
 
@@ -2104,7 +2607,7 @@ img[src*="section-title" i] {
    Triangle points RIGHT toward centre
    --------------------------------------------------------- */
 
-.about-one .about-one__image_two .bw-reveal-right > img {
+.about-one .about-one__image_two .bw-reveal-right>img {
     display: block !important;
 
     width: 100% !important;
@@ -2116,17 +2619,13 @@ img[src*="section-title" i] {
 
     border-radius: 0 !important;
 
-    -webkit-clip-path: polygon(
-        0% 0%,
-        100% 50%,
-        0% 100%
-    ) !important;
+    -webkit-clip-path: polygon(0% 0%,
+            100% 50%,
+            0% 100%) !important;
 
-    clip-path: polygon(
-        0% 0%,
-        100% 50%,
-        0% 100%
-    ) !important;
+    clip-path: polygon(0% 0%,
+            100% 50%,
+            0% 100%) !important;
 }
 
 
@@ -2136,6 +2635,7 @@ img[src*="section-title" i] {
 
 .portfolio-two .sec-title__tagline,
 .portfolio-two .sec-title__title,
+.portfolio-two .hr-btn__text,
 .portfolio-two .amoxi-btn__text {
     text-transform: none !important;
 }
@@ -2154,6 +2654,7 @@ img[src*="section-title" i] {
     background: none !important;
     background-image: none !important;
 }
+
 @media (min-width: 1200px) {
 
     .portfolio-two {
@@ -2166,6 +2667,7 @@ img[src*="section-title" i] {
         max-width: none !important;
     }
 }
+
 /* =========================================================
    HIGH REACH — SERVICES / PORTFOLIO CAROUSEL
    Preserve original Home Two composition
@@ -2238,6 +2740,7 @@ img[src*="section-title" i] {
     }
 
 }
+
 /* =========================================================
    MOBILE
    Let original Swiper responsive layout work
@@ -2254,10 +2757,14 @@ img[src*="section-title" i] {
     }
 
 }
-/* Prevent page-level horizontal scrollbar */
-html,
-body {
+
+/* Prevent page-level horizontal scrollbar (applied to smooth-wrapper so html/body scroll is not clipped by GSAP) */
+#smooth-wrapper {
     overflow-x: hidden !important;
+}
+
+#smooth-content {
+    overflow: visible !important;
 }
 
 /* =========================================================
@@ -2331,10 +2838,10 @@ h6,
 
 
 /* Generated animation wrappers */
-.bw-split-text > span,
-.bw-split-text > div,
-.bw-title-anim > span,
-.bw-title-anim > div,
+.bw-split-text>span,
+.bw-split-text>div,
+.bw-title-anim>span,
+.bw-title-anim>div,
 
 .bw-split-text .line,
 .bw-split-text .word,
@@ -2374,43 +2881,50 @@ h6,
 }
 
 /* Normal text */
+.portfolio-two .hr-services-cta .hr-btn__text,
 .portfolio-two .hr-services-cta .amoxi-btn__text {
     color: #FFFFFF !important;
 }
 
 /* Normal arrow circle */
+.portfolio-two .hr-services-cta .hr-btn__icon,
 .portfolio-two .hr-services-cta .amoxi-btn__icon {
     background: #FFFFFF !important;
     background-color: #FFFFFF !important;
 }
 
 /* Normal arrow */
+.portfolio-two .hr-services-cta .hr-btn__icon i,
 .portfolio-two .hr-services-cta .amoxi-btn__icon i {
     color: #0062F3 !important;
 }
 
 /* Hover text */
+.portfolio-two .hr-services-cta:hover .hr-btn__text,
 .portfolio-two .hr-services-cta:hover .amoxi-btn__text {
     color: #000000 !important;
 }
 
 /* Hover arrow circle */
+.portfolio-two .hr-services-cta:hover .hr-btn__icon,
 .portfolio-two .hr-services-cta:hover .amoxi-btn__icon {
     background: #0062F3 !important;
     background-color: #0062F3 !important;
 }
 
 /* Hover arrow */
+.portfolio-two .hr-services-cta:hover .hr-btn__icon i,
 .portfolio-two .hr-services-cta:hover .amoxi-btn__icon i {
     color: #FFFFFF !important;
 }
+
 /* =========================================================
    HIGH REACH — GLOBAL BUTTON BRAND SYSTEM
-   All Amoxi buttons use High Reach blue
+   High Reach Interactive Button System
    ========================================================= */
 
 :root {
-    --amoxi-base: #0062F3;
+    --hr-base: #0062F3;
 }
 
 
@@ -2418,6 +2932,7 @@ h6,
    STANDARD BUTTON
    ========================================================= */
 
+.hr-btn .hr-btn__text,
 .amoxi-btn .amoxi-btn__text {
     background: #0062F3 !important;
     background-image: none !important;
@@ -2426,22 +2941,25 @@ h6,
 
 
 /* Normal arrow circle */
+.hr-btn .hr-btn__icon-box,
 .amoxi-btn .amoxi-btn__icon-box {
     background: #FFFFFF !important;
 }
 
 
 /* Normal arrow */
+.hr-btn .hr-btn__icon,
 .amoxi-btn .amoxi-btn__icon {
     color: #0062F3 !important;
 }
 
 
 /* =========================================================
-   AMOXI BUTTON TWO
+   HIGH REACH BUTTON TWO
    Remove original orange gradient everywhere
    ========================================================= */
 
+.hr-btn--two .hr-btn__text,
 .amoxi-btn--two .amoxi-btn__text {
     background: #0062F3 !important;
     background-image: none !important;
@@ -2449,6 +2967,7 @@ h6,
 
 
 /* Animated layer inside icon circle */
+.hr-btn--two .hr-btn__icon-box::after,
 .amoxi-btn--two .amoxi-btn__icon-box::after {
     background: #0062F3 !important;
     background-image: none !important;
@@ -2460,6 +2979,7 @@ h6,
    Same behaviour as More About Us / Let's Reach Higher
    ========================================================= */
 
+.hr-btn:hover .hr-btn__text,
 .amoxi-btn:hover .amoxi-btn__text {
     background: #FFFFFF !important;
     background-image: none !important;
@@ -2468,22 +2988,26 @@ h6,
 
 
 /* Hover arrow circle */
+.hr-btn:hover .hr-btn__icon-box,
 .amoxi-btn:hover .amoxi-btn__icon-box {
     background: #0062F3 !important;
 }
 
 
 /* Hover arrow */
+.hr-btn:hover .hr-btn__icon,
 .amoxi-btn:hover .amoxi-btn__icon {
     color: #FFFFFF !important;
 }
 
 
 /* Keep variant-two animated layer High Reach blue */
+.hr-btn--two:hover .hr-btn__icon-box::after,
 .amoxi-btn--two:hover .amoxi-btn__icon-box::after {
     background: #0062F3 !important;
     background-image: none !important;
 }
+
 /* =========================================================
    HIGH REACH — SERVICES CAROUSEL BRAND COLOURS
    ========================================================= */
@@ -2501,11 +3025,9 @@ h6,
 .portfolio-two__card__content {
     /* Frosted glass surface */
     background: rgba(255, 255, 255, 0.58) !important;
-    background-image: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.72) 0%,
-        rgba(255, 255, 255, 0.48) 100%
-    ) !important;
+    background-image: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.72) 0%,
+            rgba(255, 255, 255, 0.48) 100%) !important;
 
     /* Glass blur */
     -webkit-backdrop-filter: blur(18px) saturate(160%);
@@ -2612,63 +3134,65 @@ h6,
     color: #0062F3 !important;
     fill: currentColor !important;
 }
-/* Remove remaining Amoxi orange layers */
+
+/* Clean modern button layers */
 
 .portfolio-two .portfolio-two__content::before,
 .portfolio-two .portfolio-two__content::after {
-    background: linear-gradient(
-        90deg,
-        #FFD60A 0%,
-        #A6EC6A 33.33%,
-        #36C2B0 66.66%,
-        #0062F3 100%
-    ) !important;
+    background: linear-gradient(90deg,
+            #FFD60A 0%,
+            #A6EC6A 33.33%,
+            #36C2B0 66.66%,
+            #0062F3 100%) !important;
 
-    background-image: linear-gradient(
-        90deg,
-        #FFD60A 0%,
-        #A6EC6A 33.33%,
-        #36C2B0 66.66%,
-        #0062F3 100%
-    ) !important;
+    background-image: linear-gradient(90deg,
+            #FFD60A 0%,
+            #A6EC6A 33.33%,
+            #36C2B0 66.66%,
+            #0062F3 100%) !important;
 }
 
 /* =========================================================
-   HIGH REACH — GLOBAL AMOXI BUTTON TWO
+   HIGH REACH — GLOBAL HIGH REACH BUTTON TWO
    Orange -> High Reach Blue
    ========================================================= */
 
+.hr-btn--two .hr-btn__text,
 .amoxi-btn--two .amoxi-btn__text {
     background: #0062F3 !important;
     background-image: none !important;
     color: #FFFFFF !important;
 }
 
+.hr-btn--two .hr-btn__icon-box::after,
 .amoxi-btn--two .amoxi-btn__icon-box::after {
     background: #0062F3 !important;
     background-image: none !important;
 }
 
+.hr-btn--two .hr-btn__icon,
 .amoxi-btn--two .amoxi-btn__icon {
     color: #0062F3 !important;
 }
+
+.hr-btn--two:hover .hr-btn__icon,
 .amoxi-btn--two:hover .amoxi-btn__icon {
     color: #FFFFFF !important;
 }
+
 /* =========================================================
    HIGH REACH — PORTFOLIO / SERVICES CARD
    Exact override of Home Two orange footer
    ========================================================= */
 
 .portfolio-two__card__content {
-    background: linear-gradient(
-        90deg,
-        #FFD60A 0%,
-        #A6EC6A 30%,
-        #36C2B0 62%,
-        #0062F3 100%
-    ) !important;
+    background: linear-gradient(90deg,
+            #FFD60A 0%,
+            #A6EC6A 30%,
+            #36C2B0 62%,
+            #0062F3 100%) !important;
 }
+
 /* =========================================================
    HIGH REACH — PORTFOLIO CAROUSEL ARROWS
    ========================================================= */
@@ -2693,10 +3217,12 @@ h6,
     border-color: #FFFFFF !important;
     color: #0062F3 !important;
 }
+
 .portfolio-two__prev:hover i,
 .portfolio-two__next:hover i {
     color: #0062F3 !important;
 }
+
 /* =========================================================
    HIGH REACH — CAROUSEL NAV FINAL HOVER FIX
    ========================================================= */
@@ -2711,7 +3237,7 @@ h6,
 }
 
 
-/* REMOVE ANY AMOXI ORANGE ANIMATION LAYERS */
+/* HIGH REACH SIGNATURE ANIMATION LAYERS */
 .portfolio-two .portfolio-two__prev::before,
 .portfolio-two .portfolio-two__prev::after,
 .portfolio-two .portfolio-two__next::before,
@@ -2820,6 +3346,7 @@ h6,
     margin-top: 25px !important;
     margin-bottom: 0 !important;
 }
+
 /* =========================================================
    HIGH REACH — SERVICES → SLIDE TEXT SPACING
    ========================================================= */
@@ -2831,7 +3358,7 @@ h6,
 }
 
 /* Remove extra space before diagonal text section */
-.portfolio-two + .slide-text {
+.portfolio-two+.slide-text {
     margin-top: 0 !important;
     padding-top: 0 !important;
 }
@@ -2860,7 +3387,9 @@ h6,
 .team-two .sec-title__tagline,
 .team-two .sec-title__tagline * {
     color: #0062F3;
-}.team-three .sec-title__title,
+}
+
+.team-three .sec-title__title,
 .team-three .sec-title__title * {
     color: #FFFFFF;
 }
@@ -2900,6 +3429,7 @@ h6,
     width: auto !important;
     max-width: none !important;
 }
+
 /* =========================================================
    HIGH REACH — TEAM NAME CLIPPING FIX
    ========================================================= */
@@ -2937,7 +3467,7 @@ h6,
 
 /* =====================================================
    HIGH REACH — TEAM MEMBER NAME
-   Fully independent from Amoxi title effects
+   High Reach modern title effects
    ===================================================== */
 
 .team-one .hr-team-name {
@@ -2994,79 +3524,162 @@ h6,
     white-space: nowrap !important;
     text-decoration: none !important;
 }
-/* =========================================================
-   HIGH REACH — SLIDE BARS → OUR PORTFOLIO GAP
-   ========================================================= */
 
 .portfolio-one {
-    padding-top: 260px !important;
-}
-/* =========================================================
-   HIGH REACH — HIDE TEAM / VIDEO / AWARDS
-   ========================================================= */
-
-.team-one,
-.video-one,
-.awards-one {
-    display: none !important;
+    padding-top: 130px !important;
 }
 
-/* =========================================================
-   HIGH REACH — HIDE CLIENT LOGOS
-   ========================================================= */
-
-.client-carousel {
-    display: none !important;
-}
-/* =========================================================
-   HIGH REACH — FOOTER TITLE
-   High Reach = Filled
-   .Media = Outline
-   ========================================================= */
-
-.main-footer__bottom__title {
-    color: #ffffff !important;
+.portfolio-one__head {
+    margin-bottom: 50px;
 }
 
-.main-footer__bottom__title .footer-outline-text {
-    color: transparent !important;
-    -webkit-text-stroke: 2px #ffffff;
-    white-space: nowrap !important;
+.portfolio-one__head .sec-title {
+    margin-bottom: 0 !important;
 }
 
+.portfolio-one__head .sec-title--center .sec-title__top {
+    justify-content: center !important;
+}
 
-/* =========================================================
-   HIGH REACH — FOOTER GIANT TITLE
-   ========================================================= */
+/* Uniform portfolio card box — every image fits the same 550x494 frame */
+.portfolio-one__card {
+    flex: 0 0 auto;
+    width: 550px;
+    max-width: 80vw;
+}
 
-.main-footer__bottom__title {
-    color: #ffffff !important;
+.portfolio-one__card__image {
+    width: 100%;
+    aspect-ratio: 550 / 494;
+    overflow: hidden;
+    background-color: #0b0c10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    /* KEEP EVERYTHING IN ONE LINE */
-    white-space: nowrap !important;
-    flex-wrap: nowrap !important;
-
-    /* FIX CUTTING OF LETTER "g" */
-    line-height: 1.08 !important;
-    overflow: visible !important;
-
-    /* GIVE DESCENDERS SPACE */
-    padding-bottom: 0.12em !important;
-
-    /* FIT THE FULL TITLE INSIDE THE SCREEN */
-    font-size: clamp(90px, 11.8vw, 220px) !important;
-
+.portfolio-one__card__image img {
     width: 100% !important;
-    max-width: none !important;
+    height: 100% !important;
+    object-fit: contain;
+    object-position: center;
+    display: block;
 }
-/* .MEDIA — OUTLINE ONLY */
-.main-footer__bottom__title .footer-outline-text {
-    color: transparent !important;
-    -webkit-text-stroke: 2px #ffffff;
-    white-space: nowrap !important;
+
+@media (max-width: 991px) {
+    .portfolio-one {
+        padding-top: 90px !important;
+    }
+
+    .portfolio-one__head {
+        margin-bottom: 35px;
+    }
 }
+
+/* Cleaned: team-one, video-one, awards-one, client-carousel permanently removed from DOM */
+
+/* =========================================================
+   HIGH REACH — FOOTER STROKE TITLE (PORTFOLIO STYLE + AUTO-FIT DEVICE WIDTH)
+   ========================================================= */
+
+.main-footer__bottom {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    padding: 30px 0 60px !important;
+    position: relative !important;
+}
+
+.main-footer__bottom .container,
+.main-footer__bottom .container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+}
+
+.main-footer__bottom .stroke-text-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    text-align: center !important;
+    overflow: visible !important;
+}
+
+.main-footer__bottom .stroke-text-title svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+    height: clamp(40px, 8vw, 140px) !important;
+}
+
+.main-footer__bottom .stroke-text-title svg:not(:root) {
+    overflow: visible !important;
+}
+
+.main-footer__bottom .stroke-text-title svg text {
+    margin: 0 !important;
+    font-family: var(--hr-font-regular, "Quart", Arial, sans-serif) !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    font-size: clamp(28px, 6vw, 110px) !important;
+    line-height: 1 !important;
+    animation: svgFooterWhiteAnimation 5s ease-in-out infinite alternate !important;
+}
+
+@keyframes svgFooterWhiteAnimation {
+    0% {
+        fill: rgba(255, 255, 255, 0);
+        stroke: rgba(255, 255, 255, 1);
+        stroke-dashoffset: 25%;
+        stroke-dasharray: 0 50%;
+        stroke-width: 1.5;
+    }
+
+    40% {
+        fill: rgba(255, 255, 255, 0);
+        stroke: rgba(255, 255, 255, 1);
+        stroke-dashoffset: 0%;
+        stroke-dasharray: 25% 25%;
+        stroke-width: 1.5;
+    }
+
+    70% {
+        fill: rgba(255, 255, 255, 0);
+        stroke: rgba(255, 255, 255, 1);
+        stroke-dashoffset: -25%;
+        stroke-dasharray: 50% 0;
+        stroke-width: 1.5;
+    }
+
+    85% {
+        fill: rgba(255, 255, 255, 0.5);
+        stroke: rgba(255, 255, 255, 1);
+        stroke-width: 1.5;
+    }
+
+    100% {
+        fill: rgba(255, 255, 255, 1);
+        stroke: rgba(255, 255, 255, 0);
+        stroke-dashoffset: -25%;
+        stroke-dasharray: 50% 0;
+        stroke-width: 0;
+    }
+}
+
 .main-footer__bottom,
 .main-footer__bottom .container,
+.main-footer__bottom .container-fluid,
 .main-footer__bottom__inner {
     overflow: visible !important;
 }
@@ -3105,43 +3718,34 @@ h6,
    HIGH REACH — FOOTER SPACING & CENTERING
    ========================================================= */
 
-.main-footer__bottom {
-    padding: 26px 260px 260px !important;
-    display: flex !important;
-    justify-content: center !important;
-}
+@media (min-width: 992px) {
+    .main-footer__bottom {
+        padding: 30px 0 160px !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
 
-.main-footer__bottom__title {
-    margin: 0 auto !important;
-    text-align: center !important;
-    width: fit-content !important;
-    max-width: 100% !important;
-}
-/* =========================================================
-   HIGH REACH — FOOTER TITLE FIT FIX
-   ========================================================= */
+    .main-footer__bottom .container,
+    .main-footer__bottom .container-fluid {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
 
-.main-footer__bottom {
-    padding: 26px 260px 260px !important;
-    display: flex !important;
-    justify-content: center !important;
-}
-
-.main-footer__bottom__title {
-    margin: 0 auto !important;
-    text-align: center !important;
-
-    width: 100% !important;
-    max-width: 100% !important;
-
-    white-space: nowrap !important;
-
-    /* THIS IS THE IMPORTANT FIX */
-    font-size: clamp(70px, 8.3vw, 26px) !important;
-
-    line-height: 1.08 !important;
-
-    overflow: visible !important;
+    .main-footer__bottom__title {
+        display: block !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+    }
 }
 
 
@@ -3181,10 +3785,13 @@ h6,
 
 .about-one__btn,
 .services-one__btn,
+.about-one .hr-btn,
+.services-one .hr-btn,
 .about-one .amoxi-btn,
 .services-one .amoxi-btn {
     display: none !important;
 }
+
 /* Hide Explore All Services button */
 .portfolio-two__button {
     display: none !important;
@@ -3204,13 +3811,11 @@ h6,
    ========================================================= */
 
 .hero-one__title__highlight.hr-brand-gradient {
-    background: radial-gradient(
-        circle at 0% 50%,
-        #FFD60A 0%,
-        #A6EC6A 33%,
-        #36C2B0 66%,
-        #0062F3 100%
-    );
+    background: radial-gradient(circle at 0% 50%,
+            #FFD60A 0%,
+            #A6EC6A 33%,
+            #36C2B0 66%,
+            #0062F3 100%);
 
     background-size: 220% 220%;
 
@@ -3239,34 +3844,25 @@ h6,
     }
 }
 
-/* =========================================================
-   HIGH REACH — MINIMAL HEADER FOR LAUNCH
-   Keep: Logo / Home / Contact / Phone
-   Hide: Services / Pages / Shop / Blog
-   ========================================================= */
-.main-menu .main-menu__list > li:nth-child(2),   
-.main-menu .main-menu__list > li:nth-child(3),
-.main-menu .main-menu__list > li:nth-child(4),
-.main-menu .main-menu__list > li:nth-child(5),
-.main-menu .main-menu__list > li:nth-child(2),
-.main-menu .main-menu__list > li:nth-child(3),
-.main-menu .main-menu__list > li:nth-child(4),
-.main-menu .main-menu__list > li:nth-child(5),
-.main-menu .main-menu__list > li:nth-child(6) {
-    display: none !important;
-}
+/* Cleaned: Obsolete nth-child hide rule removed so Contact and navbar links are fully visible */
+
 /* =========================================================
    HIGH REACH — REMOVE HOME DROPDOWN
    ========================================================= */
 
 /* Hide dropdown menu under Home */
-.main-menu .main-menu__list > li:first-child > ul {
+.main-menu .main-menu__list>li:first-child>ul {
     display: none !important;
 }
-/* Hide Home dropdown arrow/icon */
-.main-menu .main-menu__list > li:first-child > a::after {
+
+/* Hide Home dropdown arrow/icon & remove extra padding so underline matches word width */
+.main-menu .main-menu__list>li:first-child>a::after {
     display: none !important;
 }
+.main-menu .main-menu__list>li:first-child>a {
+    padding-right: 0 !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -3277,13 +3873,13 @@ html {
 
 /* CONTACT PAGE — FORCE HIGH REACH BRAND BLUE */
 
-.main-header--inner-page .main-menu__list > li.current > a,
-.main-header--inner-page .main-menu__list > li:hover > a {
+.main-header--inner-page .main-menu__list>li.current>a,
+.main-header--inner-page .main-menu__list>li:hover>a {
     color: #0062F3 !important;
 }
 
-.main-header--inner-page .main-menu__list > li.current > a::before,
-.main-header--inner-page .main-menu__list > li.current > a::after {
+.main-header--inner-page .main-menu__list>li.current>a::before,
+.main-header--inner-page .main-menu__list>li.current>a::after {
     background-color: #0062F3 !important;
 }
 
@@ -3322,15 +3918,18 @@ html {
     padding-bottom: 90px !important;
     min-height: auto !important;
 }
+
 /* Keep title area compact */
 .page-header__inner {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
 /* Hide only the menu button that comes AFTER the phone */
-.main-header__phone + * {
+.main-header__phone+* {
     display: none !important;
 }
+
 /* =========================================================
    HIGH REACH — HIDE LARGE "CONTACT NOW" TEXT
    ========================================================= */
@@ -3344,203 +3943,276 @@ html {
 ========================================== */
 
 .hr-clients-section {
-  position: relative;
-  padding: 110px 0 100px;
-  background: #050608;
-  overflow: hidden;
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 110px 0 100px;
+    background: #050608;
+    overflow: hidden;
 }
 
 .hr-clients-section::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 900px;
-  height: 500px;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle,
-      rgba(0, 98, 243, 0.15) 0%,
-      rgba(54, 194, 176, 0.10) 28%,
-      rgba(166, 236, 106, 0.10) 48%,
-      rgba(255, 214, 10, 0.08) 68%,
-      transparent 78%);
-  filter: blur(50px);
-  pointer-events: none;
-  z-index: 0;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 900px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+            rgba(0, 98, 243, 0.15) 0%,
+            rgba(54, 194, 176, 0.10) 28%,
+            rgba(166, 236, 106, 0.10) 48%,
+            rgba(255, 214, 10, 0.08) 68%,
+            transparent 78%);
+    filter: blur(50px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .hr-clients-section .container {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .hr-clients-head {
-  text-align: center;
-  margin-bottom: 45px;
+    text-align: center;
+    margin-bottom: 45px;
 }
 
-.hr-clients-tag {
-  display: inline-block;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--hr-blue, #0062F3);
-  margin-bottom: 12px;
+.hr-clients-head .sec-title {
+    margin-bottom: 12px !important;
 }
 
-.hr-clients-title {
-  color: #ffffff;
-  font-size: 54px;
-  line-height: 1.1;
-  font-weight: 700;
-  margin-bottom: 14px;
+.hr-clients-head .sec-title--center .sec-title__top {
+    justify-content: center !important;
 }
 
 .hr-clients-subtitle {
-  max-width: 720px;
-  margin: 0 auto;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 18px;
-  line-height: 1.7;
+    max-width: 720px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 18px;
+    line-height: 1.7;
 }
 
+/* Full device-width marquee row */
 .hr-clients-row {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 26px;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    margin-bottom: 26px;
+    padding: 14px 0 20px !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
 }
 
 .hr-clients-track {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  width: max-content;
-  animation: hrClientMarquee 35s linear infinite;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: max-content;
+    animation: hrClientMarquee 38s linear infinite;
 }
 
 .hr-clients-row-reverse .hr-clients-track {
-  animation-direction: reverse;
-  animation-duration: 42s;
+    animation-direction: reverse;
+    animation-duration: 42s;
 }
 
 .hr-clients-row:hover .hr-clients-track {
-  animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 .hr-client-card {
-  position: relative;
-  min-width: 240px;
-  height: 130px;
-  padding: 24px 30px;
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.4s ease;
-  overflow: hidden;
+    position: relative;
+    min-width: 240px;
+    height: 130px;
+    padding: 24px 30px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 
 .hr-client-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg,
-    rgba(0,98,243,0.15),
-    rgba(54,194,176,0.10),
-    rgba(166,236,106,0.10),
-    rgba(255,214,10,0.10));
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(0, 98, 243, 0.15),
+            rgba(54, 194, 176, 0.10),
+            rgba(166, 236, 106, 0.10),
+            rgba(255, 214, 10, 0.10));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
 }
 
 .hr-client-card img {
-  max-width: 150px;
-  max-height: 56px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: grayscale(100%) brightness(1.15);
-  opacity: 0.85;
-  transition: all 0.4s ease;
-  position: relative;
-  z-index: 2;
+    max-width: 150px;
+    max-height: 56px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.15);
+    opacity: 0.85;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .hr-client-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: rgba(0, 98, 243, 0.35);
-  box-shadow: 0 20px 45px rgba(0, 98, 243, 0.16);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 98, 243, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 98, 243, 0.16);
 }
 
 .hr-client-card:hover::before {
-  opacity: 1;
+    opacity: 1;
 }
 
 .hr-client-card:hover img {
-  filter: grayscale(0%) brightness(1);
-  opacity: 1;
-  transform: scale(1.05);
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 @keyframes hrClientMarquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
-/* Responsive */
+/* =========================================================
+   OUR CLIENTS — DEVICE-RESPONSIVE SIZING
+   Scales section, marquee width, and cards dynamically
+   based on the device used by the user.
+   ========================================================= */
+
+/* Extra Large Screens / Desktops (>= 1400px) */
+@media (min-width: 1400px) {
+    .hr-clients-section {
+        padding: 120px 0 110px;
+    }
+
+    .hr-client-card {
+        min-width: 270px;
+        height: 140px;
+        padding: 26px 36px;
+        border-radius: 26px;
+    }
+
+    .hr-client-card img {
+        max-width: 165px;
+        max-height: 60px;
+    }
+
+    .hr-clients-track {
+        gap: 28px;
+        animation-duration: 45s;
+    }
+}
+
+/* Tablets & Small Laptops (768px - 991px) */
 @media (max-width: 991px) {
-  .hr-clients-section {
-    padding: 90px 0 80px;
-  }
+    .hr-clients-section {
+        padding: 90px 0 80px;
+    }
 
-  .hr-clients-title {
-    font-size: 42px;
-  }
+    .hr-clients-title {
+        font-size: 42px;
+    }
 
-  .hr-client-card {
-    min-width: 210px;
-    height: 120px;
-  }
+    .hr-client-card {
+        min-width: 210px;
+        height: 120px;
+        padding: 20px 26px;
+        border-radius: 20px;
+    }
+
+    .hr-client-card img {
+        max-width: 135px;
+        max-height: 50px;
+    }
+
+    .hr-clients-track {
+        gap: 20px;
+        animation-duration: 32s;
+    }
 }
 
+/* Mobile Devices (<= 767px) */
 @media (max-width: 767px) {
-  .hr-clients-title {
-    font-size: 32px;
-  }
+    .hr-clients-section {
+        padding: 70px 0 65px;
+    }
 
-  .hr-clients-subtitle {
-    font-size: 16px;
-  }
+    .hr-clients-title {
+        font-size: 32px;
+    }
 
-  .hr-client-card {
-    min-width: 180px;
-    height: 100px;
-    padding: 20px;
-    border-radius: 18px;
-  }
+    .hr-clients-subtitle {
+        font-size: 15.5px;
+    }
 
-  .hr-client-card img {
-    max-width: 120px;
-    max-height: 42px;
-  }
+    .hr-client-card {
+        min-width: 185px;
+        height: 105px;
+        padding: 16px 20px;
+        border-radius: 18px;
+    }
 
-  .hr-clients-track {
-    gap: 16px;
-    animation-duration: 24s;
-  }
+    .hr-client-card img {
+        max-width: 120px;
+        max-height: 44px;
+    }
+
+    .hr-clients-track {
+        gap: 16px;
+        animation-duration: 26s;
+    }
 }
+
+/* Small Mobile Phones (<= 480px) */
+@media (max-width: 480px) {
+    .hr-clients-section {
+        padding: 60px 0 55px;
+    }
+
+    .hr-clients-title {
+        font-size: 27px;
+    }
+
+    .hr-client-card {
+        min-width: 155px;
+        height: 90px;
+        padding: 12px 16px;
+        border-radius: 16px;
+    }
+
+    .hr-client-card img {
+        max-width: 100px;
+        max-height: 38px;
+    }
+
+    .hr-clients-track {
+        gap: 12px;
+        animation-duration: 22s;
+    }
+}
+
 /* =========================================================
    HIGH REACH — CLIENT LOGO HOVER / MASK FIX
    ========================================================= */
@@ -3581,6 +4253,7 @@ html {
     mask-image: none !important;
     overflow: hidden !important;
 }
+
 /* =========================================================
    HIGH REACH — SHOW FOOTER ONLY ON DESKTOP
    ========================================================= */
@@ -3591,11 +4264,1556 @@ html {
 }
 
 
-/* Tablet + Mobile: footer hidden */
+/* Tablet + Mobile: footer is now shown too (High Reach.Media title).
+   Mobile-specific sizing lives in the "MOBILE FOOTER" block at the end of this file. */
+
+/* =========================================================
+   HIGH REACH — CONTACT US PAGE MOBILE FULL VIEW & CLARITY
+   Applies ONLY on mobile (max-width: 991px)
+   Desktop view remains 100% untouched.
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    /* Section padding on mobile */
+    .contact-one,
+    .contact-one.section-space-t {
+        padding-top: 45px !important;
+        padding-bottom: 50px !important;
+        overflow: visible !important;
+    }
+
+    .contact-one .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        max-width: 100% !important;
+    }
+
+    /* -----------------------------------------------------
+       1. CONTACT FORM BOX — Full view, crisp high contrast
+       ----------------------------------------------------- */
+    .contact-one__form {
+        width: 100% !important;
+        padding: 30px 18px !important;
+        border-radius: 20px !important;
+        background-color: #FFFFFF !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28) !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Headings inside form */
+    .contact-one .sec-title {
+        margin-bottom: 22px !important;
+        text-align: left !important;
+    }
+
+    .contact-one .sec-title__top {
+        margin-bottom: 8px !important;
+    }
+
+    .contact-one .sec-title__tagline {
+        color: #0062F3 !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.08em !important;
+        text-transform: uppercase !important;
+        display: inline-block !important;
+    }
+
+    .contact-one .sec-title__title {
+        font-size: 24px !important;
+        line-height: 1.25 !important;
+        font-weight: 700 !important;
+        color: #111111 !important;
+        -webkit-text-fill-color: #111111 !important;
+        overflow: visible !important;
+        margin: 0 !important;
+    }
+
+    /* Force text split divs to be fully visible and dark on mobile */
+    .contact-one .sec-title__title.bw-split-text>div,
+    .contact-one .sec-title__title.bw-split-text span,
+    .contact-one .sec-title__title.bw-split-text .word,
+    .contact-one .sec-title__title.bw-split-text .char {
+        color: #111111 !important;
+        -webkit-text-fill-color: #111111 !important;
+        background: none !important;
+        background-image: none !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+    }
+
+    /* Form controls layout */
+    .contact-one .form-one__group {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+    }
+
+    .contact-one .form-one__control {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* Form text inputs */
+    .contact-one .form-one input[type=text],
+    .contact-one .form-one input[type=email],
+    .contact-one .form-one input[type=tel] {
+        width: 100% !important;
+        height: 52px !important;
+        border-radius: 12px !important;
+        background-color: #F5F6F8 !important;
+        border: 1px solid #E2E4E9 !important;
+        font-size: 16px !important;
+        color: #111111 !important;
+        padding: 0 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-one .form-one input[type=text]:focus,
+    .contact-one .form-one input[type=email]:focus,
+    .contact-one .form-one input[type=tel]:focus,
+    .contact-one .form-one textarea:focus {
+        border-color: #0062F3 !important;
+        background-color: #FFFFFF !important;
+        box-shadow: 0 0 0 3px rgba(0, 98, 243, 0.12) !important;
+    }
+
+    /* Form textarea */
+    .contact-one .form-one textarea {
+        width: 100% !important;
+        height: 120px !important;
+        border-radius: 12px !important;
+        background-color: #F5F6F8 !important;
+        border: 1px solid #E2E4E9 !important;
+        font-size: 16px !important;
+        color: #111111 !important;
+        padding: 14px 16px !important;
+        box-sizing: border-box !important;
+        resize: none !important;
+    }
+
+    .contact-one .form-one input::placeholder,
+    .contact-one .form-one textarea::placeholder {
+        color: #888888 !important;
+        opacity: 1 !important;
+    }
+
+    /* Service select dropdown on mobile */
+    .contact-one .form-one .bootstrap-select {
+        width: 100% !important;
+    }
+
+    .contact-one .form-one .bootstrap-select>.dropdown-toggle {
+        width: 100% !important;
+        height: 52px !important;
+        border-radius: 12px !important;
+        background-color: #F5F6F8 !important;
+        border: 1px solid #E2E4E9 !important;
+        font-size: 15px !important;
+        color: #111111 !important;
+        padding: 0 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Submit button */
+    .contact-one .form-one .hr-btn-two,
+    .contact-one .form-one .amoxi-btn-two {
+        width: 100% !important;
+        height: 52px !important;
+        min-height: 52px !important;
+        border-radius: 999px !important;
+        background: #0062F3 !important;
+        background-color: #0062F3 !important;
+        color: #FFFFFF !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        border: none !important;
+        box-shadow: 0 8px 24px rgba(0, 98, 243, 0.3) !important;
+        margin-top: 6px !important;
+    }
+
+    .contact-one .form-one .hr-btn-two span,
+    .contact-one .form-one .amoxi-btn-two span {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* -----------------------------------------------------
+       2. CONTACT INFO BOX — Full width cards & clear icons
+       ----------------------------------------------------- */
+    .contact-one__info {
+        width: 100% !important;
+        border-radius: 20px !important;
+        padding: 14px !important;
+        background-color: #FFFFFF !important;
+        margin-bottom: 24px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28) !important;
+        box-sizing: border-box !important;
+    }
+
+    .contact-one__info__inner {
+        padding: 16px 10px !important;
+    }
+
+    .contact-one__info__card {
+        width: 100% !important;
+        padding: 28px 24px !important;
+        gap: 30px !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        background-color: #131313 !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        z-index: 1 !important;
+        overflow: hidden !important;
+        transition: all 500ms ease !important;
+    }
+
+    .contact-one__info__card+.contact-one__info__card {
+        margin-top: 18px !important;
+    }
+
+    /* Desktop slide-down background fill effect on hover, active & touch */
+    .contact-one__info__card::before {
+        content: "" !important;
+        width: 100% !important;
+        height: 0% !important;
+        position: absolute !important;
+        top: 0px !important;
+        left: 0px !important;
+        z-index: -1 !important;
+        background-color: var(--hr-base, #0062F3) !important;
+        transition: all 500ms ease !important;
+    }
+
+    .contact-one__info__card:hover::before,
+    .contact-one__info__card:active::before,
+    .contact-one__info__card:focus-within::before,
+    .contact-one__info__card.hr-card-active::before {
+        height: 100% !important;
+        bottom: 0px !important;
+    }
+
+    /* Desktop inner dashed border effect */
+    .contact-one__info__card::after {
+        content: "" !important;
+        width: calc(100% - 16px) !important;
+        height: calc(100% - 16px) !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        z-index: -1 !important;
+        margin: auto !important;
+        border-radius: inherit !important;
+        border: 1px dashed var(--hr-base, #0062F3) !important;
+        transition: all 500ms ease !important;
+    }
+
+    .contact-one__info__card:hover::after,
+    .contact-one__info__card:active::after,
+    .contact-one__info__card:focus-within::after,
+    .contact-one__info__card.hr-card-active::after {
+        border-color: #FFFFFF !important;
+    }
+
+    /* Desktop clean icon: large, white, transparent background (no blue box) */
+    .contact-one__info__icon {
+        width: auto !important;
+        height: auto !important;
+        min-width: auto !important;
+        background: transparent !important;
+        border-radius: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        font-size: 42px !important;
+        color: #FFFFFF !important;
+        transition: all 500ms ease !important;
+    }
+
+    .contact-one__info__icon svg {
+        width: 42px !important;
+        height: 42px !important;
+        fill: currentColor !important;
+        stroke: none !important;
+    }
+
+    .contact-one__info__icon i {
+        font-size: 42px !important;
+        line-height: 1 !important;
+        color: #FFFFFF !important;
+    }
+
+    /* Desktop 3D Flip animation on icon on hover & touch */
+    .contact-one__info__card:hover .contact-one__info__icon,
+    .contact-one__info__card:active .contact-one__info__icon,
+    .contact-one__info__card:focus-within .contact-one__info__icon,
+    .contact-one__info__card.hr-card-active .contact-one__info__icon {
+        color: #FFFFFF !important;
+        -webkit-animation-name: flipInY !important;
+        animation-name: flipInY !important;
+        -webkit-animation-duration: 1s !important;
+        animation-duration: 1s !important;
+        -webkit-animation-timing-function: ease-in !important;
+        animation-timing-function: ease-in !important;
+        -webkit-animation-iteration-count: 1 !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    /* Desktop vertical separator line between icon and content */
+    .contact-one__info__content {
+        position: relative !important;
+        z-index: 1 !important;
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    .contact-one__info__content::before {
+        content: "" !important;
+        display: block !important;
+        width: 2px !important;
+        height: calc(100% - 6px) !important;
+        position: absolute !important;
+        top: 3px !important;
+        left: -15px !important;
+        background-color: #FFFFFF !important;
+        transition: all 500ms ease !important;
+    }
+
+    /* Desktop title and link typography */
+    .contact-one__info__title {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #FFFFFF !important;
+        text-transform: capitalize !important;
+        letter-spacing: normal !important;
+        margin-bottom: 4px !important;
+        line-height: 1.3 !important;
+        transition: all 500ms ease !important;
+    }
+
+    .contact-one__info__link {
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        color: #FFFFFF !important;
+        line-height: 1.3 !important;
+        word-break: break-word !important;
+        display: inline-block !important;
+        background: linear-gradient(to right, currentcolor 0%, currentcolor 100%) 0px 95%/0px 1px no-repeat !important;
+        transition: all 500ms ease !important;
+    }
+
+    .contact-one__info__link:hover,
+    .contact-one__info__link:active {
+        background-size: 100% 1px !important;
+    }
+
+    @media (max-width: 400px) {
+        .contact-one__info__card {
+            padding: 22px 18px !important;
+            gap: 22px !important;
+        }
+
+        .contact-one__info__icon,
+        .contact-one__info__icon i {
+            font-size: 36px !important;
+        }
+
+        .contact-one__info__content::before {
+            left: -11px !important;
+        }
+
+        .contact-one__info__title {
+            font-size: 18px !important;
+        }
+
+        .contact-one__info__link {
+            font-size: 14px !important;
+        }
+    }
+
+    @media (max-width: 350px) {
+        .contact-one__info__card {
+            padding: 18px 14px !important;
+            gap: 16px !important;
+        }
+
+        .contact-one__info__icon,
+        .contact-one__info__icon i {
+            font-size: 30px !important;
+        }
+
+        .contact-one__info__content::before {
+            left: -8px !important;
+        }
+
+        .contact-one__info__title {
+            font-size: 16px !important;
+        }
+
+        .contact-one__info__link {
+            font-size: 13px !important;
+        }
+    }
+
+    .google-map.google-map__contact {
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        margin-top: 14px !important;
+        height: 200px !important;
+    }
+
+    .google-map.google-map__contact iframe {
+        height: 200px !important;
+        width: 100% !important;
+        display: block !important;
+    }
+
+    /* -----------------------------------------------------
+       3. FOOTER ON CONTACT PAGE (MOBILE) — Identical to Home
+       ----------------------------------------------------- */
+    .page-header~.contact-one~.main-footer {
+        display: block !important;
+        background-color: #050608 !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .page-header~.contact-one~.main-footer .main-footer__top {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   PRELOADER (Clean static logo, smooth fade, active on every page load)
+   Highest priority z-index (99999999) covers everything smoothly
+   ========================================================= */
+.preloader {
+    position: fixed !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999999 !important;
+    background-color: #050608 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+/* High Reach Logo - Electric Neon Flicker Effect */
+.preloader__image {
+    width: 80px !important;
+    height: 80px !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: contain !important;
+    animation: hrLogoFlicker 1.8s infinite ease-in-out !important;
+    -webkit-animation: hrLogoFlicker 1.8s infinite ease-in-out !important;
+    will-change: opacity, filter, transform;
+}
+
+@keyframes hrLogoFlicker {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: drop-shadow(0 0 16px rgba(0, 98, 243, 0.75)) drop-shadow(0 0 32px rgba(54, 194, 176, 0.5));
+    }
+    3% {
+        opacity: 0.35;
+        transform: scale(0.97);
+        filter: drop-shadow(0 0 4px rgba(0, 98, 243, 0.3));
+    }
+    6% {
+        opacity: 1;
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 24px rgba(0, 98, 243, 0.95)) drop-shadow(0 0 42px rgba(166, 236, 106, 0.65));
+    }
+    10% {
+        opacity: 0.7;
+        transform: scale(0.99);
+        filter: drop-shadow(0 0 10px rgba(0, 98, 243, 0.45));
+    }
+    14% {
+        opacity: 1;
+        transform: scale(1.04);
+        filter: drop-shadow(0 0 28px rgba(0, 98, 243, 1)) drop-shadow(0 0 48px rgba(255, 214, 10, 0.55));
+    }
+    22% {
+        opacity: 0.88;
+        transform: scale(1);
+        filter: drop-shadow(0 0 14px rgba(0, 98, 243, 0.6));
+    }
+    35% {
+        opacity: 1;
+        transform: scale(1.01);
+        filter: drop-shadow(0 0 18px rgba(0, 98, 243, 0.8)) drop-shadow(0 0 35px rgba(54, 194, 176, 0.5));
+    }
+    54% {
+        opacity: 0.45;
+        transform: scale(0.98);
+        filter: drop-shadow(0 0 6px rgba(0, 98, 243, 0.35));
+    }
+    58% {
+        opacity: 1;
+        transform: scale(1.03);
+        filter: drop-shadow(0 0 25px rgba(0, 98, 243, 0.95)) drop-shadow(0 0 44px rgba(54, 194, 176, 0.65));
+    }
+    74% {
+        opacity: 0.9;
+        transform: scale(1);
+        filter: drop-shadow(0 0 15px rgba(0, 98, 243, 0.6));
+    }
+    87% {
+        opacity: 0.55;
+        transform: scale(0.98);
+        filter: drop-shadow(0 0 8px rgba(0, 98, 243, 0.4));
+    }
+    91% {
+        opacity: 1;
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 22px rgba(0, 98, 243, 0.85)) drop-shadow(0 0 38px rgba(166, 236, 106, 0.55));
+    }
+}
+
+/* Clean, smooth dismissal state */
+.preloader.hr-preloader-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+
+/* =========================================================
+   WHATSAPP & ACTION BUTTONS STABILITY
+   Completely static during preloading / transitions: no jitter,
+   no flicker, no delayed bouncing, rock-solid font rendering
+   ========================================================= */
+.fa-whatsapp,
+.fab.fa-whatsapp {
+    display: inline-block !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+.hr-hero-icon-btn--wa,
+.hr-sticky-icon-btn.hr-hero-icon-btn--wa,
+.hr-header-icon-btn.hr-hero-icon-btn--wa,
+.main-header__whatsapp,
+.hr-contact-whatsapp-card,
+.hr-whatsapp-widget,
+.hr-hero-action-buttons {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* While preloader is present/visible or page is transitioning, keep WhatsApp & buttons strictly static */
+.preloader:not(.hr-preloader-hidden) ~ * .hr-hero-icon-btn--wa,
+.preloader:not(.hr-preloader-hidden) ~ * .hr-header-icon-btn,
+.preloader:not(.hr-preloader-hidden) ~ * .hr-sticky-icon-btn,
+.preloader:not(.hr-preloader-hidden) ~ * .main-header__whatsapp,
+.preloader:not(.hr-preloader-hidden) ~ * .hr-contact-whatsapp-card,
+.preloader:not(.hr-preloader-hidden) ~ * .hr-whatsapp-widget,
+.preloader:not(.hr-preloader-hidden) ~ * .hr-hero-action-buttons,
+.preloader:not(.hr-preloader-hidden) ~ * .hr-sticky-scroll-bar,
+body.is-page-transitioning .hr-hero-icon-btn--wa,
+body.is-page-transitioning .hr-header-icon-btn,
+body.is-page-transitioning .hr-sticky-icon-btn,
+body.is-page-transitioning .main-header__whatsapp,
+body.is-page-transitioning .hr-contact-whatsapp-card,
+body.is-page-transitioning .hr-whatsapp-widget,
+body.is-page-transitioning .hr-hero-action-buttons,
+body.is-page-transitioning .hr-sticky-scroll-bar {
+    animation: none !important;
+    -webkit-animation: none !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    transition: none !important;
+    -webkit-transition: none !important;
+}
+
+/* =========================================================
+   HIGH REACH — MOBILE FOOTER (High Reach.Media)
+   Applies ONLY on mobile / tablet (max-width: 991px).
+   Desktop footer is untouched.
+   ========================================================= */
+
 @media (max-width: 991px) {
 
     .main-footer {
+        display: block !important;
+        background-color: #050608 !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        overflow: hidden !important;
+    }
+
+    /* Clean padding so the title and content are fully visible */
+    .main-footer__bottom:not(.hr-footer .main-footer__bottom) {
+        display: block !important;
+        width: 100% !important;
+        padding: 34px 16px calc(200px + env(safe-area-inset-bottom, 0px)) !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .main-footer__bottom .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Title container: centred and fully visible across all mobile widths */
+    .main-footer__bottom__title {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        border-top: 0 !important;
+        text-align: center !important;
+        overflow: visible !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .main-footer__bottom:not(.hr-footer .main-footer__bottom) {
+        padding: 30px 16px calc(140px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .main-footer__bottom:not(.hr-footer .main-footer__bottom) {
+        padding: 24px 10px calc(130px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+}
+
+/* =========================================================
+   FOOTER ARISE-ON-SCROLL CTA & ACTION ICONS
+   Continuous floating dynamic motion (not static!)
+   ========================================================= */
+.hr-footer-cta-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin: 0 auto 34px !important;
+    padding: 0 15px !important;
+    width: 100% !important;
+    max-width: 720px !important;
+    text-align: center !important;
+    z-index: 5 !important;
+    position: relative !important;
+}
+
+.hr-footer-cta-btn {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    margin: 0 !important;
+    animation: hrFooterFloat 3.2s ease-in-out infinite !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: transform, box-shadow;
+}
+
+/* Dynamic floating keyframes for footer */
+@keyframes hrFooterFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.hr-footer-cta-btn .hr-btn__text,
+.hr-footer-cta-btn .amoxi-btn__text {
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 24px rgba(0, 98, 243, 0.35) !important;
+}
+
+.hr-footer-cta-btn .hr-btn__text::after {
+    content: "" !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: -100% !important;
+    width: 60% !important;
+    height: 200% !important;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.38),
+            transparent) !important;
+    transform: rotate(25deg) !important;
+    animation: hrFooterShine 3.4s ease-in-out infinite !important;
+    pointer-events: none !important;
+}
+
+@keyframes hrFooterShine {
+
+    0%,
+    35% {
+        left: -100%;
+    }
+
+    65%,
+    100% {
+        left: 200%;
+    }
+}
+
+.hr-footer-cta-btn:hover,
+.hr-footer-cta-btn:active {
+    transform: translateY(-5px) scale(1.03) !important;
+    animation-play-state: paused !important;
+}
+
+.hr-footer-cta-btn:hover .hr-btn__text,
+.hr-footer-cta-btn:hover .amoxi-btn__text,
+.hr-footer-cta-btn:active .hr-btn__text,
+.hr-footer-cta-btn:active .amoxi-btn__text {
+    box-shadow:
+        0 14px 32px rgba(0, 98, 243, 0.5),
+        0 0 24px rgba(54, 194, 176, 0.35) !important;
+}
+
+.hr-footer-cta-btn:hover .hr-btn__icon i,
+.hr-footer-cta-btn:active .hr-btn__icon i {
+    transform: translateX(6px) !important;
+}
+
+.hr-footer-action-buttons {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    animation: hrFooterFloat 3.2s ease-in-out infinite 0.3s !important;
+    will-change: transform;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767px) {
+    .hr-footer-cta-wrapper {
+        gap: 12px !important;
+        flex-wrap: wrap !important;
+        margin-bottom: 26px !important;
+    }
+
+    .hr-footer-cta-btn {
+        animation: hrMobileTopBottom 2.6s ease-in-out infinite !important;
+    }
+
+    .hr-footer-action-buttons {
+        animation: hrMobileTopBottom 2.6s ease-in-out infinite 0.25s !important;
+    }
+}
+
+/* =========================================================
+   STICKY FLOATING CONTACT BAR (ARISES ACROSS WHOLE PAGE)
+   ========================================================= */
+.hr-sticky-scroll-bar {
+    position: fixed !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 50% !important;
+    transform: translate(-50%, 120px) !important;
+    /* hidden below screen by default */
+    z-index: 9990 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition:
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.3s ease,
+        visibility 0.3s ease !important;
+}
+
+/* Arise into view when scrolling down */
+.hr-sticky-scroll-bar.is-visible {
+    transform: translate(-50%, 0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Desktop & Tablet views (>= 768px): STRICTLY HIDE floating button bar */
+@media (min-width: 768px) {
+    .hr-sticky-scroll-bar,
+    .hr-sticky-scroll-bar.is-visible {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translate(-50%, 120px) !important;
+    }
+}
+
+.hr-sticky-scroll-bar__inner {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+.hr-sticky-cta-btn {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hr-sticky-cta-btn .hr-btn__text,
+.hr-sticky-cta-btn .amoxi-btn__text {
+    padding: 8px 14px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+}
+
+.hr-sticky-cta-btn .hr-btn__icon-box,
+.hr-sticky-cta-btn .amoxi-btn__icon-box {
+    width: 32px !important;
+    height: 32px !important;
+    flex-shrink: 0 !important;
+}
+
+.hr-sticky-cta-btn .hr-btn__icon,
+.hr-sticky-cta-btn .amoxi-btn__icon {
+    font-size: 8px !important;
+}
+
+.hr-sticky-action-buttons {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+.hr-sticky-icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45) !important;
+    transition: all 0.3s ease !important;
+}
+
+.hr-sticky-icon-btn.hr-hero-icon-btn--wa .hr-hero-icon-btn__icon i {
+    font-size: 18px !important;
+}
+
+.hr-sticky-icon-btn.hr-hero-icon-btn--call .hr-hero-icon-btn__icon svg {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+/* Mobile responsive rules (< 768px) */
+@media (max-width: 767px) {
+    .hr-sticky-scroll-bar {
+        display: block !important;
+        position: fixed !important;
+        bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+        left: 50% !important;
+        transform: translate(-50%, 120px) !important;
+        width: auto !important;
+        max-width: calc(100% - 24px) !important;
+        z-index: 9990 !important;
+    }
+
+    .hr-sticky-scroll-bar.is-visible {
+        transform: translate(-50%, 0) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+    }
+
+    .hr-sticky-scroll-bar__inner {
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        gap: 6px !important;
+    }
+
+    .hr-sticky-cta-btn .hr-btn__text,
+.hr-sticky-cta-btn .amoxi-btn__text {
+        padding: 8px 12px !important;
+        font-size: 10.5px !important;
+    }
+
+    .hr-sticky-icon-btn {
+        width: 34px !important;
+        height: 34px !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+    }
+}
+
+/* Extra small devices (<= 380px screens like iPhone SE, small Galaxy) */
+@media (max-width: 380px) {
+    .hr-sticky-scroll-bar {
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+        max-width: calc(100% - 14px) !important;
+    }
+
+    .hr-sticky-scroll-bar__inner {
+        gap: 5px !important;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .hr-sticky-action-buttons {
+        gap: 4px !important;
+    }
+
+    .hr-sticky-cta-btn .hr-btn__text,
+.hr-sticky-cta-btn .amoxi-btn__text {
+        padding: 7px 10px !important;
+        font-size: 9.5px !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    .hr-sticky-cta-btn .hr-btn__icon-box,
+.hr-sticky-cta-btn .amoxi-btn__icon-box {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .hr-sticky-cta-btn .hr-btn__icon,
+.hr-sticky-cta-btn .amoxi-btn__icon {
+        font-size: 7px !important;
+    }
+
+    .hr-sticky-icon-btn {
+        width: 31px !important;
+        height: 31px !important;
+    }
+
+    .hr-sticky-icon-btn.hr-hero-icon-btn--wa .hr-hero-icon-btn__icon i {
+        font-size: 16px !important;
+    }
+
+    .hr-sticky-icon-btn.hr-hero-icon-btn--call .hr-hero-icon-btn__icon svg {
+        width: 13px !important;
+        height: 13px !important;
+    }
+}
+
+/* =========================================================
+   HEADER ACTIONS (PHONE & WHATSAPP ICONS ONLY)
+   Desktop: perfectly aligned with nav, comfortable margin/padding
+   Mobile/Tablet: hidden completely
+   ========================================================= */
+.main-header__actions {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    margin-left: 14px !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.hr-header-icon-btn {
+    width: 44px !important;
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+}
+
+.hr-header-icon-btn.hr-hero-icon-btn--call .hr-hero-icon-btn__icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.hr-header-icon-btn.hr-hero-icon-btn--call .hr-hero-icon-btn__icon svg {
+    width: 18px !important;
+    height: 18px !important;
+    display: block !important;
+}
+
+.hr-header-icon-btn.hr-hero-icon-btn--wa .hr-hero-icon-btn__icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.hr-header-icon-btn.hr-hero-icon-btn--wa .hr-hero-icon-btn__icon i {
+    font-size: 22px !important;
+    display: block !important;
+    line-height: 1 !important;
+}
+
+/* Hidden in mobile and tablet view */
+@media (max-width: 1199px) {
+    .main-header__actions {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   HIGH REACH — FOOTER ARISE-ON-SCROLL (Desktop & Mobile)
+   Recreates the luxury 3D rotating rise animation on scroll,
+   engineered for 60/120fps GPU performance on both desktop & mobile.
+   Keeps "High Reach.Media" strictly in a single line with zero
+   character breaks, no line wrapping, and no clipped descenders.
+   ========================================================= */
+
+.main-footer__bottom {
+    perspective: 1000px !important;
+    -webkit-perspective: 1000px !important;
+    perspective-origin: 50% 50% !important;
+    -webkit-perspective-origin: 50% 50% !important;
+}
+
+/* Initial pre-arise state when JS animation is active */
+.hr-footer-arise-enabled .main-footer__bottom__title {
+    opacity: 0;
+    transform: translateY(55px) rotateX(-65deg);
+    -webkit-transform: translateY(55px) rotateX(-65deg);
+    transform-origin: 50% 0% -30px;
+    -webkit-transform-origin: 50% 0% -30px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 2.2s cubic-bezier(0.2, 0.9, 0.3, 1) 0.65s,
+        opacity 1.8s cubic-bezier(0.2, 0.9, 0.3, 1) 0.65s;
+    will-change: transform, opacity;
+}
+
+.hr-footer-arise-enabled .main-footer__bottom__inner {
+    opacity: 0;
+    transform: translateY(24px);
+    -webkit-transform: translateY(24px);
+    transition: transform 1.2s cubic-bezier(0.2, 0.9, 0.3, 1) 1.2s,
+        opacity 1.1s cubic-bezier(0.2, 0.9, 0.3, 1) 1.2s;
+    will-change: transform, opacity;
+}
+
+/* Arisen State - Desktop */
+.hr-footer-arise-enabled .main-footer__bottom.hr-arisen .main-footer__bottom__title,
+.hr-footer-arise-enabled .main-footer__bottom__title.hr-arisen {
+    opacity: 1 !important;
+    transform: translateY(0) rotateX(0deg) !important;
+    -webkit-transform: translateY(0) rotateX(0deg) !important;
+    visibility: visible !important;
+}
+
+.hr-footer-arise-enabled .main-footer__bottom.hr-arisen .main-footer__bottom__inner,
+.hr-footer-arise-enabled .main-footer__bottom__inner.hr-arisen {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    -webkit-transform: translateY(0) !important;
+    visibility: visible !important;
+}
+
+/* Mobile & Tablet view (<= 991px) */
+@media (max-width: 991px) {
+    .main-footer__bottom {
+        perspective: 600px !important;
+        -webkit-perspective: 600px !important;
+    }
+
+    .hr-footer-arise-enabled .main-footer__bottom__title {
+        opacity: 1 !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+        visibility: visible !important;
+    }
+
+    .hr-footer-arise-enabled .main-footer__bottom__inner {
+        opacity: 0;
+        transform: translateY(18px);
+        -webkit-transform: translateY(18px);
+        transition: transform 1.1s cubic-bezier(0.2, 0.9, 0.3, 1) 1.1s,
+            opacity 1.0s cubic-bezier(0.2, 0.9, 0.3, 1) 1.1s;
+    }
+
+    .hr-footer-arise-enabled .main-footer__bottom.hr-arisen .main-footer__bottom__title,
+    .hr-footer-arise-enabled .main-footer__bottom__title.hr-arisen {
+        opacity: 1 !important;
+        transform: translateY(0) rotateX(0deg) !important;
+        -webkit-transform: translateY(0) rotateX(0deg) !important;
+        visibility: visible !important;
+    }
+
+    .hr-footer-arise-enabled .main-footer__bottom.hr-arisen .main-footer__bottom__inner,
+    .hr-footer-arise-enabled .main-footer__bottom__inner.hr-arisen {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        -webkit-transform: translateY(0) !important;
+        visibility: visible !important;
+    }
+}
+
+/* Accessibility: respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .hr-footer-arise-enabled .main-footer__bottom__title,
+    .hr-footer-arise-enabled .main-footer__bottom__inner {
+        opacity: 1 !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ==========================================================================
+   HIGH REACH GLASS LOUPE EFFECT (Universal Typography Magnifier)
+   Active across all pages and entire page height
+   ========================================================================== */
+.hr-glass-loupe {
+    position: fixed !important;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    pointer-events: none !important;
+    overflow: hidden;
+    z-index: 999999 !important;
+    opacity: 0;
+    transform: scale(0.65) translateZ(0);
+    transition: opacity 0.2s cubic-bezier(0.165, 0.84, 0.44, 1),
+                transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1),
+                width 0.28s cubic-bezier(0.165, 0.84, 0.44, 1),
+                height 0.28s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background-color: transparent !important;
+    will-change: left, top, transform, width, height;
+}
+
+/* Badge mode: smoothly expands bubble so circular revolving text around the logo is fully framed and magnified */
+.hr-glass-loupe.hr-glass-loupe--badge {
+    width: 180px !important;
+    height: 180px !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .hr-glass-loupe.hr-glass-loupe--badge {
+        width: 160px !important;
+        height: 160px !important;
+    }
+}
+
+.hr-glass-loupe.is-active {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+}
+
+.hr-glass-loupe__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0 0;
+    pointer-events: none !important;
+    user-select: none;
+    z-index: 1;
+    /* High Reach refraction: crisp centre, bent + RGB-split edge (see hr-glass-loupe.js) */
+    -webkit-filter: url(#hrLensRefract);
+    filter: url(#hrLensRefract);
+}
+
+.hr-glass-loupe__content * {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* High Reach authentic bubble effect:
+   Uses transparent lense.png for authentic optical glass rim reflections.
+   The center is 100% crystal-clear and transparent; only the delicate outer bubble meniscus
+   and refraction shadow define the perimeter—zero solid white borders. */
+.hr-glass-loupe__glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none !important;
+    background-image: url('../images/lense.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.92;
+    z-index: 2;
+}
+
+.hr-glass-loupe__rim {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none !important;
+    border: none !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    z-index: 3;
+}
+
+@media only screen and (max-width: 991px) {
+    .hr-glass-loupe {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .hr-glass-loupe {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Ensure nested GSAP / SplitText split spans inside the loupe render flat, fully opaque and visible,
+   EXCEPT for the about-badge curved circle which requires its circular rotation transforms */
+.hr-glass-loupe__content > *:not(.about-badge) * {
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    perspective: none !important;
+}
+
+/* For the curved-circle text around the badge logo, preserve full visibility and circular letter layout */
+.hr-glass-loupe__content .about-badge,
+.hr-glass-loupe__content .about-badge * {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.hr-glass-loupe__content .curved-circle span {
+    display: inline-block !important;
+    position: absolute !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+}
+
+/* Completely remove and disable the custom blue dot and circle cursor across the site */
+.custom-cursor__cursor,
+.custom-cursor__cursor-two,
+.custom-cursor__hover,
+.custom-cursor__innerhover {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+body.custom-cursor,
+.custom-cursor {
+    cursor: auto !important;
+}
+
+/* =========================================================
+   DESKTOP VIEW: BACK TO TOP KEEPS DEFAULT TEXT & BAR
+   ========================================================= */
+@media (min-width: 768px) {
+    .scroll-to-top .scroll-to-top__arrow {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   MOBILE ONLY: REPLACE "BACK TOP" WITH ARROW & GRADIENT EFFECT ON TOUCH
+   ========================================================= */
+@media (max-width: 767px) {
+    /* Hide text and horizontal progress bar on mobile */
+    .scroll-to-top .scroll-to-top__text,
+    .scroll-to-top .scroll-to-top__wrapper {
         display: none !important;
     }
 
+    /* Display glyph ▜ as the upward arrow icon */
+    .scroll-to-top .scroll-to-top__arrow {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        line-height: 1 !important;
+    }
+
+    .scroll-to-top .scroll-to-top__glyph {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: Arial, "Segoe UI Symbol", "Apple Symbols", sans-serif !important;
+        font-size: 22px !important;
+        line-height: 1 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        transform: rotate(-45deg) !important;
+        transform-origin: center center !important;
+        user-select: none !important;
+        transition: transform 0.25s ease, filter 0.25s ease, -webkit-text-fill-color 0.25s ease !important;
+    }
+
+    /* Button appearance on mobile: clean floating arrow without gradient border/margin box */
+    .scroll-to-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        padding: 0 !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        border-radius: 50% !important;
+        box-shadow: none !important;
+        transform: none !important;
+        position: fixed !important;
+        right: 14px !important;
+        bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+        z-index: 9996 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+        transition: opacity 0.25s ease, transform 0.25s ease !important;
+    }
+
+    /* Arise into view when scrolled down */
+    .scroll-to-top.show {
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+        right: 14px !important;
+    }
+
+    /* GRADIENT EFFECT ON TOUCH / HOVER / ACTIVE / FOCUS */
+    .scroll-to-top:hover,
+    .scroll-to-top:active,
+    .scroll-to-top:focus,
+    .scroll-to-top.hr-touched {
+        transform: translateY(-2px) scale(1.05) !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .scroll-to-top:hover .scroll-to-top__glyph,
+    .scroll-to-top:active .scroll-to-top__glyph,
+    .scroll-to-top:focus .scroll-to-top__glyph,
+    .scroll-to-top.hr-touched .scroll-to-top__glyph {
+        background: linear-gradient(135deg, #FFD60A 0%, #A6EC6A 35%, #36C2B0 70%, #0062F3 100%) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        filter: drop-shadow(0 0 6px rgba(54, 194, 176, 0.8)) drop-shadow(0 0 10px rgba(166, 236, 106, 0.55)) !important;
+        transform: rotate(-45deg) translateY(-2px) scale(1.12) !important;
+    }
+}
+
+/* Small mobile devices (<= 480px) */
+@media (max-width: 480px) {
+    .scroll-to-top {
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        min-height: 42px !important;
+        right: 12px !important;
+        bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .scroll-to-top.show {
+        right: 12px !important;
+        bottom: calc(92px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .scroll-to-top .scroll-to-top__glyph {
+        font-size: 20px !important;
+    }
+}
+
+
+/* =========================================================
+   HIGH REACH — PURE BLACK WEBSITE BACKGROUND & TRANSLUCENT NAVBAR
+   ========================================================= */
+
+html,
+body,
+.page-wrapper,
+#smooth-wrapper,
+#smooth-content {
+    background-color: #000000 !important;
+}
+
+.hero-one,
+.funfact-one,
+.about-one,
+.portfolio-one,
+.portfolio-two,
+.hr-clients-section,
+.contact-one,
+.section-space,
+.section-space-b {
+    background-color: #000000 !important;
+}
+
+/* =========================================================
+   HIGH REACH — NAVBAR CLIENTS-SECTION BOX APPEARANCE
+   Exact glassmorphic box surface matching .hr-client-card in Our Clients section:
+   - Frosted glass gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03))
+   - Glass border: 1px solid rgba(255, 255, 255, 0.10)
+   - Backdrop blur: 14px
+   - Hover / touch: border-color rgba(0, 98, 243, 0.40), box-shadow 0 20px 45px rgba(0, 98, 243, 0.16)
+   - Multi-color gradient overlay reveals smoothly
+   - Logo, navigation fonts, and action icons sit cleanly on top unaffected
+   ========================================================= */
+
+.main-header,
+.sticky-header,
+.sticky-header--normal,
+.sticky-header--cloned,
+.main-header.sticky-header {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)), rgba(5, 6, 8, 0.75) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.30) !important;
+    transition: all 0.4s ease !important;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Subtle gradient layer (identical to .hr-client-card::before in Our Clients section) */
+.main-header::before,
+.sticky-header::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(135deg,
+            rgba(0, 98, 243, 0.22),
+            rgba(54, 194, 176, 0.15),
+            rgba(166, 236, 106, 0.12),
+            rgba(255, 214, 10, 0.12)) !important;
+    opacity: 0 !important;
+    transition: opacity 0.4s ease !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
+
+/* When touched (mobile tap), hovered (desktop), active, or focus: reveal the clients-style gradient fade */
+.main-header:hover::before,
+.main-header:active::before,
+.main-header:focus-within::before,
+.main-header.hr-navbar-touched::before,
+.sticky-header:hover::before,
+.sticky-header:active::before,
+.sticky-header:focus-within::before,
+.sticky-header.hr-navbar-touched::before {
+    opacity: 1 !important;
+}
+
+.main-header:hover,
+.main-header:active,
+.main-header:focus-within,
+.main-header.hr-navbar-touched,
+.sticky-header:hover,
+.sticky-header:active,
+.sticky-header:focus-within,
+.sticky-header.hr-navbar-touched {
+    border-bottom-color: rgba(0, 98, 243, 0.40) !important;
+    box-shadow: 0 20px 45px rgba(0, 98, 243, 0.16) !important;
+}
+
+/* Ensure Logo, Navigation Fonts, and Action Icons sit cleanly on top (z-index: 5) and are NOT affected */
+.main-header__container,
+.main-header__inner {
+    position: relative !important;
+    z-index: 4 !important;
+}
+
+.main-header__logo,
+.main-header__logo a,
+.main-header__logo img,
+.main-header__nav,
+.main-menu,
+.main-menu__list,
+.main-menu__list > li,
+.main-menu__list > li > a,
+.main-header__actions,
+.main-header__actions a,
+.mobile-nav__btn,
+.mobile-nav__btn span {
+    position: relative !important;
+    z-index: 5 !important;
+    transform: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+/* Below navbar background design (Hero background shape) with opacity for transparency */
+.hero-one__bg-2 {
+    opacity: 0.35 !important;
+    transition: opacity 0.4s ease;
 }

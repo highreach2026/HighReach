@@ -7,8 +7,8 @@
 
     <title>Page Not Found | High Reach</title>
 
-    <link rel="stylesheet" href="assets/css/amoxi.css">
-    <link rel="stylesheet" href="assets/css/high-reach.css">
+    <link rel="stylesheet" href="assets/css/highreach-core.css?v=1.1">
+    <link rel="stylesheet" href="assets/css/high-reach.css?v=9.9">
 
     <style>
         * {
@@ -61,14 +61,12 @@
             width: min(900px, 85vw);
             height: min(900px, 85vw);
             border-radius: 50%;
-            background: conic-gradient(
-                from 0deg,
-                rgba(255, 214, 10, 0.12),
-                rgba(166, 236, 106, 0.11),
-                rgba(54, 194, 176, 0.12),
-                rgba(0, 98, 243, 0.13),
-                rgba(255, 214, 10, 0.12)
-            );
+            background: conic-gradient(from 0deg,
+                    rgba(255, 214, 10, 0.12),
+                    rgba(166, 236, 106, 0.11),
+                    rgba(54, 194, 176, 0.12),
+                    rgba(0, 98, 243, 0.13),
+                    rgba(255, 214, 10, 0.12));
             filter: blur(90px);
             animation: hr404Rotate 16s linear infinite;
             pointer-events: none;
@@ -79,11 +77,9 @@
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px
-                );
+                linear-gradient(90deg,
+                    rgba(255, 255, 255, 0.025) 1px,
+                    transparent 1px);
             background-size: 70px 100%;
             opacity: 0.25;
             pointer-events: none;
@@ -123,13 +119,11 @@
             width: 10px;
             height: 10px;
             transform: rotate(45deg);
-            background: linear-gradient(
-                135deg,
-                #FFD60A 0%,
-                #A6EC6A 33%,
-                #36C2B0 66%,
-                #0062F3 100%
-            );
+            background: linear-gradient(135deg,
+                    #FFD60A 0%,
+                    #A6EC6A 33%,
+                    #36C2B0 66%,
+                    #0062F3 100%);
         }
 
         .hr-404__number {
@@ -139,13 +133,11 @@
             line-height: 0.78;
             letter-spacing: -0.05em;
 
-            background: linear-gradient(
-                90deg,
-                #FFD60A 0%,
-                #A6EC6A 30%,
-                #36C2B0 60%,
-                #0062F3 100%
-            );
+            background: linear-gradient(90deg,
+                    #FFD60A 0%,
+                    #A6EC6A 30%,
+                    #36C2B0 60%,
+                    #0062F3 100%);
 
             background-size: 220% 220%;
 
@@ -157,8 +149,7 @@
             animation: hr404Gradient 7s ease-in-out infinite alternate;
 
             filter:
-                drop-shadow(0 0 28px rgba(54, 194, 176, 0.12))
-                drop-shadow(0 0 45px rgba(0, 98, 243, 0.08));
+                drop-shadow(0 0 28px rgba(54, 194, 176, 0.12)) drop-shadow(0 0 45px rgba(0, 98, 243, 0.08));
         }
 
         @keyframes hr404Gradient {
@@ -184,13 +175,11 @@
         }
 
         .hr-404__title span {
-            background: linear-gradient(
-                90deg,
-                #FFD60A,
-                #A6EC6A,
-                #36C2B0,
-                #0062F3
-            );
+            background: linear-gradient(90deg,
+                    #FFD60A,
+                    #A6EC6A,
+                    #36C2B0,
+                    #0062F3);
 
             -webkit-background-clip: text;
             background-clip: text;
@@ -204,7 +193,7 @@
             font-size: clamp(16px, 1.5vw, 19px);
             line-height: 1.7;
 
-            color: rgba(255,255,255,0.66);
+            color: rgba(255, 255, 255, 0.66);
         }
 
         .hr-404__button {
@@ -220,13 +209,11 @@
             border-radius: 999px;
 
             background:
-                linear-gradient(
-                    90deg,
+                linear-gradient(90deg,
                     #0062F3,
                     #36C2B0,
                     #A6EC6A,
-                    #FFD60A
-                );
+                    #FFD60A);
 
             background-size: 220% 220%;
 
@@ -261,7 +248,7 @@
             align-items: center;
             justify-content: center;
 
-            background: rgba(0,0,0,0.14);
+            background: rgba(0, 0, 0, 0.14);
 
             font-size: 18px;
         }
@@ -279,7 +266,7 @@
         .hr-404__orb {
             position: absolute;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.12);
+            border: 2px solid rgba(255, 255, 255, 0.12);
             pointer-events: none;
         }
 
@@ -337,6 +324,10 @@
 
 <body>
 
+    <div class="preloader">
+        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+    </div>
+
     <main class="hr-404">
 
         <span class="hr-404__orb hr-404__orb--1"></span>
@@ -363,14 +354,55 @@
                 Let's take you back to High Reach and keep moving forward.
             </p>
 
-            <a href="/" class="hr-404__button">
+            <a href="index.html" class="hr-404__button">
                 BACK TO HOME
                 <span>→</span>
             </a>
 
         </div>
-
     </main>
 
+    <!-- Interactive WhatsApp Admin Widget -->
+    <script src="assets/js/whatsapp-widget.js"></script>
+
+    <!-- Preloader and Smooth Page Transition -->
+    <script>
+        (function () {
+            var loader = document.querySelector('.preloader');
+            function hideLoader() {
+                if (loader && !loader.classList.contains('hr-preloader-hidden')) {
+                    loader.style.opacity = '0';
+                    loader.style.transition = 'opacity 0.3s ease';
+                    setTimeout(function () {
+                        loader.classList.add('hr-preloader-hidden');
+                        loader.style.display = 'none';
+                    }, 300);
+                }
+            }
+            window.addEventListener('load', hideLoader);
+            setTimeout(hideLoader, 1200);
+            window.addEventListener('pageshow', hideLoader);
+
+            document.addEventListener('click', function (e) {
+                var a = e.target.closest('a');
+                if (a && a.getAttribute('href') && !a.getAttribute('href').startsWith('http') && !a.getAttribute('href').startsWith('#') && !a.getAttribute('href').startsWith('tel:') && !a.getAttribute('href').startsWith('mailto:')) {
+                    var href = a.getAttribute('href');
+                    e.preventDefault();
+                    if (loader) {
+                        loader.classList.remove('hr-preloader-hidden');
+                        loader.style.display = 'flex';
+                        loader.style.opacity = '1';
+                        loader.style.pointerEvents = 'auto';
+                    }
+                    setTimeout(function () {
+                        window.location.href = href;
+                    }, 60);
+                }
+            });
+        })();
+    </script>
+    <!-- High Reach Interactive Glass Effect Script -->
+    <script src="assets/js/hr-glass-loupe.js?v=7.6"></script>
 </body>
+
 </html>

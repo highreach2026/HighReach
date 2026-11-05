@@ -117,7 +117,7 @@
   smoothScroll();
 
   // blog 06 hover
-  $(".blog-six__row .blog-six__item").on("mousemove", function () {
+  $(".blog-six__row .blog-six__item").on("mouseenter", function () {
     $(".blog-six__row .blog-six__item").removeClass("active");
     $(this).addClass("active");
   });
@@ -272,8 +272,8 @@
   }
 
   // Date Picker
-  if ($(".amoxi-datepicker").length) {
-    $(".amoxi-datepicker").each(function () {
+  if ($(".hr-datepicker, .amoxi-datepicker").length) {
+    $(".hr-datepicker, .amoxi-datepicker").each(function () {
       $(this).datepicker();
     });
   }
@@ -594,8 +594,8 @@
   }
 
   //accordion
-  if ($(".amoxi-accordion").length) {
-    var accordionGrp = $(".amoxi-accordion");
+  if ($(".hr-accordion, .amoxi-accordion").length) {
+    var accordionGrp = $(".hr-accordion, .amoxi-accordion");
     accordionGrp.each(function () {
       var accordionName = $(this).data("grp-name");
       var Self = $(this);
@@ -608,10 +608,10 @@
           .find(".accordion-title")
           .on("click", function () {
             if ($(this).parent().hasClass("active") === false) {
-              $(".amoxi-accordion." + accordionName)
+              $(".hr-accordion." + accordionName + ", .amoxi-accordion." + accordionName)
                 .find(".accordion")
                 .removeClass("active");
-              $(".amoxi-accordion." + accordionName)
+              $(".hr-accordion." + accordionName + ", .amoxi-accordion." + accordionName)
                 .find(".accordion")
                 .find(".accordion-content")
                 .slideUp();
@@ -681,9 +681,9 @@
 
   function thmOwlInit() {
     // owl slider
-    let amoxiowlCarousel = $(".amoxi-owl__carousel");
-    if (amoxiowlCarousel.length) {
-      amoxiowlCarousel.each(function () {
+    let hrowlCarousel = $(".hr-owl__carousel, .amoxi-owl__carousel");
+    if (hrowlCarousel.length) {
+      hrowlCarousel.each(function () {
         let elm = $(this);
         let options = elm.data("owl-options");
         let thmOwlCarousel = elm.owlCarousel(
@@ -694,9 +694,9 @@
         });
       });
     }
-    let amoxiowlCarouselNav = $(".amoxi-owl__carousel--custom-nav");
-    if (amoxiowlCarouselNav.length) {
-      amoxiowlCarouselNav.each(function () {
+    let hrowlCarouselNav = $(".hr-owl__carousel--custom-nav, .amoxi-owl__carousel--custom-nav");
+    if (hrowlCarouselNav.length) {
+      hrowlCarouselNav.each(function () {
         let elm = $(this);
         let owlNavPrev = elm.data("owl-nav-prev");
         let owlNavNext = elm.data("owl-nav-next");
@@ -711,19 +711,19 @@
         });
       });
     }
-    let amoxiowlCarouselCustomDots = $(".amoxi-owl__carousel--custom-dots");
-    if (amoxiowlCarouselCustomDots.length) {
-      amoxiowlCarouselCustomDots.each(function () {
+    let hrowlCarouselCustomDots = $(".hr-owl__carousel--custom-dots, .amoxi-owl__carousel--custom-dots");
+    if (hrowlCarouselCustomDots.length) {
+      hrowlCarouselCustomDots.each(function () {
         let elm = $(this);
-        let amoxiowlCarouselThumb = elm.data("thumb-elm");
-        $(amoxiowlCarouselThumb).each(function () {
+        let hrowlCarouselThumb = elm.data("thumb-elm");
+        $(hrowlCarouselThumb).each(function () {
           let self = $(this);
           self.find(".owl-dot").on("click", function () {
             elm.trigger("to.owl.carousel", [$(this).index(), 300]);
           });
         });
         elm.on("changed.owl.carousel", function (element) {
-          $(amoxiowlCarouselThumb).each(function () {
+          $(hrowlCarouselThumb).each(function () {
             let self = $(this);
             self.find(".owl-dot").removeClass("active");
             self.find(".owl-dot").eq(element.item.index).addClass("active");
@@ -733,9 +733,9 @@
     }
   }
 
-  function amoxiSwiperInit() {
+  function hrSwiperInit() {
     // swiper slider
-    let swipers = $(".amoxi-swiper__carousel");
+    let swipers = $(".hr-swiper__carousel, .amoxi-swiper__carousel");
 
     if (swipers.length) {
       swipers.each(function (index, element) {
@@ -819,33 +819,33 @@
     }
   }
 
-  function amoxiSlickInit() {
+  function hrSlickInit() {
     // slick slider
-    let amoxislickCarousel = $(".amoxi-slick__carousel");
-    if (amoxislickCarousel.length) {
-      amoxislickCarousel.each(function () {
+    let hrslickCarousel = $(".hr-slick__carousel, .amoxi-slick__carousel");
+    if (hrslickCarousel.length) {
+      hrslickCarousel.each(function () {
         let elm = $(this);
         let options = elm.data("slick-options");
-        let amoxislickCarousel = elm.slick(
+        let hrslickCarousel = elm.slick(
           "object" === typeof options ? options : JSON.parse(options)
         );
       });
     }
-    let amoxislickCarouselCounter = $(".amoxi-slick__custome-counter");
-    if (amoxislickCarouselCounter.length) {
-      amoxislickCarouselCounter.each(function () {
+    let hrslickCarouselCounter = $(".hr-slick__custome-counter, .amoxi-slick__custome-counter");
+    if (hrslickCarouselCounter.length) {
+      hrslickCarouselCounter.each(function () {
         let elm = $(this);
         let options = elm.data("slick-options");
         let currentSlide;
         let slidesCount;
         let sliderCounter = document.createElement("div");
-        sliderCounter.classList.add("amoxi-slick__counter");
+        sliderCounter.classList.add("hr-slick__counter");
 
         let updateSliderCounter = function (slick, currentIndex) {
           currentSlide = slick.slickCurrentSlide() + 1;
           slidesCount = slick.slideCount;
           $(sliderCounter).html(
-            '<span class="amoxi-slick__counter__active">' +
+            '<span class="hr-slick__counter__active">' +
               currentSlide +
               "</span>" +
               "" +
@@ -862,7 +862,7 @@
           updateSliderCounter(slick, currentSlide);
         });
 
-        let amoxislickCarousel = elm.slick(
+        let hrslickCarousel = elm.slick(
           "object" === typeof options ? options : JSON.parse(options)
         );
       });
@@ -874,13 +874,18 @@
   const linkHoverReveal = document.querySelectorAll(".hover-item__box");
   const linkImages = document.querySelectorAll(".hover-item__box-img");
   for (let i = 0; i < link.length; i++) {
+    let hoverRaf = null;
     link[i].addEventListener("mousemove", (e) => {
-      linkHoverReveal[i].style.opacity = 1;
-      linkHoverReveal[
-        i
-      ].style.transform = `translate(-100%, -50% ) rotate(14deg)`;
-      linkImages[i].style.transform = "scale(1, 1)";
-      linkHoverReveal[i].style.left = e.clientX + "px";
+      const clientX = e.clientX;
+      if (!hoverRaf) {
+        hoverRaf = requestAnimationFrame(() => {
+          hoverRaf = null;
+          linkHoverReveal[i].style.opacity = 1;
+          linkHoverReveal[i].style.transform = "translate(-100%, -50%) rotate(14deg)";
+          linkImages[i].style.transform = "scale(1, 1)";
+          linkHoverReveal[i].style.left = clientX + "px";
+        });
+      }
     });
     link[i].addEventListener("mouseleave", (e) => {
       linkHoverReveal[i].style.opacity = 0;
@@ -993,9 +998,9 @@
   stickyMenuUpScroll($(".sticky-header--normal"), "active");
 
   //Strech Column
-  function amoxi_stretch() {
+  function hr_stretch() {
     var i = $(window).width();
-    $(".row .amoxi-stretch-element-inside-column").each(function () {
+    $(".row .hr-stretch-element-inside-column, .row .amoxi-stretch-element-inside-column").each(function () {
       var $this = $(this),
         row = $this.closest(".row"),
         cols = $this.closest('[class^="col-"]'),
@@ -1024,9 +1029,9 @@
       $this.css(styles);
     });
   }
-  amoxi_stretch();
+  hr_stretch();
 
-  function amoxi_cuved_circle() {
+  function hr_curved_circle() {
     let circleTypeElm = $(".curved-circle--item");
     if (circleTypeElm.length) {
       circleTypeElm.each(function () {
@@ -1061,17 +1066,108 @@
     }
   }
 
+  var preloaderStartTime = Date.now();
+  var minPreloaderDuration = 600; // smooth minimum so logo flicker effect is showcased elegantly
+
+  function dismissPreloader() {
+    var elapsed = Date.now() - preloaderStartTime;
+    var remaining = Math.max(0, minPreloaderDuration - elapsed);
+
+    setTimeout(function () {
+      if ($(".preloader").length && !$(".preloader").hasClass("hr-preloader-hidden")) {
+        $(".preloader").fadeOut(300, function () {
+          $(this).addClass("hr-preloader-hidden");
+          $("body").removeClass("is-page-transitioning");
+        });
+      }
+    }, remaining);
+  }
+
+  // Safety fallback: ensure preloader dismisses even if an external tracker is delayed
+  setTimeout(dismissPreloader, 1200);
+
+  // bfcache (browser back/forward navigation) protection
+  window.addEventListener("pageshow", function () {
+    dismissPreloader();
+    $("body").removeClass("is-page-transitioning");
+  });
+
+  // Seamless Page Navigation: eliminate white flashes & link flickers across the entire website
+  function isInternalPageLink($link) {
+    var href = $link.attr("href");
+    var target = $link.attr("target");
+
+    if (!href || href === "#" || href.charAt(0) === "#" ||
+        href.indexOf("javascript:") === 0 ||
+        href.indexOf("mailto:") === 0 ||
+        href.indexOf("tel:") === 0 ||
+        target === "_blank" ||
+        $link.hasClass("no-transition") ||
+        $link.hasClass("img-popup") ||
+        $link.hasClass("video-popup")) {
+      return false;
+    }
+
+    if (/^(https?:)?\/\//i.test(href)) {
+      try {
+        var url = new URL(href, window.location.href);
+        if (url.hostname !== window.location.hostname) {
+          return false;
+        }
+      } catch (e) {
+        return false;
+      }
+    }
+
+    try {
+      var targetUrl = new URL(href, window.location.href);
+      if (targetUrl.pathname === window.location.pathname && targetUrl.search === window.location.search && targetUrl.hash) {
+        return false;
+      }
+      if (targetUrl.href === window.location.href) {
+        return false;
+      }
+    } catch (e) {}
+
+    return true;
+  }
+
+  $(document).on("click", "a[href]", function (e) {
+    var $this = $(this);
+    if (!isInternalPageLink($this)) {
+      return;
+    }
+
+    var href = $this.attr("href");
+    e.preventDefault();
+
+    $("body").addClass("is-page-transitioning");
+    if ($(".preloader").length) {
+      $(".preloader")
+        .removeClass("hr-preloader-hidden")
+        .stop(true, true)
+        .css({
+          "display": "flex",
+          "opacity": "1",
+          "visibility": "visible",
+          "pointer-events": "auto"
+        });
+    }
+
+    setTimeout(function () {
+      window.location.href = href;
+    }, 60);
+  });
+
   // window load event
   $(window).on("load", function () {
-    if ($(".preloader").length) {
-      $(".preloader").fadeOut();
-    }
+    dismissPreloader();
 
     heroTitle();
     thmOwlInit();
-    amoxiSwiperInit();
+    hrSwiperInit();
     initPortfolioTwoSwiperEnhancements();
-    amoxiSlickInit();
+    hrSlickInit();
     priceFilter();
 
     if ($(".circle-progress").length) {
@@ -1143,7 +1239,7 @@
       });
     }
 
-    amoxi_cuved_circle();
+    hr_curved_circle();
     AOS.init();
   });
 
@@ -1171,6 +1267,74 @@
   });
 
   $(window).on("resize", function () {
-    amoxi_stretch();
+    hr_stretch();
   });
+
+  // High Reach — Navbar Gradient Touch Interaction (Clients Section Effect)
+  (function () {
+    var touchTimer = null;
+
+    function activateHeader() {
+      if (touchTimer) clearTimeout(touchTimer);
+      var headers = document.querySelectorAll('.main-header, .sticky-header');
+      for (var i = 0; i < headers.length; i++) {
+        headers[i].classList.add('hr-navbar-touched');
+      }
+    }
+
+    function deactivateHeader(delay) {
+      if (touchTimer) clearTimeout(touchTimer);
+      touchTimer = setTimeout(function () {
+        var headers = document.querySelectorAll('.main-header, .sticky-header');
+        for (var i = 0; i < headers.length; i++) {
+          headers[i].classList.remove('hr-navbar-touched');
+        }
+      }, delay !== undefined ? delay : 1000);
+    }
+
+    // Touch events for mobile
+    document.addEventListener('touchstart', function (e) {
+      if (e.target.closest('.main-header, .sticky-header')) {
+        activateHeader();
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+      if (e.target.closest('.main-header, .sticky-header')) {
+        activateHeader();
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', function (e) {
+      if (e.target.closest('.main-header, .sticky-header')) {
+        deactivateHeader(1000);
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchcancel', function (e) {
+      if (e.target.closest('.main-header, .sticky-header')) {
+        deactivateHeader(300);
+      }
+    }, { passive: true });
+
+    // Pointer events for desktop & hybrid devices
+    document.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('.main-header, .sticky-header')) {
+        activateHeader();
+      }
+    }, { passive: true });
+
+    document.addEventListener('pointerup', function (e) {
+      if (e.target.closest('.main-header, .sticky-header')) {
+        deactivateHeader(1000);
+      }
+    }, { passive: true });
+
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.main-header, .sticky-header')) {
+        activateHeader();
+        deactivateHeader(1000);
+      }
+    }, { passive: true });
+  })();
 })(jQuery);

@@ -1,0 +1,75 @@
+# =========================================================
+# High Reach Website - Git Ignore Rules
+# =========================================================
+
+# IDE & Editor Directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Deployment, Hosting & Build Cache
+.vercel/
+.netlify/
+.cache/
+dist/
+build/
+out/
+
+# Node / Dependencies (if local dev tools are used)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment & Secret Files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Temporary, Backup, Scratch & Archive Files
+*.bak
+*.tmp
+*.temp
+*.orig
+*.log
+*.zip
+*.rar
+*.7z
+*.tar.gz
+scratch/
+backup/
+_backup/
+test-*.html
+
+# Unused Raw Font Source Files & Demo Pages
+OTF/
+TTF/
+Web Fonts/demo.html
+Web Fonts/stylesheet.css
+Web Fonts/*.eot
+Web Fonts/*.svg
+Web Fonts/*.ttf
+

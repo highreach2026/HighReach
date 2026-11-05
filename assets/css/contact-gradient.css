@@ -1,0 +1,173 @@
+/* ==========================================================================
+   HIGH REACH FLUID GRADIENT EFFECT (Contact Page Only)
+   Engineered exclusively for High Reach Media
+   ========================================================================== */
+
+/* Main Header on Contact Page: Transparent at the top so gradient shines through */
+body.contact-page .main-header--inner-page:not(.sticky-header--cloned) {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Page Header Hero Container: Starts at y=0 so fluid gradient covers entire top */
+.page-header.hr-fluid-page-header {
+    position: relative !important;
+    overflow: hidden !important;
+    background-color: #040508 !important;
+    margin-top: -95px !important;
+    padding-top: 220px !important;
+    padding-bottom: 130px !important;
+    min-height: 540px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Hide default theme shapes if any remain */
+.page-header.hr-fluid-page-header .page-header__bg,
+
+.page-header.hr-fluid-page-header .page-header__shape-1,
+.page-header.hr-fluid-page-header .page-header__shape-2 {
+    display: none !important;
+}
+
+/* Fluid Gradient Canvas Background */
+.hr-fluid-gradient-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hr-fluid-gradient-wrap canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Elegant bottom fade into the dark body of the contact page */
+.hr-fluid-gradient-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(to bottom, rgba(4, 5, 8, 0) 0%, rgba(4, 5, 8, 0.65) 60%, #040508 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Content layout on top of gradient */
+.page-header.hr-fluid-page-header .container,
+.page-header.hr-fluid-page-header .page-header__content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+/* Ensure title and breadcrumbs are always crystal-clear without waiting for scroll animation */
+#hrHeaderContent,
+#hrHeaderContent .page-header__title,
+#hrHeaderContent .page-header__title * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+.page-header.hr-fluid-page-header .page-header__title {
+    font-size: 76px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #ffffff !important;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 18px;
+    line-height: 1.15;
+}
+
+.page-header.hr-fluid-page-header .hr-breadcrumb,
+.page-header.hr-fluid-page-header .amoxi-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 24px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    list-style: none;
+    margin: 0;
+}
+
+.page-header.hr-fluid-page-header .hr-breadcrumb li a,
+.page-header.hr-fluid-page-header .amoxi-breadcrumb li a {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.page-header.hr-fluid-page-header .hr-breadcrumb li a:hover,
+.page-header.hr-fluid-page-header .amoxi-breadcrumb li a:hover {
+    color: #ffffff;
+}
+
+.page-header.hr-fluid-page-header .hr-breadcrumb li span,
+.page-header.hr-fluid-page-header .amoxi-breadcrumb li span {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* (Loupe effect styling unified in high-reach.css) */
+
+/* =========================================================
+   HIGH REACH — CONTACT PAGE BLUE SELECTION & MARKUP
+   Letters turn solid black (#000000)
+   Selection highlight bar is High Reach Cobalt Blue (#0062F3) everywhere
+   ========================================================= */
+
+body.contact-page ::selection,
+body.contact-page *::selection,
+body.contact-page input::selection,
+body.contact-page textarea::selection,
+body.contact-page select::selection,
+body.contact-page .contact-one__info__card ::selection,
+body.contact-page .contact-one__form ::selection,
+body.contact-page .sec-title ::selection,
+body.contact-page .page-header ::selection,
+body.contact-page .main-footer ::selection,
+body.contact-page .stroke-text-title svg text::selection {
+    background-color: #0062F3 !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    text-shadow: none !important;
+    fill: #000000 !important;
+}
+
+body.contact-page ::-moz-selection,
+body.contact-page *::-moz-selection,
+body.contact-page input::-moz-selection,
+body.contact-page textarea::-moz-selection,
+body.contact-page select::-moz-selection,
+body.contact-page .contact-one__info__card ::-moz-selection,
+body.contact-page .contact-one__form ::-moz-selection,
+body.contact-page .sec-title ::-moz-selection,
+body.contact-page .page-header ::-moz-selection,
+body.contact-page .main-footer ::-moz-selection,
+body.contact-page .stroke-text-title svg text::-moz-selection {
+    background-color: #0062F3 !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    fill: #000000 !important;
+}
