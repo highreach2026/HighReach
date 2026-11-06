@@ -52,7 +52,13 @@ body.career-page,
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     color: transparent !important;
-    display: inline-block;
+    display: inline-block !important;
+    padding-top: 0.05em !important;
+    padding-bottom: 0.28em !important;
+    margin-bottom: -0.28em !important;
+    padding-right: 0.08em !important;
+    overflow: visible !important;
+    vertical-align: baseline !important;
 }
 
 .cr-dash {
@@ -163,10 +169,11 @@ body.career-page,
 .cr-hero__title {
     font-size: clamp(38px, 4.8vw, 58px);
     font-weight: 800;
-    line-height: 1.10;
+    line-height: 1.22;
     letter-spacing: -0.025em;
     color: #FFFFFF !important;
     margin-bottom: 24px;
+    overflow: visible !important;
 }
 
 .cr-hero__desc {
@@ -529,10 +536,11 @@ body.career-page,
 .cr-cta__title {
     font-size: clamp(32px, 4.2vw, 50px);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.25;
     letter-spacing: -0.025em;
     color: #FFFFFF !important;
     margin-bottom: 16px;
+    overflow: visible !important;
 }
 
 .cr-cta__sub {
