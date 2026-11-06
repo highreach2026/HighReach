@@ -54,11 +54,37 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=32.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=33.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
 
     <!-- Direct Inline Styles for Instant Display & Zero Cache Delay -->
     <style id="hr-career-instant-styles">
+        /* Section Heading Ending Dot — Refined to match Home Page exact size & weight */
+        .hr-title-dot,
+        .bw-split-text .hr-title-dot,
+        .cr-hero__title .hr-title-dot,
+        .cr-ideas__title .hr-title-dot,
+        .cr-opp__title .hr-title-dot,
+        .cr-apply__title .hr-title-dot,
+        .cr-cta__title .hr-title-dot {
+            font-size: 0.72em !important;
+            font-weight: 700 !important;
+            line-height: 1 !important;
+            display: inline-block !important;
+            vertical-align: baseline !important;
+            margin-left: 1px !important;
+        }
+
+        .cr-gradient-text .hr-title-dot,
+        .hr-text-gradient .hr-title-dot {
+            background-image: inherit !important;
+            background-size: inherit !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            color: transparent !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
         /* What We Value Section — Crisp Borders & Zero Edge-Fading */
         .cr-value-card {
             border: 1px solid rgba(255, 255, 255, 0.16) !important;
@@ -485,9 +511,9 @@
                                 CAREERS AT HIGH REACH
                             </p>
                             <h1 class="cr-hero__title bw-split-text">
-                                Right Minds.<br>
-                                Right Direction.<br>
-                                <span class="cr-gradient-text hr-text-gradient">Reach Higher.</span>
+                                Right Minds<span class="hr-title-dot">.</span><br>
+                                Right Direction<span class="hr-title-dot">.</span><br>
+                                <span class="cr-gradient-text hr-text-gradient">Reach Higher<span class="hr-title-dot">.</span></span>
                             </h1>
                             <p class="cr-hero__desc">
                                 Great work starts with people who see possibilities, challenge conventions and turn ideas into action. At High Reach, we bring different perspectives together to create meaningful work and move businesses forward.
@@ -517,7 +543,7 @@
                                 </p>
                                 <h2 class="cr-ideas__title bw-split-text">
                                     Make Your<br>
-                                    Ideas Count<span class="cr-red">.</span>
+                                    Ideas Count<span class="cr-red hr-title-dot">.</span>
                                 </h2>
                             </div>
                             <div class="cr-col-right">
@@ -622,7 +648,7 @@
                                 </p>
                                 <h2 class="cr-opp__title bw-split-text">
                                     Find Your Next<br>
-                                    Opportunity.
+                                    Opportunity<span class="hr-title-dot">.</span>
                                 </h2>
                             </div>
                             <div class="cr-opp__divider" aria-hidden="true"></div>
@@ -647,7 +673,7 @@
                                 <p class="cr-tag bw-split-text">
                                     How to Apply
                                 </p>
-                                <h2 class="cr-apply__title bw-split-text">Introduce Yourself.</h2>
+                                <h2 class="cr-apply__title bw-split-text">Introduce Yourself<span class="hr-title-dot">.</span></h2>
                                 <p class="cr-body">
                                     Tell us a little about who you are, what you do and the kind of opportunity you're looking for. Send your resume along with a short introduction. If your work is best demonstrated visually or through completed projects, include your portfolio or relevant work links.
                                 </p>
@@ -735,7 +761,7 @@
                     </div>
                     <div class="container">
                         <div class="cr-cta__inner">
-                            <h2 class="cr-cta__title bw-split-text">Your Next Move Could <span class="cr-gradient-text hr-text-gradient">Reach Higher.</span></h2>
+                            <h2 class="cr-cta__title bw-split-text">Your Next Move Could <span class="cr-gradient-text hr-text-gradient">Reach Higher<span class="hr-title-dot">.</span></span></h2>
                             <p class="cr-cta__sub">Bring your ideas, skills and ambition. Let's see what we can create together.</p>
                         </div>
                     </div>

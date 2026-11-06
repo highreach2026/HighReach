@@ -165,6 +165,32 @@ section:hover .cr-tag::before {
     -webkit-text-fill-color: #0062F3 !important;
 }
 
+/* Section Heading Ending Dot — Refined to match Home Page exact size & weight */
+.hr-title-dot,
+.bw-split-text .hr-title-dot,
+.cr-hero__title .hr-title-dot,
+.cr-ideas__title .hr-title-dot,
+.cr-opp__title .hr-title-dot,
+.cr-apply__title .hr-title-dot,
+.cr-cta__title .hr-title-dot {
+    font-size: 0.72em !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    display: inline-block !important;
+    vertical-align: baseline !important;
+    margin-left: 1px !important;
+}
+
+.cr-gradient-text .hr-title-dot,
+.hr-text-gradient .hr-title-dot {
+    background-image: inherit !important;
+    background-size: inherit !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
 /* ==========================================================================
    INTERACTIVE MOUSE-FLOW AMBIENT GLOW
    Liquid multi-color blue flow following cursor across career sections
