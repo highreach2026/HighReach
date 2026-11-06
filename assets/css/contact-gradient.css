@@ -96,58 +96,151 @@ body.contact-page .main-header--inner-page:not(.sticky-header--cloned) {
 
 .page-header.hr-fluid-page-header .hr-breadcrumb,
 .page-header.hr-fluid-page-header .amoxi-breadcrumb {
-    display: inline-flex;
-    align-items: center;
-    gap: 0;
-    padding: 8px 24px;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    list-style: none;
-    margin: 0;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    gap: 0 !important;
+    padding: 8px 24px !important;
+    border-radius: 100px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    list-style: none !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
 }
 
 .page-header.hr-fluid-page-header .hr-breadcrumb li,
 .page-header.hr-fluid-page-header .amoxi-breadcrumb li {
-    display: inline-flex;
-    align-items: center;
-    font-size: 15px;
-    line-height: 1;
-    margin: 0;
-    padding: 0;
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
 }
 
 .page-header.hr-fluid-page-header .hr-breadcrumb li:not(:last-child)::after,
 .page-header.hr-fluid-page-header .amoxi-breadcrumb li:not(:last-child)::after {
-    content: "/";
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.45);
-    font-weight: 400;
-    display: inline-block;
+    content: "/" !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    font-size: 14px !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-weight: 400 !important;
+    display: inline-block !important;
 }
 
 .page-header.hr-fluid-page-header .hr-breadcrumb li a,
 .page-header.hr-fluid-page-header .amoxi-breadcrumb li a {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 15px;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 15px !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
 }
 
 .page-header.hr-fluid-page-header .hr-breadcrumb li a:hover,
 .page-header.hr-fluid-page-header .amoxi-breadcrumb li a:hover {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .page-header.hr-fluid-page-header .hr-breadcrumb li span,
 .page-header.hr-fluid-page-header .amoxi-breadcrumb li span {
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN FOR FLUID GRADIENT PAGE HEADER (Mobile & Tablet)
+   Ensures title & breadcrumb (Home / Career / Contact) fit device width
+   ========================================================= */
+@media (max-width: 991px) {
+    .page-header.hr-fluid-page-header {
+        min-height: 400px !important;
+        padding-top: 160px !important;
+        padding-bottom: 60px !important;
+    }
+
+    .page-header.hr-fluid-page-header .page-header__title {
+        font-size: clamp(40px, 8vw, 54px) !important;
+        margin-bottom: 14px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-header.hr-fluid-page-header {
+        min-height: 350px !important;
+        padding-top: 140px !important;
+        padding-bottom: 45px !important;
+    }
+
+    .page-header.hr-fluid-page-header .container,
+    .page-header.hr-fluid-page-header .page-header__content {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .page-header.hr-fluid-page-header .page-header__title {
+        font-size: clamp(34px, 8.5vw, 44px) !important;
+        letter-spacing: -0.02em !important;
+        line-height: 1.15 !important;
+        margin-bottom: 14px !important;
+    }
+
+    /* Breadcrumbs strictly single-line capsule fitting device width */
+    .page-header.hr-fluid-page-header .hr-breadcrumb,
+    .page-header.hr-fluid-page-header .amoxi-breadcrumb {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        max-width: calc(100% - 10px) !important;
+        margin: 0 auto !important;
+        padding: 7px clamp(12px, 3.8vw, 18px) !important;
+        box-sizing: border-box !important;
+    }
+
+    .page-header.hr-fluid-page-header .hr-breadcrumb li,
+    .page-header.hr-fluid-page-header .amoxi-breadcrumb li {
+        display: inline-flex !important;
+        align-items: center !important;
+        font-size: clamp(12px, 3.4vw, 14.5px) !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+
+    .page-header.hr-fluid-page-header .hr-breadcrumb li:not(:last-child)::after,
+    .page-header.hr-fluid-page-header .amoxi-breadcrumb li:not(:last-child)::after {
+        content: "/" !important;
+        margin-left: clamp(5px, 1.8vw, 8px) !important;
+        margin-right: clamp(5px, 1.8vw, 8px) !important;
+        font-size: clamp(11px, 3vw, 13px) !important;
+        line-height: 1 !important;
+    }
+
+    .page-header.hr-fluid-page-header .hr-breadcrumb li a,
+    .page-header.hr-fluid-page-header .amoxi-breadcrumb li a,
+    .page-header.hr-fluid-page-header .hr-breadcrumb li span,
+    .page-header.hr-fluid-page-header .amoxi-breadcrumb li span {
+        font-size: inherit !important;
+        white-space: nowrap !important;
+    }
 }
 
 /* (Loupe effect styling unified in high-reach.css) */
