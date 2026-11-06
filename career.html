@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=11.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=12.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
 
     <!-- High Reach — Navbar Clients Section Gradient Effect (Direct Inline to prevent cache delays) -->
@@ -153,6 +153,29 @@
     filter: none !important;
     text-shadow: none !important;
 }
+
+/* Remove underline / line indicator under Career and all navbar links */
+.main-menu .main-menu__list > li > a,
+.main-menu .main-menu__list > li.current > a,
+.main-menu__list li > a,
+.main-menu__list li.current > a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+.main-menu .main-menu__list > li > a::before,
+.main-menu .main-menu__list > li > a::after,
+.main-menu .main-menu__list > li.current > a::before,
+.main-menu .main-menu__list > li.current > a::after,
+.main-menu__list li.current > a::before,
+.main-menu__list li.current > a::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
     </style>
     </head>
 
@@ -198,7 +221,7 @@
                                 <li>
                                     <a href="index.html">Home</a>
                                 </li>
-                                <li class="current">
+                                <li>
                                     <a href="career.html">Career</a>
                                 </li>
                                 <li>
