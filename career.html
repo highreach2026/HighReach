@@ -54,151 +54,11 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=34.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=32.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
-    <!-- High Reach Fluid Gradient Header Effect (Same signature header as Contact page) -->
-    <link rel="stylesheet" href="assets/css/contact-gradient.css?v=13.0" />
 
     <!-- Direct Inline Styles for Instant Display & Zero Cache Delay -->
     <style id="hr-career-instant-styles">
-        /* Page Header Hero Container with Fluid Gradient Canvas */
-        .page-header.hr-fluid-page-header {
-            position: relative !important;
-            overflow: hidden !important;
-            background-color: #040508 !important;
-            margin-top: -95px !important;
-            padding-top: 220px !important;
-            padding-bottom: 130px !important;
-            min-height: 540px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-        }
-
-        .page-header.hr-fluid-page-header .page-header__bg,
-        .page-header.hr-fluid-page-header .page-header__shape-1,
-        .page-header.hr-fluid-page-header .page-header__shape-2 {
-            display: none !important;
-        }
-
-        .page-header.hr-fluid-page-header .container,
-        .page-header.hr-fluid-page-header .page-header__content {
-            position: relative;
-            z-index: 5;
-            text-align: center;
-        }
-
-        #hrHeaderContent,
-        #hrHeaderContent .page-header__title,
-        #hrHeaderContent .page-header__title * {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
-        }
-
-        .page-header.hr-fluid-page-header .page-header__title {
-            font-size: 76px;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            color: #ffffff !important;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 18px;
-            line-height: 1.15;
-        }
-
-        .page-header.hr-fluid-page-header .hr-breadcrumb,
-        .page-header.hr-fluid-page-header .amoxi-breadcrumb {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 24px;
-            border-radius: 100px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            list-style: none;
-            margin: 0;
-        }
-
-        .page-header.hr-fluid-page-header .hr-breadcrumb li a,
-        .page-header.hr-fluid-page-header .amoxi-breadcrumb li a {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 15px;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .page-header.hr-fluid-page-header .hr-breadcrumb li a:hover,
-        .page-header.hr-fluid-page-header .amoxi-breadcrumb li a:hover {
-            color: #ffffff;
-        }
-
-        .page-header.hr-fluid-page-header .hr-breadcrumb li span,
-        .page-header.hr-fluid-page-header .amoxi-breadcrumb li span {
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        /* Navbar transparency at top of Career page */
-        body.career-page .main-header--inner-page:not(.sticky-header--cloned) {
-            background: transparent !important;
-            background-color: transparent !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-            backdrop-filter: blur(2px) !important;
-            -webkit-backdrop-filter: blur(2px) !important;
-            box-shadow: none !important;
-        }
-
-        /* Smooth spacing between Page Header and Careers Hero */
-        .page-header + .cr-hero,
-        .hr-fluid-page-header + .cr-hero {
-            padding-top: 95px !important;
-            min-height: auto !important;
-        }
-
-        @media (max-width: 991px) {
-            .page-header.hr-fluid-page-header {
-                min-height: 440px !important;
-                padding-top: 170px !important;
-                padding-bottom: 90px !important;
-            }
-            .page-header.hr-fluid-page-header .page-header__title {
-                font-size: 46px !important;
-            }
-            .page-header + .cr-hero,
-            .hr-fluid-page-header + .cr-hero {
-                padding-top: 65px !important;
-            }
-        }
-
-        /* Section Heading Ending Dot — Refined to match Home Page exact size & weight */
-        .hr-title-dot,
-        .bw-split-text .hr-title-dot,
-        .cr-hero__title .hr-title-dot,
-        .cr-ideas__title .hr-title-dot,
-        .cr-opp__title .hr-title-dot,
-        .cr-apply__title .hr-title-dot,
-        .cr-cta__title .hr-title-dot {
-            font-size: 0.72em !important;
-            font-weight: 700 !important;
-            line-height: 1 !important;
-            display: inline-block !important;
-            vertical-align: baseline !important;
-            margin-left: 1px !important;
-        }
-
-        .cr-gradient-text .hr-title-dot,
-        .hr-text-gradient .hr-title-dot {
-            background-image: inherit !important;
-            background-size: inherit !important;
-            -webkit-background-clip: text !important;
-            background-clip: text !important;
-            color: transparent !important;
-            -webkit-text-fill-color: transparent !important;
-        }
-
         /* What We Value Section — Crisp Borders & Zero Edge-Fading */
         .cr-value-card {
             border: 1px solid rgba(255, 255, 255, 0.16) !important;
@@ -550,7 +410,7 @@
     <!-- /.preloader -->
 
     <div class="page-wrapper">
-        <header class="main-header main-header--inner-page sticky-header sticky-header--normal">
+        <header class="main-header sticky-header sticky-header--normal">
             <div class="container main-header__container">
                 <div class="main-header__inner">
                     <div class="main-header__logo logo-retina">
@@ -616,35 +476,6 @@
             <div id="smooth-content">
 
                 <!-- ======================================================= -->
-                <!-- PAGE HEADER: FLUID GRADIENT HERO WITH BREADCRUMB -->
-                <!-- ======================================================= -->
-                <section class="page-header hr-fluid-page-header">
-                    <!-- High Reach Fluid Gradient Canvas -->
-                    <div class="hr-fluid-gradient-wrap" id="hrFluidGradientWrap">
-                        <canvas id="hrFluidGradientCanvas"></canvas>
-                    </div>
-                    <div class="page-header__bg" style="background-image: url(assets/images/shapes/page-header-bg-1-1.png);"></div><!-- /.page-header__bg -->
-                    <div class="container">
-                        <div class="page-header__content" id="hrHeaderContent">
-                            <h2 class="page-header__title">Careers</h2>
-                            <ul class="amoxi-breadcrumb list-unstyled">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Careers</span></li>
-                            </ul><!-- /.amoxi-breadcrumb -->
-                        </div><!-- /.page-header__content -->
-                    </div><!-- /.container -->
-                    <img decoding="async" src="assets/images/shapes/page-header-shape-1-1.png" alt="shape" class="page-header__shape-1">
-                    <img decoding="async" src="assets/images/shapes/page-header-shape-1-2.png" alt="shape" class="page-header__shape-2 bw-animate-rotate">
-                
-                    <!-- High Reach Glass Loupe (Zoom View on Letters) -->
-                    <div class="hr-glass-loupe" id="hrGlassLoupe">
-                        <div class="hr-glass-loupe__content" id="hrGlassContent"></div>
-                        <div class="hr-glass-loupe__glare"></div>
-                        <div class="hr-glass-loupe__rim"></div>
-                    </div>
-                </section><!-- /.page-header -->
-
-                <!-- ======================================================= -->
                 <!-- SECTION 1: HERO (Photographic Dark Background) -->
                 <!-- ======================================================= -->
                 <section class="cr-hero">
@@ -654,9 +485,9 @@
                                 CAREERS AT HIGH REACH
                             </p>
                             <h1 class="cr-hero__title bw-split-text">
-                                Right Minds<span class="hr-title-dot">.</span><br>
-                                Right Direction<span class="hr-title-dot">.</span><br>
-                                <span class="cr-gradient-text hr-text-gradient">Reach Higher<span class="hr-title-dot">.</span></span>
+                                Right Minds.<br>
+                                Right Direction.<br>
+                                <span class="cr-gradient-text hr-text-gradient">Reach Higher.</span>
                             </h1>
                             <p class="cr-hero__desc">
                                 Great work starts with people who see possibilities, challenge conventions and turn ideas into action. At High Reach, we bring different perspectives together to create meaningful work and move businesses forward.
@@ -686,7 +517,7 @@
                                 </p>
                                 <h2 class="cr-ideas__title bw-split-text">
                                     Make Your<br>
-                                    Ideas Count<span class="cr-red hr-title-dot">.</span>
+                                    Ideas Count<span class="cr-red">.</span>
                                 </h2>
                             </div>
                             <div class="cr-col-right">
@@ -791,7 +622,7 @@
                                 </p>
                                 <h2 class="cr-opp__title bw-split-text">
                                     Find Your Next<br>
-                                    Opportunity<span class="hr-title-dot">.</span>
+                                    Opportunity.
                                 </h2>
                             </div>
                             <div class="cr-opp__divider" aria-hidden="true"></div>
@@ -816,7 +647,7 @@
                                 <p class="cr-tag bw-split-text">
                                     How to Apply
                                 </p>
-                                <h2 class="cr-apply__title bw-split-text">Introduce Yourself<span class="hr-title-dot">.</span></h2>
+                                <h2 class="cr-apply__title bw-split-text">Introduce Yourself.</h2>
                                 <p class="cr-body">
                                     Tell us a little about who you are, what you do and the kind of opportunity you're looking for. Send your resume along with a short introduction. If your work is best demonstrated visually or through completed projects, include your portfolio or relevant work links.
                                 </p>
@@ -904,7 +735,7 @@
                     </div>
                     <div class="container">
                         <div class="cr-cta__inner">
-                            <h2 class="cr-cta__title bw-split-text">Your Next Move Could <span class="cr-gradient-text hr-text-gradient">Reach Higher<span class="hr-title-dot">.</span></span></h2>
+                            <h2 class="cr-cta__title bw-split-text">Your Next Move Could <span class="cr-gradient-text hr-text-gradient">Reach Higher.</span></h2>
                             <p class="cr-cta__sub">Bring your ideas, skills and ambition. Let's see what we can create together.</p>
                         </div>
                     </div>
