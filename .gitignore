@@ -73,3 +73,10 @@ Web Fonts/*.eot
 Web Fonts/*.svg
 Web Fonts/*.ttf
 
+# Unwanted Reference Screenshots & Mockups
+career page.png
+*.png.bak
+*.jpg.bak
+*.jpeg.bak
+
+

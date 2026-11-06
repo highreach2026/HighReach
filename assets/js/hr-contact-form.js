@@ -13,7 +13,7 @@
 
     var ADMIN_WHATSAPP_NUMBER = "919972772416";
     var ADMIN_EMAIL = "grow@highreach.media";
-    var WEB3FORMS_ACCESS_KEY = "349ffb14-f404-4273-9161-28517a740720";
+    var WEB3FORMS_ACCESS_KEY = "";
 
     // Initialize once DOM is ready
     document.addEventListener("DOMContentLoaded", function () {
@@ -104,11 +104,24 @@
             }
 
             var formData = new FormData(form);
-            if (!formData.get("access_key")) {
-                formData.set("access_key", WEB3FORMS_ACCESS_KEY);
-            }
+            var activeKey = formData.get("access_key") || WEB3FORMS_ACCESS_KEY;
             formData.set("service_requested", service || "General Inquiry");
             formData.set("submitted_at", new Date().toLocaleString());
+
+            // If Web3Forms access key is not set, launch mail client directly & display instant WhatsApp transfer
+            if (!activeKey) {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+                var mailSubject = encodeURIComponent("Project Inquiry — " + name + " — " + (service || "General Inquiry"));
+                var mailBody = encodeURIComponent("Hi High Reach Team,\n\nName: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nService: " + (service || "General Inquiry") + "\n\nComments:\n" + message);
+                window.location.href = "mailto:" + ADMIN_EMAIL + "?subject=" + mailSubject + "&body=" + mailBody;
+                handleFallback(resultBox, name, email, phone, service, message);
+                return;
+            }
+
+            formData.set("access_key", activeKey);
 
             // Use official Web3Forms FormData submission for reliable browser delivery
             fetch(form.action || "https://api.web3forms.com/submit", {
@@ -202,11 +215,24 @@
             }
 
             var formData = new FormData(form);
-            if (!formData.get("access_key")) {
-                formData.set("access_key", WEB3FORMS_ACCESS_KEY);
-            }
+            var activeCareerKey = formData.get("access_key") || WEB3FORMS_ACCESS_KEY;
             formData.set("role_applied", role || "General Application");
             formData.set("submitted_at", new Date().toLocaleString());
+
+            // If Web3Forms access key is not set, launch mail client directly & display instant WhatsApp transfer
+            if (!activeCareerKey) {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+                var careerSubject = encodeURIComponent("Careers Application — " + name + " — " + (role || "General Application"));
+                var careerBody = encodeURIComponent("Hi High Reach Team,\n\nName: " + name + "\nRole Applied: " + role + "\nPortfolio: " + portfolio + "\nEmail: " + email + "\nPhone: " + phone + "\n\nNote:\n" + message);
+                window.location.href = "mailto:hr@highreach.media?subject=" + careerSubject + "&body=" + careerBody;
+                handleCareerFallback(resultBox, name, email, phone, role, portfolio, message);
+                return;
+            }
+
+            formData.set("access_key", activeCareerKey);
 
             fetch(form.action || "https://api.web3forms.com/submit", {
                 method: "POST",
