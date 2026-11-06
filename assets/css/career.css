@@ -317,21 +317,13 @@ body.career-page,
 
 /* ==========================================================================
    SECTION 4 — CAREER OPPORTUNITIES BANNER
-   Dark Spotlight Scene with Translucent Center Divider
+   Clean Dark Section with Center Divider
    ========================================================================== */
 .cr-opp {
     position: relative;
     background-color: #000000;
-    background-image:
-        linear-gradient(90deg,
-            rgba(0, 0, 0, 0.98) 0%,
-            rgba(0, 0, 0, 0.90) 45%,
-            rgba(0, 0, 0, 0.42) 100%
-        ),
-        url('../images/career/career-opportunities-bg.jpg');
-    background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 95px 0;
     color: #FFFFFF;
 }
