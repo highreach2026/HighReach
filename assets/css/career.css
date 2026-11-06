@@ -2,7 +2,7 @@
    HIGH REACH — CAREERS PAGE (Full Dark Theme)
    Typography: Quart (site-wide custom font)
    Backgrounds: Deep Black (#000000) & Frosted Glass Surfaces
-   Accents: High Reach Brand Colors & Vivid Red (#E5272C)
+   Accents: High Reach Brand Colors & Cobalt Blue (#0062F3)
    ========================================================================== */
 
 /* Universal Page Base — Pure Black #000000 --------------------------------- */
@@ -40,8 +40,9 @@ body.career-page,
 }
 
 /* Shared Brand Tokens ------------------------------------------------------ */
-.cr-red {
-    color: #E5272C !important;
+.cr-red,
+.cr-blue {
+    color: #0062F3 !important;
 }
 
 /* High Reach Multi-Color Brand Gradient Text */
@@ -62,7 +63,7 @@ body.career-page,
 }
 
 .cr-dash {
-    color: #E5272C !important;
+    color: #0062F3 !important;
     font-weight: 900;
     margin-right: 4px;
 }
@@ -98,7 +99,7 @@ body.career-page,
     align-items: center;
     justify-content: center;
     gap: 12px;
-    background-color: #E5272C !important;
+    background-color: #0062F3 !important;
     color: #FFFFFF !important;
     font-size: 15px;
     font-weight: 600;
@@ -110,13 +111,13 @@ body.career-page,
     line-height: 1;
     letter-spacing: 0.01em;
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 18px rgba(229, 39, 44, 0.28);
+    box-shadow: 0 4px 18px rgba(0, 98, 243, 0.32);
 }
 .cr-btn:hover {
-    background-color: #cc1f24 !important;
+    background-color: #0050c7 !important;
     color: #FFFFFF !important;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(229, 39, 44, 0.45);
+    box-shadow: 0 12px 30px rgba(0, 98, 243, 0.45);
 }
 
 /* Nav Active Link Indicator */
@@ -130,7 +131,7 @@ body.career-page,
     left: 0;
     width: 100%;
     height: 2px;
-    background: #E5272C;
+    background: #0062F3;
     border-radius: 2px;
 }
 
@@ -390,10 +391,10 @@ body.career-page,
     margin-bottom: 22px;
 }
 
-/* Frosted glass email box with soft red accent */
+/* Frosted glass email box with soft blue accent */
 .cr-email-box {
-    background: linear-gradient(180deg, rgba(229, 39, 44, 0.08), rgba(229, 39, 44, 0.02));
-    border: 1px solid rgba(229, 39, 44, 0.28);
+    background: linear-gradient(180deg, rgba(0, 98, 243, 0.08), rgba(0, 98, 243, 0.02));
+    border: 1px solid rgba(0, 98, 243, 0.32);
     border-radius: 14px;
     padding: 22px 26px;
     margin-bottom: 30px;
@@ -423,7 +424,7 @@ body.career-page,
     transition: color 0.2s ease;
 }
 .cr-email-box__email a:hover {
-    color: #E5272C !important;
+    color: #0062F3 !important;
 }
 
 .cr-email-box__note {
@@ -451,7 +452,7 @@ body.career-page,
 }
 
 .cr-faq-item.is-open {
-    border-color: rgba(229, 39, 44, 0.40);
+    border-color: rgba(0, 98, 243, 0.45);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
 }
 
@@ -474,7 +475,7 @@ body.career-page,
     transition: color 0.2s ease;
 }
 .cr-faq-q:hover {
-    color: #E5272C !important;
+    color: #0062F3 !important;
 }
 
 .cr-faq-chevron {
@@ -485,7 +486,7 @@ body.career-page,
 
 .cr-faq-item.is-open .cr-faq-chevron {
     transform: rotate(180deg);
-    color: #E5272C;
+    color: #0062F3;
 }
 
 .cr-faq-a {
