@@ -59,6 +59,130 @@
 
     <!-- Direct Inline Styles for Instant Display & Zero Cache Delay -->
     <style id="hr-career-instant-styles">
+        /* =========================================================
+           HIGH REACH FLUID GRADIENT PAGE HEADER (Same as Contact Page)
+           ========================================================= */
+        .page-header.hr-fluid-page-header {
+            position: relative !important;
+            overflow: hidden !important;
+            background-color: #040508 !important;
+            margin-top: -95px !important;
+            padding-top: 220px !important;
+            padding-bottom: 130px !important;
+            min-height: 540px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .page-header.hr-fluid-page-header .page-header__bg,
+        .page-header.hr-fluid-page-header .page-header__shape-1,
+        .page-header.hr-fluid-page-header .page-header__shape-2 {
+            display: none !important;
+        }
+
+        /* Fluid Gradient Canvas Background */
+        .page-header.hr-fluid-page-header .hr-fluid-gradient-wrap {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+            overflow: hidden !important;
+        }
+
+        .page-header.hr-fluid-page-header .hr-fluid-gradient-wrap canvas {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+        }
+
+        /* Elegant bottom fade into the dark body */
+        .page-header.hr-fluid-page-header .hr-fluid-gradient-wrap::after {
+            content: "" !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 140px !important;
+            background: linear-gradient(to bottom, rgba(4, 5, 8, 0) 0%, rgba(4, 5, 8, 0.65) 60%, #000000 100%) !important;
+            pointer-events: none !important;
+            z-index: 2 !important;
+        }
+
+        /* Content layout on top of gradient */
+        .page-header.hr-fluid-page-header .container,
+        .page-header.hr-fluid-page-header .page-header__content {
+            position: relative !important;
+            z-index: 5 !important;
+            text-align: center !important;
+        }
+
+        #hrHeaderContent,
+        #hrHeaderContent .page-header__title,
+        #hrHeaderContent .page-header__title * {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+
+        .page-header.hr-fluid-page-header .page-header__title {
+            font-size: 76px !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.03em !important;
+            color: #ffffff !important;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+            margin-bottom: 18px !important;
+            line-height: 1.15 !important;
+        }
+
+        .page-header.hr-fluid-page-header .amoxi-breadcrumb {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            padding: 8px 24px !important;
+            border-radius: 100px !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            list-style: none !important;
+            margin: 0 !important;
+        }
+
+        .page-header.hr-fluid-page-header .amoxi-breadcrumb li a {
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 15px !important;
+            text-decoration: none !important;
+            transition: color 0.3s ease !important;
+        }
+
+        .page-header.hr-fluid-page-header .amoxi-breadcrumb li a:hover {
+            color: #ffffff !important;
+        }
+
+        .page-header.hr-fluid-page-header .amoxi-breadcrumb li span {
+            color: #ffffff !important;
+            font-size: 15px !important;
+            font-weight: 600 !important;
+        }
+
+        @media (max-width: 991px) {
+            .page-header.hr-fluid-page-header {
+                min-height: 440px !important;
+                padding-top: 170px !important;
+                padding-bottom: 90px !important;
+            }
+            .page-header.hr-fluid-page-header .page-header__title {
+                font-size: 46px !important;
+            }
+        }
+
         /* What We Value Section — Crisp Borders & Zero Edge-Fading */
         .cr-value-card {
             border: 1px solid rgba(255, 255, 255, 0.16) !important;
@@ -474,6 +598,35 @@
 
         <div id="smooth-wrapper">
             <div id="smooth-content">
+
+                <!-- ======================================================= -->
+                <!-- PAGE HEADER: FLUID GRADIENT HERO WITH BREADCRUMB -->
+                <!-- ======================================================= -->
+                <section class="page-header hr-fluid-page-header">
+                    <!-- High Reach Fluid Gradient Canvas -->
+                    <div class="hr-fluid-gradient-wrap" id="hrFluidGradientWrap">
+                        <canvas id="hrFluidGradientCanvas"></canvas>
+                    </div>
+                    <div class="page-header__bg" style="background-image: url(assets/images/shapes/page-header-bg-1-1.png);"></div><!-- /.page-header__bg -->
+                    <div class="container">
+                        <div class="page-header__content" id="hrHeaderContent">
+                            <h2 class="page-header__title">Careers</h2>
+                            <ul class="amoxi-breadcrumb list-unstyled">
+                                <li><a href="index.html">Home</a></li>
+                                <li><span>Careers</span></li>
+                            </ul><!-- /.amoxi-breadcrumb -->
+                        </div><!-- /.page-header__content -->
+                    </div><!-- /.container -->
+                    <img decoding="async" src="assets/images/shapes/page-header-shape-1-1.png" alt="shape" class="page-header__shape-1">
+                    <img decoding="async" src="assets/images/shapes/page-header-shape-1-2.png" alt="shape" class="page-header__shape-2 bw-animate-rotate">
+                
+                    <!-- High Reach Glass Loupe (Zoom View on Letters) -->
+                    <div class="hr-glass-loupe" id="hrGlassLoupe">
+                        <div class="hr-glass-loupe__content" id="hrGlassContent"></div>
+                        <div class="hr-glass-loupe__glare"></div>
+                        <div class="hr-glass-loupe__rim"></div>
+                    </div>
+                </section><!-- /.page-header -->
 
                 <!-- ======================================================= -->
                 <!-- SECTION 1: HERO (Photographic Dark Background) -->
