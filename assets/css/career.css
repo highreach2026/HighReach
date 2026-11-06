@@ -63,9 +63,7 @@ body.career-page,
 }
 
 .cr-dash {
-    color: #0062F3 !important;
-    font-weight: 900;
-    margin-right: 4px;
+    display: none !important;
 }
 
 /* Tag line above headings */
@@ -120,27 +118,19 @@ body.career-page,
     box-shadow: 0 12px 30px rgba(0, 98, 243, 0.45);
 }
 
-/* Nav Active Link Indicator — Underline Completely Removed */
-.main-menu .main-menu__list > li > a,
-.main-menu .main-menu__list > li.current > a,
-.main-menu__list li > a,
+/* Nav Active Link Indicator */
 .main-menu__list li.current > a {
-    text-decoration: none !important;
-    border-bottom: none !important;
+    position: relative;
 }
-
-.main-menu .main-menu__list > li > a::before,
-.main-menu .main-menu__list > li > a::after,
-.main-menu .main-menu__list > li.current > a::before,
-.main-menu .main-menu__list > li.current > a::after,
-.main-menu__list li.current > a::before,
 .main-menu__list li.current > a::after {
-    display: none !important;
-    content: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #0062F3;
+    border-radius: 2px;
 }
 
 /* ==========================================================================
