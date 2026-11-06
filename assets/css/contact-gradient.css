@@ -98,7 +98,7 @@ body.contact-page .main-header--inner-page:not(.sticky-header--cloned) {
 .page-header.hr-fluid-page-header .amoxi-breadcrumb {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 0;
     padding: 8px 24px;
     border-radius: 100px;
     background: rgba(255, 255, 255, 0.08);
@@ -107,6 +107,27 @@ body.contact-page .main-header--inner-page:not(.sticky-header--cloned) {
     border: 1px solid rgba(255, 255, 255, 0.15);
     list-style: none;
     margin: 0;
+}
+
+.page-header.hr-fluid-page-header .hr-breadcrumb li,
+.page-header.hr-fluid-page-header .amoxi-breadcrumb li {
+    display: inline-flex;
+    align-items: center;
+    font-size: 15px;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.page-header.hr-fluid-page-header .hr-breadcrumb li:not(:last-child)::after,
+.page-header.hr-fluid-page-header .amoxi-breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 400;
+    display: inline-block;
 }
 
 .page-header.hr-fluid-page-header .hr-breadcrumb li a,
