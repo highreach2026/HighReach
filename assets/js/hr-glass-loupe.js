@@ -111,8 +111,8 @@
         var el = elements[i];
         if (!el || el === document.body || el === document.documentElement) continue;
 
-        // Skip loupe itself, cursors, preloader, videos, form inputs, CTA sections, and action buttons
-        if (el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select, .cr-cta, .hr-cta-section, .cr-btn, .hr-btn, button, .btn')) {
+        // Skip loupe itself, cursors, preloader, videos, form inputs, and action buttons
+        if (el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select, .cr-btn, .hr-btn, button, .btn')) {
           continue;
         }
 
@@ -211,7 +211,7 @@
         if (headerContent) return headerContent;
 
         // Priority 9: Semantic typography tags and prominent text containers
-        var textTarget = el.closest('h1, h2, h3, h4, h5, h6, .sec-title__title, .hero-one__title, .page-header__title, .banner-title, .hr-breadcrumb, .amoxi-breadcrumb, p, a, button, li, .sec-title__tagline, .contact-one__info__title, .contact-one__info__link, .error-404__title, .hr-404__number, .hr-404__title, .hr-404__eyebrow, .hr-404__text, .hr-404__button');
+        var textTarget = el.closest('h1, h2, h3, h4, h5, h6, .cr-cta__title, .cr-cta__sub, .sec-title__title, .hero-one__title, .page-header__title, .banner-title, .hr-breadcrumb, .amoxi-breadcrumb, p, a, button, li, .sec-title__tagline, .contact-one__info__title, .contact-one__info__link, .error-404__title, .hr-404__number, .hr-404__title, .hr-404__eyebrow, .hr-404__text, .hr-404__button');
         if (textTarget && textTarget.textContent && textTarget.textContent.trim().length > 0) {
           return textTarget;
         }

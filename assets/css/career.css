@@ -729,6 +729,32 @@ section:hover .cr-tag::before {
     margin-bottom: 0;
 }
 
+/* Glass Loupe Bubble Content in Your Next Move Section */
+.hr-glass-loupe__content .cr-cta__title,
+.hr-glass-loupe__content .cr-cta__title * {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.hr-glass-loupe__content .cr-cta__title .cr-gradient-text,
+.hr-glass-loupe__content .cr-cta__title .hr-text-gradient {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    background-image: linear-gradient(100deg, #ffd60a, #a6ec6a 28%, #36c2b0 58%, #0062f3 82%, #ffd60a) !important;
+    background-size: 250% 100% !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    display: inline-block !important;
+}
+
+.hr-glass-loupe__content .cr-cta__sub {
+    color: rgba(255, 255, 255, 0.90) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 /* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */

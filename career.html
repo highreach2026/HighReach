@@ -54,11 +54,37 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=29.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=30.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
 
     <!-- Direct Inline Styles for Instant Display & Zero Cache Delay -->
     <style id="hr-career-instant-styles">
+        /* Glass Loupe Bubble Content in Your Next Move Section */
+        .hr-glass-loupe__content .cr-cta__title,
+        .hr-glass-loupe__content .cr-cta__title * {
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: #FFFFFF !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .hr-glass-loupe__content .cr-cta__title .cr-gradient-text,
+        .hr-glass-loupe__content .cr-cta__title .hr-text-gradient {
+            color: transparent !important;
+            -webkit-text-fill-color: transparent !important;
+            background-image: linear-gradient(100deg, #ffd60a, #a6ec6a 28%, #36c2b0 58%, #0062f3 82%, #ffd60a) !important;
+            background-size: 250% 100% !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            display: inline-block !important;
+        }
+
+        .hr-glass-loupe__content .cr-cta__sub {
+            color: rgba(255, 255, 255, 0.90) !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
         /* Soft, Smooth & Elegant FAQ Accordion Expansion */
         .cr-faq-item {
             transition: border-color 0.45s ease, background 0.45s ease, box-shadow 0.45s ease !important;
@@ -920,7 +946,7 @@
     <!-- Interactive WhatsApp Admin Widget -->
     <script src="assets/js/whatsapp-widget.js"></script>
     <!-- Universal Glass Loupe Effect -->
-    <script src="assets/js/hr-glass-loupe.js?v=14.0"></script>
+    <script src="assets/js/hr-glass-loupe.js?v=15.0"></script>
     <!-- High Reach Logo Gradient Bars -->
     <script src="assets/js/hr-gradient-bars.js?v=12.0"></script>
 
