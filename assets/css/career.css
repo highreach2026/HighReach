@@ -456,8 +456,8 @@ section:hover .cr-tag::before {
 .cr-value-card:hover,
 .cr-value-card:active {
     transform: translateY(-4px) translateZ(0);
-    border-color: #0062F3 !important;
-    box-shadow: 0 12px 32px rgba(0, 98, 243, 0.28), inset 0 0 0 1px rgba(0, 98, 243, 0.6) !important;
+    border-color: rgba(0, 98, 243, 0.55) !important;
+    box-shadow: 0 10px 24px rgba(0, 98, 243, 0.15) !important;
 }
 
 .cr-value-card:hover::before,
