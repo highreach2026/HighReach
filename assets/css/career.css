@@ -44,6 +44,17 @@ body.career-page,
     color: #E5272C !important;
 }
 
+/* High Reach Multi-Color Brand Gradient Text */
+.cr-gradient-text,
+.cr-brand-gradient {
+    background: linear-gradient(135deg, #FFD60A 0%, #A6EC6A 33%, #36C2B0 66%, #0062F3 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+    display: inline-block;
+}
+
 .cr-dash {
     color: #E5272C !important;
     font-weight: 900;
