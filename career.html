@@ -737,7 +737,14 @@
                                 </p>
                             </div>
 
-                            <form action="assets/inc/sendemail.php" class="contact-form-validated form-one" id="careerForm">
+                            <form action="https://api.web3forms.com/submit" method="POST" class="form-one hr-career-form" id="careerForm">
+                                <!-- Web3Forms Config for grow@highreach.media -->
+                                <input type="hidden" name="access_key" value="00000000-0000-0000-0000-000000000000">
+                                <input type="hidden" name="subject" value="New Career Application — High Reach">
+                                <input type="hidden" name="from_name" value="High Reach Careers Portal">
+                                <!-- Anti-Spam Botcheck Honeypot -->
+                                <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;">
+
                                 <div class="form-one__group">
                                     <div class="form-one__control form-one__control--full">
                                         <input type="text" name="name" placeholder="Full Name *" required>
@@ -1126,6 +1133,8 @@
             window.addEventListener("resize", fitFooterTitle);
         })();
     </script>
+    <!-- High Reach Dual-Delivery Contact & Career Form Script -->
+    <script src="assets/js/hr-contact-form.js?v=1.0"></script>
     </body>
 
 </html>

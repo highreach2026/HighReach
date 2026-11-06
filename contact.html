@@ -215,43 +215,54 @@
                                         <h2 class="sec-title__title bw-split-text">Let's Build<br>Something Extraordinary.</h2>
                                         <p class="contact-one__desc" style="font-size: 16px; line-height: 1.6; color: #555555; margin-top: 10px; margin-bottom: 24px;">Tell us what you have in mind. We'll bring the creativity, strategy, and expertise to make it happen.</p>
                                     </div><!-- /.sec-title -->
-                                    <form action="assets/inc/sendemail.php" class="contact-form-validated form-one">
+                                    <form action="https://api.web3forms.com/submit" method="POST" class="hr-contact-form form-one" id="contactForm">
+                                        <!-- Web3Forms Config for grow@highreach.media -->
+                                        <input type="hidden" name="access_key" value="00000000-0000-0000-0000-000000000000">
+                                        <input type="hidden" name="subject" value="New Project Inquiry — High Reach Website">
+                                        <input type="hidden" name="from_name" value="High Reach Contact Form">
+                                        <!-- Anti-Spam Botcheck Honeypot (Catches automated spambots) -->
+                                        <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;">
+
                                         <div class="form-one__group">
                                             <div class="form-one__control form-one__control--full">
-                                                <input type="text" name="name" placeholder="Your Name *">
+                                                <input type="text" name="name" id="contactName" placeholder="Your Name *" required>
                                             </div><!-- /.form-one__control -->
                                             <div class="form-one__control form-one__control--full">
-                                                <input type="email" name="email" placeholder="Your Email *">
+                                                <input type="email" name="email" id="contactEmail" placeholder="Your Email *" required>
                                             </div><!-- /.form-one__control -->
                                             <div class="form-one__control">
-                                                <input type="tel" name="phone" placeholder="Your Phone *">
+                                                <input type="tel" name="phone" id="contactPhone" placeholder="Your Phone *" required>
                                             </div><!-- /.form-one__control -->
                                             <div class="form-one__control">
-                                                <select class="selectpicker" name="service" autocomplete="off" aria-label="Select Service">
-                                                    <option selected>Select Service</option>
-                                                    <option value="1">BRANDING & CREATIVE DESIGN</option>
-                                                    <option value="2">MARKETING & COMMUNICATIONS</option>
-                                                    <option value="3">DIGITAL MARKETING</option>
-                                                    <option value="4">E-COMMERCE & MARKETPLACE GROWTH</option>
-                                                    <option value="5">CREATIVE PRODUCTION & CONTENT STUDIO</option>
-                                                    <option value="6">WEB, APP & DIGITAL EXPERIENCES</option>
-                                                    <option value="7">IT CONSULTING</option>
-                                                    <option value="8">ARTIFICIAL INTELLIGENCE & GENERATIVE AI</option>
-                                                    <option value="9">BUSINESS & GROWTH SOLUTIONS</option>
-                                                    <option value="10">PRINT, COLLATERAL & COMMERCIAL PRODUCTION</option>
-                                                    </select>                                                
+                                                <select class="selectpicker" name="service" id="contactService" autocomplete="off" aria-label="Select Service" required>
+                                                    <option value="" selected disabled>Select Service *</option>
+                                                    <option value="Branding & Creative Design">BRANDING & CREATIVE DESIGN</option>
+                                                    <option value="Marketing & Communications">MARKETING & COMMUNICATIONS</option>
+                                                    <option value="Digital Marketing">DIGITAL MARKETING</option>
+                                                    <option value="E-Commerce & Marketplace Growth">E-COMMERCE & MARKETPLACE GROWTH</option>
+                                                    <option value="Creative Production & Content Studio">CREATIVE PRODUCTION & CONTENT STUDIO</option>
+                                                    <option value="Web, App & Digital Experiences">WEB, APP & DIGITAL EXPERIENCES</option>
+                                                    <option value="IT Consulting">IT CONSULTING</option>
+                                                    <option value="Artificial Intelligence & Generative AI">ARTIFICIAL INTELLIGENCE & GENERATIVE AI</option>
+                                                    <option value="Business & Growth Solutions">BUSINESS & GROWTH SOLUTIONS</option>
+                                                    <option value="Print, Collateral & Commercial Production">PRINT, COLLATERAL & COMMERCIAL PRODUCTION</option>
+                                                </select>                                                
                                             </div><!-- /.form-one__control -->
                                             <div class="form-one__control form-one__control--full">
-                                                <textarea name="message" placeholder="Your Comments *"></textarea>
+                                                <textarea name="message" id="contactMessage" placeholder="Your Comments / Project Brief *" required></textarea>
                                             </div><!-- /.form-one__control -->
-                                            <div class="form-one__control form-one__control--full">
-                                                <button type="submit" class="amoxi-btn-two">
+                                            <div class="form-one__control form-one__control--full hr-form-buttons-row">
+                                                <button type="submit" class="amoxi-btn-two" id="contactSubmitBtn">
                                                     SEND REQUEST <span class="amoxi-btn-two__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
                                                 </button><!-- /.amoxi-btn-two -->
+                                                <button type="button" class="hr-whatsapp-form-btn" id="contactWhatsAppBtn" title="Chat directly with High Reach Admin on WhatsApp">
+                                                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                                    <span>CHAT ON WHATSAPP</span>
+                                                </button>
                                             </div><!-- /.form-one__control -->
                                         </div><!-- /.form-one__group -->
                                     </form><!-- /.form-one -->
-                                    <div class="result"></div><!-- /.result -->
+                                    <div class="result" id="contactResult" style="margin-top: 15px;"></div><!-- /.result -->
                                 </div><!-- /.contact-one__form -->
                             </div><!-- /.col-xl-7 -->
                         </div><!-- /.row -->
@@ -731,6 +742,8 @@
     </script>
     <!-- High Reach Logo Gradient Bars (Selection Markup & Scroll Progress) -->
     <script src="assets/js/hr-gradient-bars.js?v=12.0"></script>
+    <!-- High Reach Dual-Delivery Contact Form Script -->
+    <script src="assets/js/hr-contact-form.js?v=1.0"></script>
 </body>
 
 

@@ -171,3 +171,83 @@ body.contact-page .stroke-text-title svg text::-moz-selection {
     text-shadow: none !important;
     fill: #000000 !important;
 }
+
+/* =========================================================
+   HIGH REACH — DUAL-DELIVERY CONTACT FORM (Email + WhatsApp)
+   ========================================================= */
+
+.hr-form-buttons-row {
+    display: flex !important;
+    gap: 14px !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.hr-form-buttons-row .amoxi-btn-two,
+.hr-form-buttons-row .hr-whatsapp-form-btn {
+    flex: 1 1 220px !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    border-radius: 999px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    transition: all 0.35s ease !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+}
+
+.hr-whatsapp-form-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(37, 211, 102, 0.4) !important;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25) !important;
+}
+
+.hr-whatsapp-form-btn:hover {
+    background: linear-gradient(135deg, #1ebe5d 0%, #0d6e62 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35) !important;
+    color: #ffffff !important;
+}
+
+.hr-whatsapp-form-btn i {
+    font-size: 20px !important;
+}
+
+.hr-form-alert {
+    padding: 18px 22px;
+    border-radius: 16px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: hrFadeIn 0.35s ease;
+}
+
+.hr-form-alert--success {
+    background: rgba(37, 211, 102, 0.10);
+    border: 1px solid rgba(37, 211, 102, 0.35);
+    color: #e6ffed;
+}
+
+.hr-form-alert--error {
+    background: rgba(255, 77, 79, 0.10);
+    border: 1px solid rgba(255, 77, 79, 0.35);
+    color: #ffe6e6;
+}
+
+@keyframes hrFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
