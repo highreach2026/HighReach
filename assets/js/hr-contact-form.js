@@ -13,6 +13,7 @@
 
     var ADMIN_WHATSAPP_NUMBER = "919972772416";
     var ADMIN_EMAIL = "grow@highreach.media";
+    var WEB3FORMS_ACCESS_KEY = "349ffb14-f404-4273-9161-28517a740720";
 
     // Initialize once DOM is ready
     document.addEventListener("DOMContentLoaded", function () {
@@ -49,8 +50,8 @@
                 var phone = (form.querySelector('[name="phone"]') || {}).value || "";
                 var serviceSelect = form.querySelector('[name="service"]');
                 var service = "";
-                if (serviceSelect) {
-                    service = serviceSelect.options[serviceSelect.selectedIndex] ? serviceSelect.options[serviceSelect.selectedIndex].text : "";
+                if (serviceSelect && serviceSelect.selectedIndex >= 0) {
+                    service = serviceSelect.options[serviceSelect.selectedIndex].text;
                     if (service.toLowerCase().indexOf("select") !== -1) service = "";
                 }
                 var message = (form.querySelector('[name="message"]') || {}).value || "";
@@ -96,33 +97,27 @@
             var originalBtnHtml = submitBtn ? submitBtn.innerHTML : "SEND REQUEST";
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING...';
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING TO ' + ADMIN_EMAIL + '...';
             }
             if (resultBox) {
-                resultBox.innerHTML = '<div class="hr-form-alert" style="background: rgba(0, 98, 243, 0.12); border: 1px solid rgba(0, 98, 243, 0.3); color: #fff;"><i class="fas fa-paper-plane"></i> Safely transmitting your inquiry...</div>';
+                resultBox.innerHTML = '<div class="hr-form-alert" style="background: rgba(0, 98, 243, 0.12); border: 1px solid rgba(0, 98, 243, 0.3); color: #fff;"><i class="fas fa-paper-plane"></i> Transmitting your message securely to ' + ADMIN_EMAIL + '...</div>';
             }
 
             var formData = new FormData(form);
-            var object = {};
-            formData.forEach(function (val, key) {
-                object[key] = val;
-            });
-            object["service_requested"] = service || "General Inquiry";
-            object["submitted_at"] = new Date().toISOString();
+            if (!formData.get("access_key")) {
+                formData.set("access_key", WEB3FORMS_ACCESS_KEY);
+            }
+            formData.set("service_requested", service || "General Inquiry");
+            formData.set("submitted_at", new Date().toLocaleString());
 
-            var json = JSON.stringify(object);
-
+            // Use official Web3Forms FormData submission for reliable browser delivery
             fetch(form.action || "https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: json
+                body: formData
             })
             .then(function (res) {
                 return res.json().then(function (data) {
-                    return { ok: res.ok, data: data };
+                    return { ok: res.ok, status: res.status, data: data };
                 });
             })
             .then(function (resObj) {
@@ -131,30 +126,28 @@
                     submitBtn.innerHTML = originalBtnHtml;
                 }
 
-                if (resObj.ok && resObj.data && (resObj.data.success || resObj.data.status === 200)) {
+                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
                     form.reset();
                     if ($(".selectpicker").length) {
                         $(".selectpicker").selectpicker("refresh");
                     }
 
                     if (resultBox) {
-                        var waQuickMsg = "Hi High Reach Admin,\n\nI just sent a project request via your website:\n• *Name:* " + name + "\n• *Service:* " + (service || "General Inquiry") + "\nLooking forward to hearing from you!";
-                        var waEncoded = encodeURIComponent(waQuickMsg);
-                        var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + waEncoded;
+                        var waQuickMsg = "Hi High Reach Admin,\n\nI just sent a project request to " + ADMIN_EMAIL + " via your website:\n• *Name:* " + name + "\n• *Service:* " + (service || "General Inquiry") + "\nLooking forward to hearing from you!";
+                        var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waQuickMsg);
 
                         resultBox.innerHTML = 
                             '<div class="hr-form-alert hr-form-alert--success">' +
                                 '<div style="font-weight: 700; font-size: 16px; margin-bottom: 4px;"><i class="fas fa-check-circle" style="color: #25D366; margin-right: 8px;"></i>Request Sent Successfully!</div>' +
-                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your details have been delivered safely to our leadership team. We will respond to <strong>' + escapeHtml(email) + '</strong> within 24 hours.</div>' +
-                                '<div style="margin-top: 10px;">' +
+                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your details have been delivered safely to <strong>' + ADMIN_EMAIL + '</strong>. Our team will reach out to you within 24 hours.</div>' +
+                                '<div style="margin-top: 12px;">' +
                                     '<a href="' + waQuickUrl + '" target="_blank" rel="noopener noreferrer" class="hr-alert-wa-link" style="display: inline-flex; align-items: center; gap: 8px; color: #25D366; font-weight: 600; text-decoration: none;">' +
-                                        '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> Want an instant response? Ping us directly on WhatsApp &rarr;' +
+                                        '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> Want an immediate discussion? Ping us directly on WhatsApp &rarr;' +
                                     '</a>' +
                                 '</div>' +
                             '</div>';
                     }
                 } else {
-                    // Fallback in case of API access key requirement
                     handleFallback(resultBox, name, email, phone, service, message);
                 }
             })
@@ -209,23 +202,19 @@
             }
 
             var formData = new FormData(form);
-            var object = {};
-            formData.forEach(function (val, key) {
-                object[key] = val;
-            });
-            object["role_applied"] = role || "General Application";
+            if (!formData.get("access_key")) {
+                formData.set("access_key", WEB3FORMS_ACCESS_KEY);
+            }
+            formData.set("role_applied", role || "General Application");
+            formData.set("submitted_at", new Date().toLocaleString());
 
             fetch(form.action || "https://api.web3forms.com/submit", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(object)
+                body: formData
             })
             .then(function (res) {
                 return res.json().then(function (data) {
-                    return { ok: res.ok, data: data };
+                    return { ok: res.ok, status: res.status, data: data };
                 });
             })
             .then(function (resObj) {
@@ -234,7 +223,7 @@
                     submitBtn.innerHTML = originalBtnHtml;
                 }
 
-                if (resObj.ok && resObj.data && (resObj.data.success || resObj.data.status === 200)) {
+                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
                     form.reset();
                     if ($(".selectpicker").length) {
                         $(".selectpicker").selectpicker("refresh");
@@ -243,7 +232,7 @@
                         resultBox.innerHTML = 
                             '<div class="hr-form-alert hr-form-alert--success">' +
                                 '<div style="font-weight: 700; font-size: 16px;"><i class="fas fa-check-circle" style="color: #25D366; margin-right: 8px;"></i>Application Received!</div>' +
-                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your portfolio and details have reached our hiring team. We review every application personally within 3–5 business days.</div>' +
+                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your portfolio and details have reached <strong>' + ADMIN_EMAIL + '</strong>. We review every application personally within 3–5 business days.</div>' +
                             '</div>';
                     }
                 } else {
@@ -327,4 +316,3 @@
     }
 
 })();
-
