@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=14.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=15.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
 
     <!-- High Reach — Navbar Clients Section Gradient Effect (Direct Inline to prevent cache delays) -->
@@ -852,6 +852,38 @@
     <script src="assets/js/hr-contact-form.js?v=1.0"></script>
     <!-- High Reach WebGL Signature Fluid Gradient Script -->
     <script src="assets/js/hr-fluid-gradient.js?v=2.1"></script>
+    <!-- High Reach Section Mouse-Flow Ambient Glow Script -->
+    <script>
+        (function () {
+            'use strict';
+            function initSectionFlow() {
+                var sections = document.querySelectorAll('.cr-hero, .cr-ideas, .cr-values, .cr-opp, .cr-apply-faq');
+                sections.forEach(function (sec) {
+                    sec.classList.add('cr-section-mouseflow');
+                    var rafId = null;
+                    sec.addEventListener('pointermove', function (e) {
+                        var rect = sec.getBoundingClientRect();
+                        var x = ((e.clientX - rect.left) / rect.width) * 100;
+                        var y = ((e.clientY - rect.top) / rect.height) * 100;
+                        if (rafId) cancelAnimationFrame(rafId);
+                        rafId = requestAnimationFrame(function () {
+                            sec.style.setProperty('--flow-x', x.toFixed(2) + '%');
+                            sec.style.setProperty('--flow-y', y.toFixed(2) + '%');
+                            sec.classList.add('hr-active-flow');
+                        });
+                    }, { passive: true });
+                    sec.addEventListener('pointerleave', function () {
+                        sec.classList.remove('hr-active-flow');
+                    });
+                });
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initSectionFlow);
+            } else {
+                initSectionFlow();
+            }
+        })();
+    </script>
     </body>
 
 </html>

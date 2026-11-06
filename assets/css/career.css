@@ -66,18 +66,90 @@ body.career-page,
     display: none !important;
 }
 
-/* Tag line above headings */
+/* ==========================================================================
+   HIGH REACH BLUE SECTION TITLE SYMBOL
+   Exact signature chevron arrow matching .sec-title__tagline::before on home page
+   ========================================================================== */
 .cr-tag {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.70) !important;
+    color: rgba(255, 255, 255, 0.75) !important;
     margin-bottom: 20px;
     line-height: 1;
+    position: relative;
+    cursor: default;
+}
+
+.cr-tag::before {
+    content: "" !important;
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    width: 15px !important;
+    height: 20px !important;
+    background-color: #0062F3 !important;
+    clip-path: polygon(29.44% 0%,
+            0% 26.85%,
+            35.03% 49.81%,
+            5.08% 77.04%,
+            40.10% 100%,
+            100% 45.91%) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin-right: 4px !important;
+    vertical-align: middle !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Interactive symbol reaction on hover or mouse flow */
+.cr-tag:hover::before,
+section:hover .cr-tag::before {
+    transform: translateX(4px) scale(1.10);
+    filter: drop-shadow(0 0 10px rgba(0, 98, 243, 0.85));
+}
+
+/* ==========================================================================
+   INTERACTIVE MOUSE-FLOW AMBIENT GLOW
+   Liquid multi-color blue flow following cursor across career sections
+   ========================================================================== */
+.cr-section-mouseflow {
+    position: relative;
+    overflow: hidden;
+}
+
+.cr-section-mouseflow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: radial-gradient(
+        750px circle at var(--flow-x, 50%) var(--flow-y, 50%),
+        rgba(0, 98, 243, 0.14) 0%,
+        rgba(54, 194, 176, 0.08) 28%,
+        rgba(166, 236, 106, 0.03) 52%,
+        transparent 72%
+    );
+}
+
+.cr-section-mouseflow:hover::before,
+.cr-section-mouseflow.hr-active-flow::before {
+    opacity: 1;
+}
+
+.cr-hero .container,
+.cr-ideas .container,
+.cr-values .container,
+.cr-opp .container,
+.cr-apply-faq .container {
+    position: relative;
+    z-index: 2;
 }
 
 /* Clean readable body text */
