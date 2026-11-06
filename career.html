@@ -54,11 +54,58 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=27.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=28.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
 
     <!-- Direct Inline Styles for Instant Display & Zero Cache Delay -->
     <style id="hr-career-instant-styles">
+        /* Soft, Smooth & Elegant FAQ Accordion Expansion */
+        .cr-faq-item {
+            transition: border-color 0.45s ease, background 0.45s ease, box-shadow 0.45s ease !important;
+        }
+
+        .cr-faq-item.is-open {
+            box-shadow: 0 8px 26px rgba(0, 98, 243, 0.12) !important;
+        }
+
+        .cr-faq-chevron {
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), color 0.35s ease !important;
+        }
+
+        .cr-faq-item.is-open .cr-faq-chevron {
+            transform: rotate(180deg) !important;
+            color: #0062F3 !important;
+        }
+
+        .cr-faq-a {
+            display: grid !important;
+            grid-template-rows: 0fr !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            transition: grid-template-rows 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                        max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+
+        .cr-faq-item.is-open .cr-faq-a {
+            grid-template-rows: 1fr !important;
+            max-height: 220px !important;
+        }
+
+        .cr-faq-a p {
+            min-height: 0 !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            transform: translateY(-5px) !important;
+            transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+
+        .cr-faq-item.is-open .cr-faq-a p {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition-delay: 0.05s !important;
+        }
+
         /* Prevent any interactive mask or loupe from hiding elements in the CTA section */
         .cr-cta,
         .cr-cta *,

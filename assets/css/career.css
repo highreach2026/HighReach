@@ -602,12 +602,13 @@ section:hover .cr-tag::before {
     overflow: hidden;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    transition: border-color 0.45s ease, background 0.45s ease, box-shadow 0.45s ease;
 }
 
 .cr-faq-item.is-open {
     border-color: rgba(0, 98, 243, 0.45);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    box-shadow: 0 8px 26px rgba(0, 98, 243, 0.12);
 }
 
 .cr-faq-q {
@@ -626,7 +627,7 @@ section:hover .cr-tag::before {
     text-align: left;
     line-height: 1.4;
     font-family: "Quart", Arial, sans-serif !important;
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
 }
 .cr-faq-q:hover {
     color: #0062F3 !important;
@@ -635,7 +636,7 @@ section:hover .cr-tag::before {
 .cr-faq-chevron {
     flex-shrink: 0;
     color: rgba(255, 255, 255, 0.65);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), color 0.35s ease;
 }
 
 .cr-faq-item.is-open .cr-faq-chevron {
@@ -644,21 +645,37 @@ section:hover .cr-tag::before {
 }
 
 .cr-faq-a {
+    display: grid;
+    grid-template-rows: 0fr;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: grid-template-rows 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cr-faq-item.is-open .cr-faq-a {
-    max-height: 300px;
+    grid-template-rows: 1fr;
+    max-height: 220px;
 }
 
 .cr-faq-a p {
+    min-height: 0;
+    overflow: hidden;
     padding: 0 26px 22px;
     font-size: 14.5px;
     line-height: 1.72;
     color: rgba(255, 255, 255, 0.74) !important;
     margin: 0;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cr-faq-item.is-open .cr-faq-a p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.05s;
 }
 
 /* ==========================================================================
