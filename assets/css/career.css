@@ -216,31 +216,90 @@ section:hover .cr-tag::before {
     margin-bottom: 0;
 }
 
-/* Primary Action Button */
-.cr-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+/* Primary Action Button — Exact Home Page "LET'S REACH HIGHER" Capsule Pill & Circle Shape */
+.cr-btn,
+.hr-btn.cr-btn,
+.amoxi-btn.cr-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    gap: 0 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 100px !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.cr-btn .hr-btn__text,
+.cr-btn .amoxi-btn__text {
     background-color: #0062F3 !important;
     color: #FFFFFF !important;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 14px 28px;
-    border-radius: 8px;
-    text-decoration: none !important;
-    border: none;
-    cursor: pointer;
-    line-height: 1;
-    letter-spacing: 0.01em;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 18px rgba(0, 98, 243, 0.32);
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0.03em !important;
+    border-radius: 100px !important;
+    padding: 14.5px 36px !important;
+    box-shadow: 0 4px 18px rgba(0, 98, 243, 0.35) !important;
+    transition: all 500ms ease !important;
+    font-family: "Quart", Arial, sans-serif !important;
+    overflow: hidden !important;
+    text-transform: uppercase !important;
 }
+
+.cr-btn .hr-btn__icon-box,
+.cr-btn .amoxi-btn__icon-box {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: #FFFFFF !important;
+    margin-left: -4px !important;
+    position: relative !important;
+    z-index: 2 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+    transition: all 500ms ease !important;
+    flex-shrink: 0 !important;
+}
+
+.cr-btn .hr-btn__icon,
+.cr-btn .amoxi-btn__icon {
+    font-size: 11px !important;
+    color: #0062F3 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 500ms ease !important;
+}
+
 .cr-btn:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+.cr-btn:hover .hr-btn__text,
+.cr-btn:hover .amoxi-btn__text {
     background-color: #0050c7 !important;
+    box-shadow: 0 10px 28px rgba(0, 98, 243, 0.5) !important;
+}
+
+.cr-btn:hover .hr-btn__icon-box,
+.cr-btn:hover .amoxi-btn__icon-box {
+    background-color: #0062F3 !important;
+}
+
+.cr-btn:hover .hr-btn__icon,
+.cr-btn:hover .amoxi-btn__icon {
     color: #FFFFFF !important;
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(0, 98, 243, 0.45);
+    transform: translateX(4px) !important;
 }
 
 /* Nav Active Link — Remove extra dash under text, preserve standard navbar bottom underline */
@@ -702,9 +761,15 @@ section:hover .cr-tag::before {
         font-size: 26px;
     }
 
-    .cr-btn {
-        padding: 13px 22px;
-        font-size: 14px;
+    .cr-btn .hr-btn__text,
+    .cr-btn .amoxi-btn__text {
+        padding: 12.5px 28px !important;
+        font-size: 13.5px !important;
+    }
+    .cr-btn .hr-btn__icon-box,
+    .cr-btn .amoxi-btn__icon-box {
+        width: 38px !important;
+        height: 38px !important;
     }
 
     .cr-email-box {
