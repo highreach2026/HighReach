@@ -1,26 +1,84 @@
 /* ==========================================================================
-   HIGH REACH - CAREERS PAGE STYLESHEET
-   Accurately matches reference design layout, typography, colors, and styling.
+   HIGH REACH — CAREERS PAGE (cr-* namespace)
+   Exact pixel match to reference design — career page.png
    ========================================================================== */
 
-/* Page Background & Base Visibility */
+/* Page base ---------------------------------------------------------------- */
 body.career-page {
-    background-color: #050608;
-    color: #111111;
+    background: #ffffff;
     overflow-x: hidden;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.career-page .page-wrapper,
-.career-page #smooth-wrapper,
-.career-page #smooth-content {
+body.career-page .page-wrapper,
+body.career-page #smooth-wrapper,
+body.career-page #smooth-content {
     background: transparent;
     overflow-x: hidden;
 }
 
-/* Nav Active Careers Red Underline */
-.main-menu__list li.current > a,
-.main-menu__list li a[href="career.html"] {
+/* Resets for AOS on this page */
+body.career-page [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* Shared tokens ------------------------------------------------------------ */
+.cr-red  { color: #E5272C !important; }
+.cr-dash { color: #E5272C; font-weight: 900; }
+
+/* Tag line (small label above a heading) */
+.cr-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    line-height: 1;
+}
+.cr-tag--dark  { color: #888; }     /* On white backgrounds */
+.cr-tag--light { color: rgba(255,255,255,0.72); } /* On dark backgrounds */
+
+/* Body copy */
+.cr-body {
+    font-size: 15.5px;
+    line-height: 1.76;
+    color: #555;
+    margin-bottom: 18px;
+}
+.cr-body:last-child { margin-bottom: 0; }
+
+/* Primary Red Button */
+.cr-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #E5272C;
+    color: #fff !important;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 26px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+.cr-btn:hover {
+    background: #c71f24;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(229,39,44,0.32);
+}
+
+/* Nav: Careers active underline ------------------------------------------- */
+.main-menu__list li.current > a {
     position: relative;
 }
 .main-menu__list li.current > a::after {
@@ -30,515 +88,419 @@ body.career-page {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #E5272C;
+    background: #E5272C;
     border-radius: 2px;
 }
 
-/* Red Colors & Reusable Utility Classes */
-.hr-red {
-    color: #E5272C !important;
-}
-
-.hr-red-dash {
-    color: #E5272C !important;
-    font-weight: 900;
-    margin-right: 2px;
-}
-
-.career-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 22px;
-}
-
-.career-tag--light {
-    color: #888888;
-}
-
-.career-tag--dark {
-    color: rgba(255, 255, 255, 0.72);
-}
-
-/* Primary Red Button */
-.hr-red-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background-color: #E5272C;
-    color: #FFFFFF !important;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 14px 28px;
-    border-radius: 6px;
-    text-decoration: none !important;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    border: none;
-    cursor: pointer;
-    line-height: 1;
-}
-
-.hr-red-btn:hover {
-    background-color: #cc1f24;
-    color: #FFFFFF !important;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(229, 39, 44, 0.35);
-}
-
-.hr-red-btn .arrow {
-    display: inline-block;
-    transition: transform 0.25s ease;
-    font-size: 16px;
-}
-
-.hr-red-btn:hover .arrow {
-    transform: translateX(4px);
-}
-
 /* ==========================================================================
-   SECTION 1: HERO (Dark Photographic Scene with Red Beam)
+   SECTION 1 — HERO
+   Full-bleed dark photo banner with left-side gradient overlay
    ========================================================================== */
-.career-hero-2026 {
+.cr-hero {
     position: relative;
-    min-height: 580px;
-    background-color: #050608;
-    background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.92) 42%, rgba(0, 0, 0, 0.45) 70%, rgba(0, 0, 0, 0.6) 100%), url('../images/career/career-hero-bg.jpg');
-    background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
-    padding-top: 200px;
-    padding-bottom: 120px;
-    color: #FFFFFF;
+    min-height: 530px;
+    background:
+        linear-gradient(90deg,
+            #000 0%,
+            rgba(0,0,0,0.90) 38%,
+            rgba(0,0,0,0.42) 65%,
+            rgba(0,0,0,0.60) 100%
+        ),
+        url('../images/career/career-hero-bg.jpg') right center / cover no-repeat;
+    padding-top: 180px;
+    padding-bottom: 110px;
+    color: #fff;
     display: flex;
     align-items: center;
 }
 
-.career-hero-2026__content {
-    max-width: 640px;
+.cr-hero__content {
+    max-width: 580px;
     position: relative;
     z-index: 2;
 }
 
-.career-hero-2026__title {
-    font-size: clamp(38px, 4.8vw, 56px);
-    font-weight: 700;
-    line-height: 1.15;
+.cr-hero__title {
+    font-size: clamp(38px, 4.6vw, 60px);
+    font-weight: 800;
+    line-height: 1.08;
     letter-spacing: -0.025em;
-    color: #FFFFFF;
+    color: #fff;
     margin-bottom: 24px;
 }
 
-.career-hero-2026__desc {
-    font-size: 15.5px;
-    line-height: 1.72;
-    color: rgba(255, 255, 255, 0.82);
+.cr-hero__desc {
+    font-size: 15px;
+    line-height: 1.73;
+    color: rgba(255,255,255,0.84);
     margin-bottom: 14px;
 }
-
-.career-hero-2026__desc:last-of-type {
-    margin-bottom: 32px;
-}
+.cr-hero__desc:last-of-type { margin-bottom: 32px; }
 
 /* ==========================================================================
-   SECTION 2: WHY HIGH REACH / MAKE YOUR IDEAS COUNT (White 2-Col Grid)
+   SECTION 2 — WHY HIGH REACH / MAKE YOUR IDEAS COUNT
+   White, 2-column, center vertical rule
    ========================================================================== */
-.career-ideas-section {
-    background-color: #FFFFFF;
-    padding: 100px 0 85px;
-    border-bottom: 1px solid #ECECEC;
+.cr-ideas {
+    background: #fff;
+    padding: 90px 0 80px;
 }
 
-.career-ideas-grid {
+/* Reusable 2-col grid with center divider */
+.cr-two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 70px;
+    gap: 0 64px;
     position: relative;
 }
 
-.career-ideas-grid::after {
+.cr-two-col--lined::after {
     content: "";
     position: absolute;
-    top: 8px;
-    bottom: 8px;
+    top: 0;
+    bottom: 0;
     left: 50%;
     width: 1px;
-    background: #EAEAEA;
+    background: #E8E8E8;
+    pointer-events: none;
 }
 
-.career-ideas-left h2 {
-    font-size: clamp(32px, 3.8vw, 46px);
-    font-weight: 700;
-    line-height: 1.18;
-    color: #111111;
-    letter-spacing: -0.02em;
+/* Ideas section specifics */
+.cr-ideas__title {
+    font-size: clamp(34px, 3.8vw, 50px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: #111;
     margin: 0;
 }
 
-.career-ideas-right {
-    padding-left: 20px;
-}
-
-.career-ideas-right p {
-    font-size: 15.5px;
-    line-height: 1.76;
-    color: #555555;
-    margin-bottom: 18px;
-}
-
-.career-ideas-right p:last-child {
-    margin-bottom: 0;
-}
+.cr-col-left  { padding-right: 32px; }
+.cr-col-right { padding-left: 32px; }
 
 /* ==========================================================================
-   SECTION 3: WHAT WE VALUE (White 4-Col Grid with Dividers)
+   SECTION 3 — WHAT WE VALUE
+   White, 4-column with vertical rules between cards
    ========================================================================== */
-.career-values-section {
-    background-color: #FFFFFF;
-    padding: 85px 0 110px;
+.cr-values {
+    background: #fff;
+    padding: 0 0 100px;
+    border-top: 1px solid #F0F0F0;
 }
 
-.career-values-grid {
+.cr-values__grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    margin-top: 36px;
 }
 
-.career-value-card {
+.cr-value-card {
     padding: 0 32px;
     position: relative;
 }
 
-.career-value-card:not(:last-child)::after {
+.cr-value-card:first-child { padding-left: 0; }
+.cr-value-card:last-child  { padding-right: 0; }
+
+.cr-value-card + .cr-value-card::before {
     content: "";
     position: absolute;
-    top: 6px;
-    bottom: 6px;
-    right: 0;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
     width: 1px;
-    background: #EAEAEA;
+    background: #E8E8E8;
 }
 
-.career-value-card:first-child {
-    padding-left: 0;
-}
-
-.career-value-card:last-child {
-    padding-right: 0;
-}
-
-.career-value-card__icon {
-    margin-bottom: 24px;
-    height: 44px;
+.cr-value-card__icon {
+    margin-bottom: 20px;
+    height: 48px;
     display: flex;
     align-items: center;
 }
 
-.career-value-card__title {
-    font-size: 21px;
+.cr-value-card__title {
+    font-size: 20px;
     font-weight: 700;
-    color: #111111;
-    margin-bottom: 12px;
+    color: #111;
+    margin-bottom: 10px;
     letter-spacing: -0.015em;
 }
 
-.career-value-card__desc {
-    font-size: 14.5px;
-    line-height: 1.68;
-    color: #666666;
+.cr-value-card__desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #666;
     margin: 0;
 }
 
 /* ==========================================================================
-   SECTION 4: CAREER OPPORTUNITIES BANNER (Dark Spotlight Banner)
+   SECTION 4 — CAREER OPPORTUNITIES BANNER
+   Dark spotlight photo, 2-col, red vertical divider between cols
    ========================================================================== */
-.career-opp-banner {
+.cr-opp {
     position: relative;
-    background-color: #050608;
-    background-image: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.92) 48%, rgba(0, 0, 0, 0.4) 100%), url('../images/career/career-opportunities-bg.jpg');
-    background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
-    padding: 95px 0;
-    color: #FFFFFF;
+    background:
+        linear-gradient(90deg,
+            rgba(0,0,0,0.98) 0%,
+            rgba(0,0,0,0.90) 44%,
+            rgba(0,0,0,0.38) 100%
+        ),
+        url('../images/career/career-opportunities-bg.jpg') right center / cover no-repeat;
+    padding: 90px 0;
+    color: #fff;
 }
 
-.career-opp-grid {
+.cr-opp__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0 48px;
     align-items: center;
 }
 
-.career-opp-banner h2 {
-    font-size: clamp(32px, 3.8vw, 44px);
-    font-weight: 700;
-    line-height: 1.2;
-    color: #FFFFFF;
-    letter-spacing: -0.02em;
+.cr-opp__divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(255,255,255,0.22);
+    min-height: 110px;
+}
+
+.cr-opp__title {
+    font-size: clamp(32px, 3.6vw, 46px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #fff;
     margin: 0;
 }
 
-.career-opp-banner p {
-    font-size: 15.5px;
-    line-height: 1.76;
-    color: rgba(255, 255, 255, 0.80);
+.cr-opp__body {
+    font-size: 15px;
+    line-height: 1.74;
+    color: rgba(255,255,255,0.80);
     margin: 0;
 }
 
 /* ==========================================================================
-   SECTION 5: HOW TO APPLY & FAQ (White 2-Col Grid)
+   SECTION 5 — HOW TO APPLY & FAQ
+   White, 2-column, center vertical rule
    ========================================================================== */
-.career-apply-faq-section {
-    background-color: #FFFFFF;
-    padding: 110px 0 120px;
+.cr-apply-faq {
+    background: #fff;
+    padding: 100px 0 110px;
 }
 
-.career-apply-faq-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    position: relative;
-}
+.cr-apply-col { padding-right: 32px; }
+.cr-faq-col   { padding-left: 32px; }
 
-.career-apply-faq-grid::after {
-    content: "";
-    position: absolute;
-    top: 8px;
-    bottom: 8px;
-    left: 50%;
-    width: 1px;
-    background: #EAEAEA;
-}
-
-.career-apply-col {
-    padding-right: 20px;
-}
-
-.career-apply-col h2 {
-    font-size: clamp(32px, 3.8vw, 44px);
-    font-weight: 700;
-    line-height: 1.2;
-    color: #111111;
-    letter-spacing: -0.02em;
+.cr-apply__title {
+    font-size: clamp(32px, 3.6vw, 46px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: #111;
     margin-bottom: 20px;
 }
 
-.career-apply-col p {
-    font-size: 15px;
-    line-height: 1.74;
-    color: #555555;
-    margin-bottom: 28px;
-}
-
-.career-email-box {
+/* Email box */
+.cr-email-box {
     background: #FAF0F0;
     border-radius: 8px;
-    padding: 22px 26px;
-    margin-bottom: 30px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    margin-top: 4px;
 }
 
-.career-email-box__main {
+.cr-email-box__row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #111111;
+    gap: 10px;
     margin-bottom: 8px;
 }
 
-.career-email-box__main a {
-    color: #111111;
+.cr-email-box__email {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #111;
+}
+
+.cr-email-box__email a {
+    color: #111;
+    font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 3px;
-    font-weight: 700;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
 }
+.cr-email-box__email a:hover { color: #E5272C; }
 
-.career-email-box__main a:hover {
-    color: #E5272C;
-}
-
-.career-email-box__note {
-    font-size: 13.5px;
-    color: #666666;
+.cr-email-box__note {
+    font-size: 13px;
+    color: #666;
     line-height: 1.55;
-    margin: 0 !important;
+    margin: 0;
 }
 
-/* Frequently Asked Questions Accordion */
-.career-faq-col {
-    padding-left: 20px;
-}
-
-.career-accordion {
+/* FAQ Accordion */
+.cr-faq-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
 }
 
-.career-accordion-item {
+.cr-faq-item {
     background: #F6F6F6;
     border-radius: 8px;
     overflow: hidden;
-    transition: background 0.25s ease;
 }
 
-.career-accordion-header {
+.cr-faq-q {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 26px;
+    gap: 14px;
+    padding: 20px 24px;
+    background: none;
+    border: none;
     cursor: pointer;
-    user-select: none;
-    font-size: 15.5px;
+    font-size: 15px;
     font-weight: 600;
-    color: #111111;
+    color: #111;
+    text-align: left;
     line-height: 1.4;
-    gap: 16px;
+    font-family: inherit;
 }
+.cr-faq-q:hover { color: #E5272C; }
 
-.career-accordion-header .chevron {
-    width: 20px;
-    height: 20px;
+.cr-faq-chevron {
     flex-shrink: 0;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    color: #777777;
+    color: #888;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), color 0.2s;
 }
 
-.career-accordion-item.is-open .career-accordion-header .chevron {
+.cr-faq-item.is-open .cr-faq-chevron {
     transform: rotate(180deg);
     color: #E5272C;
 }
 
-.career-accordion-body {
+.cr-faq-a {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
-.career-accordion-item.is-open .career-accordion-body {
-    max-height: 260px;
+.cr-faq-item.is-open .cr-faq-a {
+    max-height: 300px;
 }
 
-.career-accordion-content {
-    padding: 0 26px 22px;
+.cr-faq-a p {
+    padding: 0 24px 20px;
     font-size: 14.5px;
     line-height: 1.7;
-    color: #555555;
+    color: #555;
+    margin: 0;
 }
 
 /* ==========================================================================
-   SECTION 6: BOTTOM CTA BANNER (Dark with Diagonal Red Beams)
+   SECTION 6 — BOTTOM CTA
+   Dark red gradient banner with centered text
    ========================================================================== */
-.career-bottom-cta {
+.cr-cta {
     position: relative;
-    background-color: #050608;
-    background-image: url('../images/career/career-cta-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background:
+        url('../images/career/career-cta-bg.jpg') center center / cover no-repeat;
     padding: 110px 0;
     text-align: center;
-    color: #FFFFFF;
+    color: #fff;
 }
 
-.career-bottom-cta__inner {
-    max-width: 680px;
-    margin: 0 auto;
+/* Dark overlay so text is readable */
+.cr-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.52);
+    pointer-events: none;
+}
+
+.cr-cta__inner {
     position: relative;
     z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
-.career-bottom-cta h2 {
-    font-size: clamp(32px, 4.2vw, 48px);
-    font-weight: 700;
-    line-height: 1.2;
-    color: #FFFFFF;
-    letter-spacing: -0.02em;
+.cr-cta__title {
+    font-size: clamp(32px, 4.2vw, 52px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: #fff;
     margin-bottom: 16px;
 }
 
-.career-bottom-cta p {
+.cr-cta__sub {
     font-size: 16px;
     line-height: 1.65;
-    color: rgba(255, 255, 255, 0.82);
-    margin-bottom: 34px;
+    color: rgba(255,255,255,0.80);
+    margin-bottom: 32px;
 }
 
 /* ==========================================================================
-   RESPONSIVE MEDIA QUERIES
+   RESPONSIVE
    ========================================================================== */
 @media (max-width: 991px) {
-    .career-hero-2026 {
-        padding-top: 160px;
-        padding-bottom: 90px;
+    .cr-hero {
+        padding-top: 150px;
+        padding-bottom: 80px;
         background-position: center right;
     }
 
-    .career-ideas-grid,
-    .career-opp-grid,
-    .career-apply-faq-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .career-ideas-grid::after,
-    .career-apply-faq-grid::after {
-        display: none;
-    }
-
-    .career-ideas-right,
-    .career-apply-col,
-    .career-faq-col {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .career-values-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px 24px;
-    }
-
-    .career-value-card {
-        padding: 0;
-    }
-
-    .career-value-card::after {
-        display: none !important;
-    }
-}
-
-@media (max-width: 640px) {
-    .career-hero-2026__title {
-        font-size: 32px;
-    }
-
-    .career-values-grid {
+    .cr-two-col,
+    .cr-opp__grid {
         grid-template-columns: 1fr;
         gap: 36px;
     }
 
-    .career-email-box {
-        padding: 18px 20px;
+    .cr-two-col--lined::after { display: none; }
+    .cr-opp__divider { display: none; }
+
+    .cr-col-left,
+    .cr-col-right,
+    .cr-apply-col,
+    .cr-faq-col {
+        padding-left: 0;
+        padding-right: 0;
     }
 
-    .career-bottom-cta h2 {
-        font-size: 28px;
+    .cr-values__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 24px;
     }
 
-    .career-accordion-header {
-        padding: 18px 20px;
-        font-size: 14.5px;
+    .cr-value-card,
+    .cr-value-card:first-child,
+    .cr-value-card:last-child {
+        padding: 0;
     }
 
-    .career-accordion-content {
-        padding: 0 20px 18px;
+    .cr-value-card + .cr-value-card::before { display: none; }
+}
+
+@media (max-width: 600px) {
+    .cr-values__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
     }
+
+    .cr-hero__title   { font-size: 32px; }
+    .cr-ideas__title  { font-size: 32px; }
+    .cr-opp__title    { font-size: 30px; }
+    .cr-apply__title  { font-size: 30px; }
+    .cr-cta__title    { font-size: 28px; }
+
+    .cr-btn { padding: 13px 22px; font-size: 14.5px; }
+
+    .cr-faq-q { padding: 18px 18px; font-size: 14px; }
+    .cr-faq-a p { padding: 0 18px 18px; }
 }
