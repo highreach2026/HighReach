@@ -665,6 +665,14 @@ section:hover .cr-tag::before {
    SECTION 6 — BOTTOM CTA ("Your Next Move")
    With High Reach Signature WebGL Fluid Gradient Background
    ========================================================================== */
+.cr-cta,
+.cr-cta *,
+.hr-cta-section,
+.hr-cta-section * {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+}
+
 .cr-cta {
     position: relative;
     isolation: isolate;

@@ -44,7 +44,7 @@
       svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;';
       svg.innerHTML =
         '<filter id="hrLensRefract" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">' +
-        '<feImage id="hrLensMap" href="' + base + 'displace.png" x="0" y="0" width="80" height="80" preserveAspectRatio="none" result="map"/>' +
+        '<feTurbulence id="hrLensMap" type="fractalNoise" baseFrequency="0.02" numOctaves="1" result="map"/>' +
         // 1. #ffd60a (Yellow): outer negative offset
         '<feOffset id="hrGlitchYellow" in="SourceGraphic" dx="-2.0" dy="1.16" result="sYellow"/>' +
         '<feColorMatrix in="sYellow" type="matrix" values="0 0 0 1.000 0  0 0 0 0.839 0  0 0 0 0.039 0  0 0 0 0.82 0" result="cYellow"/>' +
@@ -65,8 +65,8 @@
         '<feMergeNode in="cYellow"/>' +
         '<feMergeNode in="SourceGraphic"/>' +
         '</feMerge>' +
-        // Refract the composite through displace.png
-        '<feDisplacementMap in="colorFringe" in2="map" scale="7" xChannelSelector="R" yChannelSelector="R"/>' +
+        // Refract the composite through procedural map (zero 404 / network fail dependency)
+        '<feDisplacementMap in="colorFringe" in2="map" scale="5" xChannelSelector="R" yChannelSelector="R"/>' +
         '</filter>';
       document.body.appendChild(svg);
     }
@@ -111,8 +111,8 @@
         var el = elements[i];
         if (!el || el === document.body || el === document.documentElement) continue;
 
-        // Skip loupe itself, cursors, preloader, videos, and form inputs
-        if (el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select')) {
+        // Skip loupe itself, cursors, preloader, videos, form inputs, CTA sections, and action buttons
+        if (el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select, .cr-cta, .hr-cta-section, .cr-btn, .hr-btn, button, .btn')) {
           continue;
         }
 
@@ -633,7 +633,9 @@
           var isTransparentLogoImg = isTagImg && currentTarget.closest && currentTarget.closest('.main-header__logo, .logo-box, .brand-logo, .hr-client-card, .footer-widget__logo, .ai-icon');
           var isPhotoImg = (isTagImg && !isTransparentLogoImg) || (currentTarget.closest && currentTarget.closest('.portfolio-two__card__image, .portfolio-one__card__image, .about-one__image__one, .about-one__image__two'));
 
-          if (isPhotoImg) {
+          var isCtaOrBtn = currentTarget.closest && currentTarget.closest('.cr-cta, .hr-cta-section, .cr-btn, .hr-btn, button, .btn');
+
+          if (isPhotoImg || isCtaOrBtn) {
             clearMask(currentTarget);
           } else {
             // Inverse circular mask on base element (cuts out only the circular footprint under lens)
