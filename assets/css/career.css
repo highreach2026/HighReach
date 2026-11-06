@@ -45,21 +45,35 @@ body.career-page,
     color: #0062F3 !important;
 }
 
-/* High Reach Multi-Color Brand Gradient Text */
+/* High Reach Multi-Color Brand Gradient Text (Exact match to Home Page "extraordinary." .hr-text-gradient) */
 .cr-gradient-text,
-.cr-brand-gradient {
-    background: linear-gradient(135deg, #FFD60A 0%, #A6EC6A 33%, #36C2B0 66%, #0062F3 100%) !important;
+.cr-brand-gradient,
+.bw-split-text .cr-gradient-text {
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    background-image: linear-gradient(100deg, #ffd60a, #a6ec6a 28%, #36c2b0 58%, #0062f3 82%, #ffd60a) !important;
+    background-size: 250% 100% !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
+    animation: hr-gradient-pan 9s linear infinite !important;
     display: inline-block !important;
-    padding-top: 0.05em !important;
-    padding-bottom: 0.28em !important;
-    margin-bottom: -0.28em !important;
-    padding-right: 0.08em !important;
-    overflow: visible !important;
     vertical-align: baseline !important;
+    padding-top: 0.05em !important;
+    padding-bottom: 0.22em !important;
+    margin-bottom: -0.22em !important;
+    padding-right: 0.14em !important;
+    margin-right: -0.14em !important;
+    overflow: visible !important;
+    filter: drop-shadow(0 4px 26px rgba(0, 0, 0, 0.85));
+}
+
+@keyframes hr-gradient-pan {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 250% 50%;
+    }
 }
 
 .cr-dash {
@@ -78,7 +92,7 @@ body.career-page,
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: var(--hr-base, #0062F3);
     margin-bottom: 20px;
     line-height: 1;
     position: relative;
@@ -110,6 +124,45 @@ body.career-page,
 section:hover .cr-tag::before {
     transform: translateX(4px) scale(1.10);
     filter: drop-shadow(0 0 10px rgba(0, 98, 243, 0.85));
+}
+
+/* ==========================================================================
+   HOME PAGE SECTION HEADING & SUBHEADING SCROLL FLOW EFFECT
+   Exact match to .sec-title__tagline.bw-split-text & .sec-title__title.bw-split-text
+   ========================================================================== */
+.cr-tag.bw-split-text > div {
+    background-size: 200% 100%;
+    background-position-x: 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to left, rgba(var(--hr-base-rgb, 0, 98, 243), 0.4) 50%, var(--hr-base, #0062F3) 50%);
+}
+
+.cr-hero__title.bw-split-text > div,
+.cr-ideas__title.bw-split-text > div,
+.cr-opp__title.bw-split-text > div,
+.cr-apply__title.bw-split-text > div,
+.cr-cta__title.bw-split-text > div {
+    background-size: 200% 100%;
+    background-position-x: 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to left, rgba(var(--hr-white-rgb, 255, 255, 255), 0.2) 50%, var(--hr-white, #FFFFFF) 50%);
+}
+
+.bw-split-text .cr-gradient-text {
+    /* Retains .hr-text-gradient continuous fluid animation from above */
+    display: inline-block !important;
+}
+
+.bw-split-text .cr-red,
+.bw-split-text .cr-blue {
+    display: inline-block;
+    position: relative;
+    color: #0062F3 !important;
+    -webkit-text-fill-color: #0062F3 !important;
 }
 
 /* ==========================================================================
