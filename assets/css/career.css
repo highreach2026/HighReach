@@ -349,6 +349,13 @@ section:hover .cr-tag::before {
     align-items: center;
 }
 
+/* Seamless spacing when Page Header is present above cr-hero */
+.page-header + .cr-hero,
+.hr-fluid-page-header + .cr-hero {
+    padding-top: 95px !important;
+    min-height: auto !important;
+}
+
 .cr-hero__content {
     max-width: 640px;
     position: relative;

@@ -1,14 +1,17 @@
 /* ==========================================================================
-   HIGH REACH FLUID GRADIENT EFFECT (Contact Page Only)
+   HIGH REACH FLUID GRADIENT EFFECT (Contact & Career Pages)
    Engineered exclusively for High Reach Media
    ========================================================================== */
 
-/* Main Header on Contact Page: Transparent at the top so gradient shines through */
-body.contact-page .main-header--inner-page:not(.sticky-header--cloned) {
+/* Main Header on Contact & Career Pages: Transparent at the top so gradient shines through */
+body.contact-page .main-header--inner-page:not(.sticky-header--cloned),
+body.career-page .main-header--inner-page:not(.sticky-header--cloned) {
     background-color: transparent !important;
+    background: transparent !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+    box-shadow: none !important;
 }
 
 /* Page Header Hero Container: Starts at y=0 so fluid gradient covers entire top */
@@ -127,6 +130,28 @@ body.contact-page .main-header--inner-page:not(.sticky-header--cloned) {
     color: #ffffff;
     font-size: 15px;
     font-weight: 600;
+}
+
+/* Seamless spacing between Page Header and Careers Hero */
+.page-header + .cr-hero,
+.hr-fluid-page-header + .cr-hero {
+    padding-top: 95px !important;
+    min-height: auto !important;
+}
+
+@media (max-width: 991px) {
+    .page-header.hr-fluid-page-header {
+        min-height: 440px !important;
+        padding-top: 170px !important;
+        padding-bottom: 90px !important;
+    }
+    .page-header.hr-fluid-page-header .page-header__title {
+        font-size: 46px !important;
+    }
+    .page-header + .cr-hero,
+    .hr-fluid-page-header + .cr-hero {
+        padding-top: 65px !important;
+    }
 }
 
 /* (Loupe effect styling unified in high-reach.css) */
