@@ -325,8 +325,8 @@ section:hover .cr-tag::before {
 
 .page-header + .cr-hero,
 .hr-fluid-page-header + .cr-hero {
-    margin-top: 40px !important;
-    padding-top: 80px !important;
+    margin-top: 65px !important;
+    padding-top: 100px !important;
     min-height: auto !important;
 }
 
@@ -791,8 +791,8 @@ section:hover .cr-tag::before {
 
     .page-header + .cr-hero,
     .hr-fluid-page-header + .cr-hero {
-        margin-top: 24px !important;
-        padding-top: 50px !important;
+        margin-top: 35px !important;
+        padding-top: 60px !important;
     }
 
     .cr-two-col,
