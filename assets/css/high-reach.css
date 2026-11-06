@@ -1504,6 +1504,51 @@ body {
         margin-left: 10px !important;
     }
 
+    /* Fit Send Application / Email Application CTA button to device width on mobile */
+    .cr-btn,
+    .hr-btn.cr-btn,
+    .amoxi-btn.cr-btn,
+    a.cr-btn,
+    a.hr-btn.cr-btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .cr-btn .hr-btn__text,
+    .cr-btn .amoxi-btn__text,
+    a.cr-btn .hr-btn__text,
+    a.cr-btn .amoxi-btn__text {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 13.5px 16px !important;
+        font-size: clamp(12px, 3.4vw, 14px) !important;
+        box-sizing: border-box !important;
+        white-space: nowrap !important;
+    }
+
+    .cr-btn .hr-btn__icon-box,
+    .cr-btn .amoxi-btn__icon-box,
+    a.cr-btn .hr-btn__icon-box,
+    a.cr-btn .amoxi-btn__icon-box {
+        width: 44px !important;
+        height: 44px !important;
+        flex-shrink: 0 !important;
+        margin-left: 10px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
     .hr-hero-action-buttons {
         animation: none !important;
         transform: none !important;
