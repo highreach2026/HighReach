@@ -5113,6 +5113,7 @@ body.is-page-transitioning .hr-sticky-scroll-bar {
     width: 32px !important;
     height: 32px !important;
     flex-shrink: 0 !important;
+    margin-left: 8px !important;
 }
 
 .hr-sticky-cta-btn .hr-btn__icon,

@@ -260,7 +260,7 @@ section:hover .cr-tag::before {
     height: 44px !important;
     border-radius: 50% !important;
     background: #FFFFFF !important;
-    margin-left: -4px !important;
+    margin-left: 12px !important;
     position: relative !important;
     z-index: 2 !important;
     display: inline-flex !important;
@@ -851,6 +851,7 @@ section:hover .cr-tag::before {
     .cr-btn .amoxi-btn__icon-box {
         width: 38px !important;
         height: 38px !important;
+        margin-left: 10px !important;
     }
 
     .cr-email-box {
