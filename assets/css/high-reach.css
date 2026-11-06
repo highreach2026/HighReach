@@ -1251,6 +1251,23 @@ body {
     will-change: transform, box-shadow;
 }
 
+/* Margin between CTA button text and arrow icon circle */
+.hr-hero-cta-btn .amoxi-btn__icon-box,
+.hr-hero-cta-btn .hr-btn__icon-box,
+.amoxi-btn .amoxi-btn__icon-box,
+.hr-btn .hr-btn__icon-box {
+    margin-left: 12px !important;
+}
+
+@media (max-width: 767px) {
+    .hr-hero-cta-btn .amoxi-btn__icon-box,
+    .hr-hero-cta-btn .hr-btn__icon-box,
+    .amoxi-btn .amoxi-btn__icon-box,
+    .hr-btn .hr-btn__icon-box {
+        margin-left: 10px !important;
+    }
+}
+
 /* Hover & Active States (Desktop & touch) */
 .hr-hero-cta-btn:hover,
 .hr-hero-cta-btn:active {
@@ -5220,6 +5237,7 @@ body.is-page-transitioning .hr-sticky-scroll-bar {
 .hr-sticky-cta-btn .amoxi-btn__icon-box {
         width: 28px !important;
         height: 28px !important;
+        margin-left: 8px !important;
     }
 
     .hr-sticky-cta-btn .hr-btn__icon,
