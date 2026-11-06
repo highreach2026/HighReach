@@ -54,7 +54,8 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=10.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=11.0" />
+    <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
 
     <!-- High Reach — Navbar Clients Section Gradient Effect (Direct Inline to prevent cache delays) -->
     <style id="hr-navbar-gradient-style">
@@ -493,9 +494,13 @@
                 </section><!-- /.cr-apply-faq -->
 
                 <!-- ======================================================= -->
-                <!-- SECTION 6: BOTTOM CTA (Dark Red Gradient) -->
+                <!-- SECTION 6: BOTTOM CTA (Your Next Move with WebGL Fluid Gradient) -->
                 <!-- ======================================================= -->
-                <section class="cr-cta">
+                <section class="cr-cta hr-cta-section">
+                    <!-- WebGL Fluid Gradient Canvas Background -->
+                    <div class="hr-fluid-gradient-wrap hr-cta-gradient-wrap" id="hrCareerGradientWrap">
+                        <canvas id="hrCareerGradientCanvas"></canvas>
+                    </div>
                     <div class="container">
                         <div class="cr-cta__inner">
                             <h2 class="cr-cta__title">Your Next Move Could <span class="cr-gradient-text">Reach Higher.</span></h2>
@@ -845,6 +850,8 @@
     </script>
     <!-- High Reach Dual-Delivery Contact & Career Form Script -->
     <script src="assets/js/hr-contact-form.js?v=1.0"></script>
+    <!-- High Reach WebGL Signature Fluid Gradient Script -->
+    <script src="assets/js/hr-fluid-gradient.js?v=2.1"></script>
     </body>
 
 </html>

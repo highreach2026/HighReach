@@ -120,19 +120,16 @@ body.career-page,
     box-shadow: 0 12px 30px rgba(0, 98, 243, 0.45);
 }
 
-/* Nav Active Link Indicator */
-.main-menu__list li.current > a {
-    position: relative;
+/* Ensure no underline on active navbar link */
+.main-menu__list li.current > a,
+.main-menu__list li > a {
+    text-decoration: none !important;
+    border-bottom: none !important;
 }
-.main-menu__list li.current > a::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #0062F3;
-    border-radius: 2px;
+.main-menu__list li.current > a::after,
+.main-menu__list li.current > a::before {
+    display: none !important;
+    content: none !important;
 }
 
 /* ==========================================================================
@@ -489,21 +486,27 @@ body.career-page,
 }
 
 /* ==========================================================================
-   SECTION 6 — BOTTOM CTA
-   Centered Dark Banner ("Your Next Move")
+   SECTION 6 — BOTTOM CTA ("Your Next Move")
+   With High Reach Signature WebGL Fluid Gradient Background
    ========================================================================== */
 .cr-cta {
     position: relative;
-    background-color: #000000;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    isolation: isolate;
+    display: flex;
+    min-height: 520px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #040508 !important;
     padding: 115px 0;
     text-align: center;
     color: #FFFFFF;
+    width: 100%;
 }
 
 .cr-cta__inner {
     position: relative;
-    z-index: 2;
+    z-index: 5;
     max-width: 720px;
     margin: 0 auto;
 }
