@@ -237,8 +237,11 @@
   transition: color 0.3s ease;
 }
 
-.hr-footer .main-navigation a:hover {
-  color: #b5f000 !important;
+.hr-footer .main-navigation a:hover,
+.hr-footer .main-navigation a:focus,
+.hr-footer .main-navigation a:focus-visible,
+.hr-footer .main-navigation a:active {
+  color: #0062F3 !important;
 }
 
 .hr-footer .legal-links {
