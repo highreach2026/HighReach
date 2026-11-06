@@ -1463,15 +1463,45 @@ body {
 /* Responsive adjustment for Mobile screens */
 @media (max-width: 767px) {
     .hero-one__left .hr-hero-cta-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         gap: 8px !important;
-        flex-wrap: wrap !important;
         margin-top: 14px !important;
+        box-sizing: border-box !important;
     }
 
-    /* Dynamic top-to-bottom movement ONLY for mobile CTA button; WhatsApp and Call buttons remain completely static */
+    /* Fit system/container width on mobile view only */
     .hr-hero-cta-btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
         animation: hrMobileTopBottom 2.6s ease-in-out infinite !important;
         will-change: transform;
+    }
+
+    .hr-hero-cta-btn .amoxi-btn__text,
+    .hr-hero-cta-btn .hr-btn__text {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .hr-hero-cta-btn .amoxi-btn__icon-box,
+    .hr-hero-cta-btn .hr-btn__icon-box {
+        flex-shrink: 0 !important;
+        margin-left: 10px !important;
     }
 
     .hr-hero-action-buttons {
