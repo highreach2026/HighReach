@@ -104,15 +104,48 @@
       return Math.hypot(dx, dy);
     }
 
+    // Helper functions: explicitly exclude navbar phone and WhatsApp contact action buttons from bubble effect
+    function isNavbarActionElement(el) {
+      if (!el) return false;
+      return !!(el.closest && (
+        el.closest('.main-header__actions, .hr-header-icon-btn, .main-header .hr-hero-icon-btn, .sticky-header .hr-hero-icon-btn, .main-header .hr-hero-action-buttons, .sticky-header .hr-hero-action-buttons') ||
+        (el.closest('.main-header, .sticky-header') && el.closest('a[href^="tel:"], a[href*="wa.me"]'))
+      ));
+    }
+
+    function isNavbarActionCoords(x, y) {
+      var topEl = document.elementFromPoint ? document.elementFromPoint(x, y) : null;
+      if (isNavbarActionElement(topEl)) return true;
+
+      var elements = document.elementsFromPoint ? document.elementsFromPoint(x, y) : [];
+      for (var ei = 0; ei < elements.length; ei++) {
+        if (isNavbarActionElement(elements[ei])) return true;
+      }
+
+      var navbarBtns = document.querySelectorAll('.main-header__actions, .hr-header-icon-btn, .main-header .hr-hero-icon-btn, .sticky-header .hr-hero-icon-btn, .main-header a[href^="tel:"], .main-header a[href*="wa.me"], .sticky-header a[href^="tel:"], .sticky-header a[href*="wa.me"]');
+      for (var bi = 0; bi < navbarBtns.length; bi++) {
+        var bRect = navbarBtns[bi].getBoundingClientRect();
+        if (bRect.width > 0 && bRect.height > 0) {
+          if (x >= bRect.left - 6 && x <= bRect.right + 6 && y >= bRect.top - 6 && y <= bRect.bottom + 6) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
     // Identify the best interactive target (logos, images, typography, badges) under coordinates (clientX, clientY)
     function findInteractiveTarget(clientX, clientY) {
+      if (isNavbarActionCoords(clientX, clientY)) {
+        return null;
+      }
       var elements = document.elementsFromPoint ? document.elementsFromPoint(clientX, clientY) : [];
       for (var i = 0; i < elements.length; i++) {
         var el = elements[i];
         if (!el || el === document.body || el === document.documentElement) continue;
 
-        // Skip loupe itself, cursors, preloader, videos, form inputs, and action buttons
-        if (el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select, .cr-btn, .hr-btn, button, .btn')) {
+        // Skip loupe itself, cursors, preloader, videos, form inputs, action buttons, and navbar phone/whatsapp icons
+        if (isNavbarActionElement(el) || el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select, .cr-btn, .hr-btn, button, .btn, .main-header__actions, .hr-header-icon-btn, .main-header .hr-hero-icon-btn, .sticky-header .hr-hero-icon-btn')) {
           continue;
         }
 
@@ -226,6 +259,9 @@
 
     // Switch active target and create clean styled clone inside loupe
     function setTarget(newTarget) {
+      if (newTarget && isNavbarActionElement(newTarget)) {
+        newTarget = null;
+      }
       if (currentTarget === newTarget) return;
 
       if (currentTarget) {
@@ -460,6 +496,19 @@
         hasMoved = true;
       }
 
+      // If pointer is touching or hovering over navbar phone or WhatsApp icons, strictly prevent bubble effect from appearing
+      if (isNavbarActionCoords(clientX, clientY)) {
+        if (isTargetActive) {
+          isTargetActive = false;
+          loupe.classList.remove('is-active');
+          if (currentTarget) {
+            clearMask(currentTarget);
+          }
+          setTarget(null);
+        }
+        return;
+      }
+
       // Check if pointer is still inside or near current target (hysteresis for smooth interaction)
       var candidate = null;
       if (currentTarget) {
@@ -532,14 +581,26 @@
         touchTimeout = null;
       }
       if (e.touches && e.touches[0]) {
-        onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
+        var tX = e.touches[0].clientX;
+        var tY = e.touches[0].clientY;
+        if (isNavbarActionCoords(tX, tY)) {
+          onPointerLeave();
+          return;
+        }
+        onPointerMove(tX, tY);
       }
     }
 
     window.addEventListener('touchstart', handleTouch, { passive: true });
     window.addEventListener('touchmove', handleTouch, { passive: true });
-    window.addEventListener('touchend', function () {
+    window.addEventListener('touchend', function (e) {
       if (touchTimeout) clearTimeout(touchTimeout);
+      if (e.changedTouches && e.changedTouches[0]) {
+        if (isNavbarActionCoords(e.changedTouches[0].clientX, e.changedTouches[0].clientY)) {
+          onPointerLeave();
+          return;
+        }
+      }
       touchTimeout = setTimeout(function () {
         onPointerLeave();
       }, 1200);
@@ -633,7 +694,7 @@
           var isTransparentLogoImg = isTagImg && currentTarget.closest && currentTarget.closest('.main-header__logo, .logo-box, .brand-logo, .hr-client-card, .footer-widget__logo, .ai-icon');
           var isPhotoImg = (isTagImg && !isTransparentLogoImg) || (currentTarget.closest && currentTarget.closest('.portfolio-two__card__image, .portfolio-one__card__image, .about-one__image__one, .about-one__image__two'));
 
-          var isProtectedFromMask = currentTarget.closest && currentTarget.closest('.cr-cta, .hr-cta-section, .cr-values, .cr-value-card, .cr-btn, .hr-btn, button, .btn');
+          var isProtectedFromMask = currentTarget.closest && currentTarget.closest('.cr-cta, .hr-cta-section, .cr-values, .cr-value-card, .cr-btn, .hr-btn, button, .btn, .main-header__actions, .hr-header-icon-btn, .main-header .hr-hero-icon-btn, .sticky-header .hr-hero-icon-btn');
 
           if (isPhotoImg || isProtectedFromMask) {
             clearMask(currentTarget);
