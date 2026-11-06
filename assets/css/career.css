@@ -509,22 +509,15 @@ body.career-page,
 
 /* ==========================================================================
    SECTION 6 — BOTTOM CTA
-   Photographic Dark Banner with Centered Layout
+   Centered Dark Banner ("Your Next Move")
    ========================================================================== */
 .cr-cta {
     position: relative;
-    background: url('../images/career/career-cta-bg.jpg') center center / cover no-repeat;
+    background-color: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 115px 0;
     text-align: center;
     color: #FFFFFF;
-}
-
-.cr-cta::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    pointer-events: none;
 }
 
 .cr-cta__inner {
