@@ -144,7 +144,7 @@
         .page-header.hr-fluid-page-header .amoxi-breadcrumb {
             display: inline-flex !important;
             align-items: center !important;
-            gap: 12px !important;
+            gap: 0 !important;
             padding: 8px 24px !important;
             border-radius: 100px !important;
             background: rgba(255, 255, 255, 0.08) !important;
@@ -153,6 +153,25 @@
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
             list-style: none !important;
             margin: 0 !important;
+        }
+
+        .page-header.hr-fluid-page-header .amoxi-breadcrumb li {
+            display: inline-flex !important;
+            align-items: center !important;
+            font-size: 15px !important;
+            line-height: 1 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .page-header.hr-fluid-page-header .amoxi-breadcrumb li:not(:last-child)::after {
+            content: "/" !important;
+            margin-left: 10px !important;
+            margin-right: 10px !important;
+            font-size: 14px !important;
+            color: rgba(255, 255, 255, 0.45) !important;
+            font-weight: 400 !important;
+            display: inline-block !important;
         }
 
         .page-header.hr-fluid-page-header .amoxi-breadcrumb li a {
@@ -614,6 +633,7 @@
                             <ul class="amoxi-breadcrumb list-unstyled">
                                 <li><a href="index.html">Home</a></li>
                                 <li><span>Careers</span></li>
+                                <li><a href="contact.html">Contact</a></li>
                             </ul><!-- /.amoxi-breadcrumb -->
                         </div><!-- /.page-header__content -->
                     </div><!-- /.container -->
