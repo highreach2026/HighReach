@@ -226,3 +226,16 @@ body.contact-page .stroke-text-title svg text::-moz-selection {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* =========================================================
+   HIGH REACH — REMOVE DOTTED / DASHED INNER BORDER ON CONTACT CARDS
+   ========================================================= */
+.contact-one__info__card::after,
+.contact-one__info__card:hover::after,
+.contact-one__info__card:active::after,
+.contact-one__info__card:focus-within::after,
+.contact-one__info__card.hr-card-active::after {
+    display: none !important;
+    border: none !important;
+    content: none !important;
+}
+

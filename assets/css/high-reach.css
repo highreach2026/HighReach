@@ -4508,28 +4508,15 @@ html {
         bottom: 0px !important;
     }
 
-    /* Desktop inner dashed border effect */
-    .contact-one__info__card::after {
-        content: "" !important;
-        width: calc(100% - 16px) !important;
-        height: calc(100% - 16px) !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        z-index: -1 !important;
-        margin: auto !important;
-        border-radius: inherit !important;
-        border: 1px dashed var(--hr-base, #0062F3) !important;
-        transition: all 500ms ease !important;
-    }
-
+    /* Remove inner dashed/dotted border effect from contact info cards */
+    .contact-one__info__card::after,
     .contact-one__info__card:hover::after,
     .contact-one__info__card:active::after,
     .contact-one__info__card:focus-within::after,
     .contact-one__info__card.hr-card-active::after {
-        border-color: #FFFFFF !important;
+        display: none !important;
+        border: none !important;
+        content: none !important;
     }
 
     /* Desktop clean icon: large, white, transparent background (no blue box) */
