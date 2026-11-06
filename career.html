@@ -67,9 +67,9 @@
             overflow: hidden !important;
             background-color: #040508 !important;
             margin-top: -95px !important;
-            padding-top: 220px !important;
-            padding-bottom: 130px !important;
-            min-height: 540px !important;
+            padding-top: 205px !important;
+            padding-bottom: 48px !important;
+            min-height: 420px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -109,7 +109,7 @@
             bottom: 0 !important;
             left: 0 !important;
             width: 100% !important;
-            height: 140px !important;
+            height: 80px !important;
             background: linear-gradient(to bottom, rgba(4, 5, 8, 0) 0%, rgba(4, 5, 8, 0.65) 60%, #000000 100%) !important;
             pointer-events: none !important;
             z-index: 2 !important;
@@ -191,14 +191,25 @@
             font-weight: 600 !important;
         }
 
+        /* Seamless reduced margin between Page Header and Careers at section */
+        .page-header + .cr-hero,
+        .hr-fluid-page-header + .cr-hero {
+            padding-top: 48px !important;
+            min-height: auto !important;
+        }
+
         @media (max-width: 991px) {
             .page-header.hr-fluid-page-header {
-                min-height: 440px !important;
-                padding-top: 170px !important;
-                padding-bottom: 90px !important;
+                min-height: 350px !important;
+                padding-top: 150px !important;
+                padding-bottom: 35px !important;
             }
             .page-header.hr-fluid-page-header .page-header__title {
                 font-size: 46px !important;
+            }
+            .page-header + .cr-hero,
+            .hr-fluid-page-header + .cr-hero {
+                padding-top: 35px !important;
             }
         }
 
