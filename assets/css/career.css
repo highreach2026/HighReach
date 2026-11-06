@@ -411,14 +411,29 @@ section:hover .cr-tag::before {
 /* Exact High Reach frosted glassmorphism card style */
 .cr-value-card {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 18px;
     padding: 34px 28px;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     position: relative;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease,
+                box-shadow 0.4s ease,
+                background 0.4s ease;
+}
+
+/* Anti-mask safeguard: ensures card edges and margins never fade or get clipped */
+.cr-values,
+.cr-values *,
+.cr-value-card,
+.cr-value-card * {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
 }
 
 /* Multi-color gradient overlay on hover (matching .hr-client-card in High Reach) */
@@ -428,23 +443,25 @@ section:hover .cr-tag::before {
     inset: 0;
     border-radius: inherit;
     background: linear-gradient(135deg,
-            rgba(0, 98, 243, 0.20),
-            rgba(54, 194, 176, 0.14),
-            rgba(166, 236, 106, 0.10),
-            rgba(255, 214, 10, 0.10));
+            rgba(0, 98, 243, 0.18),
+            rgba(54, 194, 176, 0.12),
+            rgba(166, 236, 106, 0.08),
+            rgba(255, 214, 10, 0.08));
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
     z-index: 1;
 }
 
-.cr-value-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(0, 98, 243, 0.40);
-    box-shadow: 0 16px 36px rgba(0, 98, 243, 0.18);
+.cr-value-card:hover,
+.cr-value-card:active {
+    transform: translateY(-4px) translateZ(0);
+    border-color: #0062F3 !important;
+    box-shadow: 0 12px 32px rgba(0, 98, 243, 0.28), inset 0 0 0 1px rgba(0, 98, 243, 0.6) !important;
 }
 
-.cr-value-card:hover::before {
+.cr-value-card:hover::before,
+.cr-value-card:active::before {
     opacity: 1;
 }
 

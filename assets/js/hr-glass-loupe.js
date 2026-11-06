@@ -633,9 +633,9 @@
           var isTransparentLogoImg = isTagImg && currentTarget.closest && currentTarget.closest('.main-header__logo, .logo-box, .brand-logo, .hr-client-card, .footer-widget__logo, .ai-icon');
           var isPhotoImg = (isTagImg && !isTransparentLogoImg) || (currentTarget.closest && currentTarget.closest('.portfolio-two__card__image, .portfolio-one__card__image, .about-one__image__one, .about-one__image__two'));
 
-          var isCtaOrBtn = currentTarget.closest && currentTarget.closest('.cr-cta, .hr-cta-section, .cr-btn, .hr-btn, button, .btn');
+          var isProtectedFromMask = currentTarget.closest && currentTarget.closest('.cr-cta, .hr-cta-section, .cr-values, .cr-value-card, .cr-btn, .hr-btn, button, .btn');
 
-          if (isPhotoImg || isCtaOrBtn) {
+          if (isPhotoImg || isProtectedFromMask) {
             clearMask(currentTarget);
           } else {
             // Inverse circular mask on base element (cuts out only the circular footprint under lens)

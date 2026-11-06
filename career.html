@@ -54,11 +54,38 @@
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=18.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <!-- High Reach Careers Stylesheet -->
-    <link rel="stylesheet" href="assets/css/career.css?v=30.0" />
+    <link rel="stylesheet" href="assets/css/career.css?v=31.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
 
     <!-- Direct Inline Styles for Instant Display & Zero Cache Delay -->
     <style id="hr-career-instant-styles">
+        /* What We Value Section — Crisp Borders & Zero Edge-Fading */
+        .cr-value-card {
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
+            transform: translateZ(0) !important;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s ease,
+                        box-shadow 0.4s ease,
+                        background 0.4s ease !important;
+        }
+
+        .cr-value-card:hover,
+        .cr-value-card:active {
+            transform: translateY(-4px) translateZ(0) !important;
+            border-color: #0062F3 !important;
+            box-shadow: 0 12px 32px rgba(0, 98, 243, 0.28), inset 0 0 0 1px rgba(0, 98, 243, 0.6) !important;
+        }
+
+        .cr-values,
+        .cr-values *,
+        .cr-value-card,
+        .cr-value-card * {
+            -webkit-mask-image: none !important;
+            mask-image: none !important;
+        }
+
         /* Glass Loupe Bubble Content in Your Next Move Section */
         .hr-glass-loupe__content .cr-cta__title,
         .hr-glass-loupe__content .cr-cta__title * {
@@ -946,7 +973,7 @@
     <!-- Interactive WhatsApp Admin Widget -->
     <script src="assets/js/whatsapp-widget.js"></script>
     <!-- Universal Glass Loupe Effect -->
-    <script src="assets/js/hr-glass-loupe.js?v=15.0"></script>
+    <script src="assets/js/hr-glass-loupe.js?v=16.0"></script>
     <!-- High Reach Logo Gradient Bars -->
     <script src="assets/js/hr-gradient-bars.js?v=12.0"></script>
 
