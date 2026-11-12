@@ -3,7 +3,7 @@
  * HIGH REACH — DUAL-DELIVERY CONTACT & CAREER FORM CONTROLLER
  * Engineered for static hosting (GitHub Pages / Vercel)
  * Channels:
- * 1. Safe Email Delivery (via Web3Forms API to grow@highreach.media)
+ * 1. Safe Email Delivery (via FormSubmit to grow@highreach.media)
  * 2. Instant Direct WhatsApp Delivery (+91 9972 772 416)
  * ============================================================================
  */
@@ -13,7 +13,7 @@
 
     var ADMIN_WHATSAPP_NUMBER = "919972772416";
     var ADMIN_EMAIL = "grow@highreach.media";
-    var WEB3FORMS_ACCESS_KEY = "";
+    var FORMSUBMIT_URL = "https://formsubmit.co/ajax/" + ADMIN_EMAIL;
 
     // Initialize once DOM is ready
     function initAllForms() {
@@ -119,34 +119,40 @@
                 resultBox.innerHTML = '<div class="hr-form-alert" style="background: rgba(0, 98, 243, 0.12); border: 1px solid rgba(0, 98, 243, 0.3); color: #fff;"><i class="fas fa-paper-plane"></i> Transmitting your message securely to ' + ADMIN_EMAIL + '...</div>';
             }
 
-            var formData = new FormData(form);
-            var activeKey = formData.get("access_key") || WEB3FORMS_ACCESS_KEY;
-            formData.set("service_requested", service || "General Inquiry");
-            formData.set("submitted_at", new Date().toLocaleString());
-
-            // If Web3Forms access key is not set, launch mail client directly & display instant WhatsApp transfer
-            if (!activeKey) {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-                var mailSubject = encodeURIComponent("Project Inquiry — " + name + " — " + (service || "General Inquiry"));
-                var mailBody = encodeURIComponent("Hi High Reach Team,\n\nName: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nService: " + (service || "General Inquiry") + "\n\nComments:\n" + message);
-                window.location.href = "mailto:" + ADMIN_EMAIL + "?subject=" + mailSubject + "&body=" + mailBody;
-                handleFallback(resultBox, name, email, phone, service, message);
+            var honeypot = form.querySelector('[name="_honey"]') || form.querySelector('[name="botcheck"]');
+            if (honeypot && honeypot.value) {
+                // Silently trap bot submissions
                 return;
             }
 
-            formData.set("access_key", activeKey);
+            var subjectInput = form.querySelector('[name="_subject"]') || form.querySelector('[name="subject"]');
+            var formSubject = subjectInput ? subjectInput.value : "New Project Inquiry — High Reach Website";
 
-            // Use official Web3Forms FormData submission for reliable browser delivery
-            fetch(form.action || "https://api.web3forms.com/submit", {
+            var payload = {
+                name: name,
+                email: email,
+                phone: phone,
+                service: service || "General Inquiry",
+                message: message,
+                _subject: formSubject,
+                _template: "table",
+                _captcha: "false"
+            };
+
+            // Transmit directly to grow@highreach.media via FormSubmit AJAX API
+            fetch(FORMSUBMIT_URL, {
                 method: "POST",
-                body: formData
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(payload)
             })
             .then(function (res) {
                 return res.json().then(function (data) {
                     return { ok: res.ok, status: res.status, data: data };
+                }).catch(function () {
+                    return { ok: res.ok, status: res.status, data: null };
                 });
             })
             .then(function (resObj) {
@@ -155,7 +161,12 @@
                     submitBtn.innerHTML = originalBtnHtml;
                 }
 
-                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
+                var isSuccess = resObj.ok && (
+                    resObj.status === 200 ||
+                    (resObj.data && (resObj.data.success === "true" || resObj.data.success === true))
+                );
+
+                if (isSuccess) {
                     form.reset();
                     if (window.jQuery && window.jQuery(form).find(".selectpicker").length) {
                         window.jQuery(form).find(".selectpicker").selectpicker("refresh");
@@ -306,33 +317,31 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> TRANSMITTING APPLICATION...';
             }
 
-            var formData = new FormData(form);
-            var activeCareerKey = formData.get("access_key") || WEB3FORMS_ACCESS_KEY;
-            formData.set("role_applied", role || "General Application");
-            formData.set("submitted_at", new Date().toLocaleString());
+            var payload = {
+                name: name,
+                email: email,
+                phone: phone,
+                role: role || "General Application",
+                portfolio: portfolio,
+                message: message,
+                _subject: "Careers Application — " + name + " — " + (role || "General Application"),
+                _template: "table",
+                _captcha: "false"
+            };
 
-            // If Web3Forms access key is not set, launch mail client directly & display instant WhatsApp transfer
-            if (!activeCareerKey) {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-                var careerSubject = encodeURIComponent("Careers Application — " + name + " — " + (role || "General Application"));
-                var careerBody = encodeURIComponent("Hi High Reach Team,\n\nName: " + name + "\nRole Applied: " + role + "\nPortfolio: " + portfolio + "\nEmail: " + email + "\nPhone: " + phone + "\n\nNote:\n" + message);
-                window.location.href = "mailto:hr@highreach.media?subject=" + careerSubject + "&body=" + careerBody;
-                handleCareerFallback(resultBox, name, email, phone, role, portfolio, message);
-                return;
-            }
-
-            formData.set("access_key", activeCareerKey);
-
-            fetch(form.action || "https://api.web3forms.com/submit", {
+            fetch("https://formsubmit.co/ajax/hr@highreach.media", {
                 method: "POST",
-                body: formData
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(payload)
             })
             .then(function (res) {
                 return res.json().then(function (data) {
                     return { ok: res.ok, status: res.status, data: data };
+                }).catch(function () {
+                    return { ok: res.ok, status: res.status, data: null };
                 });
             })
             .then(function (resObj) {
@@ -341,7 +350,12 @@
                     submitBtn.innerHTML = originalBtnHtml;
                 }
 
-                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
+                var isSuccess = resObj.ok && (
+                    resObj.status === 200 ||
+                    (resObj.data && (resObj.data.success === "true" || resObj.data.success === true))
+                );
+
+                if (isSuccess) {
                     form.reset();
                     if ($(".selectpicker").length) {
                         $(".selectpicker").selectpicker("refresh");
@@ -350,7 +364,7 @@
                         resultBox.innerHTML = 
                             '<div class="hr-form-alert hr-form-alert--success">' +
                                 '<div style="font-weight: 700; font-size: 16px;"><i class="fas fa-check-circle" style="color: #25D366; margin-right: 8px;"></i>Application Received!</div>' +
-                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your portfolio and details have reached <strong>' + ADMIN_EMAIL + '</strong>. We review every application personally within 3–5 business days.</div>' +
+                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your portfolio and details have reached <strong>hr@highreach.media</strong>. We review every application personally within 3–5 business days.</div>' +
                             '</div>';
                     }
                 } else {
