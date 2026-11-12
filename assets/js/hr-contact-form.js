@@ -208,20 +208,25 @@
                         to_email: targetEmail,
                         otp_code: newCode,
                         company_name: "High Reach"
+                    }).then(function () {
+                        if (otpAlertInfo) {
+                            otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> A 6-digit verification code has been sent to <strong>' + escapeHtml(targetEmail) + '</strong>. Please check your inbox and spam folder.';
+                            otpAlertInfo.style.display = "block";
+                        }
+                    }).catch(function (err) {
+                        console.error("EmailJS dispatch failed:", err);
+                        if (otpAlertError) {
+                            otpAlertError.textContent = "Failed to dispatch email. Please verify your email address or try again.";
+                            otpAlertError.style.display = "block";
+                        }
                     });
-                    if (otpAlertInfo) {
-                        otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> Verification code dispatched to <strong>' + escapeHtml(targetEmail) + '</strong>.';
-                        otpAlertInfo.style.display = "block";
-                    }
                 } catch (err) {
                     console.error("EmailJS dispatch error:", err);
                 }
             } else {
-                // Testing/Demo Mode: Display code so user can verify immediately
-                console.log("[High Reach OTP Verification Code]:", newCode);
-                if (otpAlertInfo) {
-                    otpAlertInfo.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Test Mode:</strong> Your verification code is <strong style="color: #FFD60A; font-size: 16px; letter-spacing: 2px;">' + newCode + '</strong> (Add EmailJS keys in hr-contact-form.js to send live emails).';
-                    otpAlertInfo.style.display = "block";
+                if (otpAlertError) {
+                    otpAlertError.innerHTML = '<i class="fas fa-shield-alt"></i> Live OTP delivery requires your free EmailJS credentials (Public Key, Service ID, Template ID) to dispatch real emails to visitor inboxes.';
+                    otpAlertError.style.display = "block";
                 }
             }
 
