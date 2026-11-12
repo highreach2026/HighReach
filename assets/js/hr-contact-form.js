@@ -223,12 +223,13 @@
 
                     window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
                         publicKey: EMAILJS_PUBLIC_KEY
-                    }).then(function () {
+                    }).then(function (res) {
+                        console.log("[EmailJS Send Success]:", res);
                         if (otpAlertError) {
                             otpAlertError.style.display = "none";
                         }
                         if (otpAlertInfo) {
-                            otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> A 6-digit verification code has been sent to <strong>' + escapeHtml(targetEmail) + '</strong>. Please check your inbox and spam folder.';
+                            otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> A 6-digit verification code has been dispatched to <strong>' + escapeHtml(targetEmail) + '</strong>. Please check your inbox and spam folder.';
                             otpAlertInfo.style.display = "block";
                         }
                     }).catch(function (err) {
