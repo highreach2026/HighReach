@@ -6457,3 +6457,185 @@ body.hr-popup-open {
 .contact-one--popup .form-one .amoxi-btn-two::after {
     display: none !important;
 }
+
+/* =========================================================
+   HIGH REACH — SECURE EMAIL OTP VERIFICATION STYLING
+   ========================================================= */
+.hr-otp-wrap {
+    background: rgba(18, 18, 22, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 32px 28px;
+    margin-top: 15px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: hrOtpFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes hrOtpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hr-otp-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 98, 243, 0.25) 0%, rgba(54, 194, 176, 0.25) 100%);
+    border: 1px solid rgba(0, 98, 243, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #36C2B0;
+    font-size: 26px;
+    box-shadow: 0 0 25px rgba(0, 98, 243, 0.3);
+}
+
+.hr-otp-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 8px;
+    letter-spacing: -0.3px;
+}
+
+.hr-otp-desc {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #A0A0A5;
+    margin: 0 auto 24px;
+    max-width: 440px;
+}
+
+.hr-otp-desc strong {
+    color: #36C2B0;
+    word-break: break-all;
+}
+
+.hr-otp-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.hr-otp-box {
+    width: 48px;
+    height: 56px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.hr-otp-box:focus {
+    border-color: #0062F3;
+    background: rgba(0, 98, 243, 0.12);
+    box-shadow: 0 0 0 3px rgba(0, 98, 243, 0.35);
+}
+
+.hr-otp-box.is-filled {
+    border-color: #36C2B0;
+    background: rgba(54, 194, 176, 0.08);
+}
+
+.hr-otp-timer {
+    font-size: 13.5px;
+    color: #7D7D84;
+    margin-bottom: 20px;
+}
+
+.hr-otp-timer span {
+    color: #FFD60A;
+    font-weight: 600;
+}
+
+.hr-otp-alert {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    margin-bottom: 18px;
+    display: none;
+}
+
+.hr-otp-alert--error {
+    background: rgba(255, 75, 75, 0.15);
+    border: 1px solid rgba(255, 75, 75, 0.4);
+    color: #FF8585;
+}
+
+.hr-otp-alert--info {
+    background: rgba(0, 98, 243, 0.15);
+    border: 1px solid rgba(0, 98, 243, 0.4);
+    color: #75B0FF;
+}
+
+.hr-otp-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.hr-otp-verify-btn {
+    min-width: 220px;
+}
+
+.hr-otp-sub-actions {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    font-size: 13.5px;
+    margin-top: 4px;
+}
+
+.hr-otp-sub-link {
+    background: none;
+    border: none;
+    color: #36C2B0;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 13.5px;
+    font-family: inherit;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.hr-otp-sub-link:hover {
+    color: #FFFFFF;
+}
+
+.hr-otp-sub-link[disabled] {
+    color: #55555C;
+    cursor: not-allowed;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .hr-otp-boxes {
+        gap: 6px;
+    }
+    .hr-otp-box {
+        width: 40px;
+        height: 48px;
+        font-size: 20px;
+    }
+    .hr-otp-wrap {
+        padding: 24px 16px;
+    }
+}

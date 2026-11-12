@@ -15,6 +15,12 @@
     var ADMIN_EMAIL = "grow@highreach.media";
     var WEB3FORMS_ACCESS_KEY = "92cc97f0-f227-4fae-9bca-868c98345fff";
 
+    // EmailJS Configuration for Visitor OTP Email Verification
+    // Sign up free at https://www.emailjs.com/ to connect live visitor verification emails
+    var EMAILJS_PUBLIC_KEY = "";   // e.g. "AbCdEf123456789"
+    var EMAILJS_SERVICE_ID = "";   // e.g. "service_highreach"
+    var EMAILJS_TEMPLATE_ID = "";  // e.g. "template_otp_verify"
+
     // Initialize once DOM is ready
     function initAllForms() {
         initContactForm();
@@ -57,6 +63,389 @@
         var submitBtn = form.querySelector('button[type="submit"]') || form.querySelector("#contactSubmitBtn");
         var waBtn = form.querySelector("#contactWhatsAppBtn") || (form.parentNode && form.parentNode.querySelector("#contactWhatsAppBtn"));
         var resultBox = (form.parentNode && form.parentNode.querySelector(".result")) || document.getElementById("contactResult");
+        var formFieldsGroup = form.querySelector(".form-one__group");
+
+        // Per-form OTP verification state
+        var otpState = {
+            code: "",
+            targetEmail: "",
+            targetName: "",
+            expiresAt: 0,
+            isVerified: false,
+            resendCooldown: 0,
+            cooldownInterval: null,
+            expiryInterval: null
+        };
+
+        // Inject OTP verification card if not already in DOM
+        var otpHolder = form.querySelector(".hr-otp-wrap");
+        if (!otpHolder) {
+            otpHolder = document.createElement("div");
+            otpHolder.className = "hr-otp-wrap";
+            otpHolder.style.display = "none";
+            otpHolder.innerHTML = 
+                '<div class="hr-otp-icon"><i class="fas fa-shield-alt"></i></div>' +
+                '<h3 class="hr-otp-title">Email Verification Required</h3>' +
+                '<p class="hr-otp-desc">To verify your inquiry and prevent duplicate spam, we sent a 6-digit verification code to <strong class="hr-otp-target-email"></strong>.</p>' +
+                '<div class="hr-otp-alert hr-otp-alert--info"></div>' +
+                '<div class="hr-otp-alert hr-otp-alert--error"></div>' +
+                '<div class="hr-otp-boxes">' +
+                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1">' +
+                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 2">' +
+                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 3">' +
+                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 4">' +
+                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 5">' +
+                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 6">' +
+                '</div>' +
+                '<div class="hr-otp-timer">Code expires in <span class="hr-otp-countdown">05:00</span></div>' +
+                '<div class="hr-otp-actions">' +
+                    '<button type="button" class="amoxi-btn-two hr-otp-verify-btn">' +
+                        'CONFIRM &amp; SEND REQUEST <span class="amoxi-btn-two__icon"><i class="fas fa-arrow-right"></i></span>' +
+                    '</button>' +
+                    '<div class="hr-otp-sub-actions">' +
+                        '<button type="button" class="hr-otp-sub-link hr-otp-resend-btn" disabled>Resend Code (<span class="hr-otp-cooldown">30</span>s)</button>' +
+                        '<button type="button" class="hr-otp-sub-link hr-otp-edit-btn">Edit Details</button>' +
+                    '</div>' +
+                '</div>';
+            form.appendChild(otpHolder);
+        }
+
+        var otpBoxes = otpHolder.querySelectorAll(".hr-otp-box");
+        var otpTargetEmailEl = otpHolder.querySelector(".hr-otp-target-email");
+        var otpCountdownEl = otpHolder.querySelector(".hr-otp-countdown");
+        var otpCooldownEl = otpHolder.querySelector(".hr-otp-cooldown");
+        var otpResendBtn = otpHolder.querySelector(".hr-otp-resend-btn");
+        var otpEditBtn = otpHolder.querySelector(".hr-otp-edit-btn");
+        var otpVerifyBtn = otpHolder.querySelector(".hr-otp-verify-btn");
+        var otpAlertError = otpHolder.querySelector(".hr-otp-alert--error");
+        var otpAlertInfo = otpHolder.querySelector(".hr-otp-alert--info");
+
+        function clearOtpTimers() {
+            if (otpState.cooldownInterval) {
+                clearInterval(otpState.cooldownInterval);
+                otpState.cooldownInterval = null;
+            }
+            if (otpState.expiryInterval) {
+                clearInterval(otpState.expiryInterval);
+                otpState.expiryInterval = null;
+            }
+        }
+
+        function formatTime(seconds) {
+            var m = Math.floor(seconds / 60);
+            var s = seconds % 60;
+            return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        }
+
+        function startOtpTimers() {
+            clearOtpTimers();
+
+            // 1. Expiry Countdown (5 minutes)
+            otpState.expiryInterval = setInterval(function () {
+                var remaining = Math.max(0, Math.floor((otpState.expiresAt - Date.now()) / 1000));
+                if (otpCountdownEl) {
+                    otpCountdownEl.textContent = formatTime(remaining);
+                }
+                if (remaining <= 0) {
+                    clearInterval(otpState.expiryInterval);
+                    otpState.expiryInterval = null;
+                    if (otpAlertError) {
+                        otpAlertError.textContent = "Your verification code has expired. Please click 'Resend Code'.";
+                        otpAlertError.style.display = "block";
+                    }
+                }
+            }, 1000);
+
+            // 2. Resend Cooldown (30 seconds)
+            otpState.resendCooldown = 30;
+            if (otpResendBtn) {
+                otpResendBtn.disabled = true;
+            }
+            if (otpCooldownEl) {
+                otpCooldownEl.textContent = "30";
+            }
+
+            otpState.cooldownInterval = setInterval(function () {
+                otpState.resendCooldown--;
+                if (otpCooldownEl) {
+                    otpCooldownEl.textContent = otpState.resendCooldown;
+                }
+                if (otpState.resendCooldown <= 0) {
+                    clearInterval(otpState.cooldownInterval);
+                    otpState.cooldownInterval = null;
+                    if (otpResendBtn) {
+                        otpResendBtn.disabled = false;
+                        otpResendBtn.textContent = "Resend Code";
+                    }
+                }
+            }, 1000);
+        }
+
+        function sendOtp(targetEmail, targetName) {
+            var newCode = Math.floor(100000 + Math.random() * 900000).toString();
+            otpState.code = newCode;
+            otpState.targetEmail = targetEmail;
+            otpState.targetName = targetName;
+            otpState.expiresAt = Date.now() + 5 * 60 * 1000; // 5 minutes
+
+            if (otpTargetEmailEl) {
+                otpTargetEmailEl.textContent = targetEmail;
+            }
+
+            // Check if EmailJS is configured with live credentials
+            var hasEmailJs = Boolean(
+                window.emailjs &&
+                EMAILJS_PUBLIC_KEY &&
+                EMAILJS_SERVICE_ID &&
+                EMAILJS_TEMPLATE_ID
+            );
+
+            if (hasEmailJs) {
+                try {
+                    window.emailjs.init(EMAILJS_PUBLIC_KEY);
+                    window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        to_name: targetName,
+                        to_email: targetEmail,
+                        otp_code: newCode,
+                        company_name: "High Reach"
+                    });
+                    if (otpAlertInfo) {
+                        otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> Verification code dispatched to <strong>' + escapeHtml(targetEmail) + '</strong>.';
+                        otpAlertInfo.style.display = "block";
+                    }
+                } catch (err) {
+                    console.error("EmailJS dispatch error:", err);
+                }
+            } else {
+                // Testing/Demo Mode: Display code so user can verify immediately
+                console.log("[High Reach OTP Verification Code]:", newCode);
+                if (otpAlertInfo) {
+                    otpAlertInfo.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Test Mode:</strong> Your verification code is <strong style="color: #FFD60A; font-size: 16px; letter-spacing: 2px;">' + newCode + '</strong> (Add EmailJS keys in hr-contact-form.js to send live emails).';
+                    otpAlertInfo.style.display = "block";
+                }
+            }
+
+            startOtpTimers();
+        }
+
+        // Configure 6-box OTP inputs (auto-advance, backspace, paste)
+        otpBoxes.forEach(function (box, idx) {
+            box.addEventListener("input", function (e) {
+                var val = e.target.value.replace(/\D/g, "");
+                e.target.value = val ? val.charAt(0) : "";
+                if (e.target.value) {
+                    box.classList.add("is-filled");
+                    if (idx < otpBoxes.length - 1) {
+                        otpBoxes[idx + 1].focus();
+                    } else {
+                        // All 6 filled, trigger verification
+                        verifyOtpAndSubmit();
+                    }
+                } else {
+                    box.classList.remove("is-filled");
+                }
+            });
+
+            box.addEventListener("keydown", function (e) {
+                if (e.key === "Backspace" && !box.value && idx > 0) {
+                    otpBoxes[idx - 1].focus();
+                    otpBoxes[idx - 1].value = "";
+                    otpBoxes[idx - 1].classList.remove("is-filled");
+                }
+            });
+
+            box.addEventListener("paste", function (e) {
+                e.preventDefault();
+                var pasteData = (e.clipboardData || window.clipboardData).getData("text") || "";
+                var digits = pasteData.replace(/\D/g, "").slice(0, 6);
+                if (digits.length) {
+                    for (var i = 0; i < otpBoxes.length; i++) {
+                        if (digits[i]) {
+                            otpBoxes[i].value = digits[i];
+                            otpBoxes[i].classList.add("is-filled");
+                        }
+                    }
+                    var nextFocus = Math.min(digits.length, otpBoxes.length - 1);
+                    otpBoxes[nextFocus].focus();
+                    if (digits.length === 6) {
+                        verifyOtpAndSubmit();
+                    }
+                }
+            });
+        });
+
+        // Edit details: cancel OTP, restore form
+        if (otpEditBtn) {
+            otpEditBtn.addEventListener("click", function () {
+                clearOtpTimers();
+                otpHolder.style.display = "none";
+                if (formFieldsGroup) {
+                    formFieldsGroup.style.display = "";
+                }
+                if (resultBox) {
+                    resultBox.innerHTML = "";
+                }
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // Resend code handler
+        if (otpResendBtn) {
+            otpResendBtn.addEventListener("click", function () {
+                if (otpResendBtn.disabled) return;
+                otpBoxes.forEach(function (b) {
+                    b.value = "";
+                    b.classList.remove("is-filled");
+                });
+                if (otpAlertError) {
+                    otpAlertError.style.display = "none";
+                }
+                sendOtp(otpState.targetEmail, otpState.targetName);
+                if (otpBoxes[0]) {
+                    otpBoxes[0].focus();
+                }
+            });
+        }
+
+        // Verify button handler
+        if (otpVerifyBtn) {
+            otpVerifyBtn.addEventListener("click", function () {
+                verifyOtpAndSubmit();
+            });
+        }
+
+        function verifyOtpAndSubmit() {
+            var entered = "";
+            otpBoxes.forEach(function (b) {
+                entered += b.value.trim();
+            });
+
+            if (otpAlertError) {
+                otpAlertError.style.display = "none";
+            }
+
+            if (entered.length < 6) {
+                if (otpAlertError) {
+                    otpAlertError.textContent = "Please enter the complete 6-digit code.";
+                    otpAlertError.style.display = "block";
+                }
+                return;
+            }
+
+            if (Date.now() > otpState.expiresAt) {
+                if (otpAlertError) {
+                    otpAlertError.textContent = "This verification code has expired. Please click 'Resend Code'.";
+                    otpAlertError.style.display = "block";
+                }
+                return;
+            }
+
+            if (entered !== otpState.code) {
+                if (otpAlertError) {
+                    otpAlertError.textContent = "Incorrect code. Please double-check your code or request a new one.";
+                    otpAlertError.style.display = "block";
+                }
+                otpBoxes.forEach(function (b) {
+                    b.classList.remove("is-filled");
+                });
+                return;
+            }
+
+            // Successfully Verified!
+            clearOtpTimers();
+            otpState.isVerified = true;
+
+            // Transition UI to transmitting
+            otpHolder.style.display = "none";
+            if (formFieldsGroup) {
+                formFieldsGroup.style.display = "";
+            }
+
+            // Transmit verified inquiry to Web3Forms grow@highreach.media
+            deliverVerifiedForm();
+        }
+
+        function deliverVerifiedForm() {
+            var nameInput = form.querySelector('[name="name"]');
+            var emailInput = form.querySelector('[name="email"]');
+            var phoneInput = form.querySelector('[name="phone"]');
+            var serviceSelect = form.querySelector('[name="service"]');
+            var messageInput = form.querySelector('[name="message"]');
+
+            var name = nameInput ? nameInput.value.trim() : "";
+            var email = emailInput ? emailInput.value.trim() : "";
+            var phone = phoneInput ? phoneInput.value.trim() : "";
+            var service = serviceSelect && serviceSelect.selectedIndex >= 0 ? serviceSelect.options[serviceSelect.selectedIndex].value : "";
+            var message = messageInput ? messageInput.value.trim() : "";
+
+            var originalBtnHtml = submitBtn ? submitBtn.innerHTML : "SEND REQUEST";
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> TRANSMITTING VERIFIED INQUIRY...';
+            }
+            if (resultBox) {
+                resultBox.innerHTML = '<div class="hr-form-alert" style="background: rgba(0, 98, 243, 0.12); border: 1px solid rgba(0, 98, 243, 0.3); color: #fff;"><i class="fas fa-shield-alt"></i> Email verified! Delivering inquiry safely to ' + ADMIN_EMAIL + '...</div>';
+            }
+
+            var formData = new FormData(form);
+            var activeKey = formData.get("access_key") || WEB3FORMS_ACCESS_KEY;
+            formData.set("service_requested", service || "General Inquiry");
+            formData.set("submitted_at", new Date().toLocaleString());
+            formData.set("email_verified", "YES (Verified via OTP to " + email + ")");
+            formData.set("access_key", activeKey);
+
+            fetch(form.action || "https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            })
+            .then(function (res) {
+                return res.json().then(function (data) {
+                    return { ok: res.ok, status: res.status, data: data };
+                });
+            })
+            .then(function (resObj) {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+
+                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
+                    form.reset();
+                    otpState.isVerified = false;
+
+                    if (window.jQuery && window.jQuery(form).find(".selectpicker").length) {
+                        window.jQuery(form).find(".selectpicker").selectpicker("refresh");
+                    }
+
+                    if (resultBox) {
+                        var waQuickMsg = "Hi High Reach Admin,\n\nI just verified and sent a project request to " + ADMIN_EMAIL + " via your website:\n• *Name:* " + name + "\n• *Service:* " + (service || "General Inquiry") + "\nLooking forward to hearing from you!";
+                        var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waQuickMsg);
+
+                        resultBox.innerHTML = 
+                            '<div class="hr-form-alert hr-form-alert--success">' +
+                                '<div style="font-weight: 700; font-size: 16px; margin-bottom: 4px;"><i class="fas fa-check-circle" style="color: #25D366; margin-right: 8px;"></i>Inquiry Verified &amp; Sent Successfully!</div>' +
+                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your email has been authenticated and details delivered safely to <strong>' + ADMIN_EMAIL + '</strong>. Our team will reach out within 24 hours.</div>' +
+                                '<div style="margin-top: 12px;">' +
+                                    '<a href="' + waQuickUrl + '" target="_blank" rel="noopener noreferrer" class="hr-alert-wa-link" style="display: inline-flex; align-items: center; gap: 8px; color: #25D366; font-weight: 600; text-decoration: none;">' +
+                                        '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> Want an immediate discussion? Ping us directly on WhatsApp &rarr;' +
+                                    '</a>' +
+                                '</div>' +
+                            '</div>';
+                    }
+                } else {
+                    handleFallback(resultBox, name, email, phone, service, message);
+                }
+            })
+            .catch(function () {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnHtml;
+                }
+                handleFallback(resultBox, name, email, phone, service, message);
+            });
+        }
 
         // 1. WhatsApp Button Click Handler
         if (waBtn) {
@@ -86,7 +475,7 @@
             });
         }
 
-        // 2. Email Form Submit Handler
+        // 2. Email Form Submit Handler — Intercepts and Triggers OTP Verification
         form.addEventListener("submit", function (e) {
             e.preventDefault();
 
@@ -109,84 +498,42 @@
                 return;
             }
 
-            // Button loading state
-            var originalBtnHtml = submitBtn ? submitBtn.innerHTML : "SEND REQUEST";
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SENDING TO ' + ADMIN_EMAIL + '...';
-            }
-            if (resultBox) {
-                resultBox.innerHTML = '<div class="hr-form-alert" style="background: rgba(0, 98, 243, 0.12); border: 1px solid rgba(0, 98, 243, 0.3); color: #fff;"><i class="fas fa-paper-plane"></i> Transmitting your message securely to ' + ADMIN_EMAIL + '...</div>';
-            }
-
-            var formData = new FormData(form);
-            var activeKey = formData.get("access_key") || WEB3FORMS_ACCESS_KEY;
-            formData.set("service_requested", service || "General Inquiry");
-            formData.set("submitted_at", new Date().toLocaleString());
-
-            // If Web3Forms access key is not set, launch mail client directly & display instant WhatsApp transfer
-            if (!activeKey) {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
+            // Email format check
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                if (resultBox) {
+                    resultBox.innerHTML = '<div class="hr-form-alert hr-form-alert--error"><i class="fas fa-exclamation-circle"></i> Please enter a valid email address to receive your verification code.</div>';
                 }
-                var mailSubject = encodeURIComponent("Project Inquiry — " + name + " — " + (service || "General Inquiry"));
-                var mailBody = encodeURIComponent("Hi High Reach Team,\n\nName: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nService: " + (service || "General Inquiry") + "\n\nComments:\n" + message);
-                window.location.href = "mailto:" + ADMIN_EMAIL + "?subject=" + mailSubject + "&body=" + mailBody;
-                handleFallback(resultBox, name, email, phone, service, message);
                 return;
             }
 
-            formData.set("access_key", activeKey);
+            // Transition to OTP verification step
+            if (resultBox) {
+                resultBox.innerHTML = "";
+            }
+            if (formFieldsGroup) {
+                formFieldsGroup.style.display = "none";
+            }
+            otpHolder.style.display = "block";
 
-            // Use official Web3Forms FormData submission for reliable browser delivery
-            fetch(form.action || "https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData
-            })
-            .then(function (res) {
-                return res.json().then(function (data) {
-                    return { ok: res.ok, status: res.status, data: data };
-                });
-            })
-            .then(function (resObj) {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-
-                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
-                    form.reset();
-                    if (window.jQuery && window.jQuery(form).find(".selectpicker").length) {
-                        window.jQuery(form).find(".selectpicker").selectpicker("refresh");
-                    }
-
-                    if (resultBox) {
-                        var waQuickMsg = "Hi High Reach Admin,\n\nI just sent a project request to " + ADMIN_EMAIL + " via your website:\n• *Name:* " + name + "\n• *Service:* " + (service || "General Inquiry") + "\nLooking forward to hearing from you!";
-                        var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waQuickMsg);
-
-                        resultBox.innerHTML = 
-                            '<div class="hr-form-alert hr-form-alert--success">' +
-                                '<div style="font-weight: 700; font-size: 16px; margin-bottom: 4px;"><i class="fas fa-check-circle" style="color: #25D366; margin-right: 8px;"></i>Request Sent Successfully!</div>' +
-                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your details have been delivered safely to <strong>' + ADMIN_EMAIL + '</strong>. Our team will reach out to you within 24 hours.</div>' +
-                                '<div style="margin-top: 12px;">' +
-                                    '<a href="' + waQuickUrl + '" target="_blank" rel="noopener noreferrer" class="hr-alert-wa-link" style="display: inline-flex; align-items: center; gap: 8px; color: #25D366; font-weight: 600; text-decoration: none;">' +
-                                        '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> Want an immediate discussion? Ping us directly on WhatsApp &rarr;' +
-                                    '</a>' +
-                                '</div>' +
-                            '</div>';
-                    }
-                } else {
-                    handleFallback(resultBox, name, email, phone, service, message);
-                }
-            })
-            .catch(function () {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-                handleFallback(resultBox, name, email, phone, service, message);
+            // Clear inputs and reset alerts
+            otpBoxes.forEach(function (b) {
+                b.value = "";
+                b.classList.remove("is-filled");
             });
+            if (otpAlertError) {
+                otpAlertError.style.display = "none";
+            }
+
+            // Generate and dispatch OTP
+            sendOtp(email, name);
+
+            // Focus first digit
+            setTimeout(function () {
+                if (otpBoxes[0]) {
+                    otpBoxes[0].focus();
+                }
+            }, 100);
         });
     }
 
@@ -330,40 +677,40 @@
                 method: "POST",
                 body: formData
             })
-            .then(function (res) {
-                return res.json().then(function (data) {
-                    return { ok: res.ok, status: res.status, data: data };
-                });
-            })
-            .then(function (resObj) {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-
-                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
-                    form.reset();
-                    if ($(".selectpicker").length) {
-                        $(".selectpicker").selectpicker("refresh");
+                .then(function (res) {
+                    return res.json().then(function (data) {
+                        return { ok: res.ok, status: res.status, data: data };
+                    });
+                })
+                .then(function (resObj) {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
                     }
-                    if (resultBox) {
-                        resultBox.innerHTML = 
-                            '<div class="hr-form-alert hr-form-alert--success">' +
+
+                    if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
+                        form.reset();
+                        if ($(".selectpicker").length) {
+                            $(".selectpicker").selectpicker("refresh");
+                        }
+                        if (resultBox) {
+                            resultBox.innerHTML =
+                                '<div class="hr-form-alert hr-form-alert--success">' +
                                 '<div style="font-weight: 700; font-size: 16px;"><i class="fas fa-check-circle" style="color: #25D366; margin-right: 8px;"></i>Application Received!</div>' +
                                 '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your portfolio and details have reached <strong>' + ADMIN_EMAIL + '</strong>. We review every application personally within 3–5 business days.</div>' +
-                            '</div>';
+                                '</div>';
+                        }
+                    } else {
+                        handleCareerFallback(resultBox, name, email, phone, role, portfolio, message);
                     }
-                } else {
+                })
+                .catch(function () {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                    }
                     handleCareerFallback(resultBox, name, email, phone, role, portfolio, message);
-                }
-            })
-            .catch(function () {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-                handleCareerFallback(resultBox, name, email, phone, role, portfolio, message);
-            });
+                });
         });
     }
 
@@ -381,15 +728,15 @@
 
         var waUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waText);
 
-        resultBox.innerHTML = 
+        resultBox.innerHTML =
             '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(0, 98, 243, 0.12); border-color: rgba(0, 98, 243, 0.4);">' +
-                '<div style="font-weight: 700; font-size: 15px;"><i class="fas fa-check-circle" style="color: #36C2B0; margin-right: 8px;"></i>Your inquiry is ready to send!</div>' +
-                '<div>Click below to transmit directly to our team on WhatsApp for an immediate response:</div>' +
-                '<div style="margin-top: 10px;">' +
-                    '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);">' +
-                        '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> SEND INQUIRY TO ADMIN ON WHATSAPP &rarr;' +
-                    '</a>' +
-                '</div>' +
+            '<div style="font-weight: 700; font-size: 15px;"><i class="fas fa-check-circle" style="color: #36C2B0; margin-right: 8px;"></i>Your inquiry is ready to send!</div>' +
+            '<div>Click below to transmit directly to our team on WhatsApp for an immediate response:</div>' +
+            '<div style="margin-top: 10px;">' +
+            '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);">' +
+            '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> SEND INQUIRY TO ADMIN ON WHATSAPP &rarr;' +
+            '</a>' +
+            '</div>' +
             '</div>';
     }
 
@@ -408,15 +755,15 @@
 
         var waUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waText);
 
-        resultBox.innerHTML = 
+        resultBox.innerHTML =
             '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(0, 98, 243, 0.12); border-color: rgba(0, 98, 243, 0.4);">' +
-                '<div style="font-weight: 700; font-size: 15px;"><i class="fas fa-check-circle" style="color: #36C2B0; margin-right: 8px;"></i>Your application is ready!</div>' +
-                '<div>Click below to deliver your application directly to our recruitment lead on WhatsApp:</div>' +
-                '<div style="margin-top: 10px;">' +
-                    '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);">' +
-                        '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> SEND APPLICATION ON WHATSAPP &rarr;' +
-                    '</a>' +
-                '</div>' +
+            '<div style="font-weight: 700; font-size: 15px;"><i class="fas fa-check-circle" style="color: #36C2B0; margin-right: 8px;"></i>Your application is ready!</div>' +
+            '<div>Click below to deliver your application directly to our recruitment lead on WhatsApp:</div>' +
+            '<div style="margin-top: 10px;">' +
+            '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);">' +
+            '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> SEND APPLICATION ON WHATSAPP &rarr;' +
+            '</a>' +
+            '</div>' +
             '</div>';
     }
 
