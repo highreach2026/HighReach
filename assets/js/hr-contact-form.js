@@ -15,11 +15,10 @@
     var ADMIN_EMAIL = "grow@highreach.media";
     var WEB3FORMS_ACCESS_KEY = "92cc97f0-f227-4fae-9bca-868c98345fff";
 
-    // EmailJS Configuration for Visitor OTP Email Verification
-    // Sign up free at https://www.emailjs.com/ to connect live visitor verification emails
-    var EMAILJS_PUBLIC_KEY = "";   // e.g. "AbCdEf123456789"
-    var EMAILJS_SERVICE_ID = "";   // e.g. "service_highreach"
-    var EMAILJS_TEMPLATE_ID = "";  // e.g. "template_otp_verify"
+    // EmailJS Configuration for Live Visitor OTP Email Verification
+    var EMAILJS_PUBLIC_KEY = "dnAzL0KNESocptSjD";
+    var EMAILJS_SERVICE_ID = "service_ld8ucqh";
+    var EMAILJS_TEMPLATE_ID = "template_qhf3aqf";
 
     // Initialize once DOM is ready
     function initAllForms() {
@@ -205,8 +204,12 @@
                     window.emailjs.init(EMAILJS_PUBLIC_KEY);
                     window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
                         to_name: targetName,
+                        name: targetName,
                         to_email: targetEmail,
+                        email: targetEmail,
+                        user_email: targetEmail,
                         otp_code: newCode,
+                        otp: newCode,
                         company_name: "High Reach"
                     }).then(function () {
                         if (otpAlertInfo) {
