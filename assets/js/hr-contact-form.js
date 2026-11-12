@@ -16,10 +16,17 @@
     var WEB3FORMS_ACCESS_KEY = "";
 
     // Initialize once DOM is ready
-    document.addEventListener("DOMContentLoaded", function () {
+    function initAllForms() {
         initContactForm();
         initCareerForm();
-    });
+        initHomeContactPopup();
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initAllForms);
+    } else {
+        initAllForms();
+    }
 
     /**
      * Helper to open WhatsApp with safe URI encoding
@@ -32,15 +39,24 @@
     }
 
     /**
-     * CONTACT FORM INITIALIZATION (contact.html)
+     * CONTACT FORM INITIALIZATION (contact.html & index.html popup)
      */
     function initContactForm() {
-        var form = document.getElementById("contactForm");
-        if (!form) return;
+        var forms = document.querySelectorAll(".hr-contact-form");
+        if (!forms || !forms.length) return;
 
-        var submitBtn = document.getElementById("contactSubmitBtn");
-        var waBtn = document.getElementById("contactWhatsAppBtn");
-        var resultBox = document.getElementById("contactResult");
+        forms.forEach(function (form) {
+            setupSingleContactForm(form);
+        });
+    }
+
+    function setupSingleContactForm(form) {
+        if (!form || form.getAttribute("data-hr-initialized") === "true") return;
+        form.setAttribute("data-hr-initialized", "true");
+
+        var submitBtn = form.querySelector('button[type="submit"]') || form.querySelector("#contactSubmitBtn");
+        var waBtn = form.querySelector("#contactWhatsAppBtn") || (form.parentNode && form.parentNode.querySelector("#contactWhatsAppBtn"));
+        var resultBox = (form.parentNode && form.parentNode.querySelector(".result")) || document.getElementById("contactResult");
 
         // 1. WhatsApp Button Click Handler
         if (waBtn) {
@@ -141,8 +157,8 @@
 
                 if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
                     form.reset();
-                    if ($(".selectpicker").length) {
-                        $(".selectpicker").selectpicker("refresh");
+                    if (window.jQuery && window.jQuery(form).find(".selectpicker").length) {
+                        window.jQuery(form).find(".selectpicker").selectpicker("refresh");
                     }
 
                     if (resultBox) {
@@ -172,6 +188,82 @@
                 handleFallback(resultBox, name, email, phone, service, message);
             });
         });
+    }
+
+    /**
+     * HOME PAGE 10-SECOND AUTO POPUP
+     */
+    function initHomeContactPopup() {
+        var popup = document.getElementById("homeContactPopup");
+        if (!popup) return;
+
+        var POPUP_DELAY_MS = 10000; // 10 seconds
+        var popupTimer = null;
+        var hasOpened = false;
+
+        function openPopup() {
+            if (!popup || hasOpened) return;
+            hasOpened = true;
+            popup.classList.add("is-active");
+            popup.setAttribute("aria-hidden", "false");
+            document.body.classList.add("hr-popup-open");
+
+            // Pause GSAP ScrollSmoother so page background doesn't scroll beneath the modal
+            if (typeof ScrollSmoother !== "undefined" && typeof ScrollSmoother.get === "function") {
+                var smoother = ScrollSmoother.get();
+                if (smoother && typeof smoother.paused === "function") {
+                    smoother.paused(true);
+                }
+            }
+
+            // Refresh Bootstrap Select dropdown inside the popup
+            if (window.jQuery && window.jQuery.fn && window.jQuery.fn.selectpicker) {
+                var $popupSelect = window.jQuery(popup).find(".selectpicker");
+                if ($popupSelect.length) {
+                    $popupSelect.selectpicker("refresh");
+                }
+            }
+        }
+
+        function closePopup() {
+            if (!popup) return;
+            popup.classList.remove("is-active");
+            popup.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("hr-popup-open");
+
+            // Resume GSAP ScrollSmoother
+            if (typeof ScrollSmoother !== "undefined" && typeof ScrollSmoother.get === "function") {
+                var smoother = ScrollSmoother.get();
+                if (smoother && typeof smoother.paused === "function") {
+                    smoother.paused(false);
+                }
+            }
+        }
+
+        // Trigger after exactly 10 seconds
+        popupTimer = setTimeout(openPopup, POPUP_DELAY_MS);
+
+        // Bind close buttons and backdrop clicks
+        var closeTriggers = popup.querySelectorAll("[data-close-popup]");
+        closeTriggers.forEach(function (trigger) {
+            trigger.addEventListener("click", function (e) {
+                e.preventDefault();
+                closePopup();
+            });
+        });
+
+        // Close on Escape key
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" || e.keyCode === 27) {
+                if (popup.classList.contains("is-active")) {
+                    closePopup();
+                }
+            }
+        });
+
+        // Expose controls globally for programmatic control if needed
+        window.openHighReachContactPopup = openPopup;
+        window.closeHighReachContactPopup = closePopup;
     }
 
     /**

@@ -5898,3 +5898,340 @@ body,
     opacity: 0.35 !important;
     transition: opacity 0.4s ease;
 }
+
+/* ==========================================================================
+   HIGH REACH — 10-SECOND AUTO POPUP CONTACT FORM (HOME PAGE)
+   Matches the exact Contact Page form with premium modal styling & responsive UX
+   ========================================================================== */
+
+/* Prevent page background scroll when popup is open */
+body.hr-popup-open {
+    overflow: hidden !important;
+}
+
+/* Modal Overlay Layer */
+.hr-home-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+}
+
+.hr-home-popup.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Backdrop Dimmer & Glass Blur */
+.hr-home-popup__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(5, 7, 12, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+/* Wrapper */
+.hr-home-popup__wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 720px;
+    max-height: 94vh;
+    padding: 20px 16px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Dialog Container */
+.hr-home-popup__dialog {
+    position: relative;
+    width: 100%;
+    max-height: calc(94vh - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.12);
+    transform: translateY(24px) scale(0.96);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-overflow-scrolling: touch;
+}
+
+.hr-home-popup.is-active .hr-home-popup__dialog {
+    transform: translateY(0) scale(1);
+}
+
+/* Custom Dialog Scrollbar */
+.hr-home-popup__dialog::-webkit-scrollbar {
+    width: 6px;
+}
+.hr-home-popup__dialog::-webkit-scrollbar-track {
+    background: #F1F4F9;
+    border-radius: 10px;
+}
+.hr-home-popup__dialog::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 10px;
+}
+.hr-home-popup__dialog::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Close Button */
+.hr-home-popup__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #F1F3F7;
+    border: none;
+    color: #1A1B1F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    padding: 0;
+}
+
+.hr-home-popup__close:hover,
+.hr-home-popup__close:focus {
+    background-color: #0062F3;
+    color: #FFFFFF;
+    transform: rotate(90deg);
+}
+
+.hr-home-popup__close svg {
+    display: block;
+}
+
+/* Scoped Form Styles for Popup */
+.contact-one--popup {
+    background: transparent !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.contact-one--popup .contact-one__form {
+    padding: 44px 38px 40px !important;
+    border-radius: 32px !important;
+    background-color: #FFFFFF !important;
+    box-shadow: none !important;
+    width: 100% !important;
+}
+
+.contact-one--popup .sec-title {
+    margin-bottom: 22px !important;
+    text-align: left !important;
+    padding-right: 40px !important; /* prevent overlap with close button */
+}
+
+.contact-one--popup .sec-title__top {
+    margin-bottom: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.contact-one--popup .sec-title__tagline {
+    color: #0062F3 !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+}
+
+.contact-one--popup .sec-title__title {
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+    font-size: 28px !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    margin: 8px 0 0 !important;
+}
+
+.contact-one--popup .contact-one__desc {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    color: #555555 !important;
+    margin-top: 8px !important;
+    margin-bottom: 22px !important;
+}
+
+.contact-one--popup .form-one__group {
+    grid-gap: 18px !important;
+}
+
+.contact-one--popup .form-one input[type="text"],
+.contact-one--popup .form-one input[type="email"],
+.contact-one--popup .form-one input[type="tel"],
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle {
+    height: 52px !important;
+    border-radius: 8px !important;
+    border: 1px solid #D5D9E0 !important;
+    color: #1A1B1F !important;
+    background-color: #FAFAFC !important;
+    padding: 0 18px !important;
+    font-size: 15px !important;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.contact-one--popup .form-one input[type="text"]:focus,
+.contact-one--popup .form-one input[type="email"]:focus,
+.contact-one--popup .form-one input[type="tel"]:focus,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle:focus {
+    border-color: #0062F3 !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 3px rgba(0, 98, 243, 0.15) !important;
+    outline: none !important;
+}
+
+.contact-one--popup .form-one textarea {
+    height: 110px !important;
+    min-height: 100px !important;
+    border-radius: 8px !important;
+    border: 1px solid #D5D9E0 !important;
+    color: #1A1B1F !important;
+    background-color: #FAFAFC !important;
+    padding: 14px 18px !important;
+    font-size: 15px !important;
+    resize: vertical;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.contact-one--popup .form-one textarea:focus {
+    border-color: #0062F3 !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 3px rgba(0, 98, 243, 0.15) !important;
+    outline: none !important;
+}
+
+.contact-one--popup .form-one input::placeholder,
+.contact-one--popup .form-one textarea::placeholder {
+    color: #8C92A4 !important;
+    opacity: 1 !important;
+}
+
+.contact-one--popup .form-one .amoxi-btn-two {
+    width: 100% !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    border-radius: 999px !important;
+    background: #0062F3 !important;
+    color: #FFFFFF !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+    box-shadow: 0 8px 24px rgba(0, 98, 243, 0.35) !important;
+}
+
+.contact-one--popup .form-one .amoxi-btn-two:hover {
+    background-color: #004ecc !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 98, 243, 0.45) !important;
+    color: #FFFFFF !important;
+}
+
+.contact-one--popup .form-one .amoxi-btn-two span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu {
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+    padding: 8px !important;
+    z-index: 1050 !important;
+}
+
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu > li > a {
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    color: #222222 !important;
+    line-height: 1.4 !important;
+}
+
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu > li:hover > a,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu > li.selected > a {
+    background-color: #0062F3 !important;
+    color: #FFFFFF !important;
+}
+
+/* Mobile Responsiveness for Popup */
+@media (max-width: 767px) {
+    .hr-home-popup__wrapper {
+        padding: 12px 10px !important;
+        max-height: 98vh !important;
+    }
+
+    .hr-home-popup__dialog {
+        border-radius: 22px !important;
+        max-height: calc(98vh - 24px) !important;
+    }
+
+    .contact-one--popup .contact-one__form {
+        padding: 30px 18px 24px !important;
+        border-radius: 22px !important;
+    }
+
+    .contact-one--popup .sec-title {
+        padding-right: 36px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .contact-one--popup .sec-title__title {
+        font-size: 22px !important;
+    }
+
+    .contact-one--popup .contact-one__desc {
+        font-size: 14px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .contact-one--popup .form-one__group {
+        grid-gap: 14px !important;
+    }
+
+    .hr-home-popup__close {
+        top: 14px !important;
+        right: 14px !important;
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .contact-one--popup .form-one .amoxi-btn-two {
+        width: 100% !important;
+    }
+}

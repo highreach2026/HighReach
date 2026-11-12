@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="assets/css/amoxi.css?v=12.0" />
 
     <!-- High Reach brand overrides -->
-    <link rel="stylesheet" href="assets/css/high-reach.css?v=20.0" />
+    <link rel="stylesheet" href="assets/css/high-reach.css?v=22.0" />
     <link rel="stylesheet" href="assets/css/whatsapp-widget.css?v=12.0" />
     <link rel="stylesheet" href="assets/css/cta-unscrollable.css?v=2.3" />
     <link rel="stylesheet" href="assets/css/highreach-footer.css?v=19.0" />
@@ -1897,6 +1897,74 @@
         </div>
     </div><!-- /.hr-sticky-scroll-bar -->
 
+    <!-- High Reach Home Page 10-Second Auto Contact Form Popup -->
+    <div class="hr-home-popup" id="homeContactPopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="homePopupTitle">
+        <div class="hr-home-popup__backdrop" data-close-popup></div>
+        <div class="hr-home-popup__wrapper">
+            <div class="hr-home-popup__dialog">
+                <button type="button" class="hr-home-popup__close" aria-label="Close contact form" data-close-popup>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="contact-one contact-one--popup">
+                    <div class="contact-one__form">
+                        <div class="sec-title">
+                            <div class="sec-title__top">
+                                <div class="sec-title__shape sec-title__shape--1">
+                                    <div class="sec-title__shape__inner"></div>
+                                </div>
+                                <p class="sec-title__tagline">CONTACT US</p>
+                            </div><!-- /.sec-title__top -->
+                            <h2 class="sec-title__title" id="homePopupTitle">Let's Build<br>Something Extraordinary.</h2>
+                            <p class="contact-one__desc">Tell us what you have in mind. We'll bring the creativity, strategy, and expertise to make it happen.</p>
+                        </div><!-- /.sec-title -->
+                        <form action="https://api.web3forms.com/submit" method="POST" class="hr-contact-form form-one" id="homePopupContactForm">
+                            <input type="hidden" name="subject" value="New Project Inquiry — High Reach Website (Home Popup)">
+                            <input type="hidden" name="from_name" value="High Reach Contact Form">
+                            <!-- Anti-Spam Botcheck Honeypot (Catches automated spambots) -->
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none !important;">
+
+                            <div class="form-one__group">
+                                <div class="form-one__control form-one__control--full">
+                                    <input type="text" name="name" id="popupContactName" placeholder="Your Name *" required>
+                                </div><!-- /.form-one__control -->
+                                <div class="form-one__control form-one__control--full">
+                                    <input type="email" name="email" id="popupContactEmail" placeholder="Your Email *" required>
+                                </div><!-- /.form-one__control -->
+                                <div class="form-one__control">
+                                    <input type="tel" name="phone" id="popupContactPhone" placeholder="Your Phone *" required>
+                                </div><!-- /.form-one__control -->
+                                <div class="form-one__control">
+                                    <select class="selectpicker" name="service" id="popupContactService" autocomplete="off" aria-label="Select Service" required>
+                                        <option value="" selected disabled>Select Service *</option>
+                                        <option value="Branding & Creative Design">BRANDING & CREATIVE DESIGN</option>
+                                        <option value="Marketing & Communications">MARKETING & COMMUNICATIONS</option>
+                                        <option value="Digital Marketing">DIGITAL MARKETING</option>
+                                        <option value="E-Commerce & Marketplace Growth">E-COMMERCE & MARKETPLACE GROWTH</option>
+                                        <option value="Creative Production & Content Studio">CREATIVE PRODUCTION & CONTENT STUDIO</option>
+                                        <option value="Web, App & Digital Experiences">WEB, APP & DIGITAL EXPERIENCES</option>
+                                        <option value="IT Consulting">IT CONSULTING</option>
+                                        <option value="Artificial Intelligence & Generative AI">ARTIFICIAL INTELLIGENCE & GENERATIVE AI</option>
+                                        <option value="Business & Growth Solutions">BUSINESS & GROWTH SOLUTIONS</option>
+                                        <option value="Print, Collateral & Commercial Production">PRINT, COLLATERAL & COMMERCIAL PRODUCTION</option>
+                                    </select>                                                
+                                </div><!-- /.form-one__control -->
+                                <div class="form-one__control form-one__control--full">
+                                    <textarea name="message" id="popupContactMessage" placeholder="Your Comments / Project Brief *" required></textarea>
+                                </div><!-- /.form-one__control -->
+                                <div class="form-one__control form-one__control--full">
+                                    <button type="submit" class="amoxi-btn-two" id="popupContactSubmitBtn">
+                                        SEND REQUEST <span class="amoxi-btn-two__icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                                    </button><!-- /.amoxi-btn-two -->
+                                </div><!-- /.form-one__control -->
+                            </div><!-- /.form-one__group -->
+                        </form><!-- /.form-one -->
+                        <div class="result" id="popupContactResult" style="margin-top: 15px;"></div><!-- /.result -->
+                    </div><!-- /.contact-one__form -->
+                </div><!-- /.contact-one -->
+            </div><!-- /.hr-home-popup__dialog -->
+        </div><!-- /.hr-home-popup__wrapper -->
+    </div><!-- /.hr-home-popup -->
+
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top" aria-label="Back to top">
         <span class="scroll-to-top__text">back top</span>
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
@@ -2260,6 +2328,8 @@
     <script src="assets/js/hr-glass-loupe.js?v=14.0"></script>
     <!-- High Reach Logo Gradient Bars (Selection Markup & Scroll Progress) -->
     <script src="assets/js/hr-gradient-bars.js?v=12.0"></script>
+    <!-- High Reach Dual-Delivery Contact & Popup Form Script -->
+    <script src="assets/js/hr-contact-form.js?v=2.0"></script>
 </body>
 
 </html>
