@@ -6167,25 +6167,240 @@ body.hr-popup-open {
     justify-content: center !important;
 }
 
-.contact-one--popup .form-one .bootstrap-select .dropdown-menu {
-    border-radius: 12px !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
-    padding: 8px !important;
-    z-index: 1050 !important;
+/* ==========================================================================
+   HIGH REACH — PREMIUM ULTRA-CLEAR SERVICE DROPDOWN (CONTACT & HOME POPUP)
+   Fixes font clarity, high contrast, clean spacing, and modern hover feedback
+   ========================================================================== */
+
+/* Dropdown Toggle Button (Closed State) */
+.contact-one .form-one .bootstrap-select,
+.contact-one--popup .form-one .bootstrap-select,
+.form-one .bootstrap-select {
+    width: 100% !important;
 }
 
-.contact-one--popup .form-one .bootstrap-select .dropdown-menu > li > a {
+.contact-one .form-one .bootstrap-select > .dropdown-toggle,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle,
+.form-one .bootstrap-select > .dropdown-toggle {
+    width: 100% !important;
+    height: 52px !important;
+    min-height: 52px !important;
     border-radius: 8px !important;
-    padding: 10px 14px !important;
-    font-size: 14px !important;
-    color: #222222 !important;
+    border: 1px solid #D5D9E0 !important;
+    background-color: #FAFAFC !important;
+    padding: 0 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    font-family: var(--amoxi-font, "DM Sans", sans-serif) !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    color: #111111 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.contact-one .form-one .bootstrap-select > .dropdown-toggle:focus,
+.contact-one .form-one .bootstrap-select > .dropdown-toggle:hover,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle:focus,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle:hover {
+    border-color: #0062F3 !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 3px rgba(0, 98, 243, 0.12) !important;
+}
+
+/* Caret Arrow Icon */
+.contact-one .form-one .bootstrap-select > .dropdown-toggle .bs-caret,
+.contact-one .form-one .bootstrap-select > .dropdown-toggle::after,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle .bs-caret,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle::after {
+    border-top-color: #111111 !important;
+    opacity: 0.85 !important;
+    margin-left: 10px !important;
+}
+
+/* Toggle Text & Placeholder */
+.contact-one .form-one .bootstrap-select > .dropdown-toggle .filter-option,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle .filter-option {
+    font-family: var(--amoxi-font, "DM Sans", sans-serif) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #111111 !important;
+    text-align: left !important;
     line-height: 1.4 !important;
 }
 
-.contact-one--popup .form-one .bootstrap-select .dropdown-menu > li:hover > a,
-.contact-one--popup .form-one .bootstrap-select .dropdown-menu > li.selected > a {
+.contact-one .form-one .bootstrap-select > .dropdown-toggle.bs-placeholder .filter-option,
+.contact-one .form-one .bootstrap-select > .dropdown-toggle.bs-placeholder .filter-option-inner-inner,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle.bs-placeholder .filter-option,
+.contact-one--popup .form-one .bootstrap-select > .dropdown-toggle.bs-placeholder .filter-option-inner-inner {
+    color: #8C92A4 !important;
+    font-weight: 500 !important;
+}
+
+/* Dropdown Menu Popup (Open State) */
+.contact-one .form-one .bootstrap-select .dropdown-menu,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu,
+.form-one .bootstrap-select .dropdown-menu {
+    background-color: #FFFFFF !important;
+    border: 1px solid #E2E6EE !important;
+    border-radius: 14px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    padding: 8px 6px !important;
+    margin-top: 6px !important;
+    min-width: 100% !important;
+    max-height: 320px !important;
+    z-index: 10000000 !important;
+    overflow: hidden !important;
+}
+
+.contact-one .form-one .bootstrap-select .dropdown-menu.inner,
+.contact-one .form-one .bootstrap-select .dropdown-menu .inner,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu.inner,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .inner,
+.form-one .bootstrap-select .dropdown-menu.inner,
+.form-one .bootstrap-select .dropdown-menu .inner {
+    background-color: #FFFFFF !important;
+    max-height: 290px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Scrollbar inside dropdown menu */
+.contact-one .form-one .bootstrap-select .dropdown-menu .inner::-webkit-scrollbar,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .inner::-webkit-scrollbar {
+    width: 6px;
+}
+.contact-one .form-one .bootstrap-select .dropdown-menu .inner::-webkit-scrollbar-thumb,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .inner::-webkit-scrollbar-thumb {
+    background-color: #CBD5E1;
+    border-radius: 10px;
+}
+
+/* List Items */
+.contact-one .form-one .bootstrap-select .dropdown-menu li,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li,
+.form-one .bootstrap-select .dropdown-menu li {
+    list-style: none !important;
+    margin: 3px 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide first disabled placeholder option (Select Service *) in the opened list */
+.contact-one .form-one .bootstrap-select .dropdown-menu li.disabled,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li.disabled,
+.form-one .bootstrap-select .dropdown-menu li.disabled {
+    display: none !important;
+}
+
+/* Link and Span (Option Text) - Ultra Clear High Contrast Bold Dark Font */
+.contact-one .form-one .bootstrap-select .dropdown-menu li a,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li a,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item,
+.form-one .bootstrap-select .dropdown-menu li a,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    font-family: var(--amoxi-font, "DM Sans", sans-serif) !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
+    letter-spacing: 0.01em !important;
+    text-transform: none !important;
+    color: #111111 !important; /* CRISP BOLD HIGH-CONTRAST DARK TEXT */
+    background-color: #FFFFFF !important;
+    border: none !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.contact-one .form-one .bootstrap-select .dropdown-menu li a span.text,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li a span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item span.text,
+.form-one .bootstrap-select .dropdown-menu li a span.text,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item span.text {
+    color: #111111 !important;
+    font-family: var(--amoxi-font, "DM Sans", sans-serif) !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
+    display: inline-block !important;
+}
+
+/* Hover and Focus States */
+.contact-one .form-one .bootstrap-select .dropdown-menu li a:hover,
+.contact-one .form-one .bootstrap-select .dropdown-menu li a:focus,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item:hover,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item:focus,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li a:hover,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li a:focus,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item:hover,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item:focus,
+.form-one .bootstrap-select .dropdown-menu li a:hover,
+.form-one .bootstrap-select .dropdown-menu li a:focus,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item:hover,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item:focus {
     background-color: #0062F3 !important;
+    color: #FFFFFF !important;
+    outline: none !important;
+}
+
+.contact-one .form-one .bootstrap-select .dropdown-menu li a:hover span.text,
+.contact-one .form-one .bootstrap-select .dropdown-menu li a:focus span.text,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item:hover span.text,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item:focus span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li a:hover span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li a:focus span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item:hover span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item:focus span.text,
+.form-one .bootstrap-select .dropdown-menu li a:hover span.text,
+.form-one .bootstrap-select .dropdown-menu li a:focus span.text,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item:hover span.text,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item:focus span.text {
+    color: #FFFFFF !important;
+}
+
+/* Selected Active Item */
+.contact-one .form-one .bootstrap-select .dropdown-menu li.selected a,
+.contact-one .form-one .bootstrap-select .dropdown-menu li.active a,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item.selected,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item.active,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li.selected a,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li.active a,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item.selected,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item.active,
+.form-one .bootstrap-select .dropdown-menu li.selected a,
+.form-one .bootstrap-select .dropdown-menu li.active a,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item.selected,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item.active {
+    background-color: #0062F3 !important;
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+}
+
+.contact-one .form-one .bootstrap-select .dropdown-menu li.selected a span.text,
+.contact-one .form-one .bootstrap-select .dropdown-menu li.active a span.text,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item.selected span.text,
+.contact-one .form-one .bootstrap-select .dropdown-menu .dropdown-item.active span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li.selected a span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu li.active a span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item.selected span.text,
+.contact-one--popup .form-one .bootstrap-select .dropdown-menu .dropdown-item.active span.text,
+.form-one .bootstrap-select .dropdown-menu li.selected a span.text,
+.form-one .bootstrap-select .dropdown-menu li.active a span.text,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item.selected span.text,
+.form-one .bootstrap-select .dropdown-menu .dropdown-item.active span.text {
     color: #FFFFFF !important;
 }
 
