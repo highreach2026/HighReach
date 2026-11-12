@@ -134,9 +134,40 @@
       return false;
     }
 
+    // Helper functions: explicitly exclude all forms and popup form areas from bubble effect
+    function isFormElement(el) {
+      if (!el) return false;
+      return !!(el.closest && el.closest(
+        '.contact-one__form, .contact-one, .contact-one--popup, .hr-home-popup, .hr-home-popup__dialog, .hr-contact-form, .form-one, #contactForm, #homePopupContactForm, #careerForm, form, .bootstrap-select, .dropdown-menu'
+      ));
+    }
+
+    function isFormCoords(x, y) {
+      var topEl = document.elementFromPoint ? document.elementFromPoint(x, y) : null;
+      if (isFormElement(topEl)) return true;
+
+      var elements = document.elementsFromPoint ? document.elementsFromPoint(x, y) : [];
+      for (var ei = 0; ei < elements.length; ei++) {
+        if (isFormElement(elements[ei])) return true;
+      }
+
+      var formBoxes = document.querySelectorAll(
+        '.contact-one__form, .hr-home-popup__dialog, .hr-contact-form, .contact-one--popup, #homeContactPopup, #careerForm, form'
+      );
+      for (var fi = 0; fi < formBoxes.length; fi++) {
+        var fRect = formBoxes[fi].getBoundingClientRect();
+        if (fRect.width > 0 && fRect.height > 0) {
+          if (x >= fRect.left - 4 && x <= fRect.right + 4 && y >= fRect.top - 4 && y <= fRect.bottom + 4) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
     // Identify the best interactive target (logos, images, typography, badges) under coordinates (clientX, clientY)
     function findInteractiveTarget(clientX, clientY) {
-      if (isNavbarActionCoords(clientX, clientY)) {
+      if (isNavbarActionCoords(clientX, clientY) || isFormCoords(clientX, clientY)) {
         return null;
       }
       var elements = document.elementsFromPoint ? document.elementsFromPoint(clientX, clientY) : [];
@@ -144,8 +175,8 @@
         var el = elements[i];
         if (!el || el === document.body || el === document.documentElement) continue;
 
-        // Skip loupe itself, cursors, preloader, videos, form inputs, action buttons, and navbar phone/whatsapp icons
-        if (isNavbarActionElement(el) || el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select, .cr-btn, .hr-btn, button, .btn, .main-header__actions, .hr-header-icon-btn, .main-header .hr-hero-icon-btn, .sticky-header .hr-hero-icon-btn')) {
+        // Skip loupe itself, cursors, preloader, videos, form inputs, action buttons, forms, and navbar phone/whatsapp icons
+        if (isNavbarActionElement(el) || isFormElement(el) || el.closest('#hrGlassLoupe, .custom-cursor__cursor, .custom-cursor__cursor-two, .preloader, canvas, video, input, textarea, select, .cr-btn, .hr-btn, button, .btn, .main-header__actions, .hr-header-icon-btn, .main-header .hr-hero-icon-btn, .sticky-header .hr-hero-icon-btn, .contact-one__form, .hr-home-popup, .hr-contact-form, form, .form-one')) {
           continue;
         }
 
@@ -259,7 +290,7 @@
 
     // Switch active target and create clean styled clone inside loupe
     function setTarget(newTarget) {
-      if (newTarget && isNavbarActionElement(newTarget)) {
+      if (newTarget && (isNavbarActionElement(newTarget) || isFormElement(newTarget))) {
         newTarget = null;
       }
       if (currentTarget === newTarget) return;
@@ -496,8 +527,8 @@
         hasMoved = true;
       }
 
-      // If pointer is touching or hovering over navbar phone or WhatsApp icons, strictly prevent bubble effect from appearing
-      if (isNavbarActionCoords(clientX, clientY)) {
+      // If pointer is touching or hovering over navbar phone, WhatsApp icons, or forms, strictly prevent bubble effect from appearing
+      if (isNavbarActionCoords(clientX, clientY) || isFormCoords(clientX, clientY)) {
         if (isTargetActive) {
           isTargetActive = false;
           loupe.classList.remove('is-active');
@@ -583,7 +614,7 @@
       if (e.touches && e.touches[0]) {
         var tX = e.touches[0].clientX;
         var tY = e.touches[0].clientY;
-        if (isNavbarActionCoords(tX, tY)) {
+        if (isNavbarActionCoords(tX, tY) || isFormCoords(tX, tY)) {
           onPointerLeave();
           return;
         }
@@ -596,7 +627,7 @@
     window.addEventListener('touchend', function (e) {
       if (touchTimeout) clearTimeout(touchTimeout);
       if (e.changedTouches && e.changedTouches[0]) {
-        if (isNavbarActionCoords(e.changedTouches[0].clientX, e.changedTouches[0].clientY)) {
+        if (isNavbarActionCoords(e.changedTouches[0].clientX, e.changedTouches[0].clientY) || isFormCoords(e.changedTouches[0].clientX, e.changedTouches[0].clientY)) {
           onPointerLeave();
           return;
         }

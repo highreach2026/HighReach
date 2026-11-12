@@ -5998,14 +5998,14 @@ body.hr-popup-open {
 /* Close Button */
 .hr-home-popup__close {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 42px;
-    height: 42px;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    background: #F1F3F7;
-    border: none;
-    color: #1A1B1F;
+    background: transparent !important;
+    border: none !important;
+    color: #333333 !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6017,8 +6017,8 @@ body.hr-popup-open {
 
 .hr-home-popup__close:hover,
 .hr-home-popup__close:focus {
-    background-color: #0062F3;
-    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.06) !important;
+    color: #0062F3 !important;
     transform: rotate(90deg);
 }
 
@@ -6444,9 +6444,18 @@ body.hr-popup-open {
         right: 14px !important;
         width: 36px !important;
         height: 36px !important;
+        background: transparent !important;
     }
 
     .contact-one--popup .form-one .amoxi-btn-two {
         width: 100% !important;
     }
+}
+
+/* Disable any button pseudo-element hover reveals on forms */
+.contact-one .form-one .amoxi-btn-two::before,
+.contact-one .form-one .amoxi-btn-two::after,
+.contact-one--popup .form-one .amoxi-btn-two::before,
+.contact-one--popup .form-one .amoxi-btn-two::after {
+    display: none !important;
 }
