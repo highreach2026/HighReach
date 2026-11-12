@@ -6452,9 +6452,7 @@ body.hr-popup-open {
     }
 }
 
-/* Disable any button pseudo-element hover reveals on forms */
-.contact-one .form-one .amoxi-btn-two::before,
-.contact-one .form-one .amoxi-btn-two::after,
+/* Disable any button pseudo-element hover reveals on popup form */
 .contact-one--popup .form-one .amoxi-btn-two::before,
 .contact-one--popup .form-one .amoxi-btn-two::after {
     display: none !important;
