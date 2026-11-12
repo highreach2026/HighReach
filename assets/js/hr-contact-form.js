@@ -18,7 +18,7 @@
     // EmailJS Configuration for Live Visitor OTP Email Verification
     var EMAILJS_PUBLIC_KEY = "dnAzL0KNESocptSjD";
     var EMAILJS_SERVICE_ID = "service_8bzj7u8";
-    var EMAILJS_TEMPLATE_ID = "template_qhf3aqf";
+    var EMAILJS_TEMPLATE_ID = "template_sqd90ab";
 
     // Initialize once DOM is ready
     function initAllForms() {
