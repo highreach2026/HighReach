@@ -201,30 +201,50 @@
 
             if (hasEmailJs) {
                 try {
-                    window.emailjs.init(EMAILJS_PUBLIC_KEY);
-                    window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    if (typeof window.emailjs.init === "function") {
+                        try {
+                            window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                        } catch (initErr) {
+                            window.emailjs.init(EMAILJS_PUBLIC_KEY);
+                        }
+                    }
+
+                    var templateParams = {
                         to_name: targetName,
                         name: targetName,
                         to_email: targetEmail,
                         email: targetEmail,
                         user_email: targetEmail,
+                        recipient: targetEmail,
                         otp_code: newCode,
                         otp: newCode,
                         company_name: "High Reach"
+                    };
+
+                    window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+                        publicKey: EMAILJS_PUBLIC_KEY
                     }).then(function () {
+                        if (otpAlertError) {
+                            otpAlertError.style.display = "none";
+                        }
                         if (otpAlertInfo) {
                             otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> A 6-digit verification code has been sent to <strong>' + escapeHtml(targetEmail) + '</strong>. Please check your inbox and spam folder.';
                             otpAlertInfo.style.display = "block";
                         }
                     }).catch(function (err) {
                         console.error("EmailJS dispatch failed:", err);
+                        var errMsg = (err && (err.text || err.message)) ? String(err.text || err.message) : "Failed to dispatch email. Please verify your EmailJS service and template.";
                         if (otpAlertError) {
-                            otpAlertError.textContent = "Failed to dispatch email. Please verify your email address or try again.";
+                            otpAlertError.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + escapeHtml(errMsg);
                             otpAlertError.style.display = "block";
                         }
                     });
                 } catch (err) {
                     console.error("EmailJS dispatch error:", err);
+                    if (otpAlertError) {
+                        otpAlertError.textContent = err.message || "Failed to initialize email dispatch.";
+                        otpAlertError.style.display = "block";
+                    }
                 }
             } else {
                 if (otpAlertError) {
