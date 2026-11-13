@@ -6692,3 +6692,30 @@ body.hr-popup-open {
         letter-spacing: 0.4px !important;
     }
 }
+
+/* =========================================================
+   HIGH REACH — VERIFIED ACKNOWLEDGEMENT SUCCESS CARD
+   ========================================================= */
+.hr-form-alert--success {
+    background: rgba(18, 24, 20, 0.96) !important;
+    border: 1.5px solid rgba(37, 211, 102, 0.45) !important;
+    border-radius: 20px !important;
+    padding: 28px 24px !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), 0 0 20px rgba(37, 211, 102, 0.15) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    animation: hrAlertPopIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    text-align: center !important;
+    margin: 10px 0 !important;
+}
+
+@keyframes hrAlertPopIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

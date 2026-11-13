@@ -191,68 +191,86 @@
                 otpTargetEmailEl.textContent = targetEmail;
             }
 
-            // Check if EmailJS is configured with live credentials
-            var hasEmailJs = Boolean(
-                window.emailjs &&
-                EMAILJS_PUBLIC_KEY &&
-                EMAILJS_SERVICE_ID &&
-                EMAILJS_TEMPLATE_ID
-            );
+            var templateParams = {
+                to_name: targetName,
+                name: targetName,
+                to_email: targetEmail,
+                email: targetEmail,
+                user_email: targetEmail,
+                recipient: targetEmail,
+                otp_code: newCode,
+                otp: newCode,
+                company_name: "High Reach"
+            };
 
-            if (hasEmailJs) {
-                try {
-                    if (typeof window.emailjs.init === "function") {
-                        try {
-                            window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-                        } catch (initErr) {
-                            window.emailjs.init(EMAILJS_PUBLIC_KEY);
-                        }
-                    }
+            // Bulletproof dual-transport: Native REST API fetch (primary, zero CDN dependency) + SDK fallback
+            var restPayload = {
+                service_id: EMAILJS_SERVICE_ID,
+                template_id: EMAILJS_TEMPLATE_ID,
+                user_id: EMAILJS_PUBLIC_KEY,
+                template_params: templateParams
+            };
 
-                    var templateParams = {
-                        to_name: targetName,
-                        name: targetName,
-                        to_email: targetEmail,
-                        email: targetEmail,
-                        user_email: targetEmail,
-                        recipient: targetEmail,
-                        otp_code: newCode,
-                        otp: newCode,
-                        company_name: "High Reach"
-                    };
-
-                    window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
-                        publicKey: EMAILJS_PUBLIC_KEY
-                    }).then(function (res) {
-                        console.log("[EmailJS Send Success]:", res);
-                        if (otpAlertError) {
-                            otpAlertError.style.display = "none";
-                        }
-                        if (otpAlertInfo) {
-                            otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> A 6-digit verification code has been dispatched to <strong>' + escapeHtml(targetEmail) + '</strong>. Please check your inbox and spam folder.';
-                            otpAlertInfo.style.display = "block";
-                        }
-                    }).catch(function (err) {
-                        console.error("EmailJS dispatch failed:", err);
-                        var errMsg = (err && (err.text || err.message)) ? String(err.text || err.message) : "Failed to dispatch email. Please verify your EmailJS service and template.";
-                        if (otpAlertError) {
-                            otpAlertError.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + escapeHtml(errMsg);
-                            otpAlertError.style.display = "block";
-                        }
-                    });
-                } catch (err) {
-                    console.error("EmailJS dispatch error:", err);
-                    if (otpAlertError) {
-                        otpAlertError.textContent = err.message || "Failed to initialize email dispatch.";
-                        otpAlertError.style.display = "block";
-                    }
-                }
-            } else {
+            function handleSendSuccess() {
                 if (otpAlertError) {
-                    otpAlertError.innerHTML = '<i class="fas fa-shield-alt"></i> Live OTP delivery requires your free EmailJS credentials (Public Key, Service ID, Template ID) to dispatch real emails to visitor inboxes.';
+                    otpAlertError.style.display = "none";
+                }
+                if (otpAlertInfo) {
+                    otpAlertInfo.innerHTML = '<i class="fas fa-check-circle"></i> A 6-digit verification code has been dispatched to <strong>' + escapeHtml(targetEmail) + '</strong>. Please check your inbox and spam folder.';
+                    otpAlertInfo.style.display = "block";
+                }
+            }
+
+            function handleSendFailure(errMsg) {
+                console.error("EmailJS dispatch failed:", errMsg);
+                if (otpAlertError) {
+                    otpAlertError.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + escapeHtml(errMsg || "Failed to dispatch email. Please verify your EmailJS service and template.");
                     otpAlertError.style.display = "block";
                 }
             }
+
+            // Direct fetch to EmailJS REST API
+            fetch("https://api.emailjs.com/api/v1.0/email/send", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(restPayload)
+            })
+            .then(function (res) {
+                if (res.ok) {
+                    handleSendSuccess();
+                } else {
+                    return res.text().then(function (errText) {
+                        // If direct API rejected, try SDK fallback
+                        if (window.emailjs && typeof window.emailjs.send === "function") {
+                            try {
+                                window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                                return window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+                                    publicKey: EMAILJS_PUBLIC_KEY
+                                }).then(handleSendSuccess).catch(function (sdkErr) {
+                                    handleSendFailure(errText || (sdkErr && (sdkErr.text || sdkErr.message)));
+                                });
+                            } catch (e) {}
+                        }
+                        handleSendFailure(errText || ("Error " + res.status));
+                    });
+                }
+            })
+            .catch(function (fetchErr) {
+                // If fetch encountered network error, try SDK
+                if (window.emailjs && typeof window.emailjs.send === "function") {
+                    try {
+                        window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                        return window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+                            publicKey: EMAILJS_PUBLIC_KEY
+                        }).then(handleSendSuccess).catch(function (sdkErr) {
+                            handleSendFailure(sdkErr && (sdkErr.text || sdkErr.message));
+                        });
+                    } catch (e) {}
+                }
+                handleSendFailure(fetchErr ? fetchErr.message : "Network error reaching email service.");
+            });
 
             startOtpTimers();
         }
@@ -448,29 +466,60 @@
                             window.jQuery(form).find(".selectpicker").selectpicker("refresh");
                         }
 
+                        // Hide the form fields so the verified acknowledgement takes full focus
+                        if (formFieldsGroup) {
+                            formFieldsGroup.style.display = "none";
+                        }
+                        if (otpHolder) {
+                            otpHolder.style.display = "none";
+                        }
+
                         if (resultBox) {
                             var waQuickMsg = "Hi High Reach Admin,\n\nI just verified and sent a project request to " + ADMIN_EMAIL + " via your website:\n• *Name:* " + name + "\n• *Service:* " + (service || "General Inquiry") + "\nLooking forward to hearing from you!";
                             var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waQuickMsg);
 
-                        resultBox.innerHTML = 
-                            '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(18, 24, 20, 0.95); border: 1.5px solid rgba(37, 211, 102, 0.45); border-radius: 18px; padding: 24px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px);">' +
-                                '<div style="font-weight: 700; font-size: 17px; margin-bottom: 8px; color: #FFFFFF; display: flex; align-items: center; gap: 10px;">' +
-                                    '<i class="fas fa-check-circle" style="color: #25D366; font-size: 22px;"></i>' +
-                                    '<span>Inquiry Verified &amp; Sent Successfully!</span>' +
-                                '</div>' +
-                                '<div style="color: #d1d4dc; font-size: 14.5px; line-height: 1.6; margin-bottom: 20px;">' +
-                                    'Thank you, <strong style="color: #FFFFFF;">' + escapeHtml(name) + '</strong>. Your email has been authenticated and details delivered safely to <strong style="color: #36C2B0;">' + ADMIN_EMAIL + '</strong>. Our team will reach out within 24 hours.' +
-                                '</div>' +
-                                '<div style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 18px; text-align: center;">' +
-                                    '<div style="font-size: 13.5px; color: #E0E0E6; margin-bottom: 12px; font-weight: 500;">' +
-                                        'Need an immediate response? Connect directly with our admin:' +
+                            resultBox.innerHTML = 
+                                '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(18, 24, 20, 0.96); border: 1.5px solid rgba(37, 211, 102, 0.45); border-radius: 20px; padding: 28px 24px; box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), 0 0 20px rgba(37, 211, 102, 0.15); backdrop-filter: blur(14px); text-align: center;">' +
+                                    '<div style="width: 58px; height: 58px; margin: 0 auto 16px; border-radius: 50%; background: rgba(37, 211, 102, 0.18); border: 1.5px solid #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 25px rgba(37, 211, 102, 0.35);">' +
+                                        '<i class="fas fa-check" style="color: #25D366; font-size: 26px;"></i>' +
                                     '</div>' +
-                                    '<a href="' + waQuickUrl + '" target="_blank" rel="noopener noreferrer" class="hr-wa-direct-btn">' +
-                                        '<i class="fab fa-whatsapp"></i>' +
-                                        '<span>TALK DIRECTLY TO ADMIN &rarr;</span>' +
-                                    '</a>' +
-                                '</div>' +
+                                    '<div style="font-weight: 700; font-size: 20px; margin-bottom: 8px; color: #FFFFFF;">' +
+                                        'Inquiry Verified &amp; Sent Successfully!' +
+                                    '</div>' +
+                                    '<div style="color: #d1d4dc; font-size: 14.5px; line-height: 1.6; margin: 0 auto 20px; max-width: 460px;">' +
+                                        'Thank you, <strong style="color: #FFFFFF;">' + escapeHtml(name) + '</strong>. Your email has been authenticated and details delivered safely to <strong style="color: #36C2B0;">' + ADMIN_EMAIL + '</strong>. Our team will review and connect with you within 24 hours.' +
+                                    '</div>' +
+                                    '<div style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 20px; margin-top: 10px;">' +
+                                        '<div style="font-size: 13.5px; color: #E0E0E6; margin-bottom: 14px; font-weight: 500;">' +
+                                            'Need an immediate discussion? Talk directly to our admin:' +
+                                        '</div>' +
+                                        '<a href="' + waQuickUrl + '" target="_blank" rel="noopener noreferrer" class="hr-wa-direct-btn">' +
+                                            '<i class="fab fa-whatsapp"></i>' +
+                                            '<span>TALK DIRECTLY TO ADMIN &rarr;</span>' +
+                                        '</a>' +
+                                    '</div>' +
+                                    '<div style="margin-top: 20px;">' +
+                                        '<button type="button" class="hr-otp-sub-link hr-restart-form-btn" style="color: #8E8E93; font-size: 13px; text-decoration: underline;">' +
+                                            'Send another inquiry' +
+                                        '</button>' +
+                                    '</div>' +
                                 '</div>';
+
+                            var restartBtn = resultBox.querySelector(".hr-restart-form-btn");
+                            if (restartBtn) {
+                                restartBtn.addEventListener("click", function () {
+                                    resultBox.innerHTML = "";
+                                    if (formFieldsGroup) formFieldsGroup.style.display = "";
+                                    if (submitBtn) {
+                                        submitBtn.disabled = false;
+                                        submitBtn.innerHTML = originalBtnHtml;
+                                    }
+                                });
+                            }
+
+                            try {
+                                resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                            } catch (e) {}
                         }
                     } else {
                         handleFallback(resultBox, name, email, phone, service, message);
