@@ -82,29 +82,29 @@
             otpHolder = document.createElement("div");
             otpHolder.className = "hr-otp-wrap";
             otpHolder.style.display = "none";
-            otpHolder.innerHTML = 
+            otpHolder.innerHTML =
                 '<div class="hr-otp-icon"><i class="fas fa-shield-alt"></i></div>' +
                 '<h3 class="hr-otp-title">Email Verification Required</h3>' +
                 '<p class="hr-otp-desc">To verify your inquiry and prevent duplicate spam, we sent a 6-digit verification code to <strong class="hr-otp-target-email"></strong>.</p>' +
                 '<div class="hr-otp-alert hr-otp-alert--info"></div>' +
                 '<div class="hr-otp-alert hr-otp-alert--error"></div>' +
                 '<div class="hr-otp-boxes">' +
-                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1">' +
-                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 2">' +
-                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 3">' +
-                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 4">' +
-                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 5">' +
-                    '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 6">' +
+                '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1">' +
+                '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 2">' +
+                '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 3">' +
+                '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 4">' +
+                '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 5">' +
+                '<input type="text" maxlength="1" class="hr-otp-box" inputmode="numeric" aria-label="Digit 6">' +
                 '</div>' +
                 '<div class="hr-otp-timer">Code expires in <span class="hr-otp-countdown">05:00</span></div>' +
                 '<div class="hr-otp-actions">' +
-                    '<button type="button" class="amoxi-btn-two hr-otp-verify-btn">' +
-                        'CONFIRM &amp; SEND REQUEST <span class="amoxi-btn-two__icon"><i class="fas fa-arrow-right"></i></span>' +
-                    '</button>' +
-                    '<div class="hr-otp-sub-actions">' +
-                        '<button type="button" class="hr-otp-sub-link hr-otp-resend-btn" disabled>Resend Code (<span class="hr-otp-cooldown">30</span>s)</button>' +
-                        '<button type="button" class="hr-otp-sub-link hr-otp-edit-btn">Edit Details</button>' +
-                    '</div>' +
+                '<button type="button" class="amoxi-btn-two hr-otp-verify-btn">' +
+                'CONFIRM &amp; SEND REQUEST <span class="amoxi-btn-two__icon"><i class="fas fa-arrow-right"></i></span>' +
+                '</button>' +
+                '<div class="hr-otp-sub-actions">' +
+                '<button type="button" class="hr-otp-sub-link hr-otp-resend-btn" disabled>Resend Code (<span class="hr-otp-cooldown">30</span>s)</button>' +
+                '<button type="button" class="hr-otp-sub-link hr-otp-edit-btn">Edit Details</button>' +
+                '</div>' +
                 '</div>';
             form.appendChild(otpHolder);
         }
@@ -429,28 +429,28 @@
                 method: "POST",
                 body: formData
             })
-            .then(function (res) {
-                return res.json().then(function (data) {
-                    return { ok: res.ok, status: res.status, data: data };
-                });
-            })
-            .then(function (resObj) {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-
-                if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
-                    form.reset();
-                    otpState.isVerified = false;
-
-                    if (window.jQuery && window.jQuery(form).find(".selectpicker").length) {
-                        window.jQuery(form).find(".selectpicker").selectpicker("refresh");
+                .then(function (res) {
+                    return res.json().then(function (data) {
+                        return { ok: res.ok, status: res.status, data: data };
+                    });
+                })
+                .then(function (resObj) {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
                     }
 
-                    if (resultBox) {
-                        var waQuickMsg = "Hi High Reach Admin,\n\nI just verified and sent a project request to " + ADMIN_EMAIL + " via your website:\n• *Name:* " + name + "\n• *Service:* " + (service || "General Inquiry") + "\nLooking forward to hearing from you!";
-                        var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waQuickMsg);
+                    if (resObj.ok && resObj.data && (resObj.data.success || resObj.status === 200)) {
+                        form.reset();
+                        otpState.isVerified = false;
+
+                        if (window.jQuery && window.jQuery(form).find(".selectpicker").length) {
+                            window.jQuery(form).find(".selectpicker").selectpicker("refresh");
+                        }
+
+                        if (resultBox) {
+                            var waQuickMsg = "Hi High Reach Admin,\n\nI just verified and sent a project request to " + ADMIN_EMAIL + " via your website:\n• *Name:* " + name + "\n• *Service:* " + (service || "General Inquiry") + "\nLooking forward to hearing from you!";
+                            var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waQuickMsg);
 
                         resultBox.innerHTML = 
                             '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(18, 24, 20, 0.95); border: 1.5px solid rgba(37, 211, 102, 0.45); border-radius: 18px; padding: 24px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px);">' +
@@ -470,19 +470,19 @@
                                         '<span>TALK DIRECTLY TO ADMIN &rarr;</span>' +
                                     '</a>' +
                                 '</div>' +
-                            '</div>';
+                                '</div>';
+                        }
+                    } else {
+                        handleFallback(resultBox, name, email, phone, service, message);
                     }
-                } else {
+                })
+                .catch(function () {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnHtml;
+                    }
                     handleFallback(resultBox, name, email, phone, service, message);
-                }
-            })
-            .catch(function () {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnHtml;
-                }
-                handleFallback(resultBox, name, email, phone, service, message);
-            });
+                });
         }
 
         // 1. WhatsApp Button Click Handler
