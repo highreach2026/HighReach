@@ -453,12 +453,21 @@
                         var waQuickUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waQuickMsg);
 
                         resultBox.innerHTML = 
-                            '<div class="hr-form-alert hr-form-alert--success">' +
-                                '<div style="font-weight: 700; font-size: 16px; margin-bottom: 4px;"><i class="fas fa-check-circle" style="color: #25D366; margin-right: 8px;"></i>Inquiry Verified &amp; Sent Successfully!</div>' +
-                                '<div>Thank you, <strong>' + escapeHtml(name) + '</strong>. Your email has been authenticated and details delivered safely to <strong>' + ADMIN_EMAIL + '</strong>. Our team will reach out within 24 hours.</div>' +
-                                '<div style="margin-top: 12px;">' +
-                                    '<a href="' + waQuickUrl + '" target="_blank" rel="noopener noreferrer" class="hr-alert-wa-link" style="display: inline-flex; align-items: center; gap: 8px; color: #25D366; font-weight: 600; text-decoration: none;">' +
-                                        '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> Want an immediate discussion? Ping us directly on WhatsApp &rarr;' +
+                            '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(18, 24, 20, 0.95); border: 1.5px solid rgba(37, 211, 102, 0.45); border-radius: 18px; padding: 24px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px);">' +
+                                '<div style="font-weight: 700; font-size: 17px; margin-bottom: 8px; color: #FFFFFF; display: flex; align-items: center; gap: 10px;">' +
+                                    '<i class="fas fa-check-circle" style="color: #25D366; font-size: 22px;"></i>' +
+                                    '<span>Inquiry Verified &amp; Sent Successfully!</span>' +
+                                '</div>' +
+                                '<div style="color: #d1d4dc; font-size: 14.5px; line-height: 1.6; margin-bottom: 20px;">' +
+                                    'Thank you, <strong style="color: #FFFFFF;">' + escapeHtml(name) + '</strong>. Your email has been authenticated and details delivered safely to <strong style="color: #36C2B0;">' + ADMIN_EMAIL + '</strong>. Our team will reach out within 24 hours.' +
+                                '</div>' +
+                                '<div style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 18px; text-align: center;">' +
+                                    '<div style="font-size: 13.5px; color: #E0E0E6; margin-bottom: 12px; font-weight: 500;">' +
+                                        'Need an immediate response? Connect directly with our admin:' +
+                                    '</div>' +
+                                    '<a href="' + waQuickUrl + '" target="_blank" rel="noopener noreferrer" class="hr-wa-direct-btn">' +
+                                        '<i class="fab fa-whatsapp"></i>' +
+                                        '<span>TALK DIRECTLY TO ADMIN &rarr;</span>' +
                                     '</a>' +
                                 '</div>' +
                             '</div>';
@@ -758,14 +767,20 @@
         var waUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waText);
 
         resultBox.innerHTML =
-            '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(0, 98, 243, 0.12); border-color: rgba(0, 98, 243, 0.4);">' +
-            '<div style="font-weight: 700; font-size: 15px;"><i class="fas fa-check-circle" style="color: #36C2B0; margin-right: 8px;"></i>Your inquiry is ready to send!</div>' +
-            '<div>Click below to transmit directly to our team on WhatsApp for an immediate response:</div>' +
-            '<div style="margin-top: 10px;">' +
-            '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);">' +
-            '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> SEND INQUIRY TO ADMIN ON WHATSAPP &rarr;' +
-            '</a>' +
-            '</div>' +
+            '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(18, 24, 20, 0.95); border: 1.5px solid rgba(37, 211, 102, 0.45); border-radius: 18px; padding: 24px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px);">' +
+                '<div style="font-weight: 700; font-size: 17px; margin-bottom: 8px; color: #FFFFFF; display: flex; align-items: center; gap: 10px;">' +
+                    '<i class="fas fa-check-circle" style="color: #36C2B0; font-size: 22px;"></i>' +
+                    '<span>Your inquiry is ready to send!</span>' +
+                '</div>' +
+                '<div style="color: #d1d4dc; font-size: 14.5px; line-height: 1.6; margin-bottom: 20px;">' +
+                    'Click below to deliver your project details directly to our admin on WhatsApp for an immediate response:' +
+                '</div>' +
+                '<div style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 18px; text-align: center;">' +
+                    '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="hr-wa-direct-btn">' +
+                        '<i class="fab fa-whatsapp"></i>' +
+                        '<span>TALK DIRECTLY TO ADMIN &rarr;</span>' +
+                    '</a>' +
+                '</div>' +
             '</div>';
     }
 
@@ -785,14 +800,20 @@
         var waUrl = "https://wa.me/" + ADMIN_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(waText);
 
         resultBox.innerHTML =
-            '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(0, 98, 243, 0.12); border-color: rgba(0, 98, 243, 0.4);">' +
-            '<div style="font-weight: 700; font-size: 15px;"><i class="fas fa-check-circle" style="color: #36C2B0; margin-right: 8px;"></i>Your application is ready!</div>' +
-            '<div>Click below to deliver your application directly to our recruitment lead on WhatsApp:</div>' +
-            '<div style="margin-top: 10px;">' +
-            '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 13.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);">' +
-            '<i class="fab fa-whatsapp" style="font-size: 18px;"></i> SEND APPLICATION ON WHATSAPP &rarr;' +
-            '</a>' +
-            '</div>' +
+            '<div class="hr-form-alert hr-form-alert--success" style="background: rgba(18, 24, 20, 0.95); border: 1.5px solid rgba(37, 211, 102, 0.45); border-radius: 18px; padding: 24px; box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px);">' +
+                '<div style="font-weight: 700; font-size: 17px; margin-bottom: 8px; color: #FFFFFF; display: flex; align-items: center; gap: 10px;">' +
+                    '<i class="fas fa-check-circle" style="color: #36C2B0; font-size: 22px;"></i>' +
+                    '<span>Your application is ready!</span>' +
+                '</div>' +
+                '<div style="color: #d1d4dc; font-size: 14.5px; line-height: 1.6; margin-bottom: 20px;">' +
+                    'Click below to deliver your application directly to our recruitment lead on WhatsApp:' +
+                '</div>' +
+                '<div style="border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 18px; text-align: center;">' +
+                    '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="hr-wa-direct-btn">' +
+                        '<i class="fab fa-whatsapp"></i>' +
+                        '<span>CONNECT WITH RECRUITER ON WHATSAPP &rarr;</span>' +
+                    '</a>' +
+                '</div>' +
             '</div>';
     }
 
